@@ -1,0 +1,121 @@
+---
+title: "Multiple Integrals P. II"
+subtitle: "Session 10"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Interchange orders in double integration. <br/><br/>
+ * Understand some applications of double integrals. <br/><br/>
+
+---
+# Examle 1:
+
+
+> Find the value of the integral of $f(x,y)=4x+2$ in the bounded region by $ y=x^2$ and $y=2x,$ integrating first with respect to $x.$
+
+
+
+---
+# Exercise:
+
+> Compute the value of the integral of $f(x,y)=x$ in the bounded region by $x=0,$ $y=0$ and $y=\sqrt{1-x^2}.$
+
+
+---
+# Other integral properties:
+
+1.  
+  * If $f(x,y)\leq 0$ then $$\int\int_{R} f(x,y)dA \leq 0.$$
+  * If $f(x,y)\leq g(x,y)$ in a bounded region $R$ then $$\int\int_{R}f dA \leq \int\int_R g dA.$$
+  
+1. __Aditivity (in regions):__ Assume that $R$ can be expressed as the union of two disjoint simple regions $R_1$ and $R_2,$ then $$\int\int_R f dA =\int\int_{R_1}f dA + \int\int_{R_2} f dA.$$
+
+---
+# Area of a region:
+
+> __Definition:__ the area of a plane region $R$ in $\mathbb{R}^2$ is given by the integral $$\int\int_{R}dA.$$
+
+__Ejemplo:__ Compute the area of the region bounded by $y=\sqrt{x}$ and $y=x^2.$
+
+
+---
+# Exercise:
+
+> Find the area of the region bounded by $y=x^2$ and $y=x+2.$
+
+
+---
+# Mean Value
+
+> __Definition:__ the mean value of a function over a region $R$ is defined as the quotient of the integral $$mean(f,R)=\frac{\int\int_{R}fdA}{\int\int_{R}dA}.$$
+
+__Ejemplo:__ Find the mean value of the function $f(x,y)=x\cos(xy)$ over the rectangle $0\leq x\leq \pi $ and $0\leq y\leq 1.$
+
+
+---
+# Exercise: 
+
+> The following function describe a distribution of ages in a school where $x$ represent the number of male students and $y$ the number of female students, $f(x,y)=xy+x^2+y^3,$ if we know that $0\leq x\leq 10$ and $0\leq y\leq5.$ Find the average age.
+
+---
+# Mass and Center of Mass
+
+> __Definition:__ Assume that an object occupies a region $R$ in the plane, and the density of the object is given by the function $\delta(x,y),$ then <br/><br/>
+1. The mass of the object is given by $$\int\int_R \delta(x,y)dA.$$ <br/><br/>
+1. The mass' moments are: $$M_x=\int\int_R y\delta(x,y)dA \mbox{ and } M_y=\int\int_R x\delta(x,y)dA.$$ <br/><br/>
+1. The mass center is given by $$\left(\frac{M_y}{M},\frac{M_x}{M}\right).$$
+
+---
+# Exercise:
+
+> In the triangle bounded by $0\leq x\leq 1$ and $0\leq y \leq 2x$ we have a density distribution by $\delta(x,y)=6x+6y+6.$ Compute the mass and the center of mass.
+
+---
+# Probability
+
+> Assume that we have random variables $x$ and $y,$ and $P(x,y)$ is the probability distribution in a region $R,$ that is, $$\int_R PdA=1.$$ If we want to know the probability that an event $C$ occurs, then we calculate $$\int_C PdA.$$
+---
+
+#### Example:
+
+> Consider the following variables $x,y$ with the probability distribution $$f(x,y)=\frac{x+2y}{1500}$$ in $[0,10]\times[0,10].$ Calculate the probability that happen $y\geq 7$ and $x\leq 2$.
+

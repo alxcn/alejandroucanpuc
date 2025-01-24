@@ -1,0 +1,184 @@
+---
+title: "Límites Infinitos"
+subtitle: "Sesión 14"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Determinar cuando un límite es infinito.
+ * Calcular asíntotas verticales.
+
+---
+# Recordemos nuestra función racional predilecta.
+
+$$f(x)=\frac{1}{x}$$
+<iframe src="https://www.geogebra.org/graphing/0?embed" width="900" height="350" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+---
+# ¿Existe el límite de $f(x)$ cuando $x\to 0$?
+
+> $\displaystyle{\lim_{x\to 0^+}\frac{1}{x}}=+\infty.$ 
+
+
+> $\displaystyle{\lim_{x\to 0^-}\frac{1}{x}}=-\infty.$
+
+<br/><br/>
+
+Por lo tanto, $$\lim_{x\to 0}\frac{1}{x}=\mbox{ No existe.}$$
+
+---
+# Ejemplo 2:
+¿Qué pasa si cambiamos la función a que sea $f(x)=\frac{1}{x^2}$?
+
+<iframe src="https://www.geogebra.org/graphing/0?embed" width="1200" height="350" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Ejemplo 2:
+
+> $\displaystyle{\lim_{x\to 0^+}\frac{1}{x^2}}=+\infty.$ 
+
+
+> $\displaystyle{\lim_{x\to 0^-}\frac{1}{x^2}}=+\infty.$
+
+<br/><br/>
+
+Por lo tanto, $$\lim_{x\to 0}\frac{1}{x}=+\infty.$$
+
+---
+# Ejemplo 3:
+
+Encuentra el valor de: $$ \lim_{x\to 1}\frac{1-3x^2}{x^3-3x^2+3x-1}.$$
+
+__Solución:__
+
+1. Evaluamos $x=1$ en la función, $$\frac{1-3(1)^2}{(1)^3-3(1)^2+3(1)-1}=\frac{2}{0}.$$
+
+No podemos decidir si vale $+\infty$ o $-\infty.$
+
+<br/>
+¿Qué podemos hacer para decirdir? Cómo ya sabemos que nos acercamos a un $\mbox{algo}/0,$ basta con checar el comportamiento de la función cerca del valor $x=1.$
+
+---
+# Ejemplo 3:
+
+Vamos a checar que signo tiene la función en las zonas cercanas a $x=1.$
+
+$$\begin{array}{|c|c|c|c|} \hline
+x &  x<1 & 1 & x>1 \\ \hline
+f(x) & \color{red}{+} & \frac{2}{0} & \color{green}{-} \\ \hline
+\end{array}$$
+
+Cómo los signos son diferentes, entonces el límite no existe.
+
+$$ \lim_{x\to 1}\frac{1-3x^2}{x^3-3x^2+3x-1}=\mbox{ No existe}.$$
+
+---
+# Ejemplo 4:
+Encuentre el valor de $$ \lim_{x\to 0} \frac{2x}{x^4+2x^3}.$$
+
+1. Evaluamos la función en $x=0.$
+
+$$ \frac{2(0)}{(0)^4+2(0)^3}=\frac{0}{0}!!$$
+
+Tenemos una indeterminación, entonces necesitamos utilizar recursos algebraicos. 
+
+$$\frac{2x}{x^4+2x^3}=\frac{2x}{x^3(x+2)}=\frac{2}{x^2(x+2)}.$$
+
+---
+# Ejemplo 4:
+
+Ahora si sustituimos $x=0,$
+
+$$\frac{2}{(0)^2(0+2)}=\frac{2}{0}.$$
+
+2. Chequemos el comportamiento:
+
+$$\begin{array}{|c|c|c|c|} \hline
+x &  x<0 & 0 & x>0 \\ \hline
+f(x) & \color{red}{+} & \frac{2}{0} & \color{red}{+} \\ \hline
+\end{array}$$
+
+Entonces: $$\displaystyle{\lim_{x\to 0}\frac{2x}{x^4+2x^3}=\infty.}$$
+
+---
+# Asintotas Verticales:
+
+> Si $f(x)$ es una función tal que para $x=a$ se cumple que al "evaluar" la expresión obtenemos algo de la forma $$f(a)=\frac{k}{a}$$ donde $k\neq 0.$
+<br/><br/>
+Entonces, la recta vertical $x=a$ se conoce como __asíntota vertical__ de $f(x).$
+
+
+![Asíntota Vertical](http://4.bp.blogspot.com/-arzayLZsmYk/VhysMpKajHI/AAAAAAAAABQ/XfOkAUW95xw/s1600/asintota_vertical.png)(output-width=10%)
+---
+# Ejemplo 5:
+
+Para la función $f(x)=\frac{7}{2x-10},$ encuentre sus asíntotas verticales y analice el comportamiento al rededor de ellas.
+
+1. Primero tenemos que encontrar donde puede haber asíntotas, para esto resolvemos la ecuación $$\mbox{denominador}=0\Rightarrow 2x-10=0 \Rightarrow 2x=10 \Rightarrow x=5.$$
+
+2. Evaluo para ver si no hay indeterminación, $f(5)=\frac{7}{0}.$ Cómo no la hay, entonces $x=5$ es una __asíntota vertical__ para $f.$
+
+3. Checamos el comportamiento:
+
+$$\begin{array}{|c|c|c|c|} \hline
+x &  x<5 & 5 & x>5 \\ \hline
+f(x) & \color{red}{-} & \frac{7}{0} & \color{red}{+} \\ \hline
+\end{array}$$
+
+Como los signos son distintos, $$\lim_{x\to 5}f(x)=\mbox{ No existe}.$$
+
+---
+# Ejemplos 6:
+
+Dada la función $f(x)=\frac{3x+2}{x^2+5x-6},$ encuentre sus asíntotas verticales y analice el comportamiento alrededor de ellas.
+
+1. Primero tenemos que encontrar donde puede haber asíntotas, para esto resolvemos la ecuación $$\mbox{denominador}=0\Rightarrow x^2+5x-6=0 \Rightarrow (x+6)(x-1)=10 \Rightarrow x_1=1, x_2=-6.$$
+
+2. Evaluo para ver si no hay indeterminación, $f(-6)=\frac{-16}{0}.$ Cómo no la hay, entonces $x=-6$ es una __asíntota vertical__ para $f.$ Ahora, $f(1)=\frac{5}{0},$ no hay indeterminación, entonces $x=1$ también es una asíntota vertical
+
+3. Checamos el comportamiento:
+
+$$\begin{array}{|c|c|c|c|c|c|c|} \hline
+x &  x<-6 & -6 & -6<x& x<1 & 1 & 1<x\\ \hline
+f(x) & \color{red}{-} & \frac{-16}{0} & \color{red}{+} & \color{green}{-} & \frac{5}{0} & \color{green}{+} \\ \hline
+\end{array}$$
+
+Cómo en ninguna asintota el signo es igual, ningún límite existe.
+

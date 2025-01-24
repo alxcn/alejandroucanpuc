@@ -1,0 +1,126 @@
+---
+title: "EDOs exactas"
+subtitle: "Sesión 04"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Diferenciar las EDOs exactas. <br/><br/>
+* Resolver las EDOs exactas por integración parcial. <br/><br/>
+
+
+---
+# EDOs exactas
+
+> Supongamos que tenemos la siguiente EDO de orden 1: $$M(x,y) + N(x,y) \frac{dy}{dx} = 0$$ <br/>
+--
+Podemos reescribir lo anterior a: $$M(x,y)dx + N(x,y)dy = 0$$ <br/> 
+--
+¿Qué puedes observar de la expresión anterior? <br/><br/>
+
+---
+# EDOs exactas
+
+> __Definición:__ decimos que la EDO $$M(x,y)dx + N(x,y)dy = 0$$ es exacta si existe una función $u(x,y)$ tal que: $$\frac{\partial u}{\partial x} = M(x,y)$$ y $$\frac{\partial u}{\partial y} = N(x,y).$$ <br/><br/>
+
+--
+Esto implica que la EDO se ve como $$du=M(x,y)dx + N(x,y)dy = 0,$$ por lo que mi solución sería $u(x,y)=c$.
+---
+## Ejemplos
+
+Las siguientes EDOs son exactas: <br/><br/>
+  1. $$(2xy^2)dx + (2x^2y)dy = 0$$ <br/><br/>
+  2. $$-y\sin(xy)dx-x\sin(xy)dy=0$$ <br/><br/>
+  3. $$ \frac{2dx}{x}+\frac{2dy}{y}=0$$ <br/><br/>
+---
+## Criterio para determinar exactitud
+
+> __Criterio:__ La EDO $$M(x,y)dx + N(x,y)dy = 0$$ es exacta si y sólo si $$\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}.$$ <br/><br/>
+
+--
+Veamos que el criterio aplica para las EDOs anteriores:
+
+---
+# Método de Solución de EDOs Exactas
+
+> __Método:__ Sea la EDO $$M(x,y)dx + N(x,y)dy = 0$$ exacta. <br/><br/>
+  1. Tomar $M(x,y)dx$ e integrar la función $$u(x,y)=\int M(x,y)dx + g(y)$$ con respecto a $x$. <br/><br/>
+  2. Derivar la función $u(x,y)$ con respecto a $y$ y comparar con $N(x,y)$ de la siguiente manera $$N(x,y)=\frac{\partial u}{\partial y}=\frac{\partial}{\partial y}\int M(x,y)dx + g'(y).$$
+  3. Despejar $g'(y)$ y encontrar $g(y)$ integrando $g'(y)$ con respecto a $y$.
+
+---
+##### Ejemplo 1
+
+Resolver la EDO $$(2xy^2)dx + (2x^2y)dy = 0$$ <br/><br/>
+
+--
+__Solución:__ <br/><br/>
+  $u(x,y)=\int 2xy^2dx +g(y)=x^2y^2+g(y)$ <br/><br/>
+  $\frac{\partial u}{\partial y}=2x^2y+g'(y)=2x^2y$ <br/><br/>
+  $g'(y)=2x^2y-2x^2y=0$ <br/><br/>Por lo que $g(y)=c$ <br/><br/>
+
+  Por lo que la solución es: $x^2y^2+c=0$ <br/><br/>
+
+---
+##### Ejemplo 2
+
+Resolver la EDO $$2xydx+(x^2-1)dy=0$$ <br/><br/>
+
+--
+__Solución:__ <br/><br/>
+$u(x,y)=\int 2xydx +g(y)=x^2y+g(y)$ <br/><br/>
+$\frac{\partial u}{\partial y}=x^2+g'(y)=x^2-1$ <br/><br/>
+$g'(y)=-1$ <br/><br/>Por lo que $g(y)=-y$ <br/><br/>
+  
+Por lo que la solución es: $x^2y-y=c$ <br/><br/>
+
+---
+##### Ejemplo 3
+
+Resolver la EDO $$(\sin y -y\sin x)dx + (\cos x -x\cos y -y)dy = 0$$ <br/><br/>
+

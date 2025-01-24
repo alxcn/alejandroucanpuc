@@ -1,0 +1,116 @@
+---
+title: "Definite Integral"
+subtitle: "Session 02"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals:
+
+ * Prove that Riemann sums approximate the area under the curve. <br/><br/>
+ * Define the definite integral. <br/><br/>
+ * Compute definite integrals using the definition. <br/><br/>
+ * State the Foundamental Theorem of Calculus. <br/><br/>
+---
+# Recall Riemann sums
+
+
+---
+# Definite Integral
+
+> __Definition:__ Let $f$ be a function defined on the interval $[a,b]$. The definite integral of $f$ from $a$ to $b$ is defined as the limit of a Riemann sum when we increase the number of subintervals in a partition. In symbols $$\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^*) \Delta x_i$$ provided that this limit exists and gives the same value for all possible choices of sample points $x_i^*$ in the subintervals $[x_{i-1}, x_i]$.
+
+---
+## Some conventions:
+
+* We will only use regular partitions but the definition is valid for any kind of partition. <br/><br/>
+* We will only consider left Riemann sums, but this computation is also valid for right and middle sums. <br/><br/>
+* We will use the notation $\Delta x = \frac{b-a}{n}$ and $x_i = a + i \Delta x$.
+
+---
+#### Example 1:
+
+1. Compute the definite integral $\int_0^1 x dx$ using the definition. <br/><br/>
+
+--
+Let's start by computing the Riemann sum for $n$ subintervals. The length of the subintervals is given by $\Delta x= \frac{1-0}{n}$ and the left points are $$x_j=0 + j \Delta x = \frac{j}{n}$$ for $j=0,1,2,\ldots,n$. The Riemann sum is given by $$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n \frac{j}{n} \frac{1}{n} = \frac{1}{n^2} \sum_{j=1}^n j = \frac{1}{n^2} \frac{n(n+1)}{2} = \frac{n+1}{2n}$$ <br/><br/>
+
+Let's take the limit in the number of intervals: $$\lim_{n \to \infty} \frac{n+1}{2n} = \frac{1}{2}.$$
+
+---
+#### Example 2:
+
+1. Compute the definite integral $\int_1^4 4x+3 dx$ using the definition. <br/><br/>
+
+--
+Let's start by computing the Riemann sum for $n$ subintervals. The length of the subintervals is given by $\Delta x= \frac{1-{-1}}{n}$ and the left points are $$x_j=-1 + j \Delta x = -1 + \frac{j}{n}$$ for $j=0,1,2,\ldots,n$. The Riemann sum is given by $$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n (4(-1 + \frac{j}{n})+3) \frac{2}{n} = \frac{2}{n} \sum_{j=1}^n (4(-1 + \frac{j}{n})+3) = \frac{2}{n} \sum_{j=1}^n (4-4\frac{j}{n}+3) = \frac{2}{n} \sum_{j=1}^n (7-4\frac{j}{n}) = \frac{2}{n} (7n-4\frac{n(n+1)}{2}) = 7-2\frac{n+1}{n}$$ <br/><br/>
+
+Let's take the limit in the number of intervals: $$\lim_{n \to \infty} 7-2\frac{n+1}{n} = 7-2 = 5.$$
+
+---
+#### Example 3:
+
+1. Compute the definite integral $\int_0^1 x^2 dx$ using the definition. <br/><br/>
+
+--
+Let's start by computing the Riemann sum for $n$ subintervals. The length of the subintervals is given by $\Delta x= \frac{1-0}{n}$ and the left points are $$x_j=0 + j \Delta x = \frac{j}{n}$$ for $j=0,1,2,\ldots,n$. The Riemann sum is given by $$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n \frac{j^2}{n^2} \frac{1}{n} = \frac{1}{n^3} \sum_{j=1}^n j^2 = \frac{1}{n^3} \frac{n(n+1)(2n+1)}{6} = \frac{(n+1)(2n+1)}{6n^2}$$ <br/><br/>
+
+Let's take the limit in the number of intervals: $$\lim_{n \to \infty} \frac{(n+1)(2n+1)}{6n^2} = \frac{2}{3}.$$
+
+---
+# The Fundamental Theorem of Calculus
+
+> __Theorem:__ Let $f$ be a continuous function on the interval $[a,b]$. If $F$ is any antiderivative of $f$, then $$\int_a^b f(x) dx = F(b) - F(a).$$
+
+#### Example 4:
+
+1. Compute the definite integral $\int_0^1 x dx$ using the Fundamental Theorem of Calculus. <br/><br/>
+
+The antiderivative of $x$ is $\frac{x^2}{2}$ and the definite integral is given by $$\int_0^1 x dx = \frac{1^2}{2} - \frac{0^2}{2} = \frac{1}{2}.$$
+
+---
+#### Example 5:
+
+Compute the following definite integrals using the Fundamental Theorem of Calculus.
+
+1. $\int_-1^4 4x+3 dx$ <br/><br/>
+1. $\int_0^1 x^2 dx$ <br/><br/>
+1. $\int_0^3 x^2-3x+5 dx$ <br/><br/>
+1. $\int_1^e \frac{1}{x} dx$ <br/><br/>

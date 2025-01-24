@@ -1,0 +1,89 @@
+---
+title: "Matrix Representation of Linear Transformations"
+subtitle: "Session 04"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Goals for the Session
+
+* Associate a matrix to a linear transformation. <br/><br/>
+
+---
+# Associated Matrix to a Linear Transformation
+
+> **Definition:** Let $T:V\to W$ be a linear transformation, $B=\{v_1,\ldots,v_n\}$ a basis of $V$ and $C=\{w_1,\ldots,w_m\}$ a basis of $W$. The __associated matrix__ to $T$ with respect to the bases $B$ and $C$ is the $m\times n$ matrix defined by $$[T]_B^C=[a_{ij}]_{m\times n}$$ where $T(v_j)=a_{1j}w_1+\cdots+a_{mj}w_m$ for $j=1,\ldots,n$.
+
+---
+##### Example 1
+
+> Let $T:\mathbb{R}^2\to\mathbb{R}^3$ be the linear transformation defined by $T(x,y)=(x+y,x-y,2x+3y)$. Find the matrix associated to $T$ with respect to the canonical bases of $\mathbb{R}^2$ and $\mathbb{R}^3$.
+
+--
+<br/><br/><br/>
+Recall that the canonical basis of $\mathbb{R}^2$ is $B=\{(1,0),(0,1)\}$ and the canonical basis of $\mathbb{R}^3$ is $C=\{(1,0,0),(0,1,0),(0,0,1)\}$. Therefore, $$T(1,0)=(1,1,2)=1(1,0,0)+1(0,1,0)+2(0,0,1)$$ and $$T(0,1)=(1,-1,3)=1(1,0,0)-1(0,1,0)+3(0,0,1).$$ Therefore, the matrix associated to $T$ with respect to the bases $B$ and $C$ is $$[T]_B^C=\begin{bmatrix}1&1\\1&-1\\2&3\end{bmatrix}.$$
+
+---
+##### Example 2
+
+
+> Let $T:\mathbb{R}^2\to\mathbb{R}^2$ be the linear transformation defined by $T(x,y)=(x-y,2x+3y)$. Find the matrix associated to $T$ with respect to the bases $S_1=\{(0,1),(1,0)\}$ and $S_2=\{(1,1),(1,-1)\}.$
+
+--
+<br/><br/><br/>
+
+Note that $T(1,0)=(1,2)=\frac{3}{2}(1,1)-\frac{1}{2}(1,-1)$ and $T(0,1)=(-1,3)=1(1,1)-2(1,-1)$. Therefore, the matrix associated to $T$ with respect to the bases $S_1$ and $S_2$ is $$[T]_{S_1}^{S_2}=\begin{bmatrix}\frac{3}{2}&1\\-\frac{1}{2}&-2\end{bmatrix}.$$
+---
+##### Example 3
+
+
+> Let $T:P_2\to P_3$ be the linear transformation defined by $T(p(x))=xp(x)+p'(x)$. Find the matrix associated to $T$ with respect to the canonical bases of $P_2$ and $P_3$.
+
+--
+<br/><br/><br/>
+Note that $T(1)=x+1$ and $T(x)=x^2+1$. Therefore, the matrix associated to $T$ with respect to the canonical bases of $P_2$ and $P_3$ is $$[T]_B^C=\begin{bmatrix}1&0\\1&1\\0&1\end{bmatrix}.$$
+
+

@@ -1,0 +1,107 @@
+---
+title: "1er Teorema de Traslación"
+subtitle: "Sesión 11"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+
+# Objetivos de la Sesión
+
+* Introduciremos el 1er teorema de Traslación. <br/><br/>
+* Aplicaremos el 1er teorema de traslación en el calculo de transformadas. <br/><br/>
+* Aplicaremos este teorema a la solución de EDOs.
+---
+# Motivación:
+<br/><br/>
+
+> Calcule la transformada de Laplace de la función $f(t)=e^{5t}t^3.$
+
+
+---
+# 1er Teorema de Traslación
+
+> __Teorema:__ Sea $f(t)$ una función tal que $\mathcal{L}\{f(t)\}=F(s)$ exista. Entonces se cumple que $$\mathcal{L}\{e^{at}f(t)\}=F(s-a).$$
+
+<br/><br/>
+> _Implicaciones del Teorema:_ ahora cada que veamos una función conocida "trasladada" por un factor exponencial, esto se traduce en la transformada como una traslación en la $s.$
+
+---
+## Aplicando el teorema:
+
+### Ejemplo (Calculo directo):
+> Calcule las transformadas de Laplace de $f(t)=e^{5t}t^3,$ $f(t)=e^{-2t}\cos(4t)$ y $f(t)=e^{-2t}$ si $t>1$ y $f(t)=0$ de lo contrario.
+
+---
+### Ejemplo (Calculo de Inversas):
+
+> Calcule la Transformada inversa como se te indica: 
+$$\mathcal{L}^{-1}\left\{\frac{2s+5}{(s-3)^2}\right\}$$
+
+---
+### Ejemplo (Calculo de Inversas):
+
+> Calcule la Transformada inversa como se te indica:
+$$\mathcal{L}^{-1}\left\{\frac{s+5}{s^2+4s+6}\right\}$$
+
+---
+### Ejemplo (Solución de EDOs)
+
+> Encuentre la solución de la EDO $$y''-6y'+9y=t^2e^{3t},\quad y(0)=2,\quad y'(0)=17.$$
+
+---
+### Ejemplo (Solución de EDOs)
+
+> Encuentre la solución de la EDO $$y''+4y'+6y=1+e^{-t},\quad y(0)=0,\quad y'(0)=0.$$
+
+---
+# Actividad 
+
+> Utiliza el 1er teorema de traslación para encontrar la solución a las EDOs:
+* $y'+4y=e^{-4t},\, y(0)=2.$
+* $y'-y=1+te^{t},\, y(0)=0.$
+* $y''+2y'+y=0,\, y(0)=1,\, y'(0)=1.$
+* $y''-4y'+4y=t^3e^{2t},\, y(0)=0,\, y'(0)=0.$

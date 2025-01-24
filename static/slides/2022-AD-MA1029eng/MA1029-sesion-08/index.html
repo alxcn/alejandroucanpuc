@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Lagrange Multipliers</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-03-02" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x998dc8614c549d38006f0d8da01b933","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Lagrange Multipliers
+]
+.subtitle[
+## Session 08
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-03-02
+]
+
+---
+
+
+
+
+
+
+
+# Goals for the session:
+
+* Understand the necessary and sufficient conditions for the existence of extreme values in problems with restriction. &lt;br/&gt;&lt;br/&gt;
+* Find these values using the Lagrange multiplier method.
+ 
+---
+# Restrictions?
+
+
+&gt; A rectangular box without a lid is made from `\(12m^2\)` of cardboard. Find the maximum volume of the box.
+&lt;br/&gt;
+--
+
+Note that we have a restriction on the variables and it is that they satisfy `$$A_{sup}=2xz+2zy+xy=12.$$`
+
+---
+# Intuitively
+
+We want to find the extreme values of a function `\(f(x,y)\)` such that the variables satisfy a restriction that can be expressed as a level curve of a function `\(g(x,y).\)` &lt;br/&gt;&lt;br/&gt;
+We want to find the `\((x,y)\)` such that `$$f(x,y)\mbox{ has an extreme value}$$` `$$g(x,y)=k.$$`
+
+---
+## Visually
+
+
+&lt;iframe src="https://www.geogebra.org/classic/uebb3j98?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+## The multiplier
+
+
+&gt; **Definition:** Given the conditions of the previous drawing, we will say that `\(\lambda\)` is a **Lagrange multiplier** if it satisfies that `$$\nabla f(x_0,y_0,z_0)=\lambda \nabla g(x_0,y_0,z_0).$$`
+
+---
+# The Lagrange multiplier method
+
+&gt; To find the extreme values of a function `\(f(x,y,z)\)` such that the variables satisfy a restriction that can be expressed as a level curve of a function `\(g(x,y,z).\)` We can use the following steps:
+
+  * Find the values `\(x,y,z\)` and `\(\lambda\)` such that `$$\nabla f(x,y,z)=\lambda \nabla g(x,y,z).$$`
+  * Evaluate `\(f\)` at these points, the largest of these numbers is the maximum and the smallest the minimum.
+  
+---
+# Ejemplo 1:
+
+&gt; Find the extreme values of the function `\(f(x,y)=5x^2+6y^2-xy\)` under the restriction `\(x+2y=24.\)`
+
+--
+1. Compute the gradient of the objective function: `$$\nabla f= (10x-y,12y-x)$$`
+1. Compute the gradient of the restriction: `$$\nabla g =(1,2)$$`
+1. Find the values of `\(x,y\)` and `\(\lambda\)` such that `\(\nabla f(x,y)=\lambda \nabla g(x,y).\)`
+ `$$10x-y=\lambda$$` `$$12y-x=\lambda$$` `$$x+2y=24$$`
+1. Solve the system of equations.
+1. Explain my results `$$y=-\frac{-288}{25},\quad x=\frac{576}{5}.$$`
+
+
+---
+# Example 2:
+
+
+&gt; The Cobb-Douglas production function for a production is given by `\(f(x,y)=100x^{3/4}y^{1/4}.\)` Where `\(x\)` are the units of production (at 150mxn per unit) and `\(y\)` are the units of capital (at 250mxn per unit). If our production and capital units are restricted to 50000mxn. Find the maximum production for this manufacturing.
+---
+# Ejemplo 3:
+
+&gt;  BioTech is a manufacturer of prothesis and has developed a model of earnings that depends on the number of prothesis ($x$) that sells per month (in thousands) and the number of hours per month that invests in advertising ($y$). `$$f(x,y)=48x+96y-x^2-2xy-9y^2.$$` Our budget for production of prothesis and advertising is given by `\(20x+4y=216.\)` Find the number of prothesis and hours of advertising that maximize my earnings.
+
+---
+# Ejemplo 4:
+
+&gt; Find the extreme values for the function `\(f(x,y,z)=2x^2+y^2+3z^2\)` under the restriction `\(2x-3y-4z=49.\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

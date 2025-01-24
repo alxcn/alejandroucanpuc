@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Exponential Models</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2023-10-08" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x65081a92ede412f90932b1ff7b131ed","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Exponential Models
+]
+.subtitle[
+## Session 07
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2023-10-08
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Goals:
+
+* Describe cases where the growth/decay is exponential. &lt;br/&gt;&lt;br/&gt;
+* Describe the criterium to decide if a model is exponential. &lt;br/&gt;&lt;br/&gt;
+* Describe the process to find an exponential model. &lt;br/&gt;&lt;br/&gt;
+* Use the exponential regression to predict values. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Exponential behavior
+
+&gt; Sometimes our data shows a behavior where it grows or decays everytime by the same factor. This growth/decay of our data cannot be controlled by us, it is just the nature of the data. &lt;br/&gt;&lt;br/&gt; When this happens we say that our data has an **exponential behavior**. &lt;br/&gt;&lt;br/&gt; In this case, we can use an **exponential model** to describe our data.
+
+--
+&lt;br/&gt;&lt;br/&gt;
+#### Example 
+
+Consider the following data: &lt;br/&gt;&lt;br/&gt;
+| x | y |
+|:-----------:|:------------:|
+| 1   | 2   |
+| 2   | 4   |
+| 3   | 8   |
+| 4   | 16  |
+| 5   |  ?  |
+
+---
+# The exponential model:
+
+&gt; __Definition:__ The exponential function is a function of the form `\(f(x)=ab^x\)`, where `\(a\)` and `\(b\)` are constants and `\(b&gt;0\)`. The relation between the dependent and independent variables is that the dependent one grows/decays by a factor of `\(b\)` everytime the independent variable increases by one unit.
+
+--
+&lt;img src="index_files/figure-html/unnamed-chunk-1-1.png" width="100%" /&gt;
+---
+# Criterium
+
+&gt; Assume that we have some real world data, and we want to know if it has an exponential behavior. &lt;br/&gt;&lt;br/&gt; We can use the following criterium to decide if our data has an exponential behavior: &lt;br/&gt;&lt;br/&gt;
+If three observations (with a unit of distance), then the ratio of the dependent variables is the same.
+
+---
+#### Example
+
+Consider the following data: &lt;br/&gt;&lt;br/&gt;
+| `\(x\)` | `\(y\)` |
+|:-----------:|:------------:|
+| 1   | 5   |
+| 2   | 10  |
+| 3   | 20  |
+| 4   | 40  |
+| `\(n\)` |  ?   |
+
+---
+# Finding the exponential model
+
+&gt; To find the exponential model we need to find the values of `\(a\)` and `\(b\)` in the function `\(f(x)=ab^x\)`. &lt;br/&gt;&lt;br/&gt; To do this we need to use the following system of equations: &lt;br/&gt;&lt;br/&gt;
+`$$\begin{cases} f(x_1)=ab^{x_1} \\ f(x_2)=ab^{x_2} \end{cases}$$` 
+
+---
+#### Example 
+
+&gt; The population of a city in 2010 was 100,000 people. If the rate of change of the population is 2.5% per year, find the exponential model that describes the population of the city.
+
+--
+&lt;br/&gt;&lt;br/&gt;
+#### Solution
+
+We know that the population of the city in 2010 was 100,000 people, so we have the point `\((0,100,000)\)`. &lt;br/&gt;&lt;br/&gt; We also know that the rate of change of the population is 2.5% per year, so we have the point `\((1,102,500)\)`. &lt;br/&gt;&lt;br/&gt; Therefore, we have the following system of equations: &lt;br/&gt;&lt;br/&gt;
+`$$\begin{cases} f(0)=ab^0=100,000 \\ f(1)=ab^1=102,500 \end{cases}$$`
+
+---
+#### Example  
+
+&gt; The INEGI reported that in the month June 2019. The INPC (National Consumer Price Index) registered a montly increase of 0.06%. Assuming that in the following months, this index follows the same behavior. Find the exponential model that describes the INPC if at June this index was 100.00.
+
+--
+&lt;br/&gt;&lt;br/&gt;
+#### Solution
+
+We know that the INPC in June 2019 was 100.00, so we have the point `\((0,100.00)\)`. We also know that the INPC in July 2019 was 100.06, so we have the point `\((1,100.06)\)`. Therefore, we have the following system of equations: &lt;br/&gt;&lt;br/&gt;
+
+`$$\begin{cases} f(0)=ab^0=100.00 \\ f(1)=ab^1=100.06 \end{cases}$$`
+
+---
+## Applications to business
+
+&gt; The compound interest is an example of an exponential model. &lt;br/&gt;&lt;br/&gt; The compound interest is the interest that is added to the principal of a deposit or loan so that the added interest also earns interest from then on. &lt;br/&gt;&lt;br/&gt; The formula to calculate the compound interest is: &lt;br/&gt;&lt;br/&gt;
+`$$A=P\left(1+\frac{r}{n}\right)^{nt}$$` where `\(A\)` is the amount of money accumulated after `\(t\)` years, `\(P\)` is the principal, `\(r\)` is the annual interest rate, and `\(n\)` is the number of times the interest is compounded per year.
+
+---
+#### Example
+
+&gt; A person deposits $\$1000$ in a bank account that pays 5% annual interest, compounded monthly. Find the amount of money accumulated after 10 years.
+
+--
+&lt;br/&gt;&lt;br/&gt;
+#### Solution
+
+We know that the principal is $\$1000$, the annual interest rate is 5%, and the number of times the interest is compounded per year is 12. Therefore, we have the following information: &lt;br/&gt;&lt;br/&gt;
+`$$\begin{cases} P=1000 \\ r=0.05 \\ n=12 \\ t=10 \end{cases}$$`
+
+---
+#### Example
+
+&gt; A person deposits $\$1500$ in a bank account that pays 11.6% annual interest, compounded three-monthly. Find the amount of money accumulated after 5 years.
+
+---
+## Base e exponential model
+
+&gt; Suppose that you invest $\$1$ in a bank account that pays 100% annual interest, compounded `\(n\)` times a year. &lt;br/&gt;&lt;br/&gt; The amount of money accumulated after `\(t\)` years is given by the formula: &lt;br/&gt;&lt;br/&gt; `$$A=\left(1+\frac{1}{n}\right)^{nt}$$`
+
+&lt;br/&gt;&lt;br/&gt;
+What happend if we increase the number of compounded times a year? Well, the number `\((1+\frac{1}{n})\)` will be closer to a number `\(e\)`.
+
+---
+## Base e exponential model
+
+&gt; The number `\(e\)` is a number that is approximately equal to `\(2.7182818284590452353602874713527\)`. &lt;br/&gt;&lt;br/&gt; The number `\(e\)` is a very important number in mathematics, because it is the base of the natural logarithm. &lt;br/&gt;&lt;br/&gt; The number `\(e\)` is also the base of the exponential model that is used in many applications.
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Derivadas Parciales</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2023-02-09" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xbca97c1629b40d192831817cebba2da","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Derivadas Parciales
+]
+.subtitle[
+## Sesión 02
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2023-02-09
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+  * Introduciremos las razones de cambio de una función multivariada. &lt;br/&gt;&lt;br/&gt;
+  * Definiremos el concepto de derivada parcial. &lt;br/&gt;&lt;br/&gt;
+  * Aplicaremos las reglas generales de derivación parcial. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Motivación
+
+El __índice de calor__ ($I$) mide los efectos combinados de la temperatura y la humedad. `\(I\)` mide la sensación de la temperatura del aire cuando la temperatura es `\(T\)` y la humedad relativa es `\(H.\)`
+
+![Sensación Termica](SensacionTermica.png)
+
+¿Cuál es la razón de cambio de `\(I\)` cuando variamos `\(T\)` en el punto `\((96,70)\)`?
+
+---
+# Derivada Parcial
+
+&gt; __Definición:__ dada una función `\(f:\mathbb{R}^n\to \mathbb{R},\)` la derivada parcial respecto a la variable `\(x_j,\)` denotada por `\(f_{x_j}=\frac{\partial f}{\partial x_j},\)` como el límite `$$\lim_{h\to 0} \frac{f(x_1,\cdots,x_j+h,x_{j+1},\cdots, x_n)-f(x_1,\cdots,x_j,x_{j+1},\cdots, x_n)}{h}.$$`
+
+--
+
+#### Ejemplo 1: 
+
+Calcule la derivada parcial respecto a `\(x\)` de la función `\(f(x,y)=3xy.\)`
+
+--
+`$$f_x(x,y)=\lim_{h\to 0}\frac{3(x+h)y-3xy}{h}=\lim_{h\to 0}\frac{3(x+h-x)y}{h}=\lim_{h\to 0}\frac{3yh}{h}=3y.$$`
+---
+#### Ejemplo 2:
+
+Calcule la derivada parcial respecto a `\(y\)` de la función `\(f(x,y,z)=xy-zx+4y.\)`
+
+--
+&lt;br/&gt;&lt;br/&gt;
+`$$f_y(x,y,z)=\lim_{h\to 0}\frac{x(y+h)-zx+4(y+h)-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{xh+4h}{h}=x+4.$$`
+--
+&lt;br/&gt;&lt;br/&gt;
+¿Y respecto a `\(z\)`?
+
+--
+&lt;br/&gt;&lt;br/&gt;
+`$$f_y(x,y,z)=\lim_{h\to 0}\frac{xy-(z+h)x+4y-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{hx}{h}=x.$$`
+
+---
+## ¿Cómo Derivar Parcialmente?
+
+&gt; Para derivar parcialmente una función respecto a una variable, basta con derivar la función suponiendo que las demás variables son constantes.
+
+--
+
+#### Ejemplos:
+
+Calcule `\(f_x,\,f_y\)` y `\(f_z\)` para las siguientes funciones: &lt;br/&gt;&lt;br/&gt;
+
+
+* `\(f(x,y)=\sin(x)+x\cos(y)\)`
+* `\(f(x,y)=e^{x+y}\)`
+* `\(f(x,y,z)=x\ln(z)+y\sqrt{x}.\)`
+
+---
+# Visión geométrica de las Derivadas Parciales
+
+Aquí vemos las derivadas parciales de la función `\(f(x,y)=x^2+xy+y^3\)` en el punto `\((1,1).\)`
+
+&lt;iframe src="https://www.geogebra.org/calculator/aemfszpg?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# Modelación con Derivadas Parciales:
+
+&gt; La inflación en Argentina (en 2019) está dadapor la función `\(h(x,y)=e^{x+y}\sqrt{4-3x^2-2y^2},\)` donde `\(h\)` está medida en porcentaje, y `\((x,y)\)` representa un punto en la ciudad. Si observamos en el punto `\((1,1)\)` ¿A qué razón cambia la inflación cuando nos movemos en dirección vertical? ¿Y en dirección horizontal?
+
+--
+
+`$$\frac{\partial f}{\partial x}=-e^{x + y} \frac{-4 + 3 x + 3 x^2 + 2 y^2}{\sqrt{4 - 3 x^2 - 2 y^2}}$$`
+
+`$$\frac{\partial f}{\partial x}=-e^{x + y} \frac{3 x^2 + 2 (-2 + y + y^2)}{\sqrt{4 - 3 x^2 - 2 y^2}}$$`
+
+---
+# Derivación parcial implícita
+
+#### Ejemplo:
+
+Supongamos que `\(x,y,z\)` satisfacen la siguiente ecuación: `$$x^2+y^2-z^2=0.$$` Calcule `\(z_x\)` y `\(z_y.\)`
+
+--
+&lt;br/&gt;&lt;br/&gt;
+Tenemos que `$$\frac{\partial z}{\partial x}=\frac{x}{z}$$` `$$\frac{\partial z}{\partial y}=\frac{y}{z}.$$`
+
+---
+# Propiedades de la Derivada Parcial:
+
+&gt; __Teorema:__ Sea `\(f,g:\mathbb{R}^n\to\mathbb{R}\)` funciones donde `\(n=2,3.\)` Entonces se cumple:
+&lt;br/&gt;&lt;br/&gt;
+  * `\((f\pm g)_x=f_x\pm g_x.\)` &lt;br/&gt;&lt;br/&gt;
+  * `\((fg)_x = (f_x)g + f(g_x).\)` &lt;br/&gt;&lt;br/&gt;
+  * Si `\(g\neq 0,\)` entonces `\((f/g)_x =\frac{(f_x)g-f(g_x)}{g^2}.\)`
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

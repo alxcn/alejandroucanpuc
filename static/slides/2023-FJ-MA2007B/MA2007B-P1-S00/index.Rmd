@@ -1,0 +1,131 @@
+---
+title: "Uso de la Geometría y Topología para Ciencia de Datos"
+subtitle: "MA2007B"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  #position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+
+# ¿Qué es __Topological Data Analysis (TDA)__?
+
+> Sabemos que los datos, por más complejos que sean o que se encuentren en dimensiones altas, cuentan con una _forma (geometría/topología)_ intrínseca, y entender esta forma nos ayuda a determinar el proceso más adecuado para trabajar con ellos.
+
+---
+## Un poco de historia
+
+El TDA comenzó a principios de los años 2000's con los trabajos pioneros de:
+
+  * [Edelsbrunner et. al. (2002)](https://link.springer.com/article/10.1007/s00454-002-2885-2) <br/><br/>
+  * [Zomorodian and Carlsson (2005)](https://link.springer.com/article/10.1007/s00454-004-1146-y)
+  
+con trabajos relacionados con __homología persistente__ (temá clave que veremos más adelante).
+
+
+> El TDA proporciona métodos matemáticos, estadísticos y algorítmicos para analizar y explotar propiedades topológicas-geométricas de un data set (nubes de puntos en el espacio euclideano o espacios más generales.)
+
+---
+## Actualmente
+
+Actualmente el TDA se ha consolidado y estandarizado, que contamos con algunos paquetes que nos ayudarán a aplicar los conceptos teóricos, como son: <br/><br/>
+  * Gudhi (C++, Python, R) <br/>
+  * Dionysus <br/>
+  * PHAT <br/>
+  * DIPHA <br/>
+  * Giotto <br/>
+
+---
+## Axiomas del TDA
+
+1. Asumimos que nuestro dataset es finito, y que siempre se puede asociar con una noción de distancia entre los puntos (distancia de espacio métrico o matriz de distancias). <br/><br/>
+
+1. Siempre podemos construir un objeto "continuo" asociado al dataset (complejo simplicial o filtración). <br/><br/>
+
+1. La información topológica de nuestro dataset proviene del objeto continuo (triangulaciones, homología). <br/><br/>
+
+1. Con la información topológica podemos proveer nuevas propiedades (topológicas o geométricas) del dataset (visualización).
+
+
+---
+# ¿Qué es _forma_?
+
+> Entendemos por _forma_ a la estructura de un objeto/espacio. <br/><br/>
+La __topología__ es la rama de las mátematicas que estudia las propiedas intrínsecas de una espacio (_espacios topológicos_) que son preservadas bajo ciertas transformaciones (_homeomorfismos_).
+
+![Cube and Sphere](cube_sphere.png)
+
+---
+# ¿Topología?
+
+- Geometría, Euclides y sus elementos.
+
+--
+<br/><br/>
+- ¿Cómo estudiar la forma de algo sin necesidad de medidas?
+
+--
+<br/><br/>
+
+- Atribución a _Johann Benedict Listing_
+
+---
+# El problema de los Puentes de Köningsberg y Leonard Euler.
+
+
+![Konigsberg Bridges](Koningsberg_brigdes.jpg)
+
+---
+## Solución
+
+![Graph](Graphs_K.png)
+
+---
+# Contribuciones
+
+> Podemos mencionar a: <br/><br/>
+  - August Möbius. <br/><br/>
+  - Georg Cantor. <br/><br/>
+  - Maurice Fréchet, Schoenflies, Felix Hausdorff.
+  - Poincaré, Perelman, Thurston, etc.

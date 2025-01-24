@@ -1,0 +1,157 @@
+---
+title: "Higher Order Linear Differential Equations with constant coefficients"
+subtitle: "Session 03"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "80%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Goals
+
+* Describe the general form of a linear homogeneous differential equation with constant coefficients and the IVP. <br/><br/>
+* Determine the general solution for a linear homogeneous differential equation with constant coefficients. <br/><br/>
+* Deduce the method to solve linear homogeneous differential equations with constant coefficients. <br/><br/>
+* Apply the method to solve linear homogeneous differential equations with constant coefficients.
+
+---
+# Linear homogeneous differential equations with constant coefficients.
+
+> __Definition:__ the generic form of a linear homogeneous differential equation of order $n$ is: $$a_n(x)y^{(n)}+a_{n-1}(x)y^{(n-1)}+\cdots+a_2(x)y''+a_1(x)y'+a_0(x)y=g(x).$$
+
+To define an IVP we need to add the initial conditions: $$y(x_0)=y_0,\, y'(x_0)=y_1,\,y''(x_0)=y_2,\cdots,\,y^{(n-1)}(x_0)=y_{n-1}.$$
+
+---
+#### Example 1:
+
+> For the $3y'''+7y''-7y'-3y=0$ we have that $y(x)=ce^{x}$ and $y(x)=ce^{-x/3}+ke^{-3x}$ are solutions. <br/><br/>
+
+--
+<br/><br/>
+
+> The function $y=3e^{2x}+e^{-2x}-3x$ is the solution for the IVP $y''-4y=12x$ with initial conditions $y(0)=4$ and $y'(0)=1.$ 
+
+---
+# First Order LODE with cc.
+
+> The general form of a first order LODE with cc is $ay'+by=g(x),$ lets try to solve the homogeneous case. <br/><br/>
+  * The solution have to be of the form $y=e^{mx}.$ <br/><br/>
+  * Substituting in the LODE we have that $$ame^{mx}+be^{mx}=0=e^{mx}(am+b),$$ 
+  * From the fact that $e^{mx}\neq 0$ we have that $$am+b=0\Rightarrow m=-b/a.$$
+  * Therefore the solution is $y(x)=ce^{-bx/a}.$
+---
+# Second Order LODE with cc.
+
+> Lets take the second order homogeneous LODE with cc. <br/><br/>
+  * The solution have to be of the form $y=e^{mx}.$ <br/><br/>
+  * Substituting in the LODE we obtain that our __auxiliary polynomial__ is $$am^2+bm+c=0.$$ <br/><br/>
+  * We have that there two roots to this polynomio (they might be egual): $m_1$ and $m_2.$ <br/><br/>
+  * Remember that if:
+    * If $\Delta=b^2-4ac>0$ then the roots are real and different.
+    * If $\Delta=0$ then the roots are real and equal.
+    * If $\Delta<0$ then the roots are complex conjugates.
+    
+---
+## First Case: Different real roots:
+
+> In the case the roots are real and different, $m_1$ and $m_2,$ then the general solution is $$y=c_1 e^{m_1 x}+c_2e^{m_2 x}.$$
+
+--
+<br/>
+#### Example 1: 
+
+Find the general solution to $2y''-5y'-3y=0,$ 
+
+--
+<br/>
+#### Solution:
+* The auxiliary polynomio is $2m^2-5m-3=0$ <br/><br/>
+* The roots are $m_1=3$ and $m_2=-1/2$ <br/><br/>
+* Therefore, the general solution is: $$y=c_1e^{3x}+c_2e^{-x/2}.$$
+---
+## Second Case: Equal real roots:
+
+> In the case the roots are real and equal, $m_1=m_2=m,$ then the general solution is $$y=c_1 e^{mx}+c_2xe^{mx}.$$
+
+--
+<br/>
+#### Example 2:
+Find the general solution to $y''-10y'+25y=0.$
+
+--
+<br/>
+#### Solution:
+* The auxiliary polynomio is $m^2-10m+25=0$ <br/><br/>
+* The roots are $m_1=m_2=5$ <br/><br/>
+* Therefore, the general solution is: $$y=c_1e^{5x}+c_2xe^{5x}.$$
+
+---
+## Third Case: Complex conjugate roots:
+> In the case the roots are complex conjugates, $m_1=a+bi$ and $m_2=a-bi,$ then the general solution is $$y=c_1 e^{a}\cos(bx)+c_2e^{ax}\sin(bx).$$
+
+--
+<br/>
+#### Example 3:
+Find the general solution to $y''+4y'+7y=0.$
+
+--
+<br/>
+#### Solution:
+* The auxiliary polynomio is $m^2+4m+7=0$ <br/><br/>
+* The roots are $m_1=-2+\sqrt{3}i$ and $m_2=-2-\sqrt{3}i.$ <br/><br/>
+* Therefore, the general solution is: $$y=c_1e^{-2x}\cos(\sqrt{3}x)+c_2e^{-2x}\sin(\sqrt{3}x).$$
+---
+#### Example 4:
+
+Find the solution of $4y''+4y'+17y=0$ if $y(0)=-1$ y $y'(0)=2.$
+
+--
+<br/>
+#### Solution:
+* The auxiliary polynomio is $4m^2+4m+17=0$ <br/><br/>
+* The roots are $m_1=-\frac{1}{2}-2i$ and $m_2=-\frac{1}{2}+2i.$ <br/><br/>
+* Therefore, the general solution is: $$y=c_1e^{-\frac{1}{2}x}\cos(2x)+c_2e^{-\frac{1}{2}x}\sin(2x).$$
+* Applying the initial condition we have the following system of equations: $$\begin{cases} c_1=-1 \\ -\frac{1}{2}c_1+2c_2=2 \end{cases}$$
+whose solution are $c_1=-1$ and $c_2=1.$ Therefore the solution is $$y=-e^{-\frac{1}{2}x}\cos(2x)+e^{-\frac{1}{2}x}\sin(2x).$$
+

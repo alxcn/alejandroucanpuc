@@ -1,0 +1,180 @@
+---
+title: "Eliminación Gaussiana"
+subtitle: "Sesión 03"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "80%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Resolver SELs mediante el método de eliminación Gaussiana.
+* Encontrar el rango de una matriz.
+
+---
+# Operaciones Elementales
+
+* **Intercambio de renglones**: Se intercambian dos renglones de posición: $R_i \leftrightarrow R_j$.
+
+* **Multiplicación por un escalar**: Se multiplica un renglón por un escalar no nulo: $kR_i \rightarrow R_i$.
+
+* **Suma de renglones**: Se suma un múltiplo de un renglón a otro renglón: $R_i + kR_j \rightarrow R_i$.
+
+---
+# La idea es...
+
+ Dada una matriz cualquierla, reducirla a una matriz triangular superior mediante operaciones elementales. Los elementos no cero de la diagonal se llaman **pivotes**.
+
+ ---
+ # El método:
+
+  1. **Paso 1**: Seleccionar el primer pivote y hacerlo igual a 1 (para esto localizamos una entrada no cero en la primera columna y cambiamos las filas).
+
+  $$\begin{bmatrix} 0 & 5 & 0 \\ 4 & 0 & 2 \\ 2 & -1 & 3 \end{bmatrix} \rightarrow_{R \rightarrow R } \begin{bmatrix} \, & \, & \, \\ \, & \, & \, \\ \, & \, & \, \end{bmatrix}$$
+
+---
+
+ # El método:
+
+  1. **Paso 1**: Seleccionar el primer pivote (para esto localizamos una entrada no cero en la primera columna y cambiamos las filas).
+
+$$\begin{bmatrix} 0 & 5 & 0 \\ 4 & 0 & 2 \\ 2 & -1 & 3\end{bmatrix} \rightarrow \begin{bmatrix} 4 & 0 & 2 \\ 0 & 5 & 0 \\ 2 & -1 & 3 \end{bmatrix}$$
+
+---
+# El método:
+
+2. **Paso 2**: Hacer 1 el primer pivote.
+
+$$\begin{bmatrix} 4 & 0 & 2 \\ 0 & 5 & 0 \\ 2 & -1 & 3 \end{bmatrix} \rightarrow \begin{bmatrix} \, & \, & \, \\ \, & \, & \, \\ \, & \, & \, \end{bmatrix}$$
+---
+# El método:
+
+2. **Paso 2**: Hacer 1 el primer pivote.
+
+$$\begin{bmatrix} 4 & 0 & 2 \\ 0 & 5 & 0 \\ 2 & -1 & 3 \end{bmatrix} \rightarrow \begin{bmatrix} 1 & 0 & 1/2 \\ 0 & 5 & 0 \\ 2 & -1 & 3 \end{bmatrix}$$
+
+---
+# El método:
+
+3. **Paso 3**: Hacer cero los elementos debajo del pivote.
+
+$$\begin{bmatrix} 1 & 0 & 1/2 \\ 0 & 5 & 0 \\ 2 & -1 & 3 \end{bmatrix} \rightarrow \begin{bmatrix} \, & \, & \, \\ \, & \, & \, \\ \, & \, & \, \end{bmatrix}$$
+
+---
+# El método:
+
+3. **Paso 3**: Hacer cero los elementos debajo del pivote.
+
+$$\begin{bmatrix} 1 & 0 & 1/2 \\ 0 & 5 & 0 \\ 2 & -1 & 3 \end{bmatrix} \rightarrow \begin{bmatrix} 1 & 0 & 1/2 \\ 0 & 5 & 0 \\ 0 & -1 & 2 \end{bmatrix}$$
+
+---
+# El método:
+
+4. **Paso 4 y 5**: Si ya hiciste cero todas las otras entradas fuera del primer pivote, cambia de columna y repite los pasos 1 al 3. Si no hay pivotes, entonces pasar a la siguiente columna.
+
+---
+# Aplicación del Método:
+
+> Dado que un SEL tiene una matriz asociada mediante los coeficientes, podemos aplicar el método de eliminación Gaussiana para resolver el sistema de manera más eficiente.
+
+---
+
+# Ejemplo 1
+
+Encuentra la solución a: $$\begin{cases} 2x -y = 3 \\ 3x +4z = 18\\ x + 5y + 6z = 25 \end{cases}.$$
+
+--
+1. Escribimos el sistema en forma matricial (aumentada): 
+
+
+
+Es importante respetar el orden de las igualdades (aumentada) y la ecuación.
+---
+# Ejemplo 1
+Encuentra la solución a: $$\begin{cases} 2x -y = 3 \\ 3x +4z = 18\\ x + 5y + 6z = 25 \end{cases}.$$
+
+--
+2. Aplicamos el método de eliminación Gaussiana a la matriz aumentada:
+
+
+---
+# Ejemplo 1
+Encuentra la solución a: $$\begin{cases} 2x -y = 3 \\ 3x +4z = 18\\ x + 5y + 6z = 25 \end{cases}.$$
+
+--
+3. Una vez reducida, regresamos de la matriz a las ecuaciones y despejamos las incógnitas.
+
+---
+#### Practica:
+
+1. Encuentra la solución a: $$\begin{cases} x+z = 3 \\ -x +y = 2\\ y-z = 4 \end{cases}.$$
+
+2. Encuentra la solución a: $$\begin{cases} 8x +8z = 24 \\ x +z = 3\\ y-z = 16 \end{cases}.$$
+
+3. Encuentra la solución a: $$\begin{cases} 8x +8z = 24 \\ x +z = 2\\ y-z = 16 \end{cases}.$$
+
+---
+# Rango de una Matriz
+
+> **Definición:** El rango de una matriz $A,$ denotado por $rk(A),$ es el número de filas no nulas en la matriz reducida por filas.
+
+--
+
+
+##### Ejemplos:
+
+Calcule el rango de las siguientes matrices:
+
+1. $\begin{bmatrix} 1 & 0 & 1 & 3 \\ -1 & 1 & 0 & 2 \\ 0 & 1 & -1 & 4 \end{bmatrix}$
+
+2. $\begin{bmatrix} 8 & 0 & 8 & 24 \\ 1 & 0 & 1 & 3 \\ 0 & 1 & -1 & 16 \end{bmatrix}$
+
+3. $\begin{bmatrix} 8 & 0 & 8 & 24 \\ 1 & 0 & 1 & 2 \\ 0 & 1 & -1 & 16 \end{bmatrix}$
+
+---
+## Aplicación del Rango
+
+> Dado un SEL, este es compatible o consistente (solución única o infinitas) si $$rk(A)+\#(\mbox{parámetros sol})=\#(\mbox{incógnitas}).$$
+

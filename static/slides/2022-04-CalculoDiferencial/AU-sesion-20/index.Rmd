@@ -1,0 +1,143 @@
+---
+title: "La recta tangente y la derivada como su pendiente."
+subtitle: "Sesión 20"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Calcular la pendiente de la recta tangente. <br/> <br/>
+ * Describir la ecuación de la recta tangente a una función en un punto. <br/> <br/>
+
+---
+# Recordemos
+
+> En geometría analítica, dados dos puntos $P_1=(x_1,y_1)$ and $P_2=(x_2,y_2)$ dos puntos, podemos calcular la __pendiente__ de la recta que los une, y esto es mediante la fórmula:
+$$m=\frac{y_2-y_1}{x_2-x_1}.$$
+<br/><br/><br/>
+Y dada la pendiente de una renta y un punto en ella podemos calcular la __ecuación de la recta__ con la fórmula: $$y-y_1=m(x-x_1).$$
+
+---
+# Rectan tangente a una función
+
+> Supongamos que tenemos una función $y=f(x)$ y un punto en ella $P=(x,f(x)),$ y queremos encontrar la ecuación de la recta tangente a la gráfica de la función $f$ en el punto $P.$
+<br/><br/>
+Aquí tenemos un punto que pertenece a la recta $P,$ pero nos falta la pendiente de la recta.
+<br/><br/>
+
+<iframe src="https://www.geogebra.org/graphing/mj5najqr?embed" width="1200" height="300" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Pendiente de la recta tangente a $f.$
+
+> Si $f(x)$ es una función, entonces la pendiente de la recta tangente a $f$ en $(x_0,f(x_0))$ está dada por: $$m_{T}=f'(x_0).$$
+<br/><br/><br/>
+Y la recta está dada por: $$y-f(x_0)=m_{T}(x-x_0).$$
+
+---
+# Ejemplo 1
+
+Encuentre la ecuación de la recta tangente a la función $f(x)=1-4x-x^2$ en el punto $x=-3.$
+
+> Solución:
+
+* Calculemos el punto de tangencia, eso es: $f(-3)=1-4(-3)-(-3)^2=4,$ entonces el punto de tangencia es $$P=(-3,f(-3))=(-3,4).$$
+
+
+* Calculamos la pendiente de la recta, esto es $f'(-3),$ primero calculamos la derivada, es decir, $f'(x)=-4-2x$ y evaluamos en $x=-3,$ $$m_{T}=f'(-3)=-4-2(-3)=2.$$
+
+
+* Sustituimos todo en la ecuación: $$y-f(-3)=m_{T}(x-(-3))\Leftrightarrow y-4=2(x+3)\Leftrightarrow y=2x+10.$$
+
+---
+# Ejemplo 2
+
+Encuentre la ecuación de la recta tangente a la función $f(x)=5\sqrt{x}$ en el punto $x=4.$
+
+> Solución:
+
+* Calculemos el punto de tangencia, eso es: $f(-3)=5\sqrt{4}=10,$ entonces el punto de tangencia es $$P=(4),f(4))=(4,10).$$
+
+
+* Calculamos la pendiente de la recta, esto es $f'(4),$ primero calculamos la derivada, es decir, $f'(x)=\frac{5}{2\sqrt{x}}$ y evaluamos en $x=4,$ $$m_{T}=f'(4)=\frac{5}{2\sqrt{4}}=\frac{5}{4}.$$
+
+
+* Sustituimos todo en la ecuación: $$y-f(4)=m_{T}(x-4)\Leftrightarrow y-10=\frac{5}{4}(x-4)\Leftrightarrow y-10=\frac{5}{4}x-5\Leftrightarrow y=\frac{5}{4}x+5.$$
+
+---
+# Ejemplo 3
+Encuentre la ecuación de la recta a ecuación $x^2+y^2=25$ en el punto $(3,-4).$
+
+* Verifiquemos si el punto satisface la ecuación, $$(3)^2+(-4)^2=9+16=25,$$ como si satisface entonces si podemos calcular la recta tangente con esta información.
+
+
+* Calculamos la pendiente de la recta, primero calculamos la derivada implítica, es decir, $$2x+2y\cdot y'=0\Leftrightarrow y'=\frac{-x}{y}$$ y sustituimos $y'$ los valores de $x=4,y=-4,$ $$m_{T}=y'(3,-4)=\frac{-(-3)}{(4)}=\frac{3}{4}.$$
+
+---
+# Ejemplos 3
+
+*  Sustituimos todo en la ecuación: $$y-y_0=m_{T}(x-x_0)\Leftrightarrow y-(-4)=\frac{3}{4}(x-3)\Leftrightarrow y+4=\frac{3}{4}x-\frac{9}{4}\Leftrightarrow y=\frac{3}{4}x-\frac{25}{4}.$$
+
+---
+# Ejemplo 4
+
+Encuentra la ecuación de la recta tangente a la ecuación $y^3+7y=x^3$ en el punto $(2,1).$
+
+* Verifiquemos si el punto satisface la ecuación, $$8=(1)^3+7(1)=(2)^3=8,$$ como si satisface entonces si podemos calcular la recta tangente con esta información.
+
+
+* Calculamos la pendiente de la recta, primero calculamos la derivada implítica, es decir, $$3y^2y'+7y'=3x^2\Leftrightarrow y'=\frac{3x^2}{3y^2+7}$$ y sustituimos $y'$ los valores de $x=2,y=1,$ $$m_{T}=y'(2,1)=\frac{3(2)^2}{3(1)^2+7}=\frac{6}{5}.$$
+
+---
+# Ejemplos 4
+
+*  Sustituimos todo en la ecuación: $$y-y_0=m_{T}(x-x_0)\Leftrightarrow y-(1)=\frac{6}{5}(x-2)\Leftrightarrow y-1=\frac{6}{5}x-\frac{12}{5}\Leftrightarrow y=\frac{6}{5}x-\frac{7}{5}.$$
+
+---
+# Actividad en clase.
+
+Calcule la recta tangente a la función en el punto que te indica.
+
+* $f(x)=x^2+2x$ en el punto $(-3,3)$
+* $f(x)=1-2x-3x^2$ en el punto $(-2,-7)$
+* $f(x)=\frac{1}{\sqrt{x}}$ en el punto $(1,1)$
+* $\frac{x^2}{16}-\frac{y^2}{9}=1$ en el punto $(-5,9/4)$
+* $y^2=x^3(2-x)$ en el punto $(1,1)$
+* $x^{2/3}+y^{2/3}=4$ en el punto $(-3\sqrt{3},1)$

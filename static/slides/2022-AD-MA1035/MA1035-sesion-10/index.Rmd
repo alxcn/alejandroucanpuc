@@ -1,0 +1,116 @@
+---
+title: "Aplicación de la Transformada de Laplace"
+subtitle: "Sesión 10"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Calcularemos transformadas de Laplace de funciones extremas. <br/><br/>
+* Introduciremos la transformada de Laplace inversa. <br/><br/>
+* Introduciremos la relación entre la Transformada de Laplace y la derivada de una función. <br/><br/>
+* Aplicaremos la transformada de Laplace en la solución de EDOS.
+
+---
+# Transformadas de funciones Extremas:
+
+> Utilizando la definición de la transformada de Laplace calcule la transformada de las siguientes funciones:
+  * $f(t)=-1$ si $0\leq t \leq 1$ y $f(t)=1$ si $t>1.$
+  * $f(t)=0$ si $0\leq t\leq a$ y $f(t)=t$ si $t>a.$
+  * $f(t)=1$ si $a\leq t\leq b$ y $f(t)=0$ de lo contrario.
+
+---
+# Transformadas de Laplace comunes:
+
+La siguiente muestra una lista de transformadas de Laplace más comunes:
+
+  * $\mathcal{L}\left\{t^n\right\}=\frac{n!}{s^{n+1}}$ 
+  * $\mathcal{L}\left\{e^{at}\right\}=\frac{1}{s-a}$
+  * $\mathcal{L}\left\{\sin(kt)\right\}=\frac{k}{s^2+k^2}$
+  * $\mathcal{L}\left\{\cos(kt)\right\}=\frac{s}{s^2+k^2}$
+  * $\mathcal{L}\left\{\sinh(kt)\right\}=\frac{k}{s^2-k^2}$
+  * $\mathcal{L}\left\{\cos(kt)\right\}=\frac{s}{s^2-k^2}$
+  
+---
+### Ejemplo:
+
+> ¿Quién sería el la función de la que provienen las siguientes transformadas de Laplace? 
+  * $F(s)=\frac{1}{s^5}$
+  * $F(s)=\frac{1}{s^2+7}$
+  * $F(s)=\frac{s^2+6s+9}{(s-1)(s-2)(s+4)}$
+  
+---
+# Transformación de Derivadas:
+
+> __Teorema:__ Si existe $\mathcal{L}\{f(t)\}=F(s)$ entonces se cumple $$\mathcal{L}\{f'(t)\}=sF(s)-f(0)$$ $$\mathcal{L}\{f^(n)(t)\}=s^nF(s)-s^{n-1}f(0)-s^{n-2}f'(0)-\cdots- f^{(n-1)}(0).$$
+
+### Ejemplo: 
+
+Encuentra la solución de la ecuación $$y'+3y=13\sin(2t)\quad y(0)=6$$
+
+---
+### Ejemplo:
+
+Encuentre la solución a la ecuación $$y''-3y'+2y=e^{-4t},\quad y(0)=1,\quad y'(0)=5.$$
+
+---
+### Ejemplo:
+
+Encuentre la solución a la ecuación $$2y'''+3y''-3y'-2y=e^{-t},\, y(0)=0,\,y'(0)=0,\,y''(0)=1.$$
+
+---
+# Actividad en clase 
+
+Calcula lo que se te pide:
+
+* $\mathcal{L}^{-1}\left\{\frac{1}{s^2}-\frac{1}{s}+\frac{1}{s-2}\right\}.$
+* $\mathcal{L}^{-1}\left\{\frac{5}{s^2+49}\right\}.$
+* $\mathcal{L}^{-1}\left\{\frac{1}{s^2+s-20}\right\}.$
+* $y'-y=1,\, y(0)=0.$
+* $y'-y=2\cos(5t),\, y(0)=0$
+* $y''+5y'+4y=0,\, y(0)=1,\, y'(0)=0.$
+* $y''+y=\sqrt{2}\sin(\sqrt{2}t),\,y(0)=10,\, y'(0)=0.$

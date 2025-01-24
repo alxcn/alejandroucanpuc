@@ -1,0 +1,160 @@
+---
+title: "Limits and Continuity"
+subtitle: "Session 03"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "80%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Goals
+
+* Introduce the concept of a limit of a function. <br/><br/>
+* Present the principal Limit Theorems. <br/><br/>
+* Introduce the concept of continuity of a function. <br/><br/>
+* Present the principal theorems of continuity. <br/><br/>
+
+---
+# Motivation
+
+The concept of a limit is essential in calculus. It is used to define the derivative and integral of a function. The concept of continuity is also essential in calculus. It is used to define the derivative and integral of a function. <br/><br/>
+
+Assume that we have the function $d(t)=t^2-1$, that models the distance of a moving object at every time $t.$ From physics, we know that the velocity of the object between to observation points is given by $$v_m=\frac{d(t)-d(t_0)}{t-t_0}=\frac{t^2-t_0^2}{t-t_0}=t+t_0.$$ <br/><br/> This is assumming our observations in two points $t_1$ and $t_2.$ <br/><br/> The question is, what happens if we want to know the velocity at a specific time $t_0$? <br/><br/> The answer is given by the behavior of the function $v_m$ when we approximate $t$ to $t_0$  (we reduce our interval of observation). <br/><br/> This behavior is given by the concept of a limit. <br/><br/> The concept of continuity is related to the behavior of the function at a specific point. <br/><br/> We will see that the concept of limit and continuity are related. <br/><br/>
+
+---
+# Limit 
+
+> **Definition:** Let $f$ be a function defined on an open interval that contains $c$, except possibly at $c$ itself. We say that the limit of $f(x)$ as $x$ approaches $c$ is $L$ and write $$\lim_{x \to c} f(x)=L$$ if for every number $\epsilon>0$ there is a number $\delta>0$ such that $$|f(x)-L|<\epsilon$$ whenever $0<|x-c|<\delta.$
+
+#### Examples:
+
+0. $\lim_{x \to c} x=c.$ <br/>
+1. $\lim_{x \to 2} x^2=4.$ <br/>
+2. $\lim_{x \to 0} \sin(x)=0.$ <br/>
+3. $\lim_{x \to 0} \frac{1}{x}$ does not exist. <br/>
+4. $\lim_{x \to 0} \frac{1}{x^2}=\infty.$ <br/>
+
+---
+### Limit Theorems
+
+1. **Limit of a Constant:** $\lim_{x \to c} k=k.$ <br/>
+2. **Limit of a Sum:** $\lim_{x \to c} [f(x)+g(x)]=\lim_{x \to c} f(x)+\lim_{x \to c} g(x).$ <br/>
+3. **Limit of a Product:** $\lim_{x \to c} [f(x)g(x)]=\lim_{x \to c} f(x) \cdot \lim_{x \to c} g(x).$ <br/>
+4. **Limit of a Quotient:** If $\lim_{x\to c} g(x)\neq 0,$ then $\lim_{x \to c} \frac{f(x)}{g(x)}=\frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)}.$ <br/>
+5. **Limit of a Power:** $\lim_{x \to c} [f(x)]^n=[\lim_{x \to c} f(x)]^n.$ <br/>
+
+---
+#### Examples: 
+
+Use the Limit Theorems to find the following limits:
+
+1. $\lim_{x \to 2} (x^2+3x-4).$ <br/>
+2. $\lim_{x \to 0} \sqrt{x+4}.$ <br/>
+3. $\lim_{x \to 4} \frac{1}{x-2}.$ <br/>
+4. $\lim_{x \to 0} \frac{1}{\sqrt[3]{x^3-1}}$ <br/>
+
+---
+# Continuity
+
+> **Definition:** A function $f$ is continuous at a number $c$ if $$\lim_{x \to c} f(x)=f(c).$$ <br/><br/> The previous equation implies: <br/><br/>
+1. $f(c)$ is defined. <br/>
+2. $\lim_{x \to c} f(x)$ exists. <br/>
+3. $f(c)=\lim_{x \to c} f(x).$ <br/><br/>
+
+#### Examples:
+
+1. The function $f(x)=x^2$ is continuous at every point $c.$ <br/>
+2. The function $f(x)=\sqrt{x}$ is continuous at every point $c\geq 0.$ <br/>
+3. The function $f(x)=\frac{1}{x}$ is continuous at every point $c\neq 0.$ <br/>
+
+---
+### Theorems of Continuity
+
+1. **Sum of Continuous Functions:** If $f$ and $g$ are continuous at $c,$ then $f+g$ is continuous at $c.$ <br/>
+2. **Product of Continuous Functions:** If $f$ and $g$ are continuous at $c,$ then $f \cdot g$ is continuous at $c.$ <br/>
+3. **Quotient of Continuous Functions:** If $f$ and $g$ are continuous at $c,$ then $\frac{f}{g}$ is continuous at $c$ where $g(c)\neq 0.$ <br/>
+
+---
+### Affirmations for Continuity
+
+1. **Polynomial Functions:** Every polynomial function is continuous at every point. <br/>
+
+2. **Rational Functions:** Every rational function is continuous at every point where the denominator is not zero. <br/>
+
+3. **Root Functions:** Every root function is continuous at every point where the radicand is not negative. <br/>
+
+4. **Trigonometric Functions:** Every trigonometric function is continuous at every point of its domain. <br/>
+
+5. **Exponential and Logarithmic Functions:** Every exponential and Logarithmic functions are continuous at every point of its domain. <br/>
+
+---
+### Piecewise Functions
+
+> **Definition:** A piecewise function is a function defined by different expressions on different intervals. <br/><br/> The function is continuous at a point $c$ if the function is continuous at $c$ for every expression. The possible discontinuities are at the points where the expressions changes (breaking points). <br/><br/>
+
+--
+#### Examples:
+
+1. The function $f(x)=\begin{cases} x^2 & \text{if } x<0 \\ 2x+1 & \text{if } x\geq 0 \end{cases}$ is a piecewise function. Let's check if it is continuous at $x=0.$ <br/> $$\lim_{x \to 0^-} f(x)=0, \quad \lim_{x \to 0^+} f(x)=1.$$ <br/> The function is not continuous at $x=0.$ <br/>
+
+---
+### Examples:
+
+2. The function $f(x)=\begin{cases} x^2 & \text{if } x<0 \\ -x^2 & \text{if } x\geq 0 \end{cases}$ is a piecewise function. Let's check if it is continuous at $x=0.$ <br/> $$\lim_{x \to 0^-} f(x)=0, \quad \lim_{x \to 0^+} f(x)=0.$$ <br/> The function is continuous at $x=0.$ <br/>
+
+3. The function $f(x)=|x|$ is a piecewise function. Let's check if it is continuous at $x=0.$ <br/> $$\lim_{x \to 0^-} f(x)=0, \quad \lim_{x \to 0^+} f(x)=0.$$ <br/> The function is continuous at $x=0.$ <br/>
+
+4. The function $f(x)=\begin{cases} x^2 & \text{if } x\neq 0 \\ -4 & \text{if } x=0 \end{cases}$ is a piecewise function. Let's check if it is continuous at $x=0.$ <br/> $$\lim_{x \to 0^-} f(x)=0, \quad \lim_{x \to 0^+} f(x)=0,\quad f(0)=-4.$$ <br/> The function is not continuous at $x=0.$ <br/>
+---
+## Discontinuity Types:
+
+1. **Removable Discontinuity:** The function is not defined at a point, but the limit exists. <br/>
+
+2. **Jump Discontinuity:** The function has a jump at a point. <br/>
+
+3. **Infinite Discontinuity:** The function has an infinite limit at a point. <br/>
+
+---
+## Graph Visualization of Discontinuities:
+

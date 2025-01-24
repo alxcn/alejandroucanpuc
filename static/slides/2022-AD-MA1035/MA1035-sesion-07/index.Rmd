@@ -1,0 +1,110 @@
+---
+title: "Sistemas de EDOs lineales P. II"
+subtitle: "Sesión 07"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Utilizar vectores y valores propios para resolver Sistemas de EDOs. <br/><br/>
+* Casos: valores propios distinto y valores propios repetidos. <br/><br/>
+* El Wronksiano como test para independencia lineal. 
+
+---
+# Condiciones en nuestro sistema.
+
+> __Convención:__ En lo que sigue del tema consideraremos que nuestro sistema es de dos ecuaciones con dos funciones incognitas cuyas EDOs son lineales de coeficientes constantes. Esto se describe de la forma general $$\begin{array}{c} x'= a_{11}x+a_{22}y+f_1(t) \\ y'=a_{21}x+a_{22}y+f_2(t) \end{array}$$
+
+---
+# Resolución de Sistemas de EDOs homogéneos.
+
+> Dado nuestro sistema $$X'=AX$$ consideremos la matriz $A.$ Supongamos que $(\lambda,v)$ formado por el valor propio de $A$ y su vector propio asociado. Sea $F=e^{\lambda t}v,$ el vector de funciones, entonces el vector $F$ es un vector de soluciones del sistema. 
+
+---
+### Ejemplo: 
+
+> Considere el sistema: $$X'=\left(\begin{array}{cc} 3 & 1 \\ 0 & -3 \end{array}\right) X$$ Compruebe que el par $\left(3,(1,0)^t\right)$ es un par de valor y vector propio de $A$ y construye la solución.
+
+---
+### Ejemplo: 
+
+> Considere el sistema: $$X'=\left(\begin{array}{cc} 1 & 2 \\ -2 & -3 \end{array}\right) X$$ Compruebe que el par $\left(-1,(-1,1)^t\right)$ es un par de valor y vector propio de $A$ y construye la solución. Comprueba que también es solución $-te^{-t}(1/2,0)^t.$
+
+---
+## Test de Independencia Lineal
+
+> __Definición:__ Consideremos los vectores función solución $X_1$ y $X_2$ para un sistema de EDOs. El __wronksiano__ de las soluciones es el determinante de la matriz $$\left(\begin{array}{cc} x_1 & x_2 \\ y_1  & y_2\end{array}\right)$$ y se denota por $W(X_1,X_2).$
+
+<br/><br/>
+> __Teorema [de Abel o Criterio del Wronksiano]:__ Las soluciones $X_1$ y $X_2$ son __linealmente independientes__ si $$W(X_1,X_2)\neq 0.$$
+
+---
+### Ejemplo:
+
+> Compruebe que para el sistema $$X'=\left(\begin{array}{cc} 1 & 2 \\ -2 & -3 \end{array}\right) X$$ las siguientes soluciones son linealmente independientes. $$X_1=e^{-t}\left(\begin{array}{c} -1 \\ 1 \end{array}\right) \mbox{ y } X_2=t e^{-t}\left(\begin{array}{c} \frac{1}{2} \\ 0 \end{array}\right).$$
+
+
+---
+## Método para obtener soluciones de un sistema. 
+
+> __Método de Vectores y Valores propios__: Para el sistema $X'=AX.$ Realice
+  1. Calcular los diferentes valores y vectores propios. 
+      * Si son valores propios reales distintos entonces las soluciones son $$X_1=e^{\lambda_1}v_1\mbox{ y } X_2=e^{\lambda_2}v_2.$$
+      * Sin son valores propios reales repetidos, entonces la soluciones son $$X_1=e^{\lambda}v\mbox{ y }X_2=te^{\lambda}v_1$$ donde $v_1$ es l.i de $v.$
+  2. Comprobar con el Criterio del Wronksiano que realmente son soluciones l.i.
+  3. Expresar la solución general como $$X=c_1X_1+c_2X_2.$$
+  
+---
+## Actividad en clase:
+
+> Resuelva los siguientes sistemas de EDOs $X'=AX$ donde $A$ es la matriz: <br/><br/>
+ * $A=\left(\begin{array}{cc} 1 & 2 \\ 4 & 3 \end{array}\right).$ <br/><br/>
+  * $A=\left(\begin{array}{cc} -4 & 2 \\ -\frac{5}{2} & 2 \end{array}\right).$ <br/><br/>
+  * $A=\left(\begin{array}{cc} 10 & -5 \\ 8 & -12 \end{array}\right).$ <br/><br/>
+  * $A=\left(\begin{array}{cc} 3 & -1 \\ 9 & -3 \end{array}\right).$ <br/><br/>
+  * $A=\left(\begin{array}{cc} -1 & 3 \\ -3 & 5 \end{array}\right).$ <br/><br/>
+  * $A=\left(\begin{array}{cc} 2 & 4 \\ -1 & 6 \end{array}\right).$ <br/><br/>

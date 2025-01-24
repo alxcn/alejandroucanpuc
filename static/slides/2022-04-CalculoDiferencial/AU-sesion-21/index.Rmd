@@ -1,0 +1,163 @@
+---
+title: "Movimiento Rectilineo y Tiro Parabólico"
+subtitle: "Sesión 21"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Utilizar la derivada para conocer la velocidad y aceleración de una partícula. <br/> <br/>
+ * Aplicar la derivada hacia el movimiento rectilineo y el tiro parabólico. <br/> <br/>
+ * Conocer las interpretaciones físicas de la derivada.
+
+---
+# La derivada como Velocidad y Aceleración.
+
+> Supongamos que un objeto se mueve en el plano y su posición está dada por la función $f(t)$ en el tiempo $t.$ Entonces se cumple que:
+<br/><br/>
+* $f'(t_0)$ mide la velocidad (instantánea) del objeto en el tiempo $t=t_0.$ <br/><br/>
+* $f''(t_0)$ mide la aceleración (instantánea) del objeto en el tiempo $t=t_0.$
+
+---
+# Movimiento Rectilínea.
+
+Supongamos que $f(t)$ es una función que determina la posición que tiene un objeto que se mueve a lo largo de una __recta__ con respecto al origen.
+
+![MR](/users/koyomi/Documents/Github/alejandro_ucan.github.io/static/slides/2022-04-CalculoDiferencial/AU-sesion-21/MR.jpg)
+
+El movimiento del objeto esta determinado por la velocidad del mismo. Es decir:
+ * Si $v<0,$ entonces el objeto se mueve a la izquierda. <br/><br/>
+ * Si $v=0,$ entonces el objeto está quieto. <br/><br/>
+ * Si $v>0,$ entonces el objeto se mueve a la derecha.
+ 
+---
+# Ejemplo 1:
+
+Un objeto se mueve en línea recta de tal manera que su posición (en metros) está dada por la función $$f(t)=t^2-12t+5,$$ donde $t$ son los segundos transcurridos. ¿Cuál es la posición del objeto a los dos segundos? ¿Cuál es la velocidad del objeto a los tres segundos? ¿ Cúando el objeto se está moviendo a la izquierda?
+
+<br/><br/>
+
+> Para conocer la posición hay que evaluar la __función posición__ en $t=2.$ $$f(2)=(2)^2-12(2)+5=-15.$$ Entonces el objeto se encuentra a 15$m$ a la izquierda del cero.
+
+---
+# Ejemplo 1:
+
+> Para conocer la velocidad hay que calcular primera la derivada en $t=3.$ $$v(t)=f'(t)=2t-12 \Rightarrow v(3)=2(3)-12=-6.$$ Entonces el objeto tiene velocidad de $-6m/s$ a los 3 segundos.
+
+<br/>
+
+> Tenemos que encontrar cuando $v<0,$ lo que es equivalente a resolver la inecuación $$2t-12<0 \Rightarrow 2t<12 \Rightarrow t<12/2=6 \Rightarrow t\in (-\infty,6).$$ El objeto se mueve a la izquierda desde $t=0$ y hasta los 6 segundos.
+
+---
+# Ejemplo 2:
+
+Un objeto se mueve en una línea recta de tal manera que su posición en metros está dada por la función $f(t)=t^3-12t^2+36t-30,$ donde $t$ son los segundos transcurridos desde que el objeto inicia su movimiento. ¿Cuándo el objeto tiene velocidad de 15$m/s$? ¿Cuál es la aceleración del objeto a los 2$s$? ¿Cuándo el objeto se está moviendo a la derecha?
+
+<br/><br/>
+
+> Primero calculamos la función velocidad $$v(t)=f'(t)=3t^2-24t+36.$$ Y ahora resolvemos la ecuación $$3t^2-24t+36=15 \Leftrightarrow 3t^2-24t+36=0.$$ Usamos ya sea factorización o fórmula general y encontramos que la ecuación anterior se vale cuando $t=1$ and $t=7.$
+
+---
+# Ejemplo 2:
+
+>  Primero calculamos la función aceleración $$a(t)=f''(t)=6t-24$$ y evaluamos en $t=2,$ lo que nos da $a(2)=6(2)-24=-12.$ Así que la aceleración del objeto en $t=2$ es $-12m/s^2.$
+
+<br/><br/>
+
+> El objeto se mueve a la derecha cuando $v>0$ o lo que es igual $$3t^2-24t+36>0$$ y resolvemos nuestra ecuación. Esto ocurre cuando $t\in (-\infty,2)\cup(6,+\infty).$
+
+---
+# Movimiento Parabólico
+
+La distancia (en pies) entre el suelo y un objeto que cae está dado por la función $$f(t)=-16t^2+v_0 t+s_0$$ donde $v_0$ es la velocidad inicial, y $s_0$ es la altura inicial.
+
+---
+# Ejemplo 3:
+
+Desde lo alto de un edificio de 160 $pies$ de altura se lanza una pelota hacia arriba con una velocidad inicial de $64 pies/s.$
+
+> Encuentre la función que mide la altura de la pelota. 
+
+En este caso $v_0=64$ y $s_0=160,$ así que si sustituimos en la fórmula anterior obtenemos: $$f(t)=-16t^2+64t+160.$$
+
+<br/>
+
+> ¿Cuál es la altura de la pelota a los dos segundos?
+
+Calculamos $f(2)=-16(2)^2+64(2)+160=224.$
+
+---
+# Ejemplo 3:
+
+> ¿Cúal es la velocidad de la pelota a los 3.5$s$?
+
+Primero calculamos la función velocidad, que es $v(t)=f'(t)=-32t+64$ y evaluamos en $t=3.5$ $$v(3.5)=-32(3.5)+64=-48.$$ Entonces la velocidad es de -48 $pies/s.$
+
+<br/>
+
+>  ¿Cuándo la pelota alcanza la temperatura máxima?
+
+La pelota alcanza la altura máxima cuando $v(t)=0,$ es decir, en $$-32t+64=0 \Rightarrow t=\frac{-64}{-32}=2.$$
+
+---
+# Ejemplo 4:
+Desde lo alto de un edificio de 100 $pies$ de altura se lanza una pelota hacia arriba con una velocidad inicial de 50 $pies/s.$ ¿cuándo llega la pelota al piso?
+
+> La pelota llega al piso cuando la altura es cero. Primero calculemos la función que mide la altura, es decir, sustituyamos en la fórmula los valores iniciales: $$f(t)=-16t^2+50t+100.$$
+Ahora calculemos donde la altura es cero, para eso resolvemos la ecuación $$f(t)=0\Leftrightarrow -16t^2+50t+100=0.$$ Usamos la fórmual general y obtenemos que esto pasa cuando $t=-1.3$ y $t=4.5$. Cómo no hay tiempo negativo, la pelota llega al piso a los 4.5 $s.$
+
+---
+# Ejercicios: 
+
+1. Desde lo alto de un edificio de 256 $pies$, se dispara un proyectil hacia arriba con una velocidad inicial de 48 $pies/s.$ <br/>
+  (a) ¿A qué altura del piso se encuentra el proyectil en el primer segundo?<br/>
+  (b) ¿Cuándo alcanza la altura máxima? <br/>
+  (c) Encuentra la velocidad del proyectil al primer segundo. <br/>
+  (d) ¿Cuál es la altura máxima? <br/>
+  
+  <br/><br/>
+  
+2. Desde lo alto de un edificio de 96 $pies$ de altura, se lanza una pelota hacia arriba con una velocidad de 16 $pies/s.$ <br/>
+  (a) ¿Cuándo tiene la pelota una altura de 100 $pies$? <br/>
+  (b) ¿Cuándo llega la pelota al piso? <br/>
+  (c) ¿A qué velocidad llega al piso? <br/>
+  (d) ¿Cuál es la aceleración de la pelota al segundo 5?
+  
+  

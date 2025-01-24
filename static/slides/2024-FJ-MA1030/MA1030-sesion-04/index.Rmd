@@ -1,0 +1,194 @@
+---
+title: "Inversa de una Matriz"
+subtitle: "Sesión 04"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* El problema de definir la División de Matrices. <br/><br/>
+* La inversa de una matriz. <br/><br/>
+* Criterios para calcular la inversa de una Matriz. <br/><br/>
+
+---
+# ¿Hay inversos multiplicativos?
+
+> Recordemos que en los $\mathbb{R}$ para cada $x\neq 0$ existe un único número $y$ tal que $xy=1,$ a este número se le conoce como inverso multiplicativo. ¿Será posible definir el inverso multiplicativo para las matrices?
+
+--
+
+Veamos un ejemplo: sea $A=\begin{bmatrix} 1 & 0 \\ 2 & 0 \end{bmatrix}$ si queremos una matriz que funja como la inversa entonces se debe cumplir que $AB=I_{2\times 2}$ esto es $$\begin{bmatrix} 1 & 0 \\ 2 & 0 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a & b \\ 2a & 2b \end{bmatrix}$$ de donde obtenemos el sistema $$\begin{cases} a = 1 \\ b = 0 \\ 2a=0 \\ 2b=1 \end{cases}$$ que claramente no tiene solución. 
+
+---
+## Matrices Invertibles
+
+> **Definición:** Una matriz cuadrada $n\times n$ se dice que es invertible si existe $B$ (matriz de $n\times n$) tal que $$AB=BA=I_{n\times n}.$$
+
+--
+
+##### Ejemplo 1: 
+
+Verifique que las siguientes matrices son inversas la una de la otra: $A=\begin{bmatrix} 1 & 0 \\ 2 & 1 \end{bmatrix}$ y $B=\begin{bmatrix} 1 & 0 \\ -2 & 1 \end{bmatrix}.$
+
+---
+
+##### Ejemplo 2:
+
+Verique que las siguientes matrices son inversas la una de la otra: $A=\begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & -1\end{bmatrix}$ y $B=\begin{bmatrix} 1/2 & 0 & 1/2 \\ 0 & 1 & 0 \\ 1/2 & 0 & -1/2 \end{bmatrix}$
+
+--
+
+##### Ejemplo 3:
+
+Calcula la matriz inversa de la siguiente matriz: $$A= \begin{bmatrix} 3 & 2 \\ -2 & 1 \end{bmatrix}$$
+
+---
+##### Gauss para Encontrar la Inversa
+
+> Podemos usar una modificación del Método de Eliminación Gaussiana para encontrar inversas:
+
+--
+
+##### Ejemplo 4:
+
+Calcula la matriz inversa de $\begin{bmatrix} 5 & 1 \\ 4 & 1 \end{bmatrix}$ para ello construimos una matriz aumentada con una identidad del tamaño adecuado: $$\begin{bmatrix} 5 & 1 & 1 & 0  \\ 4 & 1 & 0 & 1 \end{bmatrix}$$
+
+---
+# Pasos del Método:
+
+1. Uso Gauss para llevar la matriz aumentada a una forma escalonada (matriz triangular superior). <br/><br/>
+
+--
+
+2. Continuo la reducción pero ahora haciendo cero las entradas arriba de los pivotes (hacer la matriz de la izquierda la identidad).
+
+
+---
+##### Practica:
+
+Calcula las matrices inversas de: 
+
+1. $A=\begin{bmatrix} 1 & 0 & -1 \\ 1 & 0 & 2 \\ 0 & 1 & 0 \end{bmatrix}$
+
+2. $A=\begin{bmatrix} 1 & 1 & 0 \\ 1 & 0 & 2 \\ 0 & 1 & 0 \end{bmatrix}$
+
+3. $A=\begin{bmatrix} 1 & 0 & -1 \\ 1 & 1 & 0 \\ 0 & 1 & 0 \end{bmatrix}$
+
+---
+# ¿Para que podemos usar la inversa?
+
+Supongamos que tenemos un SEL $$Ax=b$$ y que $A$ es una matriz invertible, debido a la igualdad podemos multiplicar por la inversa ambos lados (del lado derecho) y calcular la solución de manera "directa": $$x=Ix= (A^{-1} A)x= A^{-1} (Ax)=A^{-1}b.$$ Que mi matriz sea invertible restringe a que mi SEL solo tiene solución única.
+
+---
+#### Practica:
+
+Con las matrices anteriores, calcula la solución del Sistema si:
+
+1. $b=\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}$
+
+2. $b=\begin{bmatrix} 10 \\ -10 \\ 10 \end{bmatrix}$
+
+3. $b=\begin{bmatrix} 500 \\ 420 \\ 120 \end{bmatrix}$
+
+---
+# ¿Cómo saber cuando una matriz es invertible?
+
+Hasta ahora no sabemos como decidir si mi matriz es invertible más que realizando el método para calcular la inversa. Sin embargo, ¿qué pasaría si tengo un sistema de $10000 \times 10000$? No puedo realizar el proceso y que al final resulte que no es invertible. 
+
+--
+
+> **Definición:** El *Determinante* es un número asociado a cada matriz cuadrada que me permite distinguir si mi matriz es invertible o no. El criterio es: si el determinante es distinto de cero entonces mi matriz es invertible, y si es cero entonces mi matriz no es invertible.
+
+
+---
+## Determinante de una Matriz de $2\times 2$
+
+> **Definición:** Sea $A=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ entonces el determinante de $A$ es $$\det(A)=ad-bc.$$
+
+--
+
+##### Ejemplo 5: 
+
+Calcula el determinante de la matriz: 
+1. $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$
+2. $\begin{bmatrix} 2 & 1 \\ -4 & -2 \end{bmatrix}$
+3. $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$
+4. $\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$
+
+---
+## Determinante de una Matriz de $3\times 3$
+
+> **Definición:** Sea $A=\begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}$ entonces el determinante de $A$ es $$\det(A)=a(ei-fh)-b(di-fg)+c(dh-eg).$$
+
+--
+1. $\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$
+2. $\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}$
+3. $\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix}$
+
+---
+## Cofactor de una Matriz de $n\times n$
+
+> **Definición:** Sea $A$ una matriz de $n\times n$ y $a_{ij}$ la entrada en la fila $i$ y columna $j$ entonces el cofactor de $a_{ij}$ es $$C_{ij}=(-1)^{i+j}M_{ij}$$ donde $M_{ij}$ es el determinante de la matriz obtenida al eliminar la fila $i$ y columna $j$ de $A$.
+
+---
+## Matriz de Cofactores e Inversa por Cofactores
+
+> **Definición:** Sea $A$ una matriz de $n\times n$ entonces la matriz de cofactores de $A$ es la matriz $C$ de $n\times n$ cuya entrada $c_{ij}$ es el cofactor de $a_{ij}.$
+
+--
+
+> **Definición:** Sea $A$ una matriz de $n\times n$ y $\det(A)\neq 0$ entonces la inversa de $A$ es $$A^{-1}=\frac{1}{\det(A)}C^T$$ donde $C$ es la matriz de cofactores de $A$ y $C^T$ es la transpuesta de $C.$
+
+---
+## Ejemplo de Inversa por Cofactores
+
+Calculemos la inversa de la matriz: $$A=\begin{bmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 5 & 6 & 0 \end{bmatrix}$$
+
+
+
+
+

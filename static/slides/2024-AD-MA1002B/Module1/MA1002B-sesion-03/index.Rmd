@@ -1,0 +1,84 @@
+---
+title: "SEDOs No-Homogéneos con Coeficientes Constantes"
+subtitle: "Sesión 03 - Módulo 1"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos 
+
+* Deducir el método de Coeficientes Indeterminados para resolver SEDOs no-homogéneos. <br/><br/>
+* Aplicar el método de Coeficientes Indeterminados a SEDOs no-homogéneos. <br/><br/>
+
+---
+# SEDOs No-Homogéneos de 2x2 con coeficientes constantes
+
+Tenemos el siguiente SEDO $$\begin{aligned} x'= ax+by+g(t) \\ y'= cx+dy+h(t) \end{aligned},$$ de la teoría de EDOs sabemos que la solución general debe ser la solución homogénea más la particular. Si $\mathbf{X}_p$ es la solución particular, entonces debe satisfacer el sistema, es decir, $$X_p'=AX_p+G(t).$$ Cuándo las funciones $g(t)$ y $h(t)$ pueden ser obtenidas mediante combinaciones lineales de ellas mismas y sus derivadas, podemos resolver este sistema.
+
+---
+# Método de Coeficientes Indeterminados
+
+0. Resolvemos la versión 
+1. Proponemos una solución particular similar al término no-homogéneo. <br/><br/>
+2. Sustituimos la solución propuesta en la EDO no-homogénea. <br/><br/>
+3. Igualamos los coeficientes de la solución propuesta con los de la EDO no-homogénea. <br/><br/>
+4. Resolvemos el sistema de ecuaciones para encontrar los coeficientes. <br/><br/>
+
+---
+# Ejemplo 1
+
+Resuelva el siguiente SEDO no-homogéneo: $$\begin{aligned} x'= x+2y+e^t \\ y'= 2x+y+e^t \end{aligned}.$$ Una cálculo rápido nos indica que la solución homogénea es $x_h=c_1e^{3t}-c_2e^{-t}$ y $y_h=c_1e^{3t}+c_2e^{-t}.$ Dado que las partes no-homogéneas no son contienen las funciones homogéneas, podemos proponer una solución particular de la forma $x_p=Ae^t$ y $y_p=Be^t.$
+
+---
+# Ejemplo 2
+
+Resuelve el siguiente SEDO no-homogéneo: $$\begin{aligned} x'=6x+y+6t \\ y'=4x+3y-10t+4 \end{aligned}.$$ 
+
+---
+# Ejemplo 3
+
+Resuelve el siguiente SEDO no-homogéneo: $$\begin{aligned} x'= 5x+3y-2e^{-t}+1 \\ y'= -x+y+e^{-t}-5t+7s\end{aligned}.$$
+

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Limits and Continuity</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-09-16" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"d8fe23f9b870444999f979af782a7ca6","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Limits and Continuity
+]
+.subtitle[
+## Session 03
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-09-16
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Goals
+
+* Introduce the concept of a limit of a function. &lt;br/&gt;&lt;br/&gt;
+* Present the principal Limit Theorems. &lt;br/&gt;&lt;br/&gt;
+* Introduce the concept of continuity of a function. &lt;br/&gt;&lt;br/&gt;
+* Present the principal theorems of continuity. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Motivation
+
+The concept of a limit is essential in calculus. It is used to define the derivative and integral of a function. The concept of continuity is also essential in calculus. It is used to define the derivative and integral of a function. &lt;br/&gt;&lt;br/&gt;
+
+Assume that we have the function `\(d(t)=t^2-1\)`, that models the distance of a moving object at every time `\(t.\)` From physics, we know that the velocity of the object between to observation points is given by `$$v_m=\frac{d(t)-d(t_0)}{t-t_0}=\frac{t^2-t_0^2}{t-t_0}=t+t_0.$$` &lt;br/&gt;&lt;br/&gt; This is assumming our observations in two points `\(t_1\)` and `\(t_2.\)` &lt;br/&gt;&lt;br/&gt; The question is, what happens if we want to know the velocity at a specific time `\(t_0\)`? &lt;br/&gt;&lt;br/&gt; The answer is given by the behavior of the function `\(v_m\)` when we approximate `\(t\)` to `\(t_0\)`  (we reduce our interval of observation). &lt;br/&gt;&lt;br/&gt; This behavior is given by the concept of a limit. &lt;br/&gt;&lt;br/&gt; The concept of continuity is related to the behavior of the function at a specific point. &lt;br/&gt;&lt;br/&gt; We will see that the concept of limit and continuity are related. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Limit 
+
+&gt; **Definition:** Let `\(f\)` be a function defined on an open interval that contains `\(c\)`, except possibly at `\(c\)` itself. We say that the limit of `\(f(x)\)` as `\(x\)` approaches `\(c\)` is `\(L\)` and write `$$\lim_{x \to c} f(x)=L$$` if for every number `\(\epsilon&gt;0\)` there is a number `\(\delta&gt;0\)` such that `$$|f(x)-L|&lt;\epsilon$$` whenever `\(0&lt;|x-c|&lt;\delta.\)`
+
+#### Examples:
+
+0. `\(\lim_{x \to c} x=c.\)` &lt;br/&gt;
+1. `\(\lim_{x \to 2} x^2=4.\)` &lt;br/&gt;
+2. `\(\lim_{x \to 0} \sin(x)=0.\)` &lt;br/&gt;
+3. `\(\lim_{x \to 0} \frac{1}{x}\)` does not exist. &lt;br/&gt;
+4. `\(\lim_{x \to 0} \frac{1}{x^2}=\infty.\)` &lt;br/&gt;
+
+---
+### Limit Theorems
+
+1. **Limit of a Constant:** `\(\lim_{x \to c} k=k.\)` &lt;br/&gt;
+2. **Limit of a Sum:** `\(\lim_{x \to c} [f(x)+g(x)]=\lim_{x \to c} f(x)+\lim_{x \to c} g(x).\)` &lt;br/&gt;
+3. **Limit of a Product:** `\(\lim_{x \to c} [f(x)g(x)]=\lim_{x \to c} f(x) \cdot \lim_{x \to c} g(x).\)` &lt;br/&gt;
+4. **Limit of a Quotient:** If `\(\lim_{x\to c} g(x)\neq 0,\)` then `\(\lim_{x \to c} \frac{f(x)}{g(x)}=\frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)}.\)` &lt;br/&gt;
+5. **Limit of a Power:** `\(\lim_{x \to c} [f(x)]^n=[\lim_{x \to c} f(x)]^n.\)` &lt;br/&gt;
+
+---
+#### Examples: 
+
+Use the Limit Theorems to find the following limits:
+
+1. `\(\lim_{x \to 2} (x^2+3x-4).\)` &lt;br/&gt;
+2. `\(\lim_{x \to 0} \sqrt{x+4}.\)` &lt;br/&gt;
+3. `\(\lim_{x \to 4} \frac{1}{x-2}.\)` &lt;br/&gt;
+4. `\(\lim_{x \to 0} \frac{1}{\sqrt[3]{x^3-1}}\)` &lt;br/&gt;
+
+---
+# Continuity
+
+&gt; **Definition:** A function `\(f\)` is continuous at a number `\(c\)` if `$$\lim_{x \to c} f(x)=f(c).$$` &lt;br/&gt;&lt;br/&gt; The previous equation implies: &lt;br/&gt;&lt;br/&gt;
+1. `\(f(c)\)` is defined. &lt;br/&gt;
+2. `\(\lim_{x \to c} f(x)\)` exists. &lt;br/&gt;
+3. `\(f(c)=\lim_{x \to c} f(x).\)` &lt;br/&gt;&lt;br/&gt;
+
+#### Examples:
+
+1. The function `\(f(x)=x^2\)` is continuous at every point `\(c.\)` &lt;br/&gt;
+2. The function `\(f(x)=\sqrt{x}\)` is continuous at every point `\(c\geq 0.\)` &lt;br/&gt;
+3. The function `\(f(x)=\frac{1}{x}\)` is continuous at every point `\(c\neq 0.\)` &lt;br/&gt;
+
+---
+### Theorems of Continuity
+
+1. **Sum of Continuous Functions:** If `\(f\)` and `\(g\)` are continuous at `\(c,\)` then `\(f+g\)` is continuous at `\(c.\)` &lt;br/&gt;
+2. **Product of Continuous Functions:** If `\(f\)` and `\(g\)` are continuous at `\(c,\)` then `\(f \cdot g\)` is continuous at `\(c.\)` &lt;br/&gt;
+3. **Quotient of Continuous Functions:** If `\(f\)` and `\(g\)` are continuous at `\(c,\)` then `\(\frac{f}{g}\)` is continuous at `\(c\)` where `\(g(c)\neq 0.\)` &lt;br/&gt;
+
+---
+### Affirmations for Continuity
+
+1. **Polynomial Functions:** Every polynomial function is continuous at every point. &lt;br/&gt;
+
+2. **Rational Functions:** Every rational function is continuous at every point where the denominator is not zero. &lt;br/&gt;
+
+3. **Root Functions:** Every root function is continuous at every point where the radicand is not negative. &lt;br/&gt;
+
+4. **Trigonometric Functions:** Every trigonometric function is continuous at every point of its domain. &lt;br/&gt;
+
+5. **Exponential and Logarithmic Functions:** Every exponential and Logarithmic functions are continuous at every point of its domain. &lt;br/&gt;
+
+---
+### Piecewise Functions
+
+&gt; **Definition:** A piecewise function is a function defined by different expressions on different intervals. &lt;br/&gt;&lt;br/&gt; The function is continuous at a point `\(c\)` if the function is continuous at `\(c\)` for every expression. The possible discontinuities are at the points where the expressions changes (breaking points). &lt;br/&gt;&lt;br/&gt;
+
+--
+#### Examples:
+
+1. The function `\(f(x)=\begin{cases} x^2 &amp; \text{if } x&lt;0 \\ 2x+1 &amp; \text{if } x\geq 0 \end{cases}\)` is a piecewise function. Let's check if it is continuous at `\(x=0.\)` &lt;br/&gt; `$$\lim_{x \to 0^-} f(x)=0, \quad \lim_{x \to 0^+} f(x)=1.$$` &lt;br/&gt; The function is not continuous at `\(x=0.\)` &lt;br/&gt;
+
+---
+### Examples:
+
+2. The function `\(f(x)=\begin{cases} x^2 &amp; \text{if } x&lt;0 \\ -x^2 &amp; \text{if } x\geq 0 \end{cases}\)` is a piecewise function. Let's check if it is continuous at `\(x=0.\)` &lt;br/&gt; `$$\lim_{x \to 0^-} f(x)=0, \quad \lim_{x \to 0^+} f(x)=0.$$` &lt;br/&gt; The function is continuous at `\(x=0.\)` &lt;br/&gt;
+
+3. The function `\(f(x)=|x|\)` is a piecewise function. Let's check if it is continuous at `\(x=0.\)` &lt;br/&gt; `$$\lim_{x \to 0^-} f(x)=0, \quad \lim_{x \to 0^+} f(x)=0.$$` &lt;br/&gt; The function is continuous at `\(x=0.\)` &lt;br/&gt;
+
+4. The function `\(f(x)=\begin{cases} x^2 &amp; \text{if } x\neq 0 \\ -4 &amp; \text{if } x=0 \end{cases}\)` is a piecewise function. Let's check if it is continuous at `\(x=0.\)` &lt;br/&gt; `$$\lim_{x \to 0^-} f(x)=0, \quad \lim_{x \to 0^+} f(x)=0,\quad f(0)=-4.$$` &lt;br/&gt; The function is not continuous at `\(x=0.\)` &lt;br/&gt;
+---
+## Discontinuity Types:
+
+1. **Removable Discontinuity:** The function is not defined at a point, but the limit exists. &lt;br/&gt;
+
+2. **Jump Discontinuity:** The function has a jump at a point. &lt;br/&gt;
+
+3. **Infinite Discontinuity:** The function has an infinite limit at a point. &lt;br/&gt;
+
+---
+## Graph Visualization of Discontinuities:
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Espacios Vectoriales</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-08-04" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"c5a61c0bb72b4994bdd3cdb257c62fbc","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Espacios Vectoriales
+]
+.subtitle[
+## Sesión 01
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-08-04
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos de la Sesión
+
+* Definir la estructura de espacio vectorial. &lt;br/&gt;&lt;br/&gt;
+* Introducir ejemplos de espacios vectoriales. &lt;br/&gt;&lt;br/&gt;
+* Definir los subespacios vectoriales. &lt;br/&gt;&lt;br/&gt;
+
+---
+# ¿Qué es un vector y que puedes hacer con ellos?
+
+
+
+---
+# ¿Qué es un espacio vectorial?
+
+&gt; __Definición:__ Un espacio vectorial es una estructura algebraica que consiste de un conjunto `\(V\)` de objetos llamados vectores, y dos operaciones, suma y multiplicación por un escalar, que satisfacen ciertas propiedades. &lt;br/&gt; 
+Las propiedades son:
+  * La suma es conmutativa. &lt;br/&gt;
+  * La suma es asociativa. &lt;br/&gt;
+  * Existe un vector cero. &lt;br/&gt;
+  * Existe un inverso aditivo. &lt;br/&gt;
+  * La multiplicación por un escalar es asociativa. &lt;br/&gt;
+  * La multiplicación por un escalar distribuye sobre la suma de vectores. &lt;br/&gt;
+  * La multiplicación por un escalar distribuye sobre la suma de escalares. &lt;br/&gt;
+  * El escalar 1 es el elemento neutro de la multiplicación. &lt;br/&gt;
+
+---
+## Ejemplos de Espacios Vectoriales.
+
+&gt; Consideremos el espacio de números reales `\(\mathbb{R}\)` como conjunto de vectores y escalares, con las operaciones usuales. Veamos que cumple con las propiedades de un espacio vectorial.
+
+--
+&lt;br/&gt;&lt;br/&gt;
+ 
+&gt; Consideremos el espacio el espacio `\(V=\mathbb{R}^2\)` de pares de reales, con la siguientes operaciones: &lt;br/&gt;
+* Suma: `\((a,b)+(c,d)=(a+c,b+d).\)` &lt;br/&gt;
+* Multiplicación por un escalar: `\(\lambda(a,b)=(\lambda a,\lambda b).\)` &lt;br/&gt;&lt;br/&gt;
+Probemos que es un espacio vectorial.
+
+---
+## Ejemplos de Espacios Vectoriales
+
+&gt; Consideremos el espacio `\(V=\mathbb{R}^n\)` de n-tuplas de reales, con las siguientes operaciones: &lt;br/&gt;
+*  Suma: `\((a_1,a_2,\dots,a_n)+(b_1,b_2,\dots,b_n)=(a_1+b_1,a_2+b_2,\dots,a_n+b_n).\)` &lt;br/&gt;
+* Multiplicación por un escalar: `\(\lambda(a_1,a_2,\dots,a_n)=(\lambda a_1,\lambda a_2,\dots,\lambda a_n).\)` &lt;br/&gt;
+Probemos que es un espacio vectorial.
+
+---
+## Ejemplos de Espacios Vectoriales
+
+&gt; Consideremos el espacio `\(V=M(n\times m, \mathbb{R})\)` de matrices de `\(n\times m\)` con coeficientes reales, con las operaciones de matrices.
+
+--
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; Consideremos el espacio `\(V=P_3(x)\)` de polinomios de grado menor o igual a tres en la variable `\(x,\)` con coeficientes reales, con las operaciones usuales de suma de polinomios y producto por escalar. &lt;br/&gt;&lt;br/&gt; Probemos que es un espacio vectorial. 
+
+---
+## No Ejemplos de Espacios Vectoriales.
+
+&gt; Consideremos el espacio de polinomios de grado dos en la variable `\(x,\)` con coeficientes reales. Probemos que este no es un espacio vectorial.
+
+
+---
+## No Ejemplos de Espacios Vectoriales.
+
+&gt; Consideremos el conjunto `\(W=\{(x,y)\in\mathbb{R}^2:x^2+y^2=1\}.\)` &lt;br/&gt;&lt;br/&gt; Probemos que no es un espacio vectorial con la suma y producto por escalar de vectores en `\(\mathbb{R}^2.\)`
+
+
+---
+## Subespacios Vectoriales.
+
+&gt; __Definición:__ Un subespacio vectorial de un espacio vectorial `\(V\)` es un subconjunto `\(W\)` de `\(V\)` que es un espacio vectorial con las operaciones de `\(V.\)` &lt;br/&gt;&lt;br/&gt; 
+
+--
+&gt; Por ejemplo, en el espacio vectorial de `\(\mathbb{R}^2,\)` la recta que pasa por el origen es un subespacio vectorial. &lt;br/&gt;&lt;br/&gt; Consideremos la recta `\(W=\{(x,y)\in\mathbb{R}^2:y=mx\}\)` donde `\(m\)` es una constante. &lt;br/&gt;&lt;br/&gt; Veamos que `\(W\)` es un subespacio vectorial.
+
+
+---
+## Subespacios Vectoriales.
+&gt; Por ejemplo, en el espacio vectorial `\(\mathbb{R}^3,\)` las rectas que pasan por el origen son subespacios vectoriales. &lt;br/&gt;&lt;br/&gt; Consideremos la recta `\(W_1=\{(x,y,z)\in\mathbb{R}^3:ax=z\}\)` donde `\(a\)` es constantes. &lt;br/&gt;&lt;br/&gt; Veamos que `\(W_1\)` es un subespacio vectorial.
+---
+## Subespacios Vectoriales
+&gt; Por ejmplo, en el espacio vectorial de `\(\mathbb{R}^3,\)` el plano que pasa por el origen es un subespacio vectorial. &lt;br/&gt;&lt;br/&gt; Consideremos el plano `\(W=\{(x,y,z)\in\mathbb{R}^3:ax+by=z\}\)` donde `\(a,b\)` son constantes. &lt;br/&gt;&lt;br/&gt; Veamos que `\(W\)` es un subespacio vectorial.
+
+---
+## Actividad
+
+1. Consideremos `\(V=\mathbb{R}^2\)` con las operaciones usuales. ¿Puede ser `\(W=\{(3,x):x\in\mathbb{R}\}\)` un subespacio vectorial? &lt;br/&gt;&lt;br/&gt;
+1. Prueba que `\(\mathbb{Z}^2\)` es un espacio vectorial con la suma y producto por escalar de $\mathbb{R}^2 $ pero con conjunto de escalares igual a `\(\mathbb{Z}.\)` &lt;br/&gt;
+1. Si `\(v=(2,2),\, w=(-1,2).\)` Realice un representación gráfica para los vectores `\(2v, v+w, v-w.\)` &lt;br/&gt;
+1. Sea `\(F\)` el conjunto de polinomios con coeficientes en `\(\mathbb{R}\)`. Prueba que `\(F\)` es un espacio vectorial con las operaciones usuales de suma de polinomios y producto por escalar con escalares el conjunto `\(\mathbb{R}.\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

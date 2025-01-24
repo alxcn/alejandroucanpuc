@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Teorema de Green.</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-08-23" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xa81e03c00c34ac78fe03ad94dc01fe8","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Teorema de Green.
+]
+.subtitle[
+## Sesión 06
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-08-23
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Establecer el teorema de Green. &lt;br/&gt;&lt;br/&gt;
+ * Demostrar el Teorema de Green. &lt;br/&gt;&lt;br/&gt;
+ * Aplicar el Teorema de Green. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Curvas simples de `\(\mathbb{R}^2\)`.
+
+&gt; __Definición:__ Unca _curva simple_ `\(c\)` en `\(\mathbb{R}^2\)` es una función continua `\(c:[a,b]\rightarrow \mathbb{R}^2\)` tal que `\(c(t_1)\neq c(t_2)\)` si `\(t_1\neq t_2\)`.
+
+--
+##### Nota:
+
+* Una curva cerrada simple, es aquella que es simple y además `\(c(a)=c(b)\)`.
+* Las curvas simples acotan un dominio `\(D\)` (subconjunto conexo y compacto) en `\(\mathbb{R}^2\)`.
+
+---
+## Orientación estándar.
+
+&gt; __Convención:__ En lo que resta, tomaremos la orientación que cumpla que el dominio `\(D\)` quede a la izquierda de la curva `\(c,\)` la cual se le conoce como _orientación estándar_.
+
+---
+# Teorema de Green.
+
+&gt; __Teorema:__ Sea `\(D\)` un dominio acotado en `\(\mathbb{R}^2\)` cuya frontera `\(\partial D\)` es una curva cerrada simple y `\(c:[a,b]\rightarrow \mathbb{R}^2\)` una parametrización de `\(\partial D\)` con orientación estándar. Si `\(P(x,y)\)` y `\(Q(x,y)\)` son funciones continuas en `\(D\)` y tienen derivadas parciales continuas en `\(D,\)` entonces se cumple que `$$\int_{\partial D}P(x,y)dx+Q(x,y)dy=\int\int_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy.$$`
+
+---
+# Demostración.
+
+&gt; __Lema 1:__ Sea `\(D\)` una región `\(y-\)`simple y sea `\(C\)` su frontera. Supongamos que `\(P:D\to\mathbb{R}\)` es una función diferenciable. Entonces `$$\int_C P(x,y)dx=-\int\int_D\frac{\partial P}{\partial y}dxdy.$$`
+
+---
+## Demostración.
+
+&gt; __Lema 2:__ Sea `\(D\)` una región `\(x-\)`simple y sea `\(C\)` su frontera. Supongamos que `\(Q:D\to\mathbb{R}\)` es una función diferenciable. Entonces `$$\int_C Q(x,y)dy=\int\int_D\frac{\partial Q}{\partial x}dxdy.$$`
+
+---
+##### Ejemplo
+
+&gt; Queremos comprobar el teorema de Green para el campo `\(\mathbf{F}=x\mathbf{i}+xy\mathbf{j},\)` donde `\(D\)` es el circulo unitario `\(x^2+y^2\leq 1.\)`
+
+--
+##### Solución:
+
+* La frontera de `\(D\)` es la curva `\(c(t)=(\cos t,\sin t),\)` con `\(t\in[0,2\pi].\)`
+* Entonces, `$$\int_{\partial D}P(x,y)dx+Q(x,y)dy=\int_0^{2\pi}(\cos t)(-\sin t)+(\cos t)(\cos t)(\sin t)dt=0.$$`
+* Por otro lado, `$$\int\int_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy=\int\int_Dydxdy=0.$$`
+
+---
+## ¿Cómo usar el Teorema de Green?
+
+&gt; Algunos tips para usar el Teorema de Green: &lt;br/&gt;&lt;br/&gt;
+  * Si el dominio `\(D\)` es fácil de expresar en lugar de la curva frontera, entonces es mejor usar el teorema de Green para calcular la integral de línea. &lt;br/&gt;&lt;br/&gt;
+  * Si es más simple la parametrización de la frontera que calcular la integral doble, utilizar el teorema de Green para calcular la última.
+
+---
+# Actividad:
+
+* Sea `\(\mathbf{F}(x,y)=y\mathbf{i}+-x\mathbf{j}.\)` Queremos encontrar el trabajo que realiza el campo `\(\mathbf{F}\)` al mover una partícula a lo largo de la curva que acota al cuadrado con vértices `\((1,0), (0,1), (-1,0)\)` y `\((0,-1).\)`
+
+* Hallar el área de la región acotada por la curva cicloide.
+
+* Calcula el trabajo realizado por el campo `\(\mathbf{F}(x,y)=(2x^3-y^3)\mathbf{i}+(x^3+y^3)\mathbf{j}\)` al mover una particula sobre la frontera del anillo `\(1\leq x^2+y^2\leq 4.\)`
+---
+# Actividad:
+
+ * Demostrar la siguiente generalización del teorema de Green: &lt;br/&gt;&lt;br/&gt; Si `\(D\)` es una región que puede expresarse como una unión de regiones simples `\(D_1,\ldots,D_n\)` y `\(P(x,y)\)` y `\(Q(x,y)\)` son funciones continuas en `\(D\)` y tienen derivadas parciales continuas en `\(D,\)` entonces se cumple que `$$\int_{\partial D}P(x,y)dx+Q(x,y)dy=\sum_{i=1}^n\int\int_{D_i}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy.$$`
+
+ * Demostrar que bajo las condiciones del Teorema de Green, que `$$\int_{\partial D} PQdx+PQdy=\int\int_D\left[ Q\left(\frac{\partial P}{\partial x}-\frac{\partial P}{\partial y}\right)+P\left(\frac{\partial Q}{\partial x}-\frac{\partial Q}{\partial y}\right)\right]dxdy.$$`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

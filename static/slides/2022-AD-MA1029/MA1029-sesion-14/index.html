@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Coordenadas Esféricas</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2023-04-16" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xd618fc8799341778266ea264b6f6fd8","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Coordenadas Esféricas
+]
+.subtitle[
+## Sesión 14
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2023-04-16
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Definir el sistema de coordenadas esféricas. &lt;br/&gt;&lt;br/&gt;
+ * Determinar el diferencial de volumen en coordenadas esféricas. &lt;br/&gt;&lt;br/&gt;
+ * Calcular integrales triples en coordenadas esféricas.
+
+
+---
+# Coordenadas Esféricas `\((\theta,r,z).\)`
+
+&lt;iframe src="https://www.geogebra.org/classic/qxudhmhs?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+
+---
+# ¿Cómo traduzco entre coordenadas?
+
+Existen expresiones que nos permiten hacer la conversión entre distintos tipos de coordenadas. Por ejemplo:
+
+&gt; Si tengo un punto `\((x,y,z)\)` (coordenadas rectangulares) y lo quiero en coordenadas _cilíndricas_, entonces se cumple: &lt;br/&gt;
+- `\(r^2= x^2+y^2+z^2,\)` &lt;br/&gt;
+- `\(\theta=\arccos\frac{y}{\sqrt{x^2+y^2}}\)` y &lt;br/&gt;
+- `\(\phi=\arcsin\frac{z}{\sqrt{x^2+y^2+z^2}}.\)`
+
+&lt;br/&gt;
+
+&gt; Si tengo un punto `\((\theta,r,z)\)` y lo quiero en coordenadas _rectangulares_, entonces se cumple: &lt;br/&gt;
+- `\(x=r\cdot \cos(\theta)\sin(\phi)\)` &lt;br/&gt;
+- `\(y=r\cdot \sin(\theta)\sin(\phi)\)` y 
+- `\(z=r\cos(\phi).\)`
+
+---
+## Veamos algunas regiones esféricas
+
+&gt; Describa la región en la figura en coordenadas esféricas.
+
+![Región](regionesf_1.png)
+
+---
+## Veamos algunas regiones esféricas
+
+&gt; Describa la región acotada por el cono `\(z=\sqrt{x^2+y^2}\)` y la esfera `\(x^2+y^2+z^2=z\)` en coordenadas esféricas.
+
+---
+# ¿Cómo cambia mi diferencial de volumen?
+
+&gt; El diferencial de volumen cambia a `\(dV=r^2\sin(\phi) d\theta d\phi d r.\)`
+&lt;div class="figure"&gt;
+&lt;img src="https://files.mtstatic.com/site_4425/5231/0?Expires=1681674231&amp;Signature=WX2~g~I1n1AtsjbMQHHP84KprFsUbI0k3ug3VGxr4AUcRonG76sC8pG1F8EOj~aOjGbt9FXn5rflvBa3iedukxQwy-fuM-~9Fn71JVZ-GTUkrqY2iO0buhgaOyfEVWYW~Z-uIQlxWqwMvb7LZcn6YGLxltC5RgqTGXd-91fMSYU_&amp;Key-Pair-Id=APKAJ5Y6AV4GI7A555NA" alt="Diferencial de área" width="80%" /&gt;
+&lt;p class="caption"&gt;Diferencial de área&lt;/p&gt;
+&lt;/div&gt;
+
+---
+# Ejemplo:
+
+&gt; Calcule la integral de `\(f(x,y,z)=9-x^2-y^2\)` en la región `\(R\)` dada por el hemisferio `\(z\geq 0\)` y `\(x^2+y^2+z^2\leq 9.\)`
+
+
+---
+# Ejemplo:
+
+&gt; Calcule la integral de la función `\(f(x,y,z)=z\)` en la región acotada por las esféras `\(x^2+y^2+z^2=1\)` y `\(x^2+y^2+z^2=4\)` en el primer octante.
+
+---
+# Ejemplo
+
+&gt; Calcule el valor de la integral de la función `\(f(x,y,z)=e^{\sqrt{x^2+y^2+z^2}}\)` en el octavo de la esfera `\(x^2+y^2+z^2=9\)` en el primer octante.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

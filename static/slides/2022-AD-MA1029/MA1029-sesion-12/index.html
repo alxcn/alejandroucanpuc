@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Integrales Triples</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2023-04-09" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"fd343c83362a42f08f71782c7cd9052c","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Integrales Triples
+]
+.subtitle[
+## Sesión 12
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2023-04-09
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Conocer la diferencial de volumen. &lt;br/&gt;&lt;br/&gt;
+ * Definir la integral en `\(\mathbb{R}^3\)`. &lt;br/&gt;&lt;br/&gt;
+ * Calcular integrales triples en regiones elementales.
+
+
+---
+# Integral triple:
+
+&gt; Sea `\(f(x,y,z)\)` una función continua en una región caja dada por `\(B=[a,b]\times [c,d]\times [e,f].\)` Dada una partición de la región `\((x_i,y_j,z_k)\)` con 
+`$$x_{i+1}-x_{i}=\Delta x,\quad y_{j+1}-y_j=\Delta y \mbox{ y } z_{k+1}-z_k =\Delta z.$$` Entonces la siguiente suma aproxima el volumen debajo de la gráfica de `\(f,\)` `$$\sum_{i=1}^n \sum_{j=1}^m \sum_{k=1}^s f(x_i,y_j,z_k)\Delta x \Delta y \Delta k.$$` 
+&lt;br/&gt;&lt;br/&gt;
+Refinando la partición, en el límite obtenemos la integral de la función en la región `\(R,\)` denotada por `$$\int_B f \, dV.$$`
+
+---
+# ¿Cómo calculo integrales triples?
+
+El teorema de Fubini es valido para integrales triples, así que para calcularlo basta realizar una integración iterada.
+
+`$${\int\!\int\!\int}_B fdV=\int_a^b \int_c^d \int_e^f f(x,y,z)dzdydx.$$`
+
+Y el orden no afecta.
+
+---
+# ¿Sólo puedo integrar en cajas?
+
+&gt; __Definición:__ Una región __elemental__ en `\(\mathbb{R}^3\)` es una región en la cual una de las variables está acotada entre dos funciones de las otras dos variables.
+
+&lt;br/&gt;&lt;br/&gt;
+
+__Ejemplo:__ La __bola__ de radio uno en `\(\mathbb{R}^3\)` es una región elemental descrita por la siguientes inecuaciones: `$$-1\leq x\leq 1,$$`
+`$$-\sqrt{1-x^2} \leq y\leq \sqrt{1-x^2},$$` 
+$$ -\sqrt{1-x^2-y^2} \leq z \leq \sqrt{1-x^2-y^2}.$$
+
+---
+# Ejemplos:
+
+Algunos ejemplos de regiones elementales:
+
+* Consideremos la región dada por un cilindro: `$$-1\leq x \leq 1$$` `$$-\sqrt{1-x^2}\leq y \leq \sqrt{1-x^2}$$` $$ -2\leq z \leq 2.$$
+
+* Consideremos un prisma triangular: `$$-1 \leq x \leq 2$$` `$$0\leq y \leq 2$$` `$$0\leq z\leq 3-2x-2y$$`
+
+---
+# Ejemplo 1:
+
+&gt; Encuentre la integral de `\(f(x,y,z)=z\)` en la región acotada por los planos `\(x=0,\,y=0,\, z=0\)` y `\(x+y+z=1\)`
+
+`$$R: 0\leq x\leq 1,\, 0\leq y \leq 1-x,\, 0\leq z\leq 1-x-y.$$`
+
+`$$\int\int\int_R z dV= \int_0^1\int_0^{1-x}\int_0^{1-x-y} z dzdydx$$`
+---
+# Ejemplo:
+
+&gt; Encuentre la integral de la función `\(f(x,y,z)=\sqrt{x^2+z^2}\)` en la región acotada por el paraboloide `\(y=x^2+z^2\)` y `\(y=4.\)`
+
+`$$E: -2\leq x\leq 2,\, -\sqrt{4-x^2}\leq z\leq \sqrt{4-x^2},\, x^2+z^2\leq y\leq 4$$`
+
+`$$\int\int\int_E \sqrt{x^2+z^2}dV= \int_{-2}^2\int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}}\int_{x^2+z^2}^4  \sqrt{x^2+z^2} dydzdx$$`
+---
+#### Ejemplo 1:
+
+Calcula las siguientes integrales
+  * `\(\int_0^1\int_0^z\int_0^{x+z}6xzdydxdz\)`
+  * `\(\int_0^1\int_0^z\int_0^y ze^{-y^2}dxdydz\)`
+  * `\(\int_0^{\sqrt{\pi}}\int_0^x\int_0^{xz}x^2\sin(y)dydzdx\)`
+
+
+---
+#### Ejemplo 2:
+
+Dibuja la región `\(E\)` y calcula la integral de `\(f(x,y,z)=6.\)` La región `\(E\)` es la región acotada bajo el plano `\(z=1+x+y\)` y `\(z=0\)` acotadas por las curvas `\(y=\sqrt{x},\, y=0\)` y `\(x=1.\)`
+
+
+---
+#### Ejemplo 3:
+Dibuja la región `\(E\)` y calcula la integral de `\(f(x,y,z)=xy.\)` La región `\(E\)` es la región acotada por los cilindros parabólicos `\(z=1-y^2\)` y `\(x=y^2\)` y los planos `\(z=0\)` y `\(z=x+y.\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

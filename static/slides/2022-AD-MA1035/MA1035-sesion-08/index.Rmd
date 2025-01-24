@@ -1,0 +1,116 @@
+---
+title: "Sistemas de EDOs lineales P. III"
+subtitle: "Sesión 08"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Solución en el caso de valores propios repetidos. <br/><br/>
+* Solución en el caso de valores propios complejos. <br/><br/>
+* Planos fase. <br/><br/>
+* Solución de Sistemas no homogéneos.
+
+---
+# Valores propios repetidos.
+
+> Considere el sistema: $$X'=\left(\begin{array}{cc} 1 & 2 \\ -2 & -3 \end{array}\right) X.$$ Queremos construir una solución general. El polinomio característico es: $$\lambda^2-2\lambda +1=0,$$ así que el único valor propio es $\lambda=1.$ Su vector propio es $$(A+I)=\left(\begin{array}{cc} 2 & 2 \\ -2 & -2 \end{array}\right)\Rightarrow 2v_1+2v_2=0\Rightarrow v_2=-v_1.$$ <br/>
+Para conseguir el otro vector para que nuestra solución general este completo, para esto  debemos resolver $$(A-\lambda I)w=v.$$
+
+---
+## Continuación ejemplo
+
+> Resolvamos para $$(A+I)w=v\Rightarrow \left(\begin{array}{cc} 2 & 2 \\ -2 & -2 \end{array}\right) \left(\begin{array}{c} w_1  \\ w_2 \end{array}\right) =\left(\begin{array}{c} 1  \\ -1 \end{array}\right),$$ que se reduce a la ecuación $$2w_1+2w_2=1\Leftrightarrow 2w_1=1+2w_2.$$ Podemos tomar el valor $w_2=0,$ y mi otro vector sería $$\left(\begin{array}{c} 1/2 \\ 0 \end{array}\right)$$ Así mi solución general es $$X=c_1e^{-t}\left(\begin{array}{c} -1 \\ 1 \end{array}\right)+c_2te^{-t}\left(\begin{array}{c} 1/2 \\ 0 \end{array}\right).$$
+
+---
+### Ejemplo 2:
+
+> Considere el sistema: $$X'=\left(\begin{array}{cc} 3 & -18 \\ 2 & -9 \end{array}\right)X.$$
+
+
+---
+# Valores propios complejos.
+
+> Consideremos el sistema $$X'= \left(\begin{array}{cc} 6 & -1 \\ 5 & 4 \end{array}\right) X.$$ <br/><br/> Su polinomio caracteristico es $$\lambda^2-10\lambda+29=0\Rightarrow \lambda_1=5+2i\quad \lambda_2=5-2i.$$ <br/><br/> Sus vectores propios son $$v_1=\left(\begin{array}{c} 1 \\ 1-2i \end{array}\right)\quad v_2=\left(\begin{array}{c} 1 \\ 1+2i \end{array}\right)$$
+---
+## Reescribiendo los vectores propios: 
+
+> Como queremos funciones reales, tenemos que reescribir los vectores de tal forma que sean reales. <br/><br/>
+Sean $$w_1=\left(\begin{array}{c} 1 \\ 1 \end{array}\right) \quad w_2=\left(\begin{array}{c} 0 \\ -2 \end{array}\right)$$ Así mi solución general será la combinación de las soluciones $$X_1=(w_1\cos(2t)-w_2 \sin(2t))e^{t}$$ $$X_2=(w_2\cos(2t)+w_1\sin(2t))e^t.$$
+
+---
+### Ejemplo 3:
+
+> Considere el sistema: $$X'=\left(\begin{array}{cc} -1 & 2 \\ -1 & 1 \end{array}\right)X.$$
+
+---
+# Planos Fase:
+
+<iframe src="https://www.geogebra.org/calculator/xnzc4b6w?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Sistemas no homogéneos
+
+> Al igual que las ecuaciones lineales no homogéneas, la solución general de un sistema de EDOs no homogénea está formada por la solución general del sistema homogéneo y una solución particular. 
+
+### Ejemplo 3: 
+
+> Considere el sistema $$X'= \left(\begin{array}{cc} 2 & 7 \\ -5 & -10 \end{array}\right) X+\left(\begin{array}{c} -8 \\ 3 \end{array}\right).$$ Primero encontremos la solución particular, como el vector que hace nuestro sistema no homogéneo es __constante__ podemos considerar que mi solución modelo es constante,
+
+---
+### continuación:
+
+Digamos $$X_p=\left(\begin{array}{c} a_1 \\ b_1 \end{array}\right),$$ 
+sustituyendo en mi sistema obtenemos
+$$0=2a_1+7b_1-8$$ $$0=-5a_1-10b_1+3$$ 
+
+$$2a_1+7b_1=8 $$ $$-5a_1-10b_1=3$$ cuya solución es $$a_1=-\frac{101}{15}\mbox{ y }a_2=-\frac{46}{15}.$$
+
+---
+### Ejemplo 4:
+
+> Considere el sistema $$X'= \left(\begin{array}{cc} 6 & 1 \\ 4 & 3 \end{array}\right) X+\left(\begin{array}{c} 6t \\ -10t+4 \end{array}\right).$$ 

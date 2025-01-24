@@ -1,0 +1,104 @@
+---
+title: "Análisis de Métodos Matemáticos para la Física"
+subtitle: "Sesión 00"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# El profesor
+
+### Alejandro Ucan Puc <br/>
+- Doctor en Ciencias Matemáticas. <br/><br/>
+- Especialización en: Sistemas Dinámicos, Geometría y Topología. <br/><br/>
+- Interés en: Programación, Escritura Creativa, Cocina. <br/><br/>
+- Correo: alejandro.ucan-puc@tec.mx <br/><br/>
+- Webpage: [alejandro-ucan.netlify.app](https://alejandro-ucan.netlify.app)
+
+---
+# Objetivos del Curso
+
+* Definir las relaciones matemáticas entre las variables físicas relevantes de un sistema a través de principios fundamentales. <br/><br/>
+
+* Indetificar el problema a resolver con los elementos principales que lo caracterizan. <br/><br/>
+
+* Analizar la realidad con base en hechos, a través de un razonamiento lógico inductivo-deductivo que permita resolver problemas e interrogantes con criterios de validez y objetividad.
+
+---
+# Contenido
+
+1. Campos Escalares y Vectoriales:
+  * Cálculo en campos escalares y vectoriales.
+  * Campos vectoriales y transformaciones de coordenadas curvilíneas generales.
+  * Operadores Vectoriales: gradiente, divergencia y rotacional.
+  * Integrales sobre campos: teoremas de Gauss, Stokes y Green.
+  * Aplicación a teoría del potencial.
+  
+2. Transformaciones Integrales:
+  * Series de Fourier
+  * Transformadas de Fourier y sus aplicaciones.
+  * Transformada de Laplace ys sus aplicaciones.
+  * Concepto de transformada integral canónica.
+  * Otras transformadas integrales relevantes.
+
+---
+
+3. Variable Compleja:
+  * Aritmética de números complejos.
+  * Funciones complejas.
+  * Cálculo de variable compleja.
+  * Series, Singularidades y Residuos.
+  * Transformación conforme.
+
+---
+# Plan de Evaluación
+
+- __50%__ Exámenes Parciales Teóricos. <br/><br/>
+- __20%__ Actividades, tareas y caso integrador. <br/><br/>
+- __30%__ Examen Final Integrador.
+
+---
+# Bibliografía:
+
+* Arfken George B, Mathematical methods for physicists : a comprehensive guide, 7th
+ed., Boston : Elsevier, 2013, 9780123846549 <br/> <br/>
+* Stewart, J. (2008). Cálculo de varias variables. Trascendentes tempranas, 6.
+* Marsden, J. E., Tromba, A. J., & Mateos, M. L. (1991). Cálculo vectorial (Vol. 69). México: Addison-Wesley Iberoamericana. <br/> <br/>
+* Gasquet Claude, Fourier analysis and applications : filtering, numerical computation wavelets, New York : Springer, 1999, eng, 0387984852 (hardcover : papel no ácido) <br/> <br/>
+* Churchill Ruel V, Variable compleja y aplicaciones, 5 ed., Aravaca (Madrid) : McGraw-Hill, 1995m spa, 8476157304.
+

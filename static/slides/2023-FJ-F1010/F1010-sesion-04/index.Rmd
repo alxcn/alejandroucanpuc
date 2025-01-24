@@ -1,0 +1,108 @@
+---
+title: "Coeficientes Constantes"
+subtitle: "Sesión 04"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "80%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Deduciremos el polinomio auxiliar aun EDO lineal de coeficientes constantes. <br/><br/>
+* Describiremos el tipo de función asociada a una raíz del polinomio auxiliar. <br/><br/>
+* Demostraremos que el sistema de funciones raíz es un conjunto L.I. 
+
+---
+# EDO lineal de orden superior con coeficientes constantes.
+
+> Consideremos la EDO $$a_n y^{(n)}+a_{n-1}y^{(n-1)}+\cdots+a_2 y''+a_1y'+a_0y=0,$$ donde $a_j$ es una constante y $a_n\neq 0.$ <br/><br/><br/>
+Por ejemplo: $$a_1 y'+a_0y=0\Leftrightarrow y'=\frac{-a_0}{a_1}y$$ cuya solución es $y=ce^{-a_0x/a_1}.$ Si consideramos el polinomio $$a_1\lambda+a_0=0$$ su solución es $\lambda=-a_0/a_1.$
+
+---
+
+## Polinomio auxiliar
+
+> Para la EDO $$a_n y^{(n)}+a_{n-1}y^{(n-1)}+\cdots+a_2 y''+a_1y'+a_0y=0,$$ diremos que $$p(\lambda)=a_n\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_2 \lambda^2+a_1\lambda+a_0$$ se le conoce como el _polinomio auxiliar_ de la EDO. <br/><br/>
+
+---
+## Funciones raíz
+
+__Lemma:__ Si $\lambda_i$ es una raíz del polinomio auxiliar $p(x),$ entonces la función $y(x)=e^{\lambda_i x}$ es una solución de la EDO lineal de coeficientes constantes.
+
+---
+
+## Tipos de raíz-función
+
+> Supongamos que $\lambda$ es una raíz del polinomio auxiliar $p(x)$ para una EDO lineal de coeficientes constantes. Entonces: <br/><br/>
+  1. Si $\lambda$ es real sin multiplicidad, entonces la función auxiliar es $y_\lambda(x)=e^{\lambda x}.$
+  2. Si $\lambda$ es complejo, entonces las funciones $y_\lambda$ y $y_{\overline{\lambda}}$ se cambian por $$y_{r}=e^{Re(\lambda)}\cos(Im(\lambda)x)\quad \mbox{y}\quad y_{i}=e^{Re(\lambda)}\sin(Im(\lambda)x)$$
+  3. Si $\lambda$ es real con multiplicidad $k,$ entonces hay $k$ funciones asociadas a $\lambda$ y son $$y_1=e^{\lambda x},\, y_2=xe^{\lambda x},\, y_3=x^2e^{\lambda x},\cdots, y_k=x^{k-1}e^{\lambda x}.$$
+  
+  
+__Teorema:__ La solución general de una EDO lineal con coeficientes constantes es la superposición de las funciones asociadas a las raíces.
+---
+
+#### Ejemplo 1:
+
+> Encuentre la solución general de $$2y''-5y'-3y=0.$$
+
+
+---
+
+#### Ejemplo 2:
+
+> Encuentre la solución general de $$y'''-10y''+25y'=0.$$
+
+---
+
+#### Ejemplo 3:
+
+> Encuentre la solución general de $$y''+4y'+7y=0.$$
+
+---
+
+#### Ejemplo 4:
+
+> Encuentre la solución general de $$y^{(4)}+2y''+y=0.$$

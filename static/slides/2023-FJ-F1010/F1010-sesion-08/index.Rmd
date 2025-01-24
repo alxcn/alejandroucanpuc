@@ -1,0 +1,122 @@
+---
+title: "Ecuación de Cauchy-Euler"
+subtitle: "Sesión 08"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introduciremos la EDO de Cauchy-Euler. <br/><br/>
+* Describiremos la solución de una EDO de Cauchy-Euler. <br/><br/>
+* Describiremos los tipos de soluciones para el polinomio auxiliar.
+
+
+---
+# La EDO de Cauchy-Euler
+
+> Consideremos la EDO no lineal no homogénea $$a_nx^n y^{(n)}+a_{n-1}x^{n-1}y^{(n-1)}+\cdots a_1xy'+a_0y=g(x).$$
+
+<br/><br/>
+Consideremos que nuestras soluciones van a estar definidas en el intervalo $I=(0,\infty)$ y son de la forma $y=x^m,$ esto es por que $$y^{(k)}=(x^m)^{(k)}=m(m-1)(m-1)\cdots(m-k+1)x^{m-k}$$ por lo que cuando $$a_kx^ky^{(k)}=a_k(m)(m-1)\cdots(m-k+1)x^m.$$
+
+Por lo que al final, todo queda en terminos de $x^m.$
+
+---
+## La EDO de orden 2.
+
+> Queremos resolver $$ax^2y''+bxy'+ cx=0.$$ Suponiendo que $y=x^m,$ entonces $$am(m-1)x^m+bmx^m+cx^m=(am^2+(b-a)m+c)x^m$$
+
+<br/><br/>
+Como $x^m$ no es cero, entonces $$am^2+(b-a)m+c=0$$ cuyas soluciones son: $$m_{1,2}=\frac{(a-b)\pm \sqrt{(b-a)^2-4ac}}{2a}.$$
+
+---
+### Raíces distintas
+
+> Si $m_i$ son dos raíces reales distintas, entonces $y_1=x^{m_1}$ y $y_2=x^{m_2}$ es nuestro conjunto de soluciones, por lo que la solución general es: $$y=c_1x^{m_1}+c_2x^{m_2}.$$
+
+#### Ejemplo 1:
+
+> Encuentre la solución general de  $x^2y''-2xy'-4y=0.$ 
+
+--
+
+<br/><br/>
+Mi poliniomio auxiliar es $$m^2-3m-4=0$$ cuyas soluciones son $m=-1$ y $m=4,$ por lo que la solución general $$y=c_1x^{-1}+c_2x^4.$$
+
+---
+### Raíces repétidas
+
+> Si mi polinomio auxiliar tiene solución $m=\frac{a-b}{2a},$ y una solución es $y=x^m.$ Para encontrar la otra solución usaremos reducción de orden. Obteniendo que $$y_2=x^m\ln(x).$$ <br/><br/> Por lo que la solución general es $$y=c_1x^m+c_2x^m\ln(x).$$
+
+---
+#### Ejemplo 2:
+
+> Encuentre la solución de $4x^2y''+8xy'+y=0,$
+
+
+--
+<br/><br/>
+
+cuya polinomio auxliar es $$4m^2+4m+1=0$$ y sus solución es $m=\frac{-1}{2}.$ Así que la solución general es: $$y=c_1x^{-1/2}+c_2x^{-1/2}\ln(x).$$
+
+---
+### Raíces conjugadas
+
+> Suponiendo que mi polinomio tiene raíces complejas conjugadas: $m=a+ib$ con $b>0.$ Entonces la solución es $$y=x^m=x^{a+ib}$$ pero tenemos que reescribir la parte compleja de esta función $$x^{ib}=(e^{\ln x})^{ib}=cos(b\ln x)+i\sin(b\ln x)$$ por lo que la solución general es: $$y=x^a(c_1\cos (b\ln x)+c_2\sin(b\ln x)).$$
+
+---
+#### Ejemplo 3:
+
+> Encuentra la solución a $4x^2y''+17y=0.$
+
+--
+
+<br/><br/> El polinomio auxiliar es $4m^2-4m+17=0$ cuyas raíces son $m=\frac{1}{2}\pm 2i.$ Por lo que la solución general es $$y=x^{1/2}(c_1\cos(2\ln x)+c_2\sin(2\ln x)).$$
+
+
+
+

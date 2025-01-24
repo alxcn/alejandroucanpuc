@@ -1,0 +1,125 @@
+---
+title: "Álgebra Lineal Aplicada"
+subtitle: "Repaso"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+
+# Objetivos de la Sesión
+
+* Ejemplos de cómo aplicar los conceptos de Álgebra Lineal en contextos ingenieriles.
+
+---
+# Determinar el Espacio Vectorial Adecuado
+
+> *¿Qué espacio vectorial modela los siguientes datos?*
+
+<br/>
+**Ejemplo 1:** En una empresa guardamos la información de los empleados en una tabla con las siguientes columnas: `Edad`,`Horas trabajadas` ,`Salario`. ¿Qué espacio vectorial puede sernos de utilidad para modelar esta información? <br/><br/>
+
+--
+Recordemos que tanto la Edad, las horas trabajadas, como el salario son cantidades reales, y por cada empleado tenemos tres datos. Por lo tanto, el espacio que modela estos datos es $\mathbb{R}^3$.
+
+---
+# Determinar el Espacio Vectorial Adecuado
+
+**Ejemplo 2:** Una empresa dedicada a la venta de productos electrónicos tiene una tabla con la información de los productos que vende. Cada fila de la tabla contiene la siguiente información: `Precio`, `Cantidad vendida`, `Ganancia`. ¿Qué espacio vectorial puede sernos de utilidad para modelar esta información? <br/><br/>
+
+**Ejemplo 3:** Una empresa dedicada a la investigación de fármacos, tiene una tabla con la información de los fármacos que ha desarrollado. Cada fila de la tabla contiene la siguiente información: `Costo de producción`, `Precio de venta`, `Ganancia`, `volumen producido`,`cantidad compuesto A`, `cantidad compuesto B`, `cantidad compuesto C`. ¿Qué espacio vectorial puede sernos de utilidad para modelar esta información? <br/><br/>
+
+
+---
+# Determinar el Espacio Vectorial Adecuado
+
+**Ejemplo 4:** Una empresa dedicada a la producción automotriz, tiene diferentes tablas con la información de cada auto que produce en diferentes plantas durante meses distintos. Cada fila de la tabla contiene la siguiente información: `Costo de producción`, `Precio de venta`, `Ganancia`, `volumen producido`,`Tiempo de producción`, y cada fila representa un planta diferente. Si la empresa tiene 5 plantas, ¿Qué espacio vectorial puede sernos de utilidad para modelar esta información? <br/><br/>
+
+**Ejemplo 5:** Una empresa dedicada a la producción de alimentos, tiene una lista de tablas con la información de cada producto producido en diferentes procesadoras en días distintos. Cada fila de la tabla contiene la siguiente información: `volumen`, `cantidad de sodio`, `cantidad de azúcares`, `cantidad de grasas trans`, `calorías` y cada fila representa una procesadora diferente. Si la empresa tiene 10 procesadoras, ¿Qué espacio vectorial puede sernos de utilidad para modelar esta información? <br/><br/>
+---
+# Combinaciones Lineales
+
+> *¿Cómo utilizar las combinaciones lineales para reescribir la información de los datos?*
+
+**Ejemplo 1:** En una empresa contamos con la información de los empleados como `Edad`, `Horas trabajadas`, `Salario`. El estandar es que la edad sea $(21,0,0),$ las horas trabajadas $(0,8,0)$ y el salario $(0,0,1000)$. ¿Cómo se ve la información de un empleado que tiene 25 años, trabaja 10 horas y gana 2000? <br/><br/>
+--
+Usando los vectores de estandarización podemos reescribir la información si resolvemos $$(25,10,2000)=a(21,0,0)+b(0,8,0)+c(0,0,1000)$$ Esto es cuando $a=21/25$, $b=10/8$ y $c=2000/1000$.
+
+---
+# Combinaciones Lineales
+
+**Ejemplo 2:** Un farmaco está conformado con 3 compuestos A, B y C. Nos interesan las propiedades `1`, `2`,`3`y `4`. Si cada compuesto está dado por los vectores $A=(1,0.5,0.3,0.1),\, B=(0.5,0.8,0.2,0.4),\, C=(0.2,0.1,0.5,0.7)$, ¿Qué cantidades de compuesto debo usar si quiere obtener un farmaco tal que las propiedades sean $(4,2.5,1.5,0.5)$? <br/><br/>
+
+**Ejemplo 3:** Las partes de un autómovil necesitan pasar por cuatro procesos con 3 etapas distintas donde se miden los tiempos. Si cada parte está dada por los vectores $P=(1,0.5,0.3),\, Q=(0.5,0.8,0.2),\, R=(0.2,0.1,0.5),\, S=(0.7,0.4,0.6)$, ¿Qué cantidades de parte debo usar si quiero obtener un auto tal que los tiempos sean $(10,12,15)$? <br/><br/>
+
+---
+# Combinaciones Lineales
+
+**Ejemplo 4:** Una empresa dedicada a la producción de alimentos, quiere investigar la cantidad de vitaminas $A,$ $B$ y $C$ que se encuentran en sus productos. Si cada producto tiene tres ingredientes $I_1=(0.1,0.2,0.3),\, I_2=(0.2,0.3,0.1),\, I_3=(0.3,0.1,0.2)$ por cada gramo. ¿Qué cantidades de ingredientes debo usar si quiero obtener un producto tal que las vitaminas sean $(2,3,2)$? <br/><br/>
+
+**Ejemplo 5:** Una empresa de streaming sabe que al reproducir una canción, el usuario consume $0.1$ MB si usa la calidad `baja`, $0.5$ MB si usa la calidad `media` y $1$ MB si usa la calidad `alta`. Si el álgoritmo de streaming propuesto se adapta a la banda del usuario y la canción. ¿Cuántos MB en cada calidad consumira un usuario si escucha las siguientes canciones $A=(0.2,0.2,0.3),\, B=(0.3,0.1,0.2),\, C=(0.1,0.3,0.2)$? <br/><br/>
+
+---
+# Transformaciones Lineales.
+
+> *¿Cómo puedo modificar mi espacio vectorial para obtener información relevante?*
+
+**Ejemplo 1:** Contamos con la información de las horas de trabajo de los empleados en una empresa durante 5 días. Al final de la semana nos interesa saber cuántas horas trabajó cada empleado. ¿Existe una transformacional lineal que nos permita obtener esta información? <br/><br/>
+--
+Si definimos el espacio vectorial $V=\mathbb{R}^5$ donde cada vector representa las horas trabajadas por un empleado en la semana, entonces la transformación lineal $T:V\to \mathbb{R}$ dada por $T(v)=v_1+v_2+v_3+v_4+v_5$ nos permite obtener la información que necesitamos.
+
+---
+# Transformaciones Lineales.
+
+**Ejemplo 2:** Con la información anterior. Si cada día de la semana tiene un costo de hora distinto: $D_1=10$, $D_2=15$, $D_3=20$, $D_4=25$, $D_5=30$. ¿Existe una transformacional lineal que nos permita obtener el costo total de la semana de cada empleado? <br/><br/>
+
+**Ejemplo 3:** ¿Será que el promedio de horas trabajadas sea una transformación lineal? En caso de que sí, ¿Cómo se vería la transformación? <br/><br/>
+
+---
+# Transformaciones Lineales.
+
+**Ejemplo 4:** El Indice de Masa Corporal (IMC) es una medida que se calcula con la fórmula $IMC=\frac{Peso}{Altura^2}$. Si tenemos la información de la altura y el peso de una persona, ¿Existe una transformación lineal que nos permita obtener el IMC? <br/><br/>
+
+**Ejemplo 5:** Una empresa están planeando aplicar a ciertas certificaciones. Para ello necesita que los procesos cumplan ciertos estándares (`A`,`B`,`C`). El equipo de Logística determinó que los estándares se relacionan en uno sólo `D` tal que $D=0.3A+0.5B-0.2C$. ¿Para cuales valores de estándares obtenemos una calificación de $D$ igual a 0? <br/><br/>

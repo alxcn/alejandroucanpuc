@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Variación de Parámetros</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-11-07" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xe16425827d24d9aa02b1f1f029f6490","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Variación de Parámetros
+]
+.subtitle[
+## Sesión 04 - Módulo 1
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-11-07
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos 
+
+* Deducir el método de Variación de Parámetros. &lt;br/&gt;&lt;br/&gt;
+* Aplicar el método de Variación de Parámetros. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Matriz Fundamental
+
+Dado un SEDO lineal homogéneo de primer orden `\(\mathbf{X}'=\mathbf{A}\mathbf{X}\)` con `\(n-\)`incognitas, y sean `\(\mathbf{X}_1, \mathbf{X}_2, \ldots, \mathbf{X}_n\)` soluciones linealmente independientes del SEDO.
+
+&gt; **Definición:** La matriz cuyas columnas son las soluciones `\(\mathbf{X}_1, \mathbf{X}_2, \ldots, \mathbf{X}_n\)` se llama **Matriz Fundamental** y se denota por `\(\mathbf{\Phi}(t)=[\mathbf{X}_1, \mathbf{X}_2, \ldots, \mathbf{X}_n]\)`.
+
+&lt;br/&gt;&lt;br/&gt;
+
+* La matriz fundamental es no-singular.
+* La matriz fundamental satisface la ecuación `\(\mathbf{\Phi}'(t)=\mathbf{A}\mathbf{\Phi}(t)\)`.
+
+---
+# Método de Variación de Parámetros
+
+Supongamos que `\(\mathbf{X}'=\mathbf{A}\mathbf{X}+\mathbf{g}(t)\)` es un SEDO lineal no-homogéneo de primer orden con `\(n-\)`incognitas. Asumamos que una solución particular de la ecuación es $\mathbf{X}_p(t)=\mathbf{\Phi}(t)\mathbf{u}(t).$$
+
+
+---
+# Método de Variación de Parámetros
+
+&gt; Entonces, la solución particular `\(\mathbf{X}_p(t)\)` se obtiene al calcular `$$\mathbf{X}_p(t)=\mathbf{\Phi}(t)\int \mathbf{\Phi}^{-1}(t)\mathbf{g}(t)dt$$` donde la integral se hace entrada a entrada.
+&lt;br/&gt;&lt;br/&gt;
+ Y la solución general al SEDO lineal no-homogéneo es `$$\mathbf{X}(t)=\mathbf{X}_c(t)+\mathbf{X}_p(t)$$` donde `\(\mathbf{X}_c(t)\)` es la solución general al SEDO lineal homogéneo asociado.
+
+
+---
+#### Ejemplo 1: 
+
+Encuentra la solución general al sistema lineal no-homogéneo `\(\mathbf{X}'=\mathbf{A}\mathbf{X}+\mathbf{g}(t)\)` donde `\(\mathbf{A}=\begin{bmatrix} -3 &amp; 1 \\ 2 &amp; -4 \end{bmatrix}\)` y `\(\mathbf{g}(t)=\begin{bmatrix} 3t \\ e^{-t} \end{bmatrix}\)`.
+
+---
+#### Ejemplo 2: 
+
+Encuentra la solución general al sistema lineal no-homogéneo `\(\mathbf{X}'=\mathbf{A}\mathbf{X}+\mathbf{g}(t)\)` donde `\(\mathbf{A}=\begin{bmatrix} 1 &amp; 3 \\ 3 &amp; 1 \end{bmatrix}\)` y `\(\mathbf{g}(t)=\begin{bmatrix} -2t^2 \\ t+5 \end{bmatrix}\)`.
+
+---
+#### Ejemplo 3: 
+
+Encuentra la solución general al sistema lineal no-homogéneo `\(\mathbf{X}'=\mathbf{A}\mathbf{X}+\mathbf{g}(t)\)` donde `\(\mathbf{A}=\begin{bmatrix} 12 &amp; 1 \\ 27 &amp; 18 \end{bmatrix}\)` y `\(\mathbf{g}(t)=\begin{bmatrix} -3e^{t} \\ 10e^{t} \end{bmatrix}\)`.
+
+---
+# ¿Qué pasa en el caso cuando tenemos condiciones iniciales?
+
+Supongamos que mi sistema `\(\mathbf{X}'=\mathbf{A}\mathbf{X}+\mathbf{g}(t)\)` tiene condiciones iniciales `\(\mathbf{X}(t_0)=\mathbf{X}_0\)`. 
+
+&lt;br/&gt;&lt;br/&gt; 
+
+Notemos que `$$\mathbf{X}_0=\mathbf{\Phi}(t_0)\mathbf{C} \Rightarrow \mathbf{C}=\mathbf{\Phi}^{-1}(t_0)\mathbf{X}_0$$` donde `\(\mathbf{C}\)` es el vector de constantes. Además `$$X_p(t)=\mathbf{\Phi}(t)\int_{t_0}^t \mathbf{\Phi}^{-1}(t)\mathbf{g}(t)dt$$`
+
+---
+#### Ejemplo 4: 
+
+Encuentra la solución general al sistema lineal no-homogéneo `\(\mathbf{X}'=\mathbf{A}\mathbf{X}+\mathbf{g}(t)\)` donde `\(\mathbf{A}=\begin{bmatrix} -1 &amp; -2 \\ 3 &amp; 4 \end{bmatrix}\)` y `\(\mathbf{g}(t)=\begin{bmatrix} 3 \\ 3 \end{bmatrix}\)`, sujeto a `\(\mathbf{X}(0)=\begin{bmatrix} -4 \\ 5 \end{bmatrix}\)`.
+
+---
+#### Ejemplo 1: 
+
+Encuentra la solución general al sistema lineal no-homogéneo `\(\mathbf{X}'=\mathbf{A}\mathbf{X}+\mathbf{g}(t)\)` donde `\(\mathbf{A}=\begin{bmatrix} 1 &amp; -1 \\ 1 &amp; -1 \end{bmatrix}\)` y `\(\mathbf{g}(t)=\begin{bmatrix} 1/t \\ 1/t \end{bmatrix}\)`, sujeto a `\(\mathbf{X}(1)=\begin{bmatrix} 1 \\ 1 \end{bmatrix}\)`.
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

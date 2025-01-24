@@ -1,10 +1,10 @@
-baseURL = "/"
+baseURL = "https://alejandro-ucan.netlify.app/"
 theme = "hugo-apero"
 languageCode = "en"
-title = "Personal website of Emily Cooper"
-author = "Emily Cooper"
+title = "Personal website of Alejandro Ucan-Puc"
+author = "Alejandro Ucan-Puc"
 copyright = "" # set to override the auto generated copyright using org info and now year
-googleAnalytics = ""
+googleAnalytics = "G-5HZK1LYQBX"
 disqusShortname = ""
 metaDataFormat = "yaml"
 footnoteReturnLinkContents = "&#8617;" # ↩
@@ -21,19 +21,19 @@ enableEmoji = true
     hardwraps = false 
   [markup.tableOfContents]
     startLevel = 2
-    endLevel = 2
+    endLevel = 6
     ordered = false
   [markup.highlight]
     # one of: https://xyproto.github.io/splash/docs/ 
     style = "github"
     
 [params]
-  orgName = "RStudio"
-  orgLocal = "Anywhere"
-  description = "A modern, beautiful, and easily configurable blog theme for Hugo."
+  orgName = "Alejandro Ucan-Puc"
+  orgLocal = ""
+  description = "A personal website."
   favicon = "/img/favicon.ico"
-  logo = "/img/blogophonic-mark-dark.png"
-  mainSections = ["blog", "project", "talk"]
+  logo = "/img/au.png"
+  mainSections = ["about", "teaching"]
   navallcaps = true
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]
@@ -41,14 +41,14 @@ enableEmoji = true
   socialInFooter = true
   # Default image for social sharing and search engines. 
   # Place image file in `static` folder and specify image name here.
-  sharing_image = "/img/papillons.jpg"
+  sharing_image = "/img/au.png"
   # Twitter username (without @). Used when a visitor shares your site on Twitter.
-  twitter = "apreshill"
+  #twitter = "apreshill"
   
   # use a built-in color theme
   # one of: forest / grayscale / peach / plum /
   #         poppy / sky / violet / water 
-  theme = "violet"
+  theme = "sky"
   
   # or, leave theme empty & make your own palette
   # see docs at https://hugo-apero.netlify.app/blog/color-themes/
@@ -76,23 +76,23 @@ enableEmoji = true
   [[params.social]]
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://github.com/apreshill/apero"
-  [[params.social]]
-      icon      = "facebook-square" # icon name without the 'fa-'
-      icon_pack = "fab"
-      url       = "https://www.facebook.com/hashtag/ap%C3%A9ro"
+      url       = "https://github.com/alxcn"
+  #[[params.social]]
+  #    icon      = "facebook-square" # icon name without the 'fa-'
+  #    url       = "https://www.facebook.com/hashtag/ap%C3%A9ro"
+  #    icon_pack = "fab"
   [[params.social]]
       icon      = "instagram" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://www.instagram.com/explore/tags/apero/"
+      url       = "https://www.instagram.com/i.rracionalx/"
+  #[[params.social]]
+  #    icon      = "arxiv" # icon name without the 'fa-'
+  #    icon_pack = "ai"
+  #∫    url       = ""
   [[params.social]]
-      icon      = "twitter" # icon name without the 'fa-'
-      icon_pack = "fab"
-      url       = "https://twitter.com/hashtag/apéro"
-  [[params.social]]
-      icon      = "rss" # icon name without the 'fa-'
-      icon_pack = "fas"
-      url       = "/blog/index.xml"
+      icon      = "orcid" # icon name without the 'fa-'
+      icon_pack = "ai"
+      url       = "https://orcid.org/my-orcid?orcid=0000-0002-0037-9394"
 
 [taxonomies]
   category = "categories"
@@ -102,43 +102,43 @@ enableEmoji = true
 [menu]
   [[menu.header]]
     name = "About"
-    title = "About Blogophonic"
+    title = "About Me"
     url = "/about/"
     weight = 1
   [[menu.header]]
-    name = "Blog"
-    title = "Blog"
-    url = "/blog/"
+    name = "Papers & Preprints"
+    title = "papers"
+    url = "/papers/"
     weight = 2
   [[menu.header]]
-    name = "Projects"
-    title = "Project Portfolio"
-    url = "/project/"
+    name = "I.rracionalx"
+    title = "i.rracionalx"
+    url = "/i.rracionalx/"
     weight = 3
   [[menu.header]]
-    name = "Talks"
-    title = "Talks"
-    url = "/talk/"
+    name = "Teaching"
+    title = "Teaching Information"
+    url = "/teaching/"
     weight = 4
-    
-  # Configure footer  
-  [[menu.footer]]
-    name = "License"
-    title = "License"
-    url = "/license/"
-    weight = 1
-  [[menu.footer]]
-    name = "Contact"
-    title = "Contact form"
-    url = "/contact/"
-    weight = 2
+  [[menu.header]]
+    name = "Courses"
+    title = "Courses"
+    url = "/courses/"
+    weight = 5
+  [[menu.header]]
+    name = "Projects"
+    title = "Research Projects"
+    url = "/project/"
+    weight = 6
+
+  
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
 [privacy]
   [privacy.disqus]
     disable = false
   [privacy.googleAnalytics]
-    disable = false
+    disable = true
     anonymizeIP = true
     respectDoNotTrack = true
   [privacy.instagram]
@@ -155,4 +155,3 @@ enableEmoji = true
   [privacy.youtube]
     disable = false
     privacyEnhanced = true
-

@@ -1,0 +1,122 @@
+---
+title: "Sistemas de EDOs lineales"
+subtitle: "Sesión 06"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Conocer diferentes problematicas que involucran sistemas de EDOs. <br/><br/>
+* Conocer la forma matricial de un sistema de EDOs. <br/><br/>
+* Estudiar la solución (vector de funciones) de un sistema. 
+
+---
+# Recordando:
+
+> Recordemos que si tenemos una población $P(t),$ su crecimiento puede ser modelado mediante la ecuación diferencial $$\frac{dP}{dt}=kP,$$ <br/><br/> de igual manera podemos considerar la presencia de una fracción de inmigrantes (por el momento constante) $$\frac{dP}{dt}=kP-r.$$ <br/><br/>
+Realmente sabemos que la población que inmigra no es constante en el tiempo, así que el modelo anterior no es tan real.
+
+---
+# Un modelo más real
+
+> Nuestro modelo sería más realista si $R(t)$ define la población de inmigrantes en el tiempo $t,$ $$\frac{dP}{dt}=kP-R,$$ y si además tenemos información del crecimiento de la población inmigrante, por ejemplo $$\frac{dR}{dt}=sR.$$ <br/><br/> 
+Entonces el modelo sería $$\frac{dP}{dt}=kP-R,$$ $$\frac{dR}{dt}=sR.$$
+
+---
+# Sistema de EDOs lineales
+
+> Un sistema de ecuaciones diferenciales es un par de EDOs que involucran dos funciones variables, de la forma general $$\frac{dx}{dt}=g_1(t,x,y)$$ $$\frac{dy}{dt}=g_2(t,x,y)$$ y si pedimos que sean lineales las ecuaciones entonces $$g_1(t,x,y)=c_1x+c_2y+f_1(t)$$ $$g_2(t,x,y)=k_1 x+k_2y+f_2(t).$$
+
+---
+# Sistema Predador-Presa
+
+> Supongamos que tenemos dos especies que interactuan en un ecosistemas $x(t)$ y $y(t),$ de donde $x(t)$ es extrictamente vegetariana y $y(t)$ carnivora (consume a $x(t)$) entonces $$\frac{dy}{dt}=-ay+bxy$$ $$\frac{dx}{dt}=cx-dxy.$$ Este modelo se conoce como el __Lotka-Volterra para predador-presa.__
+
+---
+# ¿Cómo se ve?
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Ejempo de Soluciónes"}
+knitr::include_graphics("https://strimas.com/post/2017-10-13-lotka-volterra/index_files/figure-html/time-plot-1.png")
+```
+---
+# Sistema de EDOs lineales
+
+> Consideremos el siguiente sistema de EDOS lineales de $n$ ecuaciones con $n$ incognitas: $$ \begin{array}{ccc} a_{11} x_1 + a_{12} x_2 +\cdots + a_{1n} x_n +f_1(t)&=& x'_1 \\ a_{12} x_1 + b_{22} x_2 +\cdots + a_{2n} x_n +f_2(t) &=& x'_2 \\ \vdots & = & \vdots \\ a_{n1} x_1 + a_{n2} x_2 +\cdots + a_{nn} x_n +f_n(t)&=& x'_n \\ \end{array}$$  
+
+---
+## Versión matricial 
+
+> La expresión anterior se puede expresar de forma matricial: 
+
+$$\left(\begin{array}{c} x'_1 \\ x'_2 \\ \vdots \\ x'_n \end{array}\right) =\left(\begin{array}{c} a_{11} & a_{12} & \ldots & a_{1n}\\ a_{21} & a_{22} & \ldots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots  \\ a_{n1} & a_{n2} & \ldots & a_{nn} \end{array}\right) \left(\begin{array}{c} x_1 \\ x_2 \\ \vdots \\ x_n \end{array}\right)+ \left(\begin{array}{c} f_1(t) \\ f_2(t) \\ \vdots \\ f_n(t) \end{array}\right)$$
+$$ X' = A X+F$$
+
+---
+# ¿Cómo se ve la solución?
+
+> La solución de un sistema es un vector $$X=\left(\begin{array}{c} x_1(t) \\ x_2(t) \\ \vdots \\ x_n(t) \end{array}\right)$$ que satisface las ecuaciones anteriores.
+
+---
+# Ejemplo
+
+> Verifique que el siguiente vector $$\left(\begin{array}{c} e^{-2t} \\ -e^{-2t}  \end{array}\right)$$ es resultado del sistema $$X'=\left(\begin{array} 1 & 3 \\ 5 & 3 \end{array}\right) X$$ y también $$\left(\begin{array}{c} 3e^{6t} \\ 5e^{6t}  \end{array}\right)$$
+
+---
+# Superposición e Independencia Lineal
+
+> En un sistema de EDOs homogéneas, si $X_1$ y $X_2$ son soluciones, para cualquier número reales $c_1$ y $c_2,$ entonces $$c_1 X_1 + c_2 X_2$$ también es solución. <br/><br/> 
+__Definición:__ decimos que las soluciones $X_1, \, X_2,\, \cdots,\, X_n$ son __linealmente indepentiendes__ si la unica combinación $$c_1 X_1+c_2 X_2+\cdots + c_n X_n=0$$ entonces $c_1=c_2=\cdots=c_n=0.$
+
+---
+## Ejemplo:
+
+> En el ejemplo anterior, los vectores solución $$X_1=\left(\begin{array}{c} e^{-2t} \\ -e^{-2t}  \end{array}\right)\quad \mbox{y} \quad \left(\begin{array}{c} 3e^{6t} \\ 5e^{6t}  \end{array}\right)$$ son linealmente independientes.
+
+---
+## Actividad:
+
+> Compruebe que las funciones vectores $$X_1=\left(\begin{array}{c} \cos(t) \\ \frac{-\cos(t)}{2}+\frac{\sin(t)}{2}\\ -\cos(t)-\sin(t) \end{array}\right) \mbox{ y } \left(\begin{array}{c} 0 \\ e^t \\ 0  \end{array}\right)$$ es un conjunto solución linealmente independiente para el sistema $$X'=\left(\begin{array}{ccc} 1 & 0 & 1 \\ 1 & 1 & 0 \\ -2 & 0 & -1\end{array}\right) X$$

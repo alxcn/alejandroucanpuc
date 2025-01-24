@@ -1,0 +1,113 @@
+---
+title: "2do Teorema de Traslación"
+subtitle: "Sesión 12"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+
+# Objetivos de la Sesión
+
+* Introduciremos el 2do teorema de Traslación. <br/><br/>
+* Aplicaremos el 2do teorema de traslación en el cálculo de transformadas. <br/><br/>
+* Aplicaremos este teorema a la solución de EDOs.
+---
+# Requisitos:
+<br/><br/>
+
+> La función paso unitario en $a$ se denota como $u_a(t)$ y se define como $$u_a(t)=\left\{\begin{array}{cc} 0, & 0\leq t < a \\ 1, t\geq a \end{array} \right.$$
+
+<br/><br/>
+¿Cómo afecta la función paso unitario a funciones? 
+
+
+
+
+---
+# 2do Teorema de Traslación
+
+> __Teorema:__ Sea $f(t)$ una función tal que $\mathcal{L}\{f(t)\}=F(s)$ exista. Entonces se cumple que $$\mathcal{L}\{f(t-a)u_a(t)\}=e^{-as}F(s).$$
+
+<br/><br/>
+> _Implicaciones del Teorema:_ ahora cada que calculemos la transformada de una función trasladada esto se ve como un factor exponencial en su transformada original.
+
+---
+## Aplicando el teorema:
+
+### Ejemplo (Cálculo directo):
+
+> Calcule las siguientes transformadas de Laplace: $\mathcal{L}\{\cos(t)u_{\pi}(t)\}$ y $\mathcal{L}\{(-3t^4+t^3)u_{3}(t)\}.$
+
+---
+### Ejemplo (Cálculo directo):
+
+> Calcule las transformadas de Laplace inversa de $F(s)=\frac{1}{s-4}e^{-2s},$ $F(s)=\frac{s}{s^2+9}e^{-\pi s/2}.$
+
+
+---
+### Ejemplo (Cálculo Directo)
+
+> Calcule la transfromada de Laplace Inversa de $$F(s)=\frac{e^{-s}}{s(s^2-4)}.$$
+
+---
+### Ejemplo (Solución de EDOs):
+
+> Encuentre la solución de $$y'+y=f(t),\quad y(0)=0,\quad f(t)=\left\{\begin{array}{cc} 0, & 0\leq t < 1 \\ 5, & t\geq 1 \end{array}\right.$$ 
+
+---
+### Ejemplo (Solución de EDOs):
+
+> Encuentre la solución de $$y'+y=f(t),\quad y(0)=5,\quad f(t)=\left\{\begin{array}{cc} 0, & 0\leq t <\pi \\ 3\cos(t), & t\geq \pi \end{array}\right.$$ 
+
+---
+### Ejemplo (Solución de EDOs):
+
+> Encuentre la solución de $$y''+4y=sin(t)u_{2\pi}(t),\quad y(0)=1,\quad y'(0)=0.$$ 
+
+---
+## Actividad
+
+> Encuentre la solución de $$y''-5y'+6y=u_1(t),\quad y(0)=0,\quad y'(0)=1$$ 

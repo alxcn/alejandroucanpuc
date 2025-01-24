@@ -1,0 +1,188 @@
+---
+title: "Definite Integram and Fundamental Theorem of Calculus"
+subtitle: "Session 12"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+
+# Goals
+
+* The problem of area bounded by a curve and the x-axis. <br/><br/>
+* Riemann sums and the approximation of the area. <br/><br/>
+* The definite integral and the Fundamental Theorem of Calculus. <br/><br/>
+
+---
+# Motivation:
+
+Imagine that you have a piece of land with a shape that is not easy to calculate the area, but you know that the irregular side follows the graph of a given fucntion $f(x)$. We can approximate the value of the area by dividing the land into small rectangles and summing the areas of these rectangles. To ease our calculations, we can assume that the rectangles has base in a regular side and the height is the value of the function at the initial point of the base.
+
+
+---
+# Riemann Sums
+
+## Interval partitions
+
+> __Definition:__ Let $[a,b]$ be an interval. A partition of $[a,b]$ is a finite set of points $P=\{x_0,x_1,\ldots,x_n\}$ such that $a=x_0<x_1<\ldots<x_n=b.$ 
+<br/><br/> The length of the subinterval $[x_{i-1},x_i]$ is denoted by $\Delta x_i=x_i-x_{i-1}.$
+
+<br/><br/><br/>
+__Remark:__ Note that the length of the subintervals are not necessarily equal. In the case were all subintervals have the same length, we say that the partition is __regular__.
+
+---
+#### Example
+
+1. Let $[a,b]=[0,1]$ and $P=\{0,0.2,0.5,0.8,1\}.$ Then $\Delta x_1=0.2,$ $\Delta x_2=0.3,$ $\Delta x_3=0.3,$ $\Delta x_4=0.2.$ <br/><br/>
+
+1. Let $[a,b]=[0,1]$ and $P=\{0,0.25,0.5,0.75,1\}.$ Then $\Delta x_1=0.25,$ $\Delta x_2=0.25,$ $\Delta x_3=0.25,$ $\Delta x_4=0.25.$ <br/><br/>
+
+1. Let $[-10,5]$ and $P=\{-10,-5,0,5\}.$ Then $\Delta x_1=5,$ $\Delta x_2=5,$ $\Delta x_3=5.$ <br/><br/>
+
+---
+#### Practice
+
+1. Find a regular partition of $[0,1]$ with 10 subintervals. <br/><br/>
+1. Find a partition of $[0,1]$ with three subintervals. <br/><br/>
+1. Find a regular partition of $[-1,1]$ with 5 subintervals. <br/><br/>
+1. Find a regular partition of $[-1,1]$ with 10 subintervals. <br/><br/>
+1. Find a partition of $[-10,0]$ with 6 subintervals. <br/><br/>
+1. Find a partition of $[-1,10]$ with 7 subintervals. <br/><br/>
+
+---
+## Riemann sums
+
+> __Definition:__ Let $f:[a,b]\to\mathbb{R}$ be a function and $P=\{x_0,x_1,\ldots,x_n\}$ be a partition of $[a,b].$ <br/><br/> The Riemann sum of $f$ with respect to $P$ is defined as $$S(f,P)=\sum_{i=1}^n f(c_i)\Delta x_i,$$ where $c_i\in[x_{i-1},x_i].$
+
+<br/><br/><br/>
+__Remark:__ Note that the Riemann sum is a weighted sum of the values of the function $f$ at the points $c_i.$ If $c_i=x_{i-1}$ then we call it a __left sum__, if $c_i=x_i$ then we call it a __right sum__, and if $c_i$ is the middle point in $[x_{i-1},x_i]$ then we call it a __middle sum__.
+
+---
+#### Example
+
+1. Let $f(x)=x^2$ and $P=\{0,0.2,0.5,0.8,1\}.$ Compute the left sum, the right sum, and the middle sum. <br/><br/>
+--
+<br/><br/>
+  * Then $S(f,P)=0^2\cdot 0.2+0.2^2\cdot 0.3+0.5^2\cdot 0.3+0.8^2\cdot 0.2=0.3.$ <br/><br/>
+  * Then $S(f,P)=0.2^2\cdot 0.2+0.5^2\cdot 0.3+0.8^2\cdot 0.3+1^2\cdot 0.2=0.5.$ <br/><br/>
+  * Then $S(f,P)=0.1^2\cdot 0.2+0.4^2\cdot 0.3+0.7^2\cdot 0.3+0.9^2\cdot 0.2=0.41.$ <br/><br/>
+
+---
+#### Example
+
+1. Let $f(x)=9-x^2$ and $P=\{0,0.25,0.5,0.75,1\}.$ Compute the left sum, the right sum, and the middle sum. <br/><br/>
+--
+<br/><br/>
+  * Then $S(f,P)=(9-0^2)\cdot 0.25+ (9-0.25^2)\cdot 0.25+(9-0.5^2)\cdot 0.25+(9-0.75^2)\cdot 0.25=8.78125.$ <br/><br/>
+  * Then $S(f,P)=(9-0.25^2)\cdot 0.25+(9-0.5^2)\cdot 0.25+(9-0.75^2)\cdot 0.25+(9-1^2)\cdot 0.25=8.53125.$ <br/><br/>
+  * Then $S(f,P)=(9-0.125^2)\cdot 0.25+(9-0.375^2)\cdot 0.25+(9-0.625^2)\cdot 0.25+(9-0.875^2)\cdot 0.25=8.65625.$ <br/><br/>
+
+---
+#### Practice
+
+1. Let $f(x)=x^2-3x+5$ over the interval $[0,3].$ Compute the left, right and middle Riemann sum with a regular partition made of 5 subintervals. <br/><br/>
+
+---
+# Definite Integral
+
+> __Definition:__ Let $f$ be a function defined on the interval $[a,b]$. The definite integral of $f$ from $a$ to $b$ is defined as the limit of a Riemann sum when we increase the number of subintervals in a partition. In symbols $$\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^*) \Delta x_i$$ provided that this limit exists and gives the same value for all possible choices of sample points $x_i^*$ in the subintervals $[x_{i-1}, x_i]$.
+
+---
+## Some conventions:
+
+* We will only use regular partitions but the definition is valid for any kind of partition. <br/><br/>
+* We will only consider left Riemann sums, but this computation is also valid for right and middle sums. <br/><br/>
+* We will use the notation $\Delta x = \frac{b-a}{n}$ and $x_i = a + i \Delta x$.
+
+---
+#### Example 1:
+
+1. Compute the definite integral $\int_0^1 x dx$ using the definition. <br/><br/>
+
+--
+Let's start by computing the Riemann sum for $n$ subintervals. The length of the subintervals is given by $\Delta x= \frac{1-0}{n}$ and the left points are $$x_j=0 + j \Delta x = \frac{j}{n}$$ for $j=0,1,2,\ldots,n$. The Riemann sum is given by $$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n \frac{j}{n} \frac{1}{n} = \frac{1}{n^2} \sum_{j=1}^n j = \frac{1}{n^2} \frac{n(n+1)}{2} = \frac{n+1}{2n}$$ <br/><br/>
+
+Let's take the limit in the number of intervals: $$\lim_{n \to \infty} \frac{n+1}{2n} = \frac{1}{2}.$$
+
+---
+#### Example 2:
+
+1. Compute the definite integral $\int_1^4 4x+3 dx$ using the definition. <br/><br/>
+
+--
+Let's start by computing the Riemann sum for $n$ subintervals. The length of the subintervals is given by $\Delta x= \frac{1-{-1}}{n}$ and the left points are $$x_j=-1 + j \Delta x = -1 + \frac{j}{n}$$ for $j=0,1,2,\ldots,n$. The Riemann sum is given by $$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n (4(-1 + \frac{j}{n})+3) \frac{2}{n} = \frac{2}{n} \sum_{j=1}^n (4(-1 + \frac{j}{n})+3) = \frac{2}{n} \sum_{j=1}^n (4-4\frac{j}{n}+3) = \frac{2}{n} \sum_{j=1}^n (7-4\frac{j}{n}) = \frac{2}{n} (7n-4\frac{n(n+1)}{2}) = 7-2\frac{n+1}{n}$$ <br/><br/>
+
+Let's take the limit in the number of intervals: $$\lim_{n \to \infty} 7-2\frac{n+1}{n} = 7-2 = 5.$$
+
+---
+#### Example 3:
+
+1. Compute the definite integral $\int_0^1 x^2 dx$ using the definition. <br/><br/>
+
+--
+Let's start by computing the Riemann sum for $n$ subintervals. The length of the subintervals is given by $\Delta x= \frac{1-0}{n}$ and the left points are $$x_j=0 + j \Delta x = \frac{j}{n}$$ for $j=0,1,2,\ldots,n$. The Riemann sum is given by $$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n \frac{j^2}{n^2} \frac{1}{n} = \frac{1}{n^3} \sum_{j=1}^n j^2 = \frac{1}{n^3} \frac{n(n+1)(2n+1)}{6} = \frac{(n+1)(2n+1)}{6n^2}$$ <br/><br/>
+
+Let's take the limit in the number of intervals: $$\lim_{n \to \infty} \frac{(n+1)(2n+1)}{6n^2} = \frac{2}{3}.$$
+
+---
+# The Fundamental Theorem of Calculus
+
+> __Theorem:__ Let $f$ be a continuous function on the interval $[a,b]$. If $F$ is any antiderivative of $f$, then $$\int_a^b f(x) dx = F(b) - F(a).$$
+
+#### Example 4:
+
+1. Compute the definite integral $\int_0^1 x dx$ using the Fundamental Theorem of Calculus. <br/><br/>
+
+The antiderivative of $x$ is $\frac{x^2}{2}$ and the definite integral is given by $$\int_0^1 x dx = \frac{1^2}{2} - \frac{0^2}{2} = \frac{1}{2}.$$
+
+---
+#### Example 5:
+
+Compute the following definite integrals using the Fundamental Theorem of Calculus.
+
+1. $\int_-1^4 4x+3 dx$ <br/><br/>
+1. $\int_0^1 x^2 dx$ <br/><br/>
+1. $\int_0^3 x^2-3x+5 dx$ <br/><br/>
+1. $\int_1^e \frac{1}{x} dx$ <br/><br/>

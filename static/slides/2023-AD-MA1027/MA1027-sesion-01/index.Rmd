@@ -1,0 +1,204 @@
+---
+title: "Introduction to Business Variables"
+subtitle: "Session 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Session's Goals
+
+ * Understand the concept of variable dependencies. <br/><br/>
+ * Understand the concept of function and its difference with relations. <br/><br/>
+ * Applications of functions in business. <br/><br/>
+
+---
+# Motivation
+
+  __Q1:__ When you go to the gym, on what depends the amount of burned calories? <br/><br/>
+--
+ __Q2:__ When you are uploading a document, on what depends the time it takes to upload? <br/><br/>
+--
+ __Q3:__ When you pay taxes, on what depends the amount of taxes you pay? <br/><br/>
+ 
+---
+# Variable Dependency
+
+> __Definition:__ Given two variables $x$ and $y,$ we say that $y$ _depends_ on $x$ if the value of $y$ is determined by the value of $x.$ <br/><br/> This dependency implies a _relation_ between the possible values of $x$ and $y.$
+
+---
+## Functions
+
+> __Definition:__ A _function_ is a relation between two variables $x$ and $y$ such that for each value of $x$ there is a unique value of $y.$ <br/><br/> We write $y=f(x)$ to denote that $y$ is a function of $x.$
+
+---
+### Parts of a function:
+$$f:D\to R$$ $$x\mapsto y=f(x)$$
+* __Domain:__ the set of all possible values of $x$ that can be inputs of the function. <br/><br/>
+* __Codomain:__ the set of all possible values of $y$ that can be outputs of the function. <br/><br/>
+* __Relation Rule:__ the expression that relates $x$ and $y.$ <br/><br/>
+---
+## Example 1
+
+> The price of a minute call in AT&T cost $0.79$mxn, then the cost of a call of $x$ minutes is given by the function $f(x)=0.79x.$ <br/><br/>
+ * Domain: the set of all positive numbers. <br/><br/> 
+ * Codomain: the set of all positive real numbers. <br/><br/> 
+ * Relation rule: is given by the expression $f(x)=0.79x.$
+
+---
+## Example 2
+
+> The profit of an enterprise depends on time, where its total revenue is $1000t$ and its cost at time $t$ is $300t^2$. <br/><br/>
+* Domain: the set of all positive numbers. <br/><br/>
+* Codomain: the set of all real numbers. <br/><br/>
+* Relation rule: is given by the expression $f(x)=1000t-300t^2.$
+
+---
+## Graph of a function
+
+> __Definition:__ the _graph_ of a function is a visual representation of the function $f,$ where the domain is represented in the horizontal axis and the codomain in the vertical axis, and a point $p$ is drawn at the coordinate $(x,f(x)).$<br/><br/>
+
+---
+## Example 3
+
+> The graph of the function $f(x)=0.79x$ is given by:
+
+```{r, echo=FALSE, fig.cap="Graph of the function $f(x)=0.79x$"}
+library(ggplot2)
+ggplot(data.frame(x=c(0,10)), aes(x)) + 
+  stat_function(fun = function(x) 0.79*x, geom = "line") +
+  labs(x = "Minutes", y = "Cost (mxn)")
+```
+---
+## Example 4
+
+
+```{r, echo=FALSE, fig.cap="Graph of the Temperature as time function"}
+library(ggplot2)
+library(dplyr)
+library(patchwork) # To display 2 charts together
+library(hrbrthemes)
+
+# Build dummy data
+data <- data.frame(
+  day = as.Date("2019-01-01") + 0:99,
+  temperature = runif(100) + seq(1,100)^2.5 / 10000,
+  price = runif(100) + seq(100,1)^1.5 / 10
+)
+
+# Most basic line chart
+p1 <- ggplot(data, aes(x=day, y=temperature)) +
+  geom_line(color="#69b3a2", size=2) +
+  ggtitle("Temperature: range 1-10") +
+  theme_ipsum()
+p1
+```
+---
+## The Supply function
+
+> __Definition:__ the _supply function_ is a function that relates the price of a product with the quantity of the product that is supplied to the market. <br/><br/> $$p=f(q)$$ <br/><br/> where $p$ is the price of the product and $q$ is the quantity of the product.
+
+--
+<br/><br/>
+Notes on Supply function: <br/>
+* The supply function is an increasing function. <br/><br/>
+
+---
+## The Demand function
+
+> __Definition:__ the _demand function_ is a function that relates the price of a product with the quantity of the product that is demanded to the market. <br/><br/> $$p=f(q)$$ <br/><br/> where $p$ is the price of the product and $q$ is the quantity of the product.
+
+--
+<br/><br/>
+Notes on Demand function: <br/>
+* The demand function is a decreasing function. <br/><br/>
+
+---
+### The equilibrium state
+
+> __Definition:__ the _equilibrium state_ is the state where the supply and demand functions intersect.
+
+
+```{r, echo=FALSE, fig.cap="Example of an Equilibrium State"}
+library(ggplot2)
+library(dplyr)
+library(patchwork) # To display 2 charts together
+library(hrbrthemes)
+data <- data.frame(
+  day = as.Date("2019-01-01") + 0:99,
+  temperature = runif(100) + seq(1,100)^2.5/ 10000,
+  price = runif(100) + seq(100,1)^1.5 / 10
+)
+
+coeff <- 10
+
+ggplot(data, aes(x=day)) +
+  
+  geom_line( aes(y=temperature)) + 
+  geom_line( aes(y=price / coeff)) + # Divide by 10 to get the same range than the temperature
+  
+  scale_y_continuous(
+    
+    # Features of the first axis
+    name = "First Axis",
+    
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~.*coeff, name="Second Axis")
+  )
+```
+---
+## The Total Cost function
+
+> __Definition:__ the _total cost function_ is a function that relates the quantity of a product with the total cost of producing that quantity. <br/><br/> $$C=f(q)$$ <br/><br/> where $C$ is the total cost and $q$ is the quantity of the product.
+
+---
+## The Income function
+
+> __Definition:__ the _income function_ represent the total amount of money obtained by selling a product. <br/><br/> $$I=f(q)$$ <br/><br/> where $I$ is the income and $q$ is the quantity of the product.
+
+---
+## The Utility function
+
+> __Definition:__ the _utility function_ is defined as the total income minus the cost functions. <br/><br/> $$U=f(q)$$ <br/><br/> where $U$ is the utility and $q$ is the quantity of the product. <br/><br/> $$U=I-C$$

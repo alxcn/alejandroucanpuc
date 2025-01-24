@@ -1,0 +1,136 @@
+---
+title: "Modelación con Funciones"
+subtitle: "Sesión 10"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=5, fig.height=3.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Describir la función asociada a un problema de la vida real. <br/> <br/>
+ * Determinar quien es la variable dependiente y quien es la variable independiente. <br/> <br/>
+
+---
+# Ejemplo
+
+> Una región rectangular tiene un perímetro de 200m. ¿Cómo expresarián el área de la región en función de uno de sus lados?
+
+![Rectángulo](/Users/koyomi/Documents/Github/alejandro_ucan.github.io/static/slides/2022-04-CalculoDiferencial/AU-sesion-10/rectangle.jpg)
+---
+# ¿Qué podemos hacer en estos casos?
+
+Recordemos que el _área_ de un rectángulo se expresa como $A=xh.$
+<br/><br/>
+Notemos que hasta ahora nuestra área está expresada en dos variables.
+<br/><br/>
+> ¿Qué otro datos se da en el enunciado?
+
+<br/><br/>
+El enunciado indica que el perímetro de la región es 200m, recordemos que el _perímetro_ es $P=2x+2h,$ lo cual significa que: $$x+h=100.$$
+
+---
+# ¿Qué información tenemos?
+
+Contamos con los siguientes datos:
+
+> * Una expresión: $A=xh.$
+* Una ecuación: $x+h=100.$
+
+<br/>
+
+Notemos que de la ecuación podemos despejar una variable, por ejemplo, la $h$ en "función" de $x.$
+
+$$ h= 100-x.$$
+
+Y podemos sustituir el valor de $h$ en nuestra expresión.
+
+$$A=xh=(x)(100-x)=100x-x^2.$$
+
+---
+# Modelación:
+
+El procedimiento anterior es parte de algo que se conoce como __modelación matemática.__ 
+<br/><br/>
+
+Podemos describir la modelación matemática como la traducción de un problema de la vida cotidiana a través de la matemática, ya sean _funciones_, _ecuaciones_, _inecuaciones_, etc. 
+
+> Un _modelo_ es una expresión matemática que describe un problema real.
+<br/><br/>
+En nuestro ejemplo: $A=100x-x^2$ es el modelo para nuestro problema del área de un rectángulo con perímetro 200m.
+
+---
+# ¿Cómo obtengo un modelo para un problema descrito?
+
+Algunos tips:
+
+* Leer detenidamente el problema.
+<br/><br/>
+* Determinar cual es nuestro objetivo (lo que queremos modelar).
+<br/><br/>
+* Determinar los datos que nos da el problema (usualmente son ecuaciones o condiciones sobre el problema).
+<br/><br/>
+* Descifrar la relación entre el objetivo y los datos (usualmente es poner la variable objetivo en terminos de la otra variable).
+
+---
+# Ejemplo 2: 
+
+> El número de vibraciones $(V)$ de una cuerda que vibra es _directamente proporcional_ a la raíz cuadrada de la tensión $T$ a la que se encuentre. Una cuerda particular vibra a 864 vibraciones por segundo sometida a una tension de 24kg.
+
+<br/><br/>
+* Objetivo:
+<br/><br/>
+* Datos:
+<br/><br/>
+* Relación:
+<br/><br/><br/>
+
+> ¿Cuántas vibraciones por segundo $(V/s)$ tiene una cuerda sometida a una tensión de 6kg?
+
+---
+# Ejemplo 3:
+
+> Una barra metálica $AD$ de longitud $l$ está formada por tres porciones $AB,$ $BC,$ y $CD,$ de longitudes $l_1,\,l_2,\,l_3$ $(l_1 + l_2 + l_3 = l)$ y con densidades lineales de masa (cantidad de masa por unidad) $\rho_1,\,\rho_2,\, \rho_3$ respectivamente. Si $AP$ es una porción de longitud $x$ y masa $M,$ expresar $M$ en función de $x.$
+
+<br/><br/>
+* Objetivo:
+<br/><br/>
+* Datos:
+<br/><br/>
+* Relación:
+<br/><br/><br/>

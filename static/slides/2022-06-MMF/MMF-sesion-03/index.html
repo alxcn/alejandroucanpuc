@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Transformaciones Curvilíneas</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"f86c248b06c5444ea033600ddeadf6aa","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Transformaciones Curvilíneas
+]
+.subtitle[
+## Sesión 03
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Realizar cambio de coordenadas en `\(\mathbb{R}^3.\)` &lt;br/&gt; &lt;br/&gt;
+ * Realizar rotaciones y reflexiones en `\(\mathbb{R}^3.\)` &lt;br/&gt; &lt;br/&gt;
+ * Aplicar estas transformaciones en sistemas físicos.
+
+---
+# Motivación:
+ ### Coordenadas Polares en `\(\mathbb{R}^2.\)`
+&lt;iframe src="https://www.geogebra.org/calculator/aubzbhsd?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# ¿Podemos generalizar esta construcción en `\(\mathbb{R}^3\)`?
+
+### Coordenadas Cilíndricas `\((\theta,r,z).\)`
+
+&lt;iframe src="https://www.geogebra.org/calculator/za424zgv?embed" width="1200" height="350" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+### Coordenadas Esféricas `\((\phi,\psi,\rho).\)`
+
+&lt;iframe src="https://www.geogebra.org/calculator/eq77abfs?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# ¿Cómo traduzco entre coordenadas?
+
+Existen expresiones que nos permiten hacer la conversión entre distintos tipos de coordenadas. Por ejemplo:
+
+&gt; Si tengo un punto `\((x,y,z)\)` (coordenadas rectangulares) y lo quiero en coordenadas _cilíndricas_, entonces se cumple: &lt;br/&gt;
+- `\(r^2= x^2+y^2,\)` &lt;br/&gt;
+- `\(\tan(\theta)=\frac{y}{x}\)` y &lt;br/&gt;
+- `\(z=z.\)`
+
+&lt;br/&gt;
+
+&gt; Si tengo un punto `\((\theta,r,z)\)` y lo quiero en coordenadas _rectangulares_, entonces se cumple: &lt;br/&gt;
+- `\(x=r\cdot \cos(\theta)\)` &lt;br/&gt;
+- `\(y=r\cdot \sin(\theta)\)` y 
+- `\(z=z.\)`
+
+---
+# ¿Cómo traduzco entre coordenadas?
+
+&gt; Si tengo un punto `\((x,y,z)\)` (coordenadas rectangulares) y lo quiero en coordenadas _esféricas_, entonces se cumple: &lt;br/&gt;
+- `\(\rho^2= x^2+y^2+z^2,\)` &lt;br/&gt;
+- `\(\tan(\phi)=\frac{y}{x}\)` y &lt;br/&gt;
+- `\(\cos(\psi)=\frac{z}{\sqrt{x^2+y^2+z^2}}.\)`
+
+&lt;br/&gt;
+
+&gt; Si tengo un punto `\((\phi,\psi,\rho)\)` y lo quiero en coordenadas _rectangulares_, entonces se cumple: &lt;br/&gt;
+- `\(x=\rho\cdot \cos(\phi)\cdot \sin(\psi)\)` &lt;br/&gt;
+- `\(y=\rho\cdot \sin(\phi) \cdot \sin(\psi)\)` y &lt;br/&gt;
+- `\(z=\rho\cdot \cos(\psi)\)`.
+
+
+---
+# Aplicaciones del cambio de coordenadas.
+
+Dada la siguiente superficie `\(x^2+y^2-3z^2=0,\)` encuentre su expresión en coordenadas esféricas y calculé las derivadas parciales asociadas a la nueva expresión usando regla de la cadena.
+
+
+---
+# Transformaciones (rígidaz) de Coordenadas.
+
+## Rotación
+
+&lt;iframe src="https://www.geogebra.org/calculator/rphkvtg6?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+### Lo anterior pero vectorialmente,
+
+&gt; Los vectores `\(\mathbf{e}_1=\cos(\psi)\tilde{\mathbf{e}}_1-\sin(\psi)\tilde{\mathbf{e}}_2\)` y `\(\mathbf{e}_2=\cos(\psi)\tilde{\mathbf{e}}_1+\sin(\psi)\tilde{\mathbf{e}}_2.\)`
+
+&lt;br/&gt;&lt;br/&gt;
+
+Si tenemos un vector `\(\mathbf{v}=k\mathbf{e}_1+ l\mathbf{e}_2.\)` ¿Qué coordenadas tendrá el vector `\(\mathbf{v}\)` en el nuevo sistema `\(\tilde{\mathbf{e}}_1\)` y `\(\tilde{\mathbf{e}}_2.\)`
+
+`$$\mathbf{v}=k\mathbf{e}_1+ l\mathbf{e}_2= k(\cos(\psi)\tilde{\mathbf{e}}_1-\sin(\psi)\tilde{\mathbf{e}}_2)+ l(\cos(\psi)\tilde{\mathbf{e}}_1+\sin(\psi)\tilde{\mathbf{e}}_2)$$`
+`$$= \left(k\cos(\psi)+l\sin(\psi)\right)\tilde{\mathbf{e}}_1 + \left(-k\sin(\psi)+l\cos(\psi)\right)\tilde{\mathbf{e}}_2.$$`
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; Matricialmente: `$$\left(\begin{array}{c} v_1 \\v_2 \end{array}\right) =\left(\begin{array}{cc} \cos(\psi) &amp; \sin(\psi) \\ -\sin(\psi) &amp; \cos(\psi) \end{array} \right) \left(\begin{array}{c} k \\ l \end{array}\right)$$`
+
+---
+### ¿y si quiero volver al sistema original?
+
+&gt; Bastará con aplicar la rotación por `\(-\psi\)` al sistema de coordenadas `\(\{\tilde{\mathbf{e}}_1,\tilde{\mathbf{e}}_2\}.\)` Es decir:
+
+`$$\left(\begin{array}{c} k \\ l \end{array}\right) =\left(\begin{array}{cc} \cos(-\psi) &amp; \sin(-\psi) \\ -\sin(-\psi) &amp; \cos(-\psi) \end{array} \right) \left(\begin{array}{c} v_1 \\ v_2 \end{array}\right)$$`
+
+---
+## Reflexiones
+
+Un tipo especial de rotaciones en el plano, es cuando rotamos por un ángulo de `\(\pi\)` o `\(180^\circ.\)` En este caso la matriz de rotación tiene la forma:
+
+`$$\left(\begin{array}{cc} -1 &amp; 0 \\ 0 &amp; -1 \end{array}\right)$$`
+
+y en coordenadas se ve como `\((k,l)\)` rotado se ve como `\((-k,-l).\)`
+
+&gt; La rotación anterior se le conoce como _reflexión en el origen_.
+
+Existen otros tipos de _reflexiones_, similares a la reflexión en el origen, como son la _reflexión en el eje `\(x\)`_ que cambia a coordenadas `\((x,-y).\)` Y la _reflexión en el eje `\(y\)`_ que cambia a coordenadas `\((-x,y).\)` Cuyas matrices asociadas son:
+
+`$$\left(\begin{array}{cc} 1 &amp; 0 \\ 0 &amp; -1 \end{array}\right) \quad \mbox{y} \quad \left(\begin{array}{cc} -1 &amp; 0 \\ 0 &amp; 1 \end{array}\right),$$` respectivamente.
+---
+## Reflexiones en general.
+
+Antes de hablar de reflexiones en general, primero tenemos que hablar de el segundo producto que podemos definir en un espacio vectorial: __el producto punto.__
+
+&gt; Dado dos vectors `\(\vec{v}=(v_1,v_2,v_3)\)` y `\(\vec{w}=(w_1,w_2,w_3),\)` definimos el _producto punto_, `\(\vec{v}\cdot\vec{w},\)` como el escalar `$$v_1 w_1 + v_2 w_2 + v_3 w_3.$$`
+
+El producto punto cumple las siguientes propiedades:
+- `\(\vec{v}\cdot \vec{v} = || v ||^2.\)` 
+- `\(\vec{v}\cdot \vec{w}=\vec{w}\cdot \vec{v}.\)`
+- `\((l\vec{v})\cdot (k\vec{w})=kl\vec{v}\cdot\vec{w}.\)`
+- `\(\vec{v}\cdot(\vec{w}_1+\vec{w}_2)=\vec{v}\cdot\vec{w}_1 +\vec{v}\cdot \vec{w}_2.\)`
+- Si `\(\vec{v}\cdot \vec{w}=0,\)` se dice que `\(\vec{v}\)` y `\(\vec{w}\)` son _orthogonales._
+- Al vector `\(\frac{(\vec{v}\cdot \vec{w})}{\vec{w}\cdot \vec{w}} \vec{w}\)` es la proyección de `\(\vec{w}\)` en la dirección de `\(\vec{v}.\)`
+---
+## Forma general de un reflexión.
+
+&gt; La reflexión de `\(\mathbb{R}^m\)` respecto a la dirección `\(\vec{v},\)` está dada por la función vectorial `\(proj_{\vec{v}}:\mathbb{R}^m\to \mathbb{R}^m,\)` cuya regla de asignación es:
+
+`$$\vec{w}-\frac{2\vec{v}\cdot \vec{w}}{\vec{v}\cdot \vec{v}}\vec{v}.$$`
+&lt;br/&gt;&lt;br/&gt;
+__Ejemplo:__ Calcule la expresión del campo vectorial dado por la reflexión en la dirección `\(\vec{v}=(1,1,2).\)`
+
+---
+## Rotaciones en `\(\mathbb{R}^3.\)`
+
+&lt;iframe src="https://www.geogebra.org/calculator/hnp4qmzy?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# Actividad 
+
+1. Dadas las siguientes ecuaciones de superficie, traduzcalas a las coordenadas que indiquen.
+  * El ovoide de los borregos: `\(4x^2+4y^2+z^2=1\)` en coordenadas cilíndricas.
+  * Cono: `\(z=\sqrt{x^2+y^2}\)` en coordenadas esféricas.
+
+2. Calcule la regla de asignación de la reflexión en `\(\mathbb{R}^2\)` en la dirección de `\((-1,-4).\)`
+
+3. Calcule la regla de asignación de la rotación en `\(\mathbb{R}^2\)` por el ángulo `\(\pi/4.\)`
+
+4. Calcule la regla de asignación de la rotación en `\(\mathbb{R}^3\)` por los ángulos `\(\theta_z=\pi/2\)` y `\(\theta_x=\pi/2\)` y `\(\theta_y=0.\)`
+
+5. __Reto:__ calcula la expresión matricial de una reflexión general en `\(\mathbb{R}^3\)`.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

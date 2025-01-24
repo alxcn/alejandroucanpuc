@@ -1,0 +1,155 @@
+---
+title: "Separación de Variables"
+subtitle: "Sesión 03"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "60%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Determinar cuándo una EDO es separable. <br/><br/>
+* Aplicar el método de Separación de Variables. <br/><br/>
+* Describir la solución de una EDO. <br/><br/>
+
+---
+# EDOs Separables
+
+> __Definición:__ Sea $y'=f(y,x)$ una EDO de primer orden. Si existe una función $g(y)$ y una función $h(x)$ tales que $y'=g(y)h(x)$, entonces la EDO es separable.
+--
+<br/><br/>
+* __Ejemplo:__ La EDO $y'=y^2\cos(x)$ es separable, ya que $y'=g(y)h(x)$, donde $g(y)=y^2$ y $h(x)=\cos(x)$. <br/><br/>
+* __Ejemplo:__ La EDO $y'=y^2\cos(x)+x$ no es separable, ya que no se puede escribir como $y'=g(y)h(x)$.
+
+---
+## ¿Cómo determinar si mi EDO es separable?
+
+* Escribe la EDO de la forma $y'=f(y,x)$. <br/><br/>
+* Determina si la función $f(y,x)$ se puede factorizar. <br/><br/>
+* Si en la función $f(y,x)$ hay potencias, exponenciales o logaritmos, recuerda que estos se separan como productos. <br/><br/>
+* Funciones trigonométricas es muy dificil que tengan propiedades de separación de productos.
+
+---
+## ¿Cómo resolver una EDO separable?
+
+> __Método:__ Sea $y'=f(y,x)$ una EDO separable donde $f(y,x)=g(y)h(x)$. Entonces, la solución de la EDO es: <br/><br/>
+Primero suponemos (por abuso de lenguaje) que $y'=\frac{dy}{dx}$ es una fracción y la separamos como $$\frac{dy}{g(y)}=h(x)dx$$ <br/><br/>
+Luego integramos ambos lados de la igualdad <br/><br/>
+$$\int\frac{dy}{g(y)}=\int h(x)dx+C$$
+
+---
+##### Ejemplo 1
+<br/><br/>
+Resuelve la EDO $y'=y^2\cos(x).$ 
+
+--
+Notemos que es separable, y se separa así $$\frac{dy}{y^2}=\cos(x)dx.$$ <br/>
+La integral del lado izquierdo es $\frac{-1}{y}$ y del lado derecho es $\sin(x)+C$. <br/> Por lo que obtenemos que $$\frac{-1}{y}=sin(x)+C.$$ <br/> Despejando $y$ obtenemos que $$y=\frac{-1}{\sin(x)+C}$$ definida para $x\in\mathbb{R}$ tal que $\sin(x)+C\neq 0.$
+
+---
+##### Ejemplo 2
+<br/><br/>
+Resuelve la EDO $y'=e^{x-y}.$ 
+
+--
+Notemos que es separable, y se separa así $$e^ydy=e^xdx.$$ <br/> La integral del lado izquierdo es $e^y$ y del lado derecho es $e^x+C$. <br/> Por lo que obtenemos que $$e^y=e^x+C.$$ <br/> Despejando $y$ obtenemos que $$y=\ln(e^x+C)$$ definida para todo $x\in\mathbb{R}.$
+
+---
+
+##### Ejemplo 3
+<br/><br/>
+Resuelve la EDO $y'=\ln(3x-2y).$ 
+
+--
+Notemos que es separable, y se separa así $$\ln(2y)dy=\ln(3x)dx.$$ <br/> La integral del lado izquierdo es $y\ln(2y)-y$ y del lado derecho es $x\ln(3x)-x+C$. <br/> Por lo que obtenemos que $$y\ln(2y)-y=x\ln(3x)-x+C.$$ <br/> Lamentablemente no podemos despejar esta ecuación para $y,$ por lo que mi solución es implícita.
+
+---
+# Problemas de Valores Inciales
+
+__Recordemos:__ La solución a una EDO es una _familia_ de funciones que satisfacen la EDO. Si queremos particularizar la solución necesitamos de una condición adicional. <br/><br/>
+
+> __Definición:__ Dada una EDO $f(y',y,x)=0$ una condición inicial es una ecuación de la forma $y(x_0)=y_0$ donde $x_0$ y $y_0$ son números reales. <br/><br/>
+
+> __Definición:__ Un problema de valores iniciales (PVI) es una EDO junto con una condición inicial. <br/><br/>
+
+---
+## ¿Cómo resolver un PVI?
+
+Resuelvo mi EDO con el método adecuado, y luego aplico la condición inicial para encontrar la solución particular. <br/>
+--
+
+##### Ejemplo 1
+Una nueva aplicación ha sido lanzada y se estima que la población inicial de usuarios es de 1000. La tasa de usuarios que se registran es de 0.05 (5%) por semana, mientras que la tasa de deserción es de 0.02 (2%) por semana. Modela el crecimiento de la población de usuarios utilizando una ecuación diferencial. <br/>
+--
+
+##### Solución
+La EDO es $U'=0.05U-0.02U=0.03U.$ Notemos que la EDO es separable, y se separa así $$\frac{dU}{U}=0.03dt.$$ <br/> La integral del lado izquierdo es $\ln(U)$ y del lado derecho es $0.03t+C$. <br/> Por lo que obtenemos que $$\ln(U)=0.03t+C.$$ <br/> Despejando $U$ obtenemos que $$U=e^{0.03t+C}$$ definida para todo $t\in\mathbb{R}.$ Como estamos considerando usuarios, mi función está definida en $[0,\intfy).$ Resolviendo el PVI, obtenemos que $U(0)=1000$ por lo que $1000=e^{0.03(0)+C}$ y por lo que $C=\ln(1000).$ Por lo que la solución particular es $U=e^{0.03t+\ln(1000)}=1000e^{0.03t}.$
+
+---
+##### Ejemplo 2
+
+Te estás encargando del almacenamiento en un sistema de gestión de datos, y actualmente el tamaño del dataset es de 2000 GB. Se estima que el tamaño crece a una tasa proporcional a su tamaño actual (3%). Si nuestro servidor cuenta con una capacidad del 10TB. ¿En cuánto tiempo ocuparemos los primeros 5TB?
+<br/>
+--
+
+##### Solución:
+
+La EDO que modela este problema es $C'=kC$ donde $k=0.03$ y $C(0)=2TB$. La EDO es separable y su solución es $C=C(0)e^{kt}.$ Resolviendo el PVI obtenemos que $C(0)=2=e^{0.03(0)}$ por lo que $C(0)=2.$ Por lo que la solución particular es $C=2e^{0.03t}.$ Para encontrar el tiempo en el que ocupamos los primeros 5TB, necesitamos encontrar $t$ tal que $2e^{0.03t}=5$ por lo que $e^{0.03t}=\frac{5}{2}$ y por lo que $t=\frac{\ln(5/2)}{0.03}.$
+---
+
+##### Ejemplo 3
+
+En un sistema distribuido, el número de procesadores activos ( P(t) ) comienza en 50. La carga de trabajo es constante pero desconocemos el valor preciso, cuando la carga aumenta, también se activan más procesadores. La tasa de activación de nuevos procesadores es proporcional a la diferencia entre la carga de trabajo y el número actual de procesadores de forma ( \alpha = 0.1 ).
+<br/>
+--
+
+##### Solución:
+La PVI que modela esta situación es $P'=0.1(W-P)$ donde $P(0)=50.$ La EDO es separable y su solución es $P=W-(50-W)e^{-0.1t}.$ Notemos que $W=50.$ Por lo que la solución particular es $P=50-(50-50)e^{-0.1t}=50.$
+---
+# Actividad
+
+1. El interés de una inversión para una app startup crece a una razón de $5\%$. Si comenzamos con una inversión de $5000. ¿Qué función describe mejor nuestra inversión.<br/><br/>
+1. Una taza de chocolate se encuentra a 170 grados Fahrenheit. Si la taza se encuentra en una habitación a 70 grados Fahrenheit. ¿Cuánto tiempo tardará la taza en llegar a 100 grados Fahrenheit, si se enfría a una razón de 20 grados Fahrenheit por segundo?<br/><br/>
+1. Una cubeta de 5 galones está llena de agua pura. Supongamos que queremos añadir sal a la cubeta en razón de 1/4 de libra por minuto. Además abrimos el grifo de manera que salgan 1/2 galón por minuto, y agregamos agua pura para mantener llena la cubeta. Si la solución se mezcla perfectamente. ¿Cuánta sal habrá en la cubeta después de 10 minutos?<br/><br/>

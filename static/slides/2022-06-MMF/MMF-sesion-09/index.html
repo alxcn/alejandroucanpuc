@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Funciones de variable compleja</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x1a8a941b3ec4ac38a4645916449f4fe","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Funciones de variable compleja
+]
+.subtitle[
+## Sesión 09
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos:
+
+ * Introducir los conceptos de regiones en el plano complejo. &lt;br/&gt; &lt;br/&gt;
+ * Entender la compactificación en un punto del plano complejo. &lt;br/&gt; &lt;br/&gt;
+ * Introducir el concepto de función de variable compleja. &lt;br/&gt;&lt;br/&gt;
+ * Entender los límites y continuidad en el plano complejo.
+---
+# Regiones del Plano complejo (Topología del plano complejo)
+
+&gt; __Definición:__ la distancia entre los complejos `\(z_1=a+bi\)` y `\(z_2=c+di\)` está dada por la expresión `$$|z_1-z_2|=\sqrt{(a-c)^2+(b-d)^2}.$$`
+
+### Algunas propiedades de la distancia:
+
+  * `\(|z_1-z_2|=|z_2-z_1|.\)` &lt;br/&gt;
+  * `\(|z_1+z_2|\leq |z_1|+|z_2|.\)` &lt;br/&gt;
+  
+&gt; __Definición:__ una `\(\varepsilon-\)`vecindad de `\(z_0\)` es simplemente el conjunto de complejos que se encuentran a distancia a lo más `\(\varepsilon\)` del centro `\(z_0,\)` en notación esto es: `$$|z - z_0|&lt;\varepsilon.$$`
+
+---
+## Clasificación de puntos.
+
+&gt; __Definición:__ dado un conjunto `\(S\)` en nuestro plano complejo, un punto `\(z\)` se dice que es: &lt;br/&gt;&lt;br/&gt;
+  * _interior_ si podemos construir una vecindad de `\(z\)` donde todos los puntos sean de `\(S.\)` &lt;br/&gt;&lt;br/&gt;
+  * _exterior_ si podemos construir una vecindad de `\(z\)` donde todos los puntos no pertenezcan a `\(S.\)` &lt;br/&gt;&lt;br/&gt;
+  * _frontera_ si para toda vecindad de `\(z\)` esta contiene puntos de `\(S\)` y puntos que no pertenecen a `\(S.\)` &lt;br/&gt;&lt;br/&gt;
+  Denotaremos por `\(\mbox{int}(S)\)` al conjunto de puntos interiores, `\(\mbox{ext}(S)\)` al conjunto de puntos exteriores, y por `\(\partial S\)` el conjunto de puntos frontera.
+  
+---
+## Abiertos, cerrados y otras propiedades:
+
+&gt; __Definición:__ Un conjunto `\(S\)` del plano complejo se dice que es: &lt;br/&gt;&lt;br/&gt;
+  * _abierto_ si sólo contiene puntos interiores. &lt;br/&gt;&lt;br/&gt;
+  * _cerrado_ si todos sus puntos frontera pertenecen al conjunto. &lt;br/&gt;&lt;br/&gt;
+Denotaremos por `\(\overline{S}\)` al conjunto que resulta de unir `\(S\)` con sus puntos frontera `\(\partial S,\)` y se le llama _cerradura._
+
+&lt;br/&gt;
+&gt; __Definición:__ Un conjunto abiero `\(S\)` en `\(\mathbb{C}\)` se dice que es _conexo_ si cualquier par de puntos los puedo unir por un camino de rectas contenido enteramente en `\(S.\)` &lt;br/&gt;
+Un conjunto `\(S\)` es _acotado_ si existe un círculo de radio `\(R\)` que contiene al conjunto `\(S.\)` Si no existe tal circulo, entonces diremos que `\(S\)` es _no acotado._
+
+---
+# Compactificación a un punto de `\(\mathbb{C}.\)`
+
+
+---
+# Funciones de (una) variable compleja.
+
+&gt; __Definición:__ Sea `\(S\)` un conjunto de los número complejos. Una _función_ definida en `\(S\)` es una regla que asigna a cada `\(z\in S\)` un número complejo `\(w.\)` Denotaremos por `$$w=f(z)$$` a esta regla de asignación. &lt;br/&gt;&lt;br/&gt;
+En general pediremos que `\(S\)` sea un _dominio_ (conjunto abierto y conexo).
+
+__Example:__ Consideremos la función `\(f(z)=\frac{1}{z},\)` la función que asigna a cada complejo `\(z\)` su inverso multiplicativo `\(1/z.\)` &lt;br/&gt;&lt;br/&gt;
+
+Podemos definirla en el dominio `\(\mbox{Im} z&gt;1\)` o en el dominio `\(z\neq 0.\)`
+
+---
+## ¿Funciones multivariadas?
+
+Recordemos que para que una expresión sea llamado función, necesitamos que para cada `\(z\)` debe haber un solo valor de la expresión. En caso que esto no se cumpla, decimos que la regla de asignación define una _función multivaluada_. 
+
+&lt;br/&gt;&lt;br/&gt;
+__Ejemplo:__ Las funciones raíz `\(f(z)=z^{1/k},\)` es una función multivaluada dado que para cada complejo `\(z\)` existen `\(k\)` raíces que satisfacen `\(w^k=z.\)`
+&lt;br/&gt;&lt;br/&gt;
+
+En estos casos podemos tomar regiones tales que la función multivaluada, se convierta a una univaluada (función usual).
+
+### Función significa función univaluada.
+---
+## Funciones componente.
+
+&gt; Si `\(f\)` es una función compleja, entonces para cada `\(z\)` tenemos que `\(w=f(z)\)` es un complejo, por lo que se puede escribir como su parte real y su parte imaginaria o lo que es lo mismo `$$f(z)=u(\mbox{Re}z,\mbox{Im}z)+iv(\mbox{Re}z,\mbox{Im}z)$$` donde `\(u\)` y `\(v\)` podemos pensarlo como funciones `\(\mathbb{R}^2\to \mathbb{R}.\)`
+
+__Ejemplo:__ Sea `\(f(z)=z^2=(x+iy)^2=x^2-y^2+2ixy,\)` entonces: &lt;br/&gt;&lt;br/&gt;
+
+  * `\(\mbox{Re}(f)(z)=u(z)=x^2-y^2.\)` &lt;br/&gt;&lt;br/&gt;
+  * `\(\mbox{Im}(f)(z)=v(z)=2xy.\)`
+  
+---
+## Funciones componente.
+
+__Ejemplo:__ Sea `\(f(z)=z*\overline{z},\)` ¿quiénes son sus funciones componentes?
+
+
+$$ z\overline{z}=(x+iy)(x-iy)=x^2+y^2+i0.$$ Entonces las funciones componente son `\(u(x,y)=x^2+y^2\)` y `\(v(x,y)=0.\)` 
+
+&gt; En estos casos cuando la componente `\(v\)` sea identicamente cero, diremos que la función es _real-valuada_ de _variable compleja_.
+
+---
+# ¿Cómo visualizar mis funciones?
+
+&gt; Informalmente hablando, podemos pensar que nuestras funciones complejas son funciones de `\(\mathbb{R}^4\)` en \mathbb{R}^4,$ lo cual dificulta observarlas gráficamente. &lt;br/&gt;&lt;br/&gt;
+Para esto utilizaremos algo llamado _mapeo_ o _transformación_ de un dominio en otro. 
+
+__Ejemplo:__ Grafique `\(f(z)=|z|-i\mbox{Im}(z).\)`
+
+---
+# Cálculo en variable compleja. 
+
+## Límites
+
+&gt; Sea `\(f\)` una función de variable compleja definida en un dominio `\(S.\)` Diremos que `\(w_0\in D\)` es el límite de `\(f\)` cuando `\(z\)` tiende a `\(z_0\)` si para toda vecindad `\(V\)` de `\(w_0,\)` existe una vecindad `\(U\)` de `\(z_0,\)` tal que `\(f(U)\subset V.\)`
+
+&lt;br/&gt;&lt;br/&gt;
+&gt; __Teorema:__ Supongamos que `\(f(x+iy)=u(x,y)+iv(x,y),\)` `\(z_0=x_0+iy_0\)` y `\(w_0=u_0+iv_0.\)` Entonces `\(\displaystyle{\lim_{z\to z_0}f(z)=w_0}\)` si y sólo si:
+   `$$\displaystyle{\lim_{(x,y)\to(x_0,y_0)}u(x,y)=u_0} \quad \mbox{ y } \quad \displaystyle{\lim_{(x,y)\to(x_0,y_0)}v(x,y)=v_0}.$$`
+  
+---
+__Ejemplo:__
+
+* Calcule el límite de `\(f(z)=(z^2+1)^{-1}\)` cuando `\(z\to 0.\)` 
+
+---
+
+## Límites
+
+&gt; __Teorema:__ Supongamos que se cumple que `\(\displaystyle{\lim_{z\to z_0}f(z)=w_0}\)` y `\(\displaystyle{\lim_{z\to z_0}g(z)=W_0}.\)` Entonces, se cumple:&lt;br/&gt;&lt;br/&gt;
+  * `\(\displaystyle{\lim_{z\to z_0}(f(z)+g(z))=w_0+W_0},\)` &lt;br/&gt;&lt;br/&gt;
+  * `\(\displaystyle{\lim_{z\to z_0}(f(z)g(z))=w_0W_0}\)` y  &lt;br/&gt;&lt;br/&gt;
+  * si `\(W_0\neq 0,\)` entonces `\(\displaystyle{\lim_{z\to z_0}(f(z)/g(z))=w_0/W_0}.\)`
+  
+---
+## Continuidad
+
+&gt; __Definición:__ Una función de variable compleja es continua en un punto `\(z_0\)` si se cumplen las siguientes tres afirmaciones:
+  * `\(\displaystyle{\lim_{z\to z_0}f(z)}\)` existe, &lt;br/&gt;&lt;br/&gt;
+  * `\(f(z_0)\)` existe y &lt;br/&gt;&lt;br/&gt;
+  * `\(\displaystyle{\lim_{z\to z_0}f(z)=f(z_0)}.\)`
+  
+&lt;br/&gt;&lt;br/&gt;
+
+__Contraejemplo:__ la función `\(f(z)=z^{-1}\)` es una función discontinua en `\(0.\)`
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

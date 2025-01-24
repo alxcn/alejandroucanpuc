@@ -1,0 +1,125 @@
+---
+title: "Integrales Multiples"
+subtitle: "Sesión 09"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Utilizar el concepto de integral multiple para calcular volúmenes y áreas. <br/><br/>
+ * Utilizar el teorema de Fubini para calcular integrales multiples como integrales iteradas. <br/><br/>
+
+---
+# Partición de un rectángulo y Sumas de Riemann.
+
+Supongamos que tenemos una _región_ rectangular $R$ en $\mathbb{R}^2,$ acotada por $a\leq x\leq b$ y $c\leq y\leq d.$ Una __partición__ es una _malla_ formada por los pares de puntos $(x_i,y_j)$ tales que $$x_{i+1}-x_i=\frac{b-a}{n}\quad\mbox{y}\quad y_{j+1}-y_j=\frac{c-d}{m}.$$
+
+
+---
+# Partición de un rectángulo y Sumas de Riemann.
+
+> Si $f:\mathbb{R}^2\to \mathbb{R}$ es una función continua y acotada en la región rectangular $R,$ entonces la suma $$\sum_{i=1}^{n} \sum_{j=1}^m f(x_i,y_j) \Delta x \Delta y$$ _aproxima_ el volumen bajo la superficie (gráfica de la función).
+
+---
+# Refinando Sumas de Riemann
+
+![Sumas](refriemannsums.png)
+
+---
+# La integral doble
+
+> Mientras más refinamos nuestra partición, nuestra aproximación del volumen mejora. Por lo que _en el límite_ de refinamientos obtenemos el volumen. <br/><br/>
+La _integral doble_ se conoce de $f(x,y)$ en la región $R$ se denota como $\int_{R}f\, dA,$ y define como el límite: $${\int\!\int}_R f(x,y)dA =\lim_{(n,m)\to (0,0)} \sum_{i=1}^{n} \sum_{j=1}^m f(x_i,y_j) \Delta x \Delta y.$$
+
+
+---
+# Propiedades de la integral doble
+
+> __Teorema:__ Cualquier función continua definida en un rectángulo es integrable. <br/>
+
+> __Teorema:__ La integral doble es lineal, es decir, si $f$ y $g$ son funciones continuas sobre una región $R,$ entonces: $$\int_R (kf+lg)\,dA=k\int_R f\,dA+l\int_R g\,dA.$$ <br/>
+
+
+---
+# ¿Cómo calculo integrales dobles sin utilizar sumas y límites?
+
+> __Teorema (de Fubini):__ Si $f(x,y)$ es una función integrable en la región $R=[a,b]\times[c,d],$ entonces la integral $\int_R f\,dA$ coincide con la cantidad: $$\int_c^d \left[ \int_a^b f(x,y)dx \right]dy=\int_a^b \left[ \int_c^d f(x,y)dy \right]dx.$$
+
+---
+# Ejemplo 1:
+
+Calcula la integral de la función $f(x,y)=x^2+yx$ en el rectángulo $R=[0,1]\times[0,1].$
+
+
+---
+# Ejemplo 2: 
+
+Calcula la integral de la función $f(x,y)=x^3y-12xy$ en el rectángulo $R=[-2,1]\times[0,1].$
+
+
+---
+# ¿Siempre integraremos en rectángulos?
+
+> __Definición:__ Una región elemental en $\mathbb{R}^2$ es una región del plano que es $x-$simple y $y-$simple. <br/>
+  * Una región en $\mathbb{R}^2$ es $y-$simple si se puede escribir como $$a\leq x\leq b \quad \mbox{y} \quad \phi_1(x)\leq y \leq \phi_2(x).$$ <br/><br/>
+  * Una región en $\mathbb{R}^2$ es $x-$simple si se puede escribir como $$c \leq y \leq d \quad \mbox{y} \quad \psi_1(y)\leq x\leq \psi_2(y).$$
+
+---
+# El Teorema de Fubini más general.
+
+Podemos usar propiedades de integrales de una variable, y finalmente nuestra integral doble se expresa de la manera:
+
+> __Teorema:__ Si $D$ es una región simple y $f$ es integrable en $D,$ entonces $$\int_D f\,dA = \int_a^b \int_{\phi_1(x)}^{\phi_2(x)} f(x,y)dydx.$$
+
+---
+# Ejemplo 3:
+
+Calcule el valor de la integral de $f(x,y)=\sqrt{\frac{x}{y}}$ en la región $R$ acotada entre $0\leq x \leq 1$ y $x^2\leq y \leq x.$
+
+
+---
+# Ejemplo 4: 
+
+Encuentre el volumen del prisma cuya base se encuentra en el plano $xy$ acotado por el eje $x$ y las rectas $y=x$ y $x=1,$ y cuya tapa pertenece al plano $$z=f(x,y)=3-x-y.$$
+
+---
+# Ejercicio:
+
+Encuentra el volumen acotado por el plano $xy$ y la función $f(x,y)=16-x^2-y^2,$ sobre la región $R$ dada por las curvas $y=2\sqrt{x},$ $y=4x-2$ y el eje $x.$

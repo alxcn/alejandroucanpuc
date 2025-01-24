@@ -1,0 +1,149 @@
+---
+title: "EDO Lineales de Orden Superior No homogéneas"
+subtitle: "Sesión 04"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Aprender otras problematicas que modela una EDO lineal no homogénea de orden superior no lineal. <br/><br/>
+* Resolver EDO lineales no homogéneas de orden superior. <br/><br/>
+* Aprender el método de coeficientes indeterminados. <br/><br/>
+
+
+---
+# EDO lineal de orden superior no homogénea
+
+> Recordemos que una EDO lineal de orden superior no homogénea es de la forma $$a_ny^{(n)}+a_{n-1}y^{(n-1)}+\cdots+a_2y''+a_1y'+a_0y=g(x),$$ por el momento supondremos que nuestros coeficientes son constantes. <br/><br/><br/> 
+En el caso de EDO líneales no homogéneas de primer orden, tenemos que la solución general se forma mediante $$y_p+y_h.$$ <br/><br/> En el caso de orden superior no es la excepción. 
+
+---
+## Algunas consideraciones:
+
+> Notemos que la función $g(x)$ puede ser cualquier tipo de función, pero nos centraremos (restringiremos) a los siguientes tipos de funciones que puede aceptar $g(x):$ <br/><br/>
+  * Polinomios (dentro los cuales se encuentran las constantes) $$g(x)=c_0+c_1x+c_2x^2+\cdots+c_nx^n.$$
+  * Exponenciales: $$g(x)=e^{cx}$$
+  * Senos o Cosenos: $$g(x)=\sin(cx)\mbox{ o } g(x)=\cos(cx).$$
+  * Combinaciones de estas (producto y/o sumas):
+  
+  __Ejemplos:__ $g(x)=10,$ $g(x)=15x-6+8e^{-x}$ o $g(x)=xe^x \sin(x)+(3x^2-1)e^{-4x}.$
+  
+---
+# Método de Coeficientes Indeterminados:
+
+El método se aplica para EDOs lineales no homogeneas con:
+* _coeficientes constantes,_
+* $g(x)$ como en la lista anterior.
+
+La idea detrás del método: 
+
+" Las derivadas de funciones $g(x)$ como en la lista anterior, de nuevo son funciones en la lista, es decir, son sumas y/o productos de polinomios, senos, cosenos y/o exponenciales"
+
+---
+## Ejemplo 1:
+
+> Encuentre la solución de la EDO $$y''+4y'-2y=2x^2-3x+6.$$
+
+1. Primero resolvemos la versión homogénea de la EDO. $$y_h=c_1e^{(-2-\sqrt{6})x}+c_2e^{(-2+\sqrt{6})x}.$$
+
+1. Cómo $g(x)$ es un polinomio de grado dos, entonces la solución particular al menos podría ser un polinomio de grado dos (igual), supongamos que es $$y_p=Ax^2+Bx+C.$$
+
+1. Sustituyendo $y_p$ en la EDO lineal: $y_p'=2Ax+B$ y $y_p''=2A$ entonces $$2A+8Ax+4B-2Ax^2-2Bx-2C=2x^2-3x+6.$$
+
+---
+## Ejemplo 1:
+
+1. Por teoría de polinomios, los coeficientes deben ser iguales, es decir:
+$$-2A=2$$ $$8A-2B=-3$$ $$2A+4B-2C=6$$
+
+1. Resolvemos este sistema: <br/><br/><br/><br/><br/><br/><br/>
+
+1. Entonces $y_p=-x^2-\frac{5}{2}x-9.$
+
+---
+## Ejemplo 2:
+
+> Encuentra la solución $y''-y'+y=2\sin(3x).$
+
+Primero calculemos la solución particular. Cómo la $g(x)=2\sin(3x)$ entonces la solución que debe cumplir derivadas entonces tenemos que pensar que esta solución debe contener senos y cosenos. Así:
+
+$$y_p=A\cos(3x)+B\sin(3x)$$
+
+---
+## Ejemplo 3:
+
+> Encuentra la solución $y''-2y'-3y=4x-5+6xe^{2x}.$
+
+En este caso la solución particular debe contener un polinomio y una exponencial. $$y_p=Ax+B+Cxe^{2x}+Ee^{2x}.$$
+
+---
+## Un error en la matrix:
+
+> Encuentra la solución de $$y''-5y'+4y=8e^x.$$ Verifica con el método de coeficientes indeterminados. ¿Qué sucede? ¿La solución particular funciona? ¿Ahora intenta con la forma particulas $y_p=A x e^x$. ¿Por qué sucede esto?
+
+
+---
+# ¿Cómo decidir que función modelo utilizar?
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Funciones Modelo"}
+knitr::include_graphics("tablafuncionesmodelo.jpg")
+```
+
+---
+# Actividad en Clase: 
+
+Encuentra la solución a las siguientes EDOs lineales de orden superior no homogéneas. <br/><br/>
+ 
+* $y''+3y'+2y=6$ 
+
+* $y''-10y'+25y=30x+3$
+
+* $\frac{1}{4}y''+y'+y=x^2-2x$
+
+* $y''-8y'+20y=100x^2-26xe^x$
+
+* $4y''-4y'-3y=\cos(2x)$

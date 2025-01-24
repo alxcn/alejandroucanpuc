@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Modelación con Funciones</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e2ffe7f35a2e423683a09ea7ee2d0507","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Modelación con Funciones
+]
+.subtitle[
+## Sesión 10
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Describir la función asociada a un problema de la vida real. &lt;br/&gt; &lt;br/&gt;
+ * Determinar quien es la variable dependiente y quien es la variable independiente. &lt;br/&gt; &lt;br/&gt;
+
+---
+# Ejemplo
+
+&gt; Una región rectangular tiene un perímetro de 200m. ¿Cómo expresarián el área de la región en función de uno de sus lados?
+
+![Rectángulo](/Users/koyomi/Documents/Github/alejandro_ucan.github.io/static/slides/2022-04-CalculoDiferencial/AU-sesion-10/rectangle.jpg)
+---
+# ¿Qué podemos hacer en estos casos?
+
+Recordemos que el _área_ de un rectángulo se expresa como `\(A=xh.\)`
+&lt;br/&gt;&lt;br/&gt;
+Notemos que hasta ahora nuestra área está expresada en dos variables.
+&lt;br/&gt;&lt;br/&gt;
+&gt; ¿Qué otro datos se da en el enunciado?
+
+&lt;br/&gt;&lt;br/&gt;
+El enunciado indica que el perímetro de la región es 200m, recordemos que el _perímetro_ es `\(P=2x+2h,\)` lo cual significa que: `$$x+h=100.$$`
+
+---
+# ¿Qué información tenemos?
+
+Contamos con los siguientes datos:
+
+&gt; * Una expresión: `\(A=xh.\)`
+* Una ecuación: `\(x+h=100.\)`
+
+&lt;br/&gt;
+
+Notemos que de la ecuación podemos despejar una variable, por ejemplo, la `\(h\)` en "función" de `\(x.\)`
+
+$$ h= 100-x.$$
+
+Y podemos sustituir el valor de `\(h\)` en nuestra expresión.
+
+`$$A=xh=(x)(100-x)=100x-x^2.$$`
+
+---
+# Modelación:
+
+El procedimiento anterior es parte de algo que se conoce como __modelación matemática.__ 
+&lt;br/&gt;&lt;br/&gt;
+
+Podemos describir la modelación matemática como la traducción de un problema de la vida cotidiana a través de la matemática, ya sean _funciones_, _ecuaciones_, _inecuaciones_, etc. 
+
+&gt; Un _modelo_ es una expresión matemática que describe un problema real.
+&lt;br/&gt;&lt;br/&gt;
+En nuestro ejemplo: `\(A=100x-x^2\)` es el modelo para nuestro problema del área de un rectángulo con perímetro 200m.
+
+---
+# ¿Cómo obtengo un modelo para un problema descrito?
+
+Algunos tips:
+
+* Leer detenidamente el problema.
+&lt;br/&gt;&lt;br/&gt;
+* Determinar cual es nuestro objetivo (lo que queremos modelar).
+&lt;br/&gt;&lt;br/&gt;
+* Determinar los datos que nos da el problema (usualmente son ecuaciones o condiciones sobre el problema).
+&lt;br/&gt;&lt;br/&gt;
+* Descifrar la relación entre el objetivo y los datos (usualmente es poner la variable objetivo en terminos de la otra variable).
+
+---
+# Ejemplo 2: 
+
+&gt; El número de vibraciones `\((V)\)` de una cuerda que vibra es _directamente proporcional_ a la raíz cuadrada de la tensión `\(T\)` a la que se encuentre. Una cuerda particular vibra a 864 vibraciones por segundo sometida a una tension de 24kg.
+
+&lt;br/&gt;&lt;br/&gt;
+* Objetivo:
+&lt;br/&gt;&lt;br/&gt;
+* Datos:
+&lt;br/&gt;&lt;br/&gt;
+* Relación:
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+&gt; ¿Cuántas vibraciones por segundo `\((V/s)\)` tiene una cuerda sometida a una tensión de 6kg?
+
+---
+# Ejemplo 3:
+
+&gt; Una barra metálica `\(AD\)` de longitud `\(l\)` está formada por tres porciones `\(AB,\)` `\(BC,\)` y `\(CD,\)` de longitudes `\(l_1,\,l_2,\,l_3\)` `\((l_1 + l_2 + l_3 = l)\)` y con densidades lineales de masa (cantidad de masa por unidad) `\(\rho_1,\,\rho_2,\, \rho_3\)` respectivamente. Si `\(AP\)` es una porción de longitud `\(x\)` y masa `\(M,\)` expresar `\(M\)` en función de `\(x.\)`
+
+&lt;br/&gt;&lt;br/&gt;
+* Objetivo:
+&lt;br/&gt;&lt;br/&gt;
+* Datos:
+&lt;br/&gt;&lt;br/&gt;
+* Relación:
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

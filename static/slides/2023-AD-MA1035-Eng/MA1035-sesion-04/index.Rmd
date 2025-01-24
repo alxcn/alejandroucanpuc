@@ -1,0 +1,136 @@
+---
+title: " Non-homogeneous Higher Order LODEs with cc."
+subtitle: "Session 04"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Goals
+
+* Understand how is made a general solution of a non-homogenous LODEs with cc. <br/><br/>
+* Describe the function models and the relation with the non-homogenous term. <br/><br/>
+* Describe the method of undetermined coefficients. <br/><br/>
+* Apply the undetermined coefficients method to solve non-homogenous LODEs with cc. <br/><br/>
+
+---
+# Recall: 
+
+> A non-homogeneous LODEs with cc is of the form $$a_ny^{(n)}+a_{n-1}y^{(n-1)}+\cdots+a_2y''+a_1y'+a_0y=g(x),$$ where $a_n,a_{n-1},\cdots,a_2,a_1,a_0$ are constants and $g(x)$ is a function. <br/><br/>
+
+The particular solution for a non-homogeneous ODE is made by the sum of the general solution of the homogeneous ODE and a particular solution of the non-homogeneous ODE. <br/><br/>
+
+From now, we will focus on non-homogeneous LODEs with cc therefore we will omit the "non-homogeneous" word.
+
+---
+## Some assumptions:
+
+> The function $g(x)$ could be any type of function, but we will only consider the following ones: <br/><br/>
+  * Polynomials (including constants) $$g(x)=c_0+c_1x+c_2x^2+\cdots+c_nx^n.$$
+  * Exponentials: $$g(x)=e^{cx}$$
+  * Sines or Cosines: $$g(x)=\sin(cx)\mbox{ or } g(x)=\cos(cx).$$
+  * Combinations of these (product and/or sums): $g(x)=10,$ $g(x)=15x-6+8e^{-x}$ o $g(x)=xe^x \sin(x)+(3x^2-1)e^{-4x}.$
+  
+---
+## The method of undetermined coefficients:
+
+> The method is applied for non-homogeneous LODEs with cc and the non-homogeneous term is a function $g(x)$ as in the list above.
+<br/><br/>
+The idea behind this method: <br/><br/> "the derivatives of functions $g(x)$ as in the list above, are combinations of functions in the list.
+---
+## The method of undetermined coefficients:
+
+1. Find the general solution of the homogeneous LODEs with cc. <br/><br/>
+1. For the particular solution, find a model function $y_p(x)$ and substitute it into the LODEs with cc. <br/><br/>
+1. From the fact that we are assuming that is a solution, it must satisfies the LODEs with cc. <br/><br/>
+1. The substitution will lead us to a system of equations for the coefficients of the model function. <br/><br/>
+
+---
+#### Example 1:
+
+Find the particular solution of $y''+4y'-2y=2x^2-3x+6.$ <br/>
+--
+<br/>
+#### Solution Example 1:
+1. From the fact that $g(x)$ is a polynomial of degree two, then the particular solution could be a polynomial of degree two (equal), let's assume that is $$y_p=Ax^2+Bx+C.$$
+
+1. Substituting $y_p$ in the LODEs with cc: $y_p'=2Ax+B$ and $y_p''=2A$ then $$2A+8Ax+4B-2Ax^2-2Bx-2C=2x^2-3x+6.$$
+
+1. Solving the system of equations we get $A=-1,$ $B=-\frac{5}{2}$ and $C=-9.$
+
+1. Therefore $y_p=-x^2-\frac{5}{2}x-9.$
+
+---
+#### Example 2:
+
+Find the general solution to $y''-y'+y=2\sin(3x).$ <br/>
+--
+<br/>
+#### Solution Example 1:
+1. From the fact that $g(x)=2\sin(3x)$ is a sine function, then the particular solution could be a sine function but the derivatives of $\sin(x)$ involve $\cos$, let's assume that is $$y_p=A\sin(3x)+B\cos(3x).$$
+
+1. Substituting $y_p$ in the LODEs with cc: $y_p'=3A\cos(3x)-3B\sin(3x)$ and $y_p''=-9A\sin(3x)-9B\cos(3x)$ then $$-9A\sin(3x)-9B\cos(3x)-3A\cos(3x)+3B\sin(3x)+A\sin(3x)+B\cos(3x)=2\sin(3x).$$
+---
+#### Example 2:
+
+1. We obtain the following system of equations: $$\begin{cases} -8A+6B=0 \\ 6A+8B=2 \end{cases}.$$ Solving the system we get $A=\frac{3}{10}$ and $B=\frac{1}{10}.$ <br/><br/>
+
+1. Therefore the particular solution is $y_p=\frac{3}{10}\sin(3x)+\frac{1}{10}\cos(3x).$ <br/><br/>
+
+1. The general solution is $y=y_h+y_p=C_1e^x+C_2e^x+\frac{3}{10}\sin(3x)+\frac{1}{10}\cos(3x).$
+---
+## An error in the matrix
+
+Find the solution for $$y''-5y'+4y=8e^x.$$ 
+--
+<br/><br/>
+Now try with the following model function: $$y_p=Axe^x.$$
+
+---
+## Example 3:
+
+Find the particular solution to $y''-2y'-3y=4x-5+6xe^{2x}.$
+
+In this case the particular solution should be of the form: $$y_p=Ax+B+Cxe^{2x}+Ee^{2x}.$$

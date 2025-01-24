@@ -1,0 +1,110 @@
+---
+title: "Límites laterales"
+subtitle: "Sesión 13"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Conocer la definición de límite lateral. <br/> <br/>
+ * Conocer la condición de existencia de límite. <br/> <br/>
+ * Calcular límites laterales. <br/><br/>
+ 
+
+---
+# Ejemplo:
+
+Consideremos la función definida a trozos:
+$$f(x)=\left\{ \begin{array}{ll} 
+4x-3 & x\leq 2 \\ 
+x^2+x-1 & x>2 
+\end{array}\right.$$
+
+Encuentre los siguientes límites: $\displaystyle{\lim_{x\to 0} f(x),\, \lim_{x\to 2}f(x)}$ y $\displaystyle{\lim_{x\to 4}f(x)}.$
+<br/><br/>
+
+En el primer límite, $$\lim_{x\to 0}f(x)=4(0)-3=-3.$$
+
+En el tercer límite, $$\lim_{x\to 4}f(x)=(4)^2-4-1=19.$$
+
+---
+# ¿Qué pasa con el segundo límite?
+
+En este caso, quedamos justo en el punto donde ocurre el cambio de condición de la función. Recordemos que para calcular el límite necesitamos aproximaciones por números más chicos que 2 y por números más grandes que 2.
+
+> Para números más chicos que dos ( $x\leq 2$ ), para calcular aquí usamos la expresión $4x-3,$ esto se escribe: $$ \lim_{x\to 2^- } f(x)=4(2)-3=5.$$
+
+> Para números más grandes que dos ( $x> 2$ ), para calcular aquí usamos la expresión $x^2+x-1,$ esto se escribe: $$ \lim_{x\to 2^+ } f(x)=(2)^2+2-1=5.$$
+
+---
+# Límites laterales
+
+A los límites anteriores se les conoce como _límites laterales_ y cuando valen los mismo implica que el límite normal existe y su valor es el que se obtiene en ambos laterales.
+
+$$\lim_{ x \to 2^- } f(x) = \lim_{ x \to 2^+ } f(x) = L \Rightarrow \lim_{ x\to 2 } f(x)=L.$$
+
+---
+# ¿Siempre son iguales los límites laterales?
+
+Supongamos que tenemos la función 
+
+$$f(x)=\left\{\begin{array}{ll}
+5x-1 & x\leq 1 \\
+x^2+3 & 1<x<3 \\
+x+7 & 3\leq x 
+\end{array}\right.$$
+
+Calcule $\displaystyle{\lim_{x\to 3}f(x)}$ si es posible.
+
+---
+
+Para hacer esto veamos que pasa con sus límites laterales, 
+
+> $\displaystyle{\lim_{x\to 3^-}}f(x)=\displaystyle{\lim_{x\to 3^-}}x^2+3=(3)^2+3=12$
+
+<br/>
+
+> $\displaystyle{\lim_{x\to 3^+}}f(x)=\displaystyle{\lim_{x\to 3^+}}x+7=3+7=10$
+
+<br/>
+Notemos que $12\neq 10,$ cómo los límites laterales son diferentes entonces 
+
+$$ \lim_{x\to 3}f(x)=\mbox{ No existe.}$$
+> Si los límites laterales no son iguales, entonces el límite (normal) no existe.

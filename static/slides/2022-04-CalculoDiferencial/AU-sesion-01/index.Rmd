@@ -1,0 +1,189 @@
+---
+title: "Los números Reales y su clásificación"
+subtitle: "Sesión 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Aprender a clasificar los números reales en sus diferentes tipos. <br/> <br/>
+ * Conocer la implicación de la expansión decimal de un número en su clásificación. <br/> <br/>
+ * Aprender las diferentes propiedades de los números y sus tipos.
+
+---
+# Los números:
+
+Los sistema números __reales__ al conjunto de números que trabajamos comúnmente y dos operaciones (la _suma_ y la _multiplicación_). 
+<br/> <br/>
+.pull-left[Se denotan por:
+<br/> <br/> 
+<span style="font-size:40px"> $$\mathbb{R}$$
+]
+
+.pull-right[  Algunas implicaciones:
+
+- Son la base de la aritmética.
+
+- Se usan en álgebra y cursos superiores.
+
+- Son la base de nuestros sistemas de medición.
+]
+
+---
+# Los naturales
+
+.pull-left[Se denotan por:
+<br/> <br/> 
+<span style="font-size:40px"> $$\mathbb{N}$$
+]
+
+.pull-right[
+
+- Están formados por los números que representan una cantidad entera y positiva. 
+
+- Se puede asociar con cantidades para contar.
+
+- El cero (0) __NO__ forma parte de los número naturales.
+]
+
+<span style="font-size:25px"> __Por ejemplo__: 1, 2, ..., 10,..., 500,...
+
+---
+# Los enteros
+
+.pull-left[Se denotan por:
+<br/> <br/> 
+<span style="font-size:40px"> $$\mathbb{Z}$$
+]
+
+.pull-right[
+
+- Están formados por: los números naturales, el cero y la versión negativa de los números naturales.
+
+- Se puede asociar con cantidades para contar y que tengan un sentido.
+
+- Problemente los hayas visto en: descuentos, temperatura, contabilidad.
+]
+
+<span style="font-size:25px"> __Por ejemplo__: ...,-5,..,-2, -1, 0, 1,..., 5,...
+
+---
+# Los racionales
+.pull-left[Se denotan por:
+<br/> <br/> 
+<span style="font-size:40px"> $$\mathbb{Q}$$
+]
+
+.pull-right[
+
+- Son números que se pueden representar como el _cociente_ de dos __enteros__.
+
+- Asociadas con cantidades fraccionarias ya sean positivas o negativas.
+
+- Problemente los hayas visto en: el super.
+
+- Dado que podemos tomar la fracción $a/1=a$ podemos decir que cualquier natural y entero es un racional. (__ Contiene a $\mathbb{N}$ y a $\mathbb{Z}.$__)
+]
+
+<span style="font-size:25px"> __Por ejemplo__: ...,-5/3,..,-2/11, -1/3, 0, 1,..., 5/33,...
+---
+## Los decimales:
+
+Cuando tenemos números con decimales no es tan evidente donde clasificarlos, pero esta clasificación depende de la _forma_ de sus decimales.
+
+- <span style="font-size:25px"> __Decimales conmensurables (finitos):__
+
+los decimales tienen un fin, _por ejemplo:_ $2.36=\frac{236}{100},$ $-0.003251=-\frac{3251}{1000000}$.
+
+- <span style="font-size:25px"> __Decimales inconmensurables periódicos (infinitos con un patrón):__
+
+los decimales no tiene un fin, pero tienen un patrón bien definido, _por ejemplo:_ $0.333...=\frac{1}{3},$ y $-0.549549549549...=-\frac{61}{111}.$
+
+> <span style="font-size:30px"> Los dos anteriores son parte de los números racionales.
+
+---
+# Los Irracionales
+
+.pull-left[Se denotan por:
+<br/> <br/> 
+<span style="font-size:40px"> $$\mathbb{Q}^c\mbox{ ó }\mathbb{I}$$
+]
+
+.pull-right[
+
+- Son números que __NO__ se pueden representar como el _cociente_ de dos __enteros__.
+
+- Problemente conozcas algunos cómo: $\pi,$ $\sqrt{2},$ and $e$.
+
+- Su expansión en decimales es infinita y no tiene un patrón.
+]
+
+<span style="font-size:25px"> __Por ejemplo__:
+
+- $\sqrt{3}=$
+```{python}
+import math as m
+print(m.sqrt(3))
+
+```
+---
+- $\pi=$
+```{python}
+import math as m
+print(m.pi)
+
+```
+
+- $e=$
+```{python}
+import math as m
+print(m.e)
+
+```
+
+---
+# Esquema de los números Reales:
+
+
+---
+
+
+
+

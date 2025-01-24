@@ -1,0 +1,146 @@
+---
+title: "Derivadas de Orden Superior y Derivación Implícita"
+subtitle: "Sesión 19"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Comprender el concepto de derivadas multiples. <br/><br/>
+ * Calcular derivadas de orden superior. <br/><br/>
+
+---
+# Derivadas de Orden superior
+
+> Debido a que la derivada de una función es una __función__ también, podemos preguntar la derivada de la derivada, es decir, $$f''(x)=(f')'(x).$$
+<br/><br/>
+Así mismo, podemos preguntartos por las derivadas de las derivadas de las derivadas, etcétera. En notación podemos decir:
+<br/><br/>
+* Segunda derivada: $f''(x),\quad \frac{d^2f}{dx^2}.$
+* Tercera derivada: $f^{(3)}(x), \quad \frac{d^3f}{dx^3}.$
+* Cuarta derivada: $f^{(4)}(x), \quad \frac{d^4f}{dx^4}.$
+
+---
+# Ejemplos:
+
+Calcule la segunda derivada de la función $f(x)=x+\sin x.$
+<br/><br/><br/>
+Nos piden calcular $f''(x),$ para ello derivamos __consecutivamente__ dos veces la función $f.$
+<br/>
+$$f''(x)=(x+\sin x)''=(1+\cos x)'=-\sin x.$$
+
+---
+# Ejemplos:
+Caclule la tercera derivada de la función $f(x)=x^4-3x^2+2x.$
+<br/><br/><br/>
+Nos piden calcular $f^{(3)}(x),$ para ello derivamos __consecutivamente__ tres veces la función $f.$
+<br/>
+$$f^{(3)}(x)=\frac{d^3}{dx^3}(x^4-3x^2-2x)=\frac{d^2}{dx^2}(4x^3-6x-2)=\frac{d}{dx}(12x^2-6)=24x.$$
+
+---
+# Ejemplos:
+
+Calcule la cuarta derivada de $f(x)=\cos(2x).$
+<br/><br/><br/>
+Nos piden calcular $f^{(4)}(x),$ para ello derivamos __consecutivamente__ cuatro veces la función $f.$
+<br/>
+$$f^{(4)}(x)=\frac{d^4}{dx^4}(\cos(2x))=\frac{d^3}{dx^3}(-2\sin(2x))=\frac{d^2}{dx^2}(-4\cos(2x)=\frac{d}{dx}(8\sin(2x)=16\cos(2x).$$
+---
+# Derivación Implícita
+
+> A veces tenemos que una cantidad depende de otra pero no es precisamente una función, sino una ecuación, ¿será posible derivadar para conocer su tasa de cambio?
+<br/><br/>
+__Por ejemplo:__ $$y^2+3y=x^3$$
+<br/>
+$$x^2y-xy^2=\sin x$$
+<br/>
+$$ x^2+y^2=1.$$
+
+---
+# Derivación Implícita
+
+> Podemos usar __derivación implícita__ para conocer estas de cambio. Pra derivar una ecuación vamos a pensar que $y$ depende de $y$ y utilizaremos las reglas que conocemos, y cuando nos toque derivar cosas con $y$ pensamos que es una composición.
+
+<br/><br/>
+Encuentre la derivada de $$y^2+3y=x^3.$$
+<br/>
+1. Derivamos ambas partes de la ecuación. $$(y^2+3y)'=(x^3)'$$
+
+---
+2. Utilizamos las reglas de derivación en ambas partes.
+$$(y^2)'+(3y)'=(x^3)'$$
+3. En las partes donde derivemos algo con $y,$ multiplicamos por la expresión de $y'.$ 
+$$2y\color{red}{\cdot y'} +3\cdot \color{red}{y'}=3x^2.$$
+
+
+4. Si es posible despejar $y'$ para que se encuentre lo hacemos, si no dejamos la ecuación resultante. En este ejemplo si podemos despejar:
+$$y'(2y+3)=3x^2$$
+$$y'=\frac{3x^2}{2y+3}.$$
+---
+# Ejemplo:
+Encuentre la derivada de la ecuación $x^2y-xy^2=\sin x$
+
+>Solución:
+
+1. $$(x^2y)'-(xy^2)'=(\sin x)'$$
+
+2. Utilizo regla del producto en cada término del lado izquierdo:
+$$2xy+x^2\color{red}{y'}-(y^2+x\color{red}{(2y y')})=\cos x$$
+
+3. Despejamos $y':$
+
+$$y'(x^2-2xy)=\cos x-2xy+y^2$$
+$$y'=\frac{\cos x-2xy+y^2}{x^2-2xy}.$$
+
+---
+# Ejemplos:
+
+Encuentre la derivada de $y^3=x^2.$
+
+>Solución:
+
+1. $$(y^3)'=(x^2)'$$
+
+2. Utilizo la regla de la potencia en cada lado de la ecuación:
+$$3y^2y'=2x$$
+
+3. Despejamos $y':$
+
+$$y'=\frac{x^2}{3y^2}.$$

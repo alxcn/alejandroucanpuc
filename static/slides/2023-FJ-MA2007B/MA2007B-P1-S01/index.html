@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Topología</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2023-01-10" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ad1f898dacf840f784768cfe8bd712ee","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Topología
+]
+.subtitle[
+## Sesión 01
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2023-01-10
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos de la Sesión
+
+* Introducir el concepto de Espacio Topológico. &lt;br/&gt;&lt;br/&gt;
+* Definir la topología: trivial, discreta y complemento finito. &lt;br/&gt;&lt;br/&gt;
+* Definir la topología subespacio. &lt;br/&gt;&lt;br/&gt;
+
+---
+# ¿En qué se parecen una dona y una taza? ¿Y la letra b y p? ¿En que se diferencian la letra o y la l?
+
+---
+# Espacio Topológico
+
+&gt; __Definición:__ un espacio topológico es un par `\((X,\tau)\)` donde `\(X\)` es un conjunto y `\(\tau\)` es una colección de subconjuntos de `\(X\)` con las siguientes propiedades: &lt;br/&gt;&lt;br/&gt;
+  * `\(\varnothing, X\in \tau.\)` &lt;br/&gt;&lt;br/&gt;
+  * Si `\(\{U_a\}_{a\in A}\)` es una colección (posiblemente no finita) de elementos de `\(\tau,\)` entonces `$$\bigcup_{a\in A} U_a \in \tau.$$`
+  * Si `\(\{U_i\}_{i=1}^m\)` es una colección _finita_ de elementos de `\(\tau,\)` entonces `$$\bigcap_{i=1}^m U_i \in \tau.$$`
+  A `\(\tau\)` se le conoce como la topología de `\(X\)` y a los elementos de `\(\tau\)` se le conocen como abiertos de `\(X.\)`
+  
+---
+#### Ejemplo de Espacios Topológicos
+
+&gt; Consideremos el espacio `\(X=\{0,1,3,5,7\}\)` con el sistema `$$\tau_1=\{\varnothing, \{0\},\{1\},\{5\},\{0,5\},\{0,1\},\{1,5\},\{0,1,5\},\{0,1,3,5,7\}\},$$` el par `\((X,\tau_1)\)` es un espacio topológico. &lt;br/&gt;&lt;br/&gt;
+Si consideramos también el sistema `$$\tau_2=\{\varnothing, \{0\},\{3\},\{5\},\{0,5\},\{0,3\},\{3,5\},\{0,3,5\},\{0,1,3,5,7\}\},$$` también `\((X,\tau_2)\)` es un espacio topológico y más aún diferente a `\((X,\tau_1).\)`
+&lt;br/&gt;&lt;br/&gt;
+Para el sistema `$$\tau_3=\{\varnothing, \{0\},\{1\},\{1,5\},\{1,3,5\},\{0,1,3,5,7\}\}$$` el par `\((X,\tau_3)\)` ya no es un espacio topológico. __¿Qué es lo que falla?__
+
+---
+## Topología Trivial y Discreta
+
+&gt; __Definición:__ Para cualquier espacio `\(X,\)` podemos definir la _topología trivial o indiscreta_ que consiste en el sistema `\(\tau=\{\varnothing, X\}.\)`
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; __Definición:__ Para cualquier espacio `\(X,\)` podemos definir la _topología discreta_ dada por el sistema `\(\tau=2^X=\{\mbox{todos los subconjuntos de }X\}.\)` 
+
+Por ejemplo: Si `\(X=\{u,v,w\},\)` entonces `\(2^X=\{\varnothing, \{u\}, \{v\}, \{w\}, \{u,v\}, \{u,w\}, \{v,w\}, \{u,v,w\}\}.\)`
+
+---
+## Grafos
+
+ .pull-left[ __Definición:__ un grafo es un par de conjuntos `\((V,E)\)` donde: 
+  * `\(V\)` se conocen como vértices.
+  * `\(E\)` se conocen como aristas, y son pares `\((v,w)\)` con `\(v,w\in E.\)`]
+  
+.pull-right[ ![](https://upload.wikimedia.org/wikipedia/commons/2/24/Tree_graph.svg)]
+
+##### Ejemplo:
+
+Considere el grafo `\(\Gamma=\{u,v,w,z,(u,z),(v,z),(w,z)\}.\)` Este grafo es un espacio topológico si consideramos el sistema `\(2^{T_1\cup T_2}\)` donde:
+  * `\(T_1=\{\{(u,z)\},\{(v,z)\},\{(w,z)\}\}\)`
+  * `\(T_2=\{\{(u,z),u\},\{(v,z),v\},\{(w,z),w\},\{(u,z),(v,z),(w,z),z\}\}.\)`
+
+---
+## Topología Cofinita
+
+&gt; __Definición:__ Sea `\(X\)` un espacio dotado con el sistema `\(\tau_f\)` que consiste en la colección de todos los subconjuntos de `\(X\)` tales que `$$X\setminus U=\varnothing \mbox{ ó finito}.$$` Entonces `\((X,\tau_f)\)` es un espacio topológico, y a `\(\tau_f\)` se le conoce como la _topología cofinita._
+&lt;br/&gt;&lt;br/&gt;
+
+#### ¿Por qué `\(\tau_f\)` es una topología?
+
+
+---
+## Topología Subespacio
+
+&gt; __Definición:__ Sea `\((X,\tau)\)` un espacio topológico. Para `\(Y\subset X\)` el sistema `$$\tau_Y=\{Y\cap U: U\in \tau\}.$$` Entonces `\((Y,\tau_Y)\)` es un espacio topológico y a `\(\tau_Y\)` se le conoce como la topología subespacio.
+
+&lt;br/&gt;&lt;br/&gt;
+
+##### Ejemplo:
+
+Consideremos una superficie en `\(\mathbb{R}^3,\)` esta es un espacio topológico con la topología subespacio. 
+
+---
+#### ¿Por que `\(\tau_Y\)` es una topología para `\(Y\)`?
+
+---
+#### Ejercicio:
+
+&gt; Si tenemos que `\(X=\{0,1,3,5,7\}\)` con la topología `\(\tau=\{\varnothing, \{0\},\{1\},\{5\},\{0,5\},\{0,1\},\{1,5\},\{0,1,5\},X\}\)` ¿cuál es la topología para el subconjunto `\(Y=\{1,5,7\}\)`?
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; Construye una topología en `\(X=\{0,2,4,6,8\}\)` que no contenga conjuntos con 1 solo elemento.
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; Prueba que si `\(X\)` es finito, entonces la topología cofinita en `\(X\)` es la misma que la topología discreta. (Para esto debes probar que todo elemento en `\(\tau_f\)` es un elemento de `\(2^X\)` y viceversa.)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

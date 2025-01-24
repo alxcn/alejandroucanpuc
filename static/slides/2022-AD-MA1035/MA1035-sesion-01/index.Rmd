@@ -1,0 +1,166 @@
+---
+title: "Ecuaciones Diferenciales Ordinarias y Modelación"
+subtitle: "Sesión 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Conocer la definición de EDO y sus clasificaciones. <br/><br/>
+* Conocer el concepto de familia solución. <br/><br/>
+* Aplicar el método de separación de variables. <br/><br/>
+* Modelar mediante EDOS lineales de primer orden. <br/><br/>
+
+---
+# ¿Qué es una EDO?
+
+> __Definición:__ Una _Ecuación Diferencial_ es una ecuación que contiene derivadas o funciones incognitas respecto a una o mas variables independientes. <br/><br/><br/>
+Diremos que una ecuación diferencial es _ordinaria_ si las funciones derivada se consideran de una varibale, y _parciales_ si las funciones derivada son de varias variables.
+
+__Ejemplos:__
+  * $\frac{dy}{dx}+5y=e^x,$ $\frac{d^2y}{dx^2}-\frac{dy}{dx}+6y=0$ ó $\frac{dx}{dt}+\frac{dy}{dt}=2x+y.$ <br/><br/>
+  
+  * $\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0$ $\frac{\partial u}{\partial y}=-\frac{\partial u}{\partial x}.$
+  
+---
+## Clasificación de las EDO.
+
+> Las EDO se pueden clasificar mediante:
+  * El orden de la derivada: <br/><br/>
+    * Primer orden: $y'=y,$ o $y'sin(x)=y.$ <br/>
+    * Segundo, tercer, y así consecutivamente involucran derivadas de ese orden. <br/><br/>
+  * Linealidad:
+    * Lineal: la función $y$ y sus derivadas se encuentran a la potencia 1, y los coeficientes solo dependen de $x.$  $$y''+y'+6=0.$$
+    * No lineal: alguna función $y$ o sus derivadas se encuentra a potencia mayor a 1, o los coeficientes pueden depender de $x$ y $y$ o sus derivadas. $$(1-y)y'+2y=e^x,$$ $$(y'')^3+sin(y)=0.$$
+    
+---
+## Solución de una EDO.
+
+> __Definición:__ Decimos que $f$ es una función definida en cierto intervalo $I,$ con derivadas continuas en $I$ (tantas derivadas como el orden de la ecuación) es una solución de una ecuación diferencial si cuando sustituimos la función obtenemos una identidad.
+
+__Ejemplo:__ La función $f(x)=e^x$ definida en $\mathbb{R},$ es una solución de la EDO $$y'-y=0.$$ Veamos, $f'(x)=e^x$ y si $y=f(x),$ entonces $$y'-y=e^x-e^x=0.$$
+
+---
+## Curva Solución
+
+> __Definicón:__ la gráfica de una función solución a una EDO se conoce como curva solución, notemos que la curva solución puede diferir de la gráfica de la función dado que la curva solución __depende del intervalo de definición de la solución.__
+
+__Ejemplo:__ Consideremos la ecuación $xy'+y=0.$ La función $y=f(x)=1/x$ es una solución, pero recordemos que $f(x)$ no es diferenciable en $x=0,$ por lo que debemos definir que intervalo tomaremos, si $(-\infty,0)$ o $(0,\infty).$ 
+
+---
+### Soluciones implícitas.
+
+> __Definición:__ A veces las EDO pueden satisfacerse por una relación $G(x,y)$ (ecuación que involucra $x$ y $y$), pero siempre con la premisa que hay una función que satisface esta relación que se comportará como la solución de la EDO.
+
+__Ejemplo:__ La relación $x^2+y^2=k^2$ es una solución de la ecuación $yy'+x=0.$ Y las funciones asociadas son $f(x)=\sqrt{k^2-x^2}$ y $f(x)=-\sqrt{k^2-x^2}$ en sus respectivos intervalos de definición.
+
+---
+# Técnicas para resolver EDOs
+
+> __Definición:__ Una EDO se dice que es una ecuación __separable__ o acepta __separación de variables__ si es de la forma $$y'=g(x)h(y).$$
+
+__Ejemplo:__ Consideremos la EDO $y'=1+e^{2x}.$ <br/><br/>
+
+Notemos que si realizamos la antideravada $$\int 1+e^{2x}dx=x+\frac{e^{2x}}{2}+c$$ es una solución para la ecuación diferencial para cada constante $c.$
+
+---
+## ¿Cómo utilizo el método?
+
+> Si tenemos una EDO que es separable $$\frac{dy}{dx}=g(x)h(y).$$
+  * Separamos las variables $y$ y $x$ en un lado de la ecuación. $$p(y)\frac{dy}{dx}=g(x),\quad\mbox{donde }p(y)=\frac{1}{h(y)}.$$
+  * Separamos nuestras diferenciales como si fuera una "fracción",
+$$p(y)dy=g(x)dx$$
+  * Integramos cada lado de la ecuación, $$\int p(y)dy =\int g(x)dx.$$
+  * Las antiderivadas formaran una _relación_ que fungirá de solución.
+
+---
+### Ejemplo del método.
+
+> Resuelva la EDO $(1+x)\frac{dy}{dx}-y=0.$
+
+---
+### Ejemplo del método.
+
+> Resuelva la EDO $\frac{dy}{dx}=e^{3x+2y}.$
+
+---
+# Modelos Lineales: Crecimiento y Decaimiento
+
+> En una rebanada de pan sabemos que se encuentran una comunidad de bacterias. Si sabemos que la razón de crecimiento de de esta comunidad es de 3/2 el número de la población. ¿Hay una función que describa la cantidad de bacterias en el tiempo determinado?
+
+<br/><br/>
+
+Cuando una _razón de cambio_ es __proporcional__ a la población obtenemos una EDO lineal dada por $$\frac{dx}{dt}=kx$$ donde la población $x(t)$ depende del tiempo $t.$
+
+---
+## Esta ecuación es separable.
+
+Notemos que la EDO anterior es separable, y que todas las soluciones son similares, es decir, toda solución pertenece a la familia $$x(t)=ce^{kt}.$$
+
+*Reto:* Utiliza separación de variables para resolver la ecuación modelo y llegar a la familia solución.
+
+> Usualmente un problema de modelación nos da información necesaria para delimitar el problema, conocido como __condición inicial__. Esta información nos permite transformar nuestra EDO en algo conocido como __problema de valor inicial__.
+
+---
+## Problemas de valores iniciales y soluciones.
+
+> __Definición:__ Un __problema de valor inicial__ se conforma de una EDO más una condición que debe satisfacer la solución. 
+
+
+#### Nota: la condición inicial permite que la solución que encontremos sea __única__, para la EDO y la condición inicial.
+
+> En una rebanada de pan sabemos que se encuentran una comunidad de bacterias. Si sabemos que la razón de crecimiento de de esta comunidad es de 3/2 el número de la población. ¿Qué función modela la población de bacterias _si se sabe que al inicio de nuestra observación_ había __500 mil bacterias__?
+
+---
+### Problemas de Temperatura
+
+#### Ley de Newton para el enfriamento/calentamiento.
+
+> La razón de cambio de la temperatura que experimenta un cuerpo es proporcional a la diferencia entre la temperatura del cuerpo y la temperatura de medio en el que se encuentra. $$ \frac{dT}{dt}=k(T-T_m).$$
+
+
+__Ejemplo:__ La temperatura de unos chilaquiles Tec recien servidos es de $90^\circ C.$ Si la temperatura en la cafetería es de $22^\circ C.$ Si despues de 2 minutos la temperatura de mis chilaquiles es de $80^\circ C.$ ¿Qué función modela la temperatura de mis chilaquiles?

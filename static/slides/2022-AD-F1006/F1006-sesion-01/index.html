@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Mean and Instant Velocity</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xd0d26474ebd4179bf227680ea2a46f2","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Mean and Instant Velocity
+]
+.subtitle[
+## Session 01
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+
+# Goals:
+
+ * Understand the differences between mean and instant velocity. &lt;br/&gt;&lt;br/&gt;
+ * The derivative as a instant velocity indicator. &lt;br/&gt;&lt;br/&gt;
+ * The vectorial version of displacement and velocity.
+---
+# Problematic.
+
+&gt; A body falls from a building of 500 m height It is evident, body's height `\(h\)` diminish by the time pass. 
+
+
+&gt; Note that even if `\(h\)` diminish, the _rate of change_ it is not constant. This is true because the falling _velocity_ is not constant. Why?
+
+
+---
+# The mean velocity.
+
+&lt;iframe scrolling="no" title="Velocity as Derivative of a Curve" src="https://www.geogebra.org/material/iframe/id/hgzursr9/width/1274/height/616/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="1200px" height="450px" style="border:0px;"&gt; &lt;/iframe&gt;
+
+---
+# Computing the mean velocity.
+
+&gt; These are some known values for the height at the time `\(t\)` in seconds.
+
+
+---
+# Instant velocity.
+
+&lt;iframe scrolling="no" title="Velocity as Derivative of a Curve" src="https://www.geogebra.org/material/iframe/id/hgzursr9/width/1274/height/616/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="1200px" height="450px" style="border:0px;"&gt; &lt;/iframe&gt;
+
+---
+# Mathematical formulation for Instant velocity.
+
+&gt; Mean velocity is `$$\overline{v}=\frac{\Delta h}{\Delta t}=\frac{\mbox{displacement}}{\mbox{time}}$$`
+
+If we reduce the time passed to cero (in the limit), we obtain the instant velocity.
+
+`$$v=\lim_{\Delta t\to 0}\overline{v}=\lim_{\Delta t\to 0}\frac{\Delta h}{\Delta t}=\frac{d h}{dt}.$$`
+---
+# How to compute a derivative as a limit.
+
+&gt; A car is moving on a straight line, if we know that its displacement is given by the function `\(f(x)=3x+2.\)` Compute the instant velocity.
+
+
+---
+# Excercise
+
+&gt; A bird is flying following a straight direction. If we know that the height of the bird is given by the function `\(f(x)=1-3x^2\)` compute the instant __rate of change__ of the height.
+
+---
+# Recall
+
+Recall that there are some formulas that ease the derivative computations. 
+
+&gt; __Theorem:__ The derivative of the function `\(f(x)=x^n\)` is given by `$$\frac{d f}{dx}=nx^{n-1}.$$` And also, for a general functions `\(f\)` and `\(g,\)` and real numbers `\(c,\)` we have that `$$\frac{d(f+g)}{dx}=\frac{df}{dx}+\frac{dg}{dx}$$` `$$\frac{d(cf)}{dx}=c\frac{df}{dx}.$$`
+
+__Example:__ If `\(f(x)=x^4\)` then `\(f'(x)=4x^{4-1}=4x^3.\)`
+
+---
+# Example:
+
+&gt; Compute the derivative of the function `\(f(x)=3x^2+2x-1.\)`
+
+
+---
+# Excercise:
+
+&gt; Find the derivative of the following function `\(f(x)=10x^5-5x^4+1.\)`
+
+---
+# The vectorial version.
+
+&gt; The __vectorial curve__ that describe the displacement of the body is written as: `$$\vec{r}(t)=t\mathbf{i}+(500-4.9t^2)\mathbf{j}.$$` &lt;br/&gt;
+In this curve, we think that the `\(x-\)`axis correspond to tiem and the `\(y-\)`axis to the height. &lt;br/&gt;&lt;br/&gt; Note that `\(\mathbf{i}\)` and `\(\mathbf{j}\)` are the canonical vectors.
+
+---
+# And the derivative?
+
+
+&gt; Well, we can translate the velocity (derivative) of the body using vectors. The derivative will be the derivative of each component of the displacement vector respect to time. `$$\vec{v}(t)=\frac{d t}{dt}\mathbf{i}+\frac{d(500-4.9t^2)}{dt}\mathbf{j}=\mathbf{i}+-9.8t\mathbf{j}.$$`
+
+---
+# A geometric view of the vectorial velocity
+
+&lt;iframe scrolling="no" title="Velocity as Derivative of a Curve" src="https://www.geogebra.org/material/iframe/id/hgzursr9/width/1274/height/616/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="1200px" height="450px" style="border:0px;"&gt; &lt;/iframe&gt;
+
+---
+# Example:
+
+&gt; Find the expression for the vectorial velocity of a car whose displacement (in vectors) is given by the function `$$f(t)=t\mathbf{i}+(3t-1)\mathbf{j}.$$`
+
+---
+# Exercise:
+
+&gt; Find the expression for the vectorial velocity of a bird whose displacement (in vectors) is given by the function `$$f(t)=t\mathbf{i}+(4t^3-3t^2)\mathbf{j}.$$`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

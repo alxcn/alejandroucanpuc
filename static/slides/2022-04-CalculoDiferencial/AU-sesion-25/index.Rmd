@@ -1,0 +1,123 @@
+---
+title: "Optimización"
+subtitle: "Sesión 25"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Aplicar las derivadas para optimizar funciones. <br/><br/>
+ * Entender el concepto de optimización. <br/><br/>
+ * Aplicar optimización en problemas de modelado.
+ 
+---
+# Ejemplo: 
+
+> Un jardín rectangular tiene un perímetro de 200 $m.$ ¿Qué dimensiones debe tener el jardín para que el área que encierra sea la máxima posible?
+
+__Solución:__
+
+_Paso 1:_ Encontrar la función objetivo (lo que queremos maximizar o minimizar): $$A=(base)(altura)=xh,$$ y sabemos que las medidas cumplen $$2x+2h=200 \Rightarrow h=\frac{200-2x}{2}=100-x.$$ Por lo que mi área (en función de $x$) es: $$A=x(100-x)=100x-x^2.$$ 
+---
+# Ejemplo:
+
+_Paso 2:_ Encontrar donde ocurre la optimización (máximo o mínimo.)
+
+Encontramos los puntos críticos:  $A'(x)=100-2x=0\Rightarrow x=50$ 
+
+<br/>
+Aplicamos el criterio de la 1a derivada: $A'(49)>0$ y $A'(51)<0.$ 
+
+
+<br/>
+
+Entonces en $x=50$ obtenemos un máximo local. 
+
+Por lo tanto, las medidas deben ser $x=50m$ y $h=100-50=50m.$
+
+---
+# Ejemplo 2:
+
+> Una fabrica de papel quiere diseñar una hoja en forma de rectángulo que tenga un área de 90 $cm^2.$ ¿Qué dimensiones debe tener la hoja para que se use la menor cantidad posible de papel?
+
+__Solución:__
+
+_Paso 1:_ Encontrar la función objetivo (lo que queremos maximizar o minimizar): $$P=2(base)+2(altura)=2x+2h,$$ y sabemos que las medidas cumplen $$xh=90 \Rightarrow h=\frac{90}{x}.$$ Por lo que mi perímetro (en función de $x$) es: $$P=2x+2\left(\frac{90}{x}\right)=2x+\frac{180}{x}.$$ 
+---
+# Ejemplo 2:
+
+_Paso 2:_ Encontrar donde ocurre la optimización (máximo o mínimo.)
+
+Encontramos los puntos críticos:  $P'(x)=2-\frac{180}{x^2}=\frac{2x^2-180}{x^2}\Rightarrow x^2-90=0 \Rightarrow x_1=\sqrt{90}, x_2=-\sqrt{90}.$ 
+
+<br/>
+Aplicamos el criterio de la 1a derivada: $P'(9)<0$ y $P'(10)>0.$ 
+
+
+<br/>
+
+Entonces en $x=\sqrt{90}$ obtenemos un mínimo local. 
+
+Por lo tanto, las medidas deben ser $x=\sqrt{90}m$ y $h=\frac{90}{\sqrt{90}}m.$
+
+---
+# Ejemplo 3:
+
+> Consideramos una caja de cartón en forma de prisma rectangular sin tapa y con base cuadrada y con una capacidad de 2,000 $m^3.$ ¿Qué diemsniones debe tener la caja para que se use la menor cantidad de material posible?
+
+__Solución:__
+
+_Paso 1:_ Encontrar la función objetivo (lo que queremos maximizar o minimizar): $$A=A_{base}+4A_{cara}=x^2+4xh,$$ y sabemos que las medidas cumplen $$x^2h=2000 \Rightarrow h=\frac{2000}{x^2}.$$ Por lo que mi área (en función de $x$) es: $$A=x^2+4x\left(\frac{2000}{x^2}\right)=x^2\frac{8000}{x}.$$ 
+---
+# Ejemplo 3:
+
+_Paso 2:_ Encontrar donde ocurre la optimización (máximo o mínimo.)
+
+Encontramos los puntos críticos:  $A'(x)=2x-\frac{8000}{x^2}=0\Rightarrow \frac{2x^3-8000}{x^2} \Rightarrow x^3=40000 \Rightarrow x=\sqrt[3]{4000}.$ 
+
+<br/>
+Aplicamos el criterio de la 1a derivada: $A'(15)<0$ y $A'(17)>0.$ 
+
+
+<br/>
+
+Entonces en $x=\sqrt[3]{4000}$ obtenemos un mínimo local. 
+
+Por lo tanto, las medidas deben ser $x=\sqrt[3]{4000}m$ y $h=\frac{2000}{(4000)^{2/3}}m.$

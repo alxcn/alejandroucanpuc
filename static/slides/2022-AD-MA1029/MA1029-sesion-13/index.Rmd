@@ -1,0 +1,119 @@
+---
+title: "Coordenadas Cilíndricas"
+subtitle: "Sesión 13"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Definir el sistema de coordenadas cilíndrico. <br/><br/>
+ * Determinar el diferencial de volumen en coordenadas cilíndricas. <br/><br/>
+ * Calcular integrales triples en coordenadas cilíndricas.
+
+
+---
+# Coordenadas Cilíndricas $(\theta,r,z).$
+
+<iframe src="https://www.geogebra.org/calculator/za424zgv?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# ¿Cómo traduzco entre coordenadas?
+
+Existen expresiones que nos permiten hacer la conversión entre distintos tipos de coordenadas. Por ejemplo:
+
+> Si tengo un punto $(x,y,z)$ (coordenadas rectangulares) y lo quiero en coordenadas _cilíndricas_, entonces se cumple: <br/>
+- $r^2= x^2+y^2,$ <br/>
+- $\tan(\theta)=\frac{y}{x}$ y <br/>
+- $z=z.$
+
+<br/>
+
+> Si tengo un punto $(\theta,r,z)$ y lo quiero en coordenadas _rectangulares_, entonces se cumple: <br/>
+- $x=r\cdot \cos(\theta)$ <br/>
+- $y=r\cdot \sin(\theta)$ y 
+- $z=z.$
+
+---
+## Veamos algunas regiones cilíndricas
+
+> Describa la región acotada por el plano $z=0$ y el paraboloide $z=4-x^2-y^2$ en coordenadas cilíndricas.
+
+---
+
+## Veamos algunas regiones cilíndricas.
+
+> Describa la región dentro de la esfera $x^2+y^2+z^2=4$ y el cilindro $x^2+y^2=2.$
+
+---
+# ¿Cómo cambia mi diferencial de volumen?
+
+> El diferencial de volumen cambia a $dV=r d\theta d r dz.$
+```{r, echo=FALSE, out.width="40%", fig.cap="Diferencial de área"}
+knitr::include_graphics("http://citadel.sjfc.edu/faculty/kgreen/vector/Block3/jacob/volume_cyl.gif")
+```
+
+---
+# Ejemplo:
+
+> Calcula la integral de $f(x,y,z)=x^2+y^2$ en la región delimitada por el paraboloide $x^2+y^2=2z$ y $z=2.$ <br/><br/>
+
+Notemos que $x^2+y^2=r^2$ y la ecuación del hiperboloide se reduce a $r^2=2z.$ Por lo que la integral se traduce en $$\int_0^{2\pi} \int_0^2\int_{r^2/2}^2 r^2 r dz dr d\theta= \int_0^{2\pi} \int_0^2\int_{r^2/2}^2 r^3 dz dr d\theta$$
+$$=\int_0^{2\pi} \int_0^2 r^3\left(2-\frac{r^2}{2}\right) dr d\theta = \int_0^{2\pi}\frac{r^4}{2}-\frac{r^6}{12}\big{|}_{0}^2 d\theta$$
+$$=\frac{8}{3}\int_0^{2\pi}d\theta = \frac{16\pi}{3}.$$
+
+---
+# Ejercicio:
+
+> Calcula el volumen de la región acotada por los paraboloides $x^2+y^2=4z$ y $x^2+y^2=-2z+6$
+
+---
+# Solución:
+
+> La región descrita es: $0\leq r\leq 2,$ $0\leq \theta \leq 2\pi$ y $\frac{r^2}{4}\leq r \leq \frac{6-r^2}{2}.$ <br/><br/> Así mi integral está dada por: $$\int_0^{2\pi}\int_0^2\int_{\frac{r^2}{4}}^{\frac{6-r^2}{2}}dzdrd\theta=\int_0^{2\pi}\int_0^2 \frac{12-r^2}{4} dr d\theta$$
+$$\int_0^{2\pi}3r-\frac{r^3}{12}\big{|}_0^2 d\theta =2\pi \left(6-\frac{8}{12}\right)=\frac{32\pi}{3}.$$
+
+---
+# Actividad:
+
+> Calcule las siguientes integrales en coordenadas esféricas: <br/><br/>
+  * $f(x,y,z)=x^2+y^2$ en la región acotado por el cono $z^2=x^2+y^2$ y $z=2.$ <br/><br/>
+  * $f(x,y,z)=\sqrt{x^2+y^2}$ en la región del cilindro $x^2+y^2=16$ acotada por los plano $z=-5$ y $z=4.$ <br/><br/>
+  * $f(x,y,z)=e^z$ en la región acotada por el paraboloide $z=1+x^2+y^2,$ el cilindro $x^2+y^2=5$ y el plano $z=0.$
+  

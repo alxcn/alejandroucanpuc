@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Series de funciones complejas</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-11-13" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x9f837851b4847b8a88f92a2c691b722","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Series de funciones complejas
+]
+.subtitle[
+## Sesión 19
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-11-13
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos:
+
+ * Introducir la fórmula integral de Cauchy. &lt;br/&gt;&lt;br/&gt;
+ * Introducir el concepto de Series y su convergencia. &lt;br/&gt;&lt;br/&gt;
+ * Definir las series de funciones asociadas a una función compleja  (Taylor y Laurent). &lt;br/&gt;&lt;br/&gt;
+
+---
+# La fórmula Integral de Cauchy
+
+&gt; __Teorema:__ Sea `\(f\)` una función holomorfa dentro y en un contorno simple cerrada `\(C,\)` orientadas positivamente. Si `\(z_0\)` es un punto interior a `\(C,\)` entonces `$$f(z_0)=\frac{1}{2\pi i} \int_C \frac{f(z)}{z-z_0}dz.$$`
+
+### Ejemplo:
+
+Calcula `\(\displaystyle{\int_C \frac{zdz}{(9-z^2)(z+i)}=\frac{\pi}{5}},\)` donde `\(C\)` es el circulo `\(|z|=2.\)`
+---
+# Sucesiones y Series
+
+&gt; __Definición:__ una serie es una función `\(f:\mathbb{N}\to \mathbb{C}\)` que asigna a cada natural un número complejo `$$n\mapsto z_n$$` y usualmente se denota como `\((z_n)\)` como un vector con "infinitas" entradas.
+
+### Ejemplos:
+
+---
+## Convergencia:
+
+&gt; __Definición:__ decimos que una sucesión `\((z_n)\)` es __convergente__ si existe un complejo `\(w\)` que cumple con la siguiente propiedad `$$|z_n-w|&lt;\varepsilon \mbox{ para todo} n\geq N.$$` Al complejo `\(w\)` se le conoce como __límite__ de la sucesión. &lt;br/&gt;&lt;br/&gt;
+Si no existe el límite, decimos que la sucesión es __divergente.__
+
+---
+## Ejemplos:
+
+&gt; Consideremos la función `\(f(n)=1/n.\)` Esta es convergente. Por lo contrario, la sucesión `\(f(n)=n^2\)` es divergente.
+
+&lt;br/&gt;&lt;br/&gt;
+&gt; __Teorema:__ Sea `\((z_n)\)` convergente a `\(z.\)` Y consideremos que `\(z_n=x_n+iy_n.\)` Si `\((x_n)\)` y `\((y_n)\)` son convergentes a `\(x\)` y `\(y\)` respectivamente. Entonces, `\(z=x+iy.\)`
+
+---
+## Series
+
+&gt; __Definición:__ una __serie__ es una _sucesión_ particular definida por sumas, es decir, `\((S_n)\)` donde `$$S_n=\sum_{j=1}^n z_n.$$`
+
+### Ejemplo:
+
+Consideremos la serie dada por la sumas parciales de la sucesión `\(z_n=\frac{1}{2^n},\)` es una serie convergente. Al igual que la serie dada por la suma de la sucesión `\(z_n=i^n.\)`
+
+---
+## Series de Potencias:
+
+&gt; __Definición:__ Una serie de potencias es una serie dada de la forma: `$$a_0+\sum_{n=1}^N a_n(z-z_0)^n.$$`
+
+&lt;br/&gt;&lt;br/&gt;
+__Teorema:__ Sea `\(f\)` una función analítica en un disco `\(C_0\)` con centro `\(z_0\)` y radio `\(r_0.\)` Para un punto `\(z\in C_0\)` definimos `$$f(z)=f(z_0)+f'(z_0)(z-z_0)+\frac{f''(z_0)}{2!}(z-z_0)^2+\cdots+ \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n+\cdots$$`
+y es convergente cuando `\(|z-z_0|&lt;r_0.\)`
+
+---
+### Sketch de la prueba:
+
+Por la fórmula integral de Cauchy, tenemos `$$f(z)=\frac{1}{2\pi i}\int_{C_1}\frac{f(s)ds}{s-z}.$$`
+
+Notemos que `$$\frac{1}{s-z}=\left(\frac{1}{s-z_0}\right)\left(\frac{1}{1-\frac{z-z_0}{s-z_0}}\right)$$` y aplicando la identidad de Legendre `$$\frac{1}{s-z}=\left(\frac{1}{s-z_0}\right) \left(1+\frac{z-z_0}{s-z_0}+\cdots +\left(\frac{z-z_0}{s-z_0}\right)^{N-1}+\frac{1}{1-\frac{z-z_0}{s-z_0}}\left(\frac{z-z_0}{s-z_0}\right)^N\right)$$`
+
+---
+Lo anterior implica que `$$\frac{f(s)}{s-z}=\frac{f(s)}{s-z_0}+\frac{f(s)}{(s-z_0)^2}(z-z_0)+\cdots$$`
+
+y además sabemos que `$$\frac{1}{2\pi i}\int_{C_1}\frac{f(s)ds}{(s-z_0)^{n+1}}=\frac{1}{n!}f^{(n)}(z_0).$$`
+
+---
+### Ejemplo:
+
+Encuentre la expansión en serie de potencias de `\(f(z)=\exp(z)\)` al rededor de `\(0.\)`
+
+---
+### Ejemplo:
+
+A partir de lo anterior, deduzca la serie de potencias de `\(f(z)=\sin(z)\)` al rededor de `\(z=0.\)`
+
+---
+### Ejemplo:
+
+Calcula la expansión en series de la función `\(f(z)=(1+z)^{-1}\)` al rededor del cero.
+
+---
+
+## Series de Laurent
+
+Supongamos que `\(C_1\)` y `\(C_2\)` son dos circulos concentricos a un punto `\(z_0\)` con radios `\(r_1\)` y `\(r_2\)` respectivamente. 
+
+&gt; __Teorema:__ Si `\(f\)` es analítica en `\(C_i\)` y en el anillo que acotan, entonces en cada punto `\(z\)` en el dominio se tiene que `$$f(z)=\sum_{n=0}^\infty a_n (z-z_0)^n + \sum_{n=1}^\infty \frac{b_n}{(z-z_n)^n},$$` donde `$$a_n=\frac{1}{2\pi i}\int_{C_1}\frac{f(s)ds}{(s-z_0)^{n+1}}$$` `$$b_n=\frac{1}{2\pi i}\int_{C_2} \frac{f(s)}{(s-z_0)^{-n+1}}.$$`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

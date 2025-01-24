@@ -1,0 +1,187 @@
+---
+title: "Modelado y EDOs"
+subtitle: "Sesión 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introduciendo la teoría de Modelado. <br/><br/>
+* Modelando con EDOs. <br/><br/>
+* Definir EDOs. <br/><br/>
+
+
+---
+# ¿Qué es Modelar?
+
+> __Definición:__ Un modelo es una representación (matemática) simplificada de un problema real. <br/><br/>
+  1. Hipotésis clara donde se basa el problema (debe describir la relación entre las cantidades a estudiar). <br/>
+  1. Definir las variables y paramétros que intervienen en el problema. <br/>
+  1. Use las hipótesis para generar ecuaciones que relacionen las variables y paramétros. <br/>  
+
+---
+## Un problema de población
+
+--
+> __Hipótesis:__ La tasa de infección de un virus de computadora es proporcional a la cantidad de computadoras infectadas. <br/><br/>
+--
+__Variables y parámetros:__ <br/>
+  * $P(t)$: Población en el tiempo $t.$ <br/>
+  * $k$: constante de proporcionalidad. <br/><br/>
+--
+__Ecuación:__ Recordemos que la velocidad de crecimiento es una _razón de cambio_: $$\frac{dP}{dt}=kP.$$
+
+---
+## ¿Qué pasa si cambiamos mis hipótesis?
+
+> __Hipótesis 1:__ Si la población de computadoras conectadas es pequeña entonces la velocidad de crecimiento es proporcional a los elementos de la población. Pero si la población es demasiado grande (para ser soportada), la población comenzará a disminuir. <br/><br/>
+--
+__Variables y parámetros:__ <br/>
+  * $P(t)$: Población en el tiempo $t.$ <br/>
+  * $k$: constante de proporcionalidad. <br/><br/>
+  * $N$: cota de la población. <br/><br/>
+--
+__Ecuación:__
+   $$ \frac{dP}{dt}=kP(1-\frac{P}{N}).$$
+
+---
+# ¿Qué es una EDO?
+
+> __Definición:__ Una _ecuación diferencial ordinaria_ es una ecuación cuya incognita es una función y que involucra derivadas (de la incognita) y la variable independiente. $$f(y^{(n)},y^{(n-1)},\cdots, y',y,x)=0$$<br/><br/>
+  * La variable independiente es la variable respecto a la cual se derivan las funciones. <br/>
+  * La variable dependiente es la función que se desea encontrar. <br/><br/>
+  * El orden de la ecuación es el orden de la derivada más alta que aparece en la ecuación. <br/><br/>
+  * La EDO es lineal si las funciones y sus derivadas aparecen elevadas a la primera potencia y no se multiplican entre sí.<br/><br/>
+  * La EDO no es homogénea si la EDO cuenta con un término independiente (función de la variable independiente) diferente de cero.
+
+---
+## Ejemplos de EDO's
+
+* __Genéricas:__ $yy'-\sin(x)=3y,$ $y''-2y+\sqrt{3x}=0,$ etc. <br/><br/>
+* __Homogéneas:__ $y'+y=0,$ $y'y=0,$ $\sqrt{y''-3xy}=0,$ etc. <br/><br/>
+* __Lineales:__ $y'+y=3x,$ $3y'''+2y''-xy=0,$ etc. <br/><br>
+
+---
+## Solución de una EDO.
+
+> __Definición:__ Decimos que $f$ es una función definida en cierto intervalo $I,$ con derivadas continuas en $I$ (tantas derivadas como el orden de la ecuación) es una solución de una ecuación diferencial si cuando sustituimos la función obtenemos una identidad.
+<br/><br/>
+__Ejemplo:__ La función $f(x)=e^x$ definida en $\mathbb{R},$ es una solución de la EDO $$y'-y=0.$$ Veamos, $f'(x)=e^x$ y si $y=f(x),$ entonces $$y'-y=e^x-e^x=0.$$
+
+---
+## Curva Solución
+
+> __Definición:__ la gráfica de una función solución a una EDO se conoce como curva solución, notemos que la curva solución puede diferir de la gráfica de la función dado que la curva solución __depende del intervalo de definición de la solución.__
+<br/><br/>
+__Ejemplo:__ Consideremos la ecuación $xy'+y=0.$ La función $y=f(x)=1/x$ es una solución, pero recordemos que $f(x)$ no es diferenciable en $x=0,$ por lo que debemos definir que intervalo tomaremos, si $(-\infty,0)$ o $(0,\infty).$ 
+
+---
+### Soluciones implícitas.
+
+> __Definición:__ A veces las EDO pueden satisfacerse por una relación $G(x,y)$ (ecuación que involucra $x$ y $y$), pero siempre con la premisa que hay una función que satisface esta relación que se comportará como la solución de la EDO.
+--
+
+<br/><br>
+__Ejemplo:__ La relación $x^2+y^2=k^2$ es una solución de la ecuación $yy'+x=0.$ Y las funciones asociadas son $f(x)=\sqrt{k^2-x^2}$ y $f(x)=-\sqrt{k^2-x^2}$ en sus respectivos intervalos de definición.
+
+---
+# Crecimiento y Decaimiento
+
+> __Hipótesis:__ en estos problemas la hipótesis central es que la velocidad de cambio de cierta cantidad está en proporción a su población. <br/><br/>
+  * Si la constante de proporción es positiva, entonces decimos que es _crecimiento._ <br/>
+  * Si la constante de proporción es negativa, entonces decimos que es _decaimiento._ <br/><br/>
+
+<br/><br/>
+--
+La EDO que lo modela es $$\frac{dP}{dt}=kP.$$
+
+---
+### Problemas de Temperatura
+
+#### Ley de Newton para el enfriamento/calentamiento.
+
+> __Hipótesis:__ La razón de cambio de la temperatura que experimenta un cuerpo es proporcional a la diferencia entre la temperatura del cuerpo y la temperatura de medio en el que se encuentra. <br/><br/>
+$$ \frac{dT}{dt}=k(T-T_m).$$
+
+
+__Ejemplo:__ 
+La temperatura de un procesador de computadora es de $80^\circ C$ y la temperatura ambiente es de $20^\circ C.$ Si la constante de proporcionalidad es de $0.1,$ ¿Qué función modela la temperatura del procesador?
+
+---
+### Problemas de Mezclas
+
+__Hipótesis:__ En un de tanque con $N$ litros de agua mezclada con un agente (sal, azúcar, etc.). Se considera lo siguiente: <br/>
+  * La cantidad que entra y sale del tanque es siempre la misma. <br/>
+  * La concentración de la mezcla es uniforme en todo el tanque. <br/>
+  * El agua mezclada por el tubo $A$ que entra a una razón de $a$ litros por minuto con una mezcla de $k$ unidades de agente por litro. <br/>
+  * El agua mezclada sale por el tubo $B$ a una razón de $b$ galones por minuto.
+
+--
+  $$\frac{d S}{dt}=ak-b\frac{S}{N}.$$
+  
+---
+
+##### Ejemplo:
+
+> Imagina que en una fábrica automatizada, hay tres robots colaborativos llamados Robot A, Robot B y Robot C. Cada uno de estos robots está diseñado para ensamblar productos a partir de varios componentes que se almacenan en un tanque común. La fábrica ha implementado un sistema donde los robots pueden distribuirse cargas de trabajo y recursos entre ellos. 
+
+Supón que en este tanque, los componentes se mezclan para formar un producto final. Sin embargo, dado que hay un número limitado de componentes en el tanque y estos se consumen a medida que se producen productos, se deben gestionar cuidadosamente las entradas y salidas de componentes.
+
+La concentración de los componentes (en unidades de producto por litro) en el tanque se representa como ( C(t) ).
+Cada robot puede trabajar a una tasa de producción de:
+Robot A: 3 unidades de producto por minuto.
+Robot B: 5 unidades de producto por minuto.
+Robot C: 2 unidades de producto por minuto.
+Los robots pueden "extraer" componentes del tanque a la tasa que trabajan, y también pueden "rellenar" el tanque con 10 litros de solución de componentes a una concentración constante de 2 unidades de producto por litro.
+
+Además, el tanque tiene un volumen total de 100 litros y la tasa de ausentismo de los componentes (caudal de salida) se ha medido en 5 litros por minuto debido a la producción continua.
+
+---
+
+La ODE que modela la concentración de los componentes en el tanque es: $$
+\frac{dC}{dt} = \left( \frac{10}{100} \times 2 \right) - \left( \frac{5}{100} C \right) = 0.2 - 0.05 C
+$$

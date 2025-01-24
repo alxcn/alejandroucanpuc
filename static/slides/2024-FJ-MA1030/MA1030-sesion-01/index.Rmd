@@ -1,0 +1,189 @@
+---
+title: "Álgebra de Matrices"
+subtitle: "Sesión 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width = 9, fig.height = 3.5, fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introducir el Concepto de Matriz (Tamaño y Tipo). <br/><br/>
+* Definir las operaciones básicas con matrices (Suma, Resta, Multiplicaciones). <br/><br/>	
+
+---
+# Motivación
+
+> ¿Qué entiendes por una matriz? <br/><br/>
+¿Haz usado alguna vez una matriz? <br/><br/>
+En caso que sí, ¿cómo podemos usarlas de manera matemática? <br/><br/>
+
+---
+# El espacio de Matrices
+
+> **Definición:** Una matriz es un arreglo rectangular de números, símbolos o expresiones, dispuestos en filas y columnas. <br/><br/> 
+
+--
+##### Ejemplo 1:
+
+Las tablas de Excel son un ejemplo de matrices. <br/><br/>
+
+---
+##### Ejemplo 2:
+
+Supongamos que las ventas de una empresa se pueden ordenar por bimestre y sucursal como se muestra en la siguiente tabla:
+
+| Sucursal | Bimestre 1 | Bimestre 2 | Bimestre 3 | Bimestre 4 |
+|----------|------------|------------|------------|------------|
+| A        | 1000       | 1200       | 1300       | 1400       |
+| B        | 1500       | 1600       | 1700       | 1800       |
+| C        | 2000       | 2100       | 2200       | 2300       |
+
+
+¿Cómo sería la matriz asociada a esta información?
+---
+# Notación Matricial
+
+> **Definición:** Una matriz de tamaño $m \times n$ es un arreglo de $m$ filas y $n$ columnas de números, usualmente se denota como $A=(a_{ij})$ donde $a_{ij}$ denota el elemento en la fila $i$ y columna $j.$ <br/><br/>
+
+$$A= \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix}$$
+
+---
+##### Ejemplo 3:
+
+De tal manera que la matriz asociada a la tabla anterior sería:
+
+$$A= \begin{bmatrix} 1000 & 1200 & 1300 & 1400 \\ 1500 & 1600 & 1700 & 1800 \\ 2000 & 2100 & 2200 & 2300 \end{bmatrix}$$
+
+---
+# Tipos de Matrices
+
+A continuación se presentan algunos tipos de matrices:
+
+1. **Vector fila:** $A_{1 \times n}.$ *Ejemplo:* $(1, -4, \sqrt{2}, \pi)$ <br/><br/>
+
+2. **Vector columna:** $A_{m \times 1}.$ *Ejemplo:* $\begin{bmatrix} -5 \\ \sqrt{5} \\ e \end{bmatrix}$ <br/><br/>
+
+3. **Matriz cuadrada:** $A_{n \times n}.$ *Ejemplo:* $\begin{bmatrix} 1 & 2 \\ 0 & 5  \end{bmatrix}$ <br/><br/>
+
+---
+
+4. **Matriz diagonal:** $D_{n \times n}$ con $a_{ij}=0$ para $i \neq j.$ *Ejemplo:* $\begin{bmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{bmatrix}$ <br/><br/>
+
+5. **Matriz triangular superior:** $A_{n \times m}$ con $a_{ij}=0$ para $i > j.$ *Ejemplo:* $\begin{bmatrix} 1 & 2  \\ 0 & 4  \\ 0 & 0  \end{bmatrix}$ <br/><br/>
+
+6. **Matriz triangular inferior:** $A_{n \times m}$ con $a_{ij}=0$ para $i < j.$ *Ejemplo:* $\begin{bmatrix} 1 & 0  \\ 2 & 4  \\ 3 & 5  \end{bmatrix}$ <br/><br/>
+
+---
+7. **Matriz identidad:** $I_{n \times n}$ con $a_{ij}=1$ para $i=j$ y $a_{ij}=0$ para $i \neq j.$ *Ejemplo:* $\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}$ <br/><br/>
+
+8. **Matriz nula:** $O_{n \times m}$ con $a_{ij}=0$ para todo $i$ y $j.$ *Ejemplo:* $\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}$ <br/><br/>
+
+---
+# Operaciones con Matrices
+
+## Suma de Matrices
+
+> **Definición:** La suma (resta) de dos matrices $A$ y $B$ del mismo tamaño $m \times n$ es una matriz $C$ del mismo tamaño tal que $c_{ij}=a_{ij}+b_{ij}.$ $(c_{ij}=a_{ij}-b_{ij})$ <br/><br/>
+
+-- 
+##### Ejemplo 4:
+
+Sean $A=\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ y $B=\begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}.$ ¿Cuál es la matriz $C=A+B?$ y ¿la matriz $B-A$?
+
+---
+### Propiedades de la Suma
+
+1. **Conmutativa:** $A+B=B+A.$ <br/><br/>
+2. **Asociativa:** $(A+B)+C=A+(B+C).$ <br/><br/>
+3. **Elemento neutro:** $A+O=A.$ <br/><br/>
+4. **Elemento opuesto:** $A+(-A)=O$ donde si $A=(a_{ij})$ entonces $-A=(-a_{ij}).$ <br/><br/>
+
+---
+## Multiplicación por un Escalar
+
+> **Definición:** La multiplicación de una matriz $A$ por un escalar $k$ es una matriz $B$ tal que $b_{ij}=ka_{ij}.$ <br/><br/>
+
+--
+##### Ejemplo 5:
+
+Sea $A=\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}.$ ¿Cuál es la matriz $B=2A$? y ¿la matriz $C=-3A$?
+
+---
+### Propiedades de la Multiplicación por un Escalar
+
+1. **Distributiva:** $k(A+B)=kA+kB.$ <br/><br/>
+2. **Distributiva:** $(k+l)A=kA+lA.$ <br/><br/>
+3. **Asociativa:** $k(lA)=(kl)A.$ <br/><br/>
+4. **Elemento neutro:** $1A=A.$ <br/><br/>
+
+---
+## Multiplicación de Matrices
+
+**Nota:** Esta operación solo puede realizarse entre matrices de tamaños específicos y el orden de los factores *SI* altera el producto.
+
+> **Definición:** Sea $A_{n\times m}$ y $B_{m\times k}$ entonces existe una matrix $C_{n\times k}$ que corresponde al producto $AB.$ 
+
+--
+##### Ejemplo 6:
+
+Sean $A=\begin{bmatrix} 1 & 2 & 3\\ 3 & 4 & -1 \end{bmatrix}$ y $B=\begin{bmatrix} 5 & 6 \\ 7 & 8 \\ -5 & -2 \end{bmatrix}.$ ¿Cuál es la matriz $C=AB?$ y ¿la matriz $D=BA?$
+
+---
+### Propiedades de la Multiplicación de Matrices
+
+1. **Asociativa:** $(AB)C=A(BC).$ <br/><br/>
+2. **Distributiva:** $A(B+C)=AB+AC.$ <br/><br/>
+3. **No conmutativa:** En general $AB \neq BA.$ <br/><br/>
+4. **Elemento neutro:** $IA=AI=A.$ <br/><br/>
+
+---
+## Transpuesta de una Matriz
+
+> **Definición:** La transpuesta de una matriz $A$ es una matriz $A^T$ tal que $a_{ij}^T=a_{ji}.$
+
+--
+##### Ejemplo 7:
+
+Sea $A=\begin{bmatrix} 1 & 2 & -2\\ 3 & 4 & 0 \end{bmatrix}.$ ¿Cuál es la matriz $B=A^T?$

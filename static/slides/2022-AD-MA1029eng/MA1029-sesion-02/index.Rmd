@@ -1,0 +1,140 @@
+---
+title: "Partial Derivatives"
+subtitle: "Session 02"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Goals of the Session
+
+  * We will introduce the concept of partial derivatives. <br/><br/>
+  * We will apply the general rules of partial derivatives. <br/><br/>
+
+---
+# Motivation
+
+The **heat index** ($I$) measures the combined effects of temperature and humidity. $I$ measures the sensation of air temperature when the temperature is $T$ and the relative humidity is $H.$
+
+![Sensación Termica](SensacionTermica.png)
+
+--
+What is the rate of change of $I$ when we change $T$ at the point $(96,70)$?
+
+---
+# Partial Derivative
+
+> __Definition:__ Given a function $f:\mathbb{R}^n\to \mathbb{R},$ the partial derivative with respect to the variable $x_j,$ denoted by $f_{x_j}=\frac{\partial f}{\partial x_j},$ is defined as the limit $$\lim_{h\to 0} \frac{f(x_1,\cdots,x_j+h,x_{j+1},\cdots, x_n)-f(x_1,\cdots,x_j,x_{j+1},\cdots, x_n)}{h}.$$
+--
+
+#### Example 1: 
+
+Compute the partial derivative with respect to $x$ of the function $f(x,y)=3xy.$
+
+--
+$$f_x(x,y)=\lim_{h\to 0}\frac{3(x+h)y-3xy}{h}=\lim_{h\to 0}\frac{3(x+h-x)y}{h}=\lim_{h\to 0}\frac{3yh}{h}=3y.$$
+
+---
+#### Ejemplo 3:
+
+Compute the partial derivative with respect to $y$ of the function $f(x,y)=xy-zx+4y.$
+
+--
+<br/><br/>
+$$f_y(x,y,z)=\lim_{h\to 0}\frac{x(y+h)-zx+4(y+h)-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{xh+4h}{h}=x+4.$$
+--
+<br/><br/>
+respect to $z$?
+
+--
+<br/><br/>
+$$f_y(x,y,z)=\lim_{h\to 0}\frac{xy-(z+h)x+4y-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{hx}{h}=x.$$
+
+---
+## How to Partially Derive?
+
+> To partially derive a function with respect to a variable, we just derive the function assuming that the other variables are constants.
+--
+
+#### Example 4:
+
+Compute the partial derivatives $f_x,\,f_y$ y $f_z$ for the next functions: <br/><br/>
+
+
+* $f(x,y,z)=\frac{\sin(x)}{z}+x\cos(y)$
+* $f(x,y,z)=z^2e^{x+y}$
+* $f(x,y,z)=x\ln(z)+y\sqrt{x}.$
+
+---
+# Geometric Interpretation of Partial Derivatives
+
+Hereby we present the graph of the function $f(x,y)=x^2+xy+y^3$ at the point $(1,1).$
+
+<iframe src="https://www.geogebra.org/calculator/aemfszpg?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Modelling with Partial Derivatives:
+
+> The Argentine inflation (in 2019) is given by the function $h(x,y)=e^{x+y}\sqrt{4-3x^2-2y^2},$ where $h$ is measured in percentage, and $(x,y)$ represents a point in the city. If we observe at the point $(1,1)$, what is the rate of change of inflation when we move in the vertical direction? And in the horizontal direction?
+
+--
+
+$$\frac{\partial f}{\partial x}=-e^{x + y} \frac{-4 + 3 x + 3 x^2 + 2 y^2}{\sqrt{4 - 3 x^2 - 2 y^2}}$$
+
+$$\frac{\partial f}{\partial x}=-e^{x + y} \frac{3 x^2 + 2 (-2 + y + y^2)}{\sqrt{4 - 3 x^2 - 2 y^2}}$$
+
+---
+# Implicit Partial Derivation
+
+#### Example 5:
+
+Assume that $x,y,z$ satisfy the following equation: $$x^2+y^2-z^2=0.$$ Compute $z_x$ and $z_y.$
+
+--
+<br/><br/>
+We have that  $$\frac{\partial z}{\partial x}=\frac{x}{z}$$ $$\frac{\partial z}{\partial y}=\frac{y}{z}.$$
+
+---
+# Properties of Partial Derivatives
+
+> __Theorem:__ Let $f,g:\mathbb{R}^n\to\mathbb{R}$ two function where $n=2,3.$ The following are valid:
+<br/><br/>
+  * $(f\pm g)_x=f_x\pm g_x.$ <br/><br/>
+  * $(fg)_x = (f_x)g + f(g_x).$ <br/><br/>
+  * If $g\neq 0,$ then $(f/g)_x =\frac{(f_x)g-f(g_x)}{g^2}.$
+

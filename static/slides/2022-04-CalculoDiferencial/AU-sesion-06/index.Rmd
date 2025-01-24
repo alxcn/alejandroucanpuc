@@ -1,0 +1,132 @@
+---
+title: "Funciones"
+subtitle: "Sesión 06"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=5, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Comprender el concepto de función y sus componentes. <br/> <br/>
+ * Calcular las componentes de una función. <br/> <br/>
+
+
+---
+# Ejemplo:
+
+> * El área $A$ de un círculo __depende__ del radio del mismo. La regla de _relaciona_ $r$ con $A$ se espresa con $A=\pi r^2.$
+<br/><br/><br/>
+* La población humana del mundo $P,$ depende del tiempo $t.$
+
+```{r make table, results='asis'}
+table=matrix(NA,nrow=4,ncol=2)
+colnames(table)=c("Año","Población (M)")
+table[1,]=c(1900,1650)
+table[2,]=c(1910,1750)
+table[3,]=c(1920,1860)
+table[4,]=c(1930,2070)
+library(knitr)
+kable(table)
+```
+---
+> * La presión del vapor de mercurio __depende__ de la temperatura a la que se encuentre.
+
+```{r,out.width="40%"}
+library(tidyverse)
+data(pressure)
+ggplot(pressure, aes(x = temperature, y = pressure)) +geom_line()
+
+```
+<br/><br/>
+<span style="font-size:30px"> La cantidad variable $(y),$ __depende__ del valor de otra cantidad variable $(x).$ 
+
+<span style="font-size:30px"> " $y$ es una __función__ de $x$ "
+
+---
+# Función (Intuitivamente)
+> <span style="font-size:30px"> Una función es una forma de "_transformar_" un conjunto de números en otro conjunto de manera "única". 
+
+<br/><br/><br/><br/><br/><br/><br/>
+<span style="font-size:45px"> $$ y=f(x) $$
+
+
+
+---
+# Función
+
+> <span style="font-size:30px"> Una __función__ $f$  es una regla que asigna a cada elemento $x$ de un conjunto $D$ ( __dominio__ ) exactamente un elemento $f(x)$ de un conjunto Y ( __codominio__).
+
+<span style="font-size:45px"> $$ f:D\to Y $$
+
+---
+# La imágen (rango)
+
+> <span style="font-size:30px"> El rango de una función es el subconjunto del codominio que consiste en todos los posibles valores que se puedan obtener para cada elemento de $D.$
+
+ $$ Im(f) = \{ f ( x ) \in Y : x \in D \} .$$
+Nota: en el conjunto anterior debemos poner llaves $(\{,\}),$ así que no los olviden. El programa no quiso ponerlos.
+
+
+Nota 2: El rango puede coincidir con el codominio.
+---
+# Ejemplo:
+
+> <span style="font-size:25px"> Consideremos la función que asigna el perímetro de un circulo a cada radio. 
+<span style="font-size:35px"> $$f(r)=2 \pi r$$
+
+<br/>
+* <span style="font-size:30px"> __Dominio:__ $[0,\infty).$
+<br/><br/><br/>
+* <span style="font-size:30px"> __Codominio:__ $[0,\infty).$ 
+
+* <span style="font-size:30px"> __Rango:__ $[0,\infty).$ 
+
+
+
+---
+# Visualizar funciones:
+
+> <span style="font-size:25px"> Consideremos la función que asigna el área de un circulo a cada radio. 
+
+<span style="font-size:30px"> $$ f(r)=\pi r^2 $$
+
+```{r,out.width="50%"}
+x<-seq(0,2,0.01)
+plot(x,pi*x^2, ylab="área",xlab="radio",type="l",col="red")
+```

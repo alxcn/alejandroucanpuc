@@ -1,0 +1,136 @@
+---
+title: "Sistemas de Ecuaciones Lineales"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width = 9, fig.height = 3.5, fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Modelar con SELs. <br><br>
+* Matrices y SELs. <br><br>
+* Métodos de solución. <br><br>
+---
+# Motivación
+
+> En una fábrica se realizan tres procesos, cada proceso tiene su tiempo pero si se realizan en continuo suman 30min. Si el proceso 1 lleva tres veces más tiempo que el proceso 2. Y el proceso 2 lleva la mitad de tiempo que el proceso 3. ¿Cuánto tiempo lleva cada proceso?
+
+---
+# Modelar con SELs
+
+Considerar lo siguiente: <br/><br/>
+--
+
+> 1. Reconocer las variables que intervienen.
+> 2. Establecer las relaciones entre las variables.
+> 3. Plantear las ecuaciones que describen las relaciones.
+
+---
+# SELs
+
+Un sistema de ecuaciones lineales (SEL) es un conjunto de ecuaciones lineales (relacionadas mediante sumas, restas o multiplicación por escalar) que comparten las mismas variables. <br/><br/>
+
+--
+
+Un SEL puede tener *ninguna* ,*una* o *infinitas* soluciones. <br/><br/>
+
+---
+## Forma Matricial de un SEL
+
+Un SEL de $m$ ecuaciones y $n$ incognitas se puede representar mediante una matriz $A$ de $m \times n$, un vector $X$ de $n \times 1$ y un vector $B$ de $m \times 1$.
+
+--
+##### Ejemplo 1:
+
+$$3x_1+2x_2-3x_3=4$$
+$$-2x_1+4x_2=0$$
+$$ -3x_3+2x_1=10$$
+
+---
+# Reducción de SELs
+
+¿Qué sistema es más fácil de resolver?
+
+$$\begin{eqnarray}
+x-2y+3z=9 & \quad& x-2y+3z=9\\
+-x+3y\quad=-4 & &\qquad y+3z=5\\
+2x-5y+5z=17 & & \qquad \qquad z=2
+\end{eqnarray}$$
+
+---
+## SELs Equivalentes
+
+Decimos que dos sistemas de ecuaciones son equivalentes si tienen el mismo conjunto solución. <br/><br/> 
+
+En el ejemplo anterior, los sistemas son equivalentes pues $x=1, y=-1, z=2$ es solución de ambos sistemas.
+
+---
+### Reducción de SELs
+
+Realizemos operaciones para reducir el sistema a uno más sencillo. <br/><br/>
+
+
+---
+##### Ejemplo 2:
+
+Encuentra un sistema equivalente y encuentra la solución.
+
+$$x_1-3x_2+x_3=1$$
+$$2x_1-x_2-2x_3=2$$
+$$x_1+2x_2-3x_3=-1$$
+
+---
+##### Ejemplo 3:
+
+Encuentra un sistema equivalente y encuentra la solución.
+
+$$x_1-x_3=0$$
+$$x_1-3x_3=1$$
+$$-x_1+3x_2=1$$
+
+---
+
+
+

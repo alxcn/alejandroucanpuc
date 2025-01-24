@@ -1,0 +1,130 @@
+---
+title: "Álgebra y Geometría de Vectores"
+subtitle: "Sesión 1"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+
+# Objetivos de la Sesión
+
+* $\mathbb{R}^3$ como espacio vectorial. <br/><br/>
+* Subespacios particulares. <br/><br/>
+* Curvas y superficies. <br/><br/>
+---
+# Estructura de Espacio vectorial
+
+Consideremos $$\mathbb{R}^3=\{\mathbf{x}=(x_1,x_2,x_3): x_j\in \mathbb{R}\}$$ con las siguientes propiedades:
+   1. $\mathbf{x}+\mathbf{y}=(x_1,x_2,x_3)+(y_1,y_2,y_3)=(x_1+y_1,x_2+y_2,x_3+y_3)$.
+   2. Si $c\in\mathbb{R},$ entonces $c\mathbf{x}=c(x_1,x_2,x_3)=(cx_1,cx_2,cx_3).$
+   3. $c(\mathbf{x}+\mathbf{y})=c\mathbf{x}+c\mathbf{y}.$
+   4. $(c+d)\mathbf{x}=c\mathbf{x}+d\mathbf{x}.$
+   5. $\mathbf{x}+\mathbf{y}=\mathbf{y}+\mathbf{x}.$
+
+---
+# Geometría Vectorial de $\mathbb{R}^3.$
+
+
+---
+# Rectas (Ecuación Vectorial)
+
+> __Definición:__ Dado un vector $\mathbf{v}\in\mathbb{R}^3$ y un punto $p\in\mathbb{R}^3,$ la recta que pasa por el punto $p$ en dirección de $\mathbf{v}$ está dada por $$p+t\mathbf{v}$$ donde $t\in \mathbb{R}.$
+
+---
+# Planos (Ecuación Vectorial)
+> __Definición:__ Dados dos vectores $\mathbf{v},\mathbf{u}\in\mathbb{R}^3$ y un punto $p\in\mathbb{R}^3,$ el plano que pasa por el punto $p$ y se extiende en las direcciones de $\mathbf{v}$ y $\mathbf{w}$ está dada por $$p+t\mathbf{v}+s\mathbf{u}$$ donde $s,t\in\mathbb{R}.$
+---
+# Curvas
+
+> __Definición:__ Una _curva_ en $\mathbb{R}^3$ es una función definida de un intervao $[a,b]$ hacía $\mathbb{R}^3.$
+
+##### Ejemplo: 
+
+Las rectas son curvas cuyo intervalo de definición es todo el espacio $\mathbb{R}.$ <br/><br/>
+
+La función $c(t)=(\cos(t),\sin(t))$ con $t\in[0,2\pi)$ representa el circulo unitario en dirección anti-horario.
+
+---
+# Superficies
+
+> __Definición:__ Una _superficie_ en $\mathbb{R}^3$ es una función definida de una caja $[a,b]\times [c,d]$ hacía $\mathbb{R}^3.$
+
+#### Ejemplo:
+
+El plano es una superficies y también $$s(u,v)=(\cos(u)\cos(v),\cos(u)\sin(v),\sin(u)$$ con $(u,v)\in[0,2\pi)\times[0,\pi]$ que corresponde a una semiesféra.
+
+---
+# Parametrización
+
+> __Definición:__ Una _parametrización_ de una curva o superficie es una función que toma un intervalo o caja y lo mapea hacía la curva o superficie. En este curso, las parametrizaciones serán funciones continuas y diferenciables, y pueden ser funciones a trozos.
+<br/><br/>
+##### Ejemplo
+1. La parametrización de una hélice es $$h(t)=(\cos(t),\sin(t),t)$$ con $t\in\mathbb{R}.$ <br/><br/>
+1. La parametrización de un segmento de recta entre $p$ y $q$ es $$s(t)=p+t(q-p)$$ con $t\in[0,1].$ 
+
+
+---
+## Ejemplo de parametrizaciones de Superficies:
+
+1. La parametrización de un helicoide es $$h(u,v)=(u\cos(v),u\sin(v),v)$$ con $(u,v)\in\mathbb{R}\times[0,2\pi).$ <br/><br/>
+1. La parametrización de un toroide es $$t(u,v)=((2+\cos(v))\cos(u),(2+\cos(v))\sin(u),\sin(v))$$ con $(u,v)\in[0,2\pi)\times[0,2\pi).$ <br/><br/>
+1. La parametrización de una esfera es $$s(u,v)=(\cos(u)\cos(v),\cos(u)\sin(v),\sin(u)$$ con $(u,v)\in[0,2\pi)\times[0,\pi].$ <br/><br/>
+
+---
+# Componentes de un vectorial
+
+> Un __vector__ se define como una cantidad que tiene una magnitud y una dirección, para $\mathbb{x}\in\mathbb{R}^3:$
+  1. _Magnitud:_ la norma o magnitud del vector $\mathbf{x}$ se define por la cantidad $$|\mathbf{x}|=\sqrt{x_1^2+x_2^2+x_3^2}.$$
+  2. _Dirección:_ la dirección del vector $\mathbf{x}$ es aquella que tomamos cuando nos movemos del origen $\mathbf{o}=(0,0,0)$ hacía $\mathbf{x}.$
+
+---
+# Actividad
+
+* Si los vectores $\mathbf{u}=(1,2,3)$ y $\mathbf{v}=(2,1,3),$ calcule los $2\mathbf{u},\, 5\mathbf{u}-\frac{1}{2}\mathbf{v}$ y $\mathbf{u}+2\mathbf{v}-2\mathbf{u}.$ <br/><br/>
+* Pruebe que en cualquier triángulo, las medianas se intersectan a un punto que es dos tercios del camino desde cada vértice hacía el punto medio del lado opuesto. <br/><br/>
+* Pruebe que en cualquier triángulo, las bisectrices se intersectan a un punto que es equidistante de los lados del triángulo. <br/><br/>
+* Parametrice la curva $x=\left(\frac{6+y}{3}\right)^2$
+* Parametrice la superficie $1+z^2-x^2-y^2=0$ sobre el rectángulo $[-1,1]\times[-3,3].$

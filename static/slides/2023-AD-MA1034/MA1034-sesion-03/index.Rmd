@@ -1,0 +1,121 @@
+---
+title: "Transformaciones Lineales"
+subtitle: "Sesión 03"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introducir el concepto de Transformación lineal. <br/><br/>
+* Demostrar que una función es una transformación lineal. <br/><br/>
+* Calcular los subespacios predilectos: Núcleo e Imagen. <br/><br/>
+* Teorema de la Dimensión.
+
+---
+# Transformaciones Lineales
+
+> __Definición:__ Sean $V$ y $W$ espacios vectoriales. Una función $T:V\rightarrow W$ se llama __transformación lineal__ si para todo $u,v\in V$ y para todo escalar $\alpha\in \mathbb{R}$ se cumple que: $$T(u+v)=T(u)+T(v)$$ $$T(\alpha u)=\alpha T(u).$$
+
+--
+<br/>
+##### Ejemplo 1
+
+La función $T:\mathbb{R}^2\rightarrow \mathbb{R}^2$ definida por $T(x,y)=(x+y,2x-y)$ es una transformación lineal, por que $$T(x_1+x_2,y_1+y_2)=(x_1+x_2+y_1+y_2,2(x_1+x_2)-(y_1+y_2))$$ $$=(x_1+y_1,2x_1-y_1)+(x_2+y_2,2x_2-y_2)=T(x_1,y_1)+T(x_2,y_2)$$ y $$T(\alpha x_1,\alpha y_1)=(\alpha x_1+\alpha y_1,2\alpha x_1-\alpha y_1)=\alpha(x_1+y_1,2x_1-y_1)=\alpha T(x_1,y_1).$$
+
+---
+##### Ejemplo 2
+La función $T:\mathbb{R}^3\rightarrow P_2$ definida por $T(x,y,z)=x+yt+zt^2$  es una transformación lineal, 
+--
+<br/><br/><br/>
+por que $$T(x_1+x_2,y_1+y_2,z_1+z_2)=x_1+x_2+(y_1+y_2)t+(z_1+z_2)t^2=(x_1+y_1t+z_2t^2)+(x_2+y_2t+z_2t^2)$$ $$=T(x_1,y_1,z_1)+T(x_2,y_2,z_2)$$ y $$T(\alpha x_1,\alpha y_1,\alpha z_1)=\alpha x_1+\alpha y_1t+\alpha z_1t^2= \alpha(x_1+y_1t+z_1t^2)=\alpha T(x_1,y_1,z_1).$$
+
+---
+##### Ejemplo 3
+
+Prueben que la función $T:P_3\to \mathbb{R}$  dada por $T(p)=p(0)$ es tranformación lineal.
+
+--
+<br/><br/>
+__Solución:__ Sean $p,q\in P_3$ y $\alpha\in \mathbb{R}$, entonces $$T(p+q)=(p+q)(0)=(a_0+b_0+(a_1+b_1)(0)+(a_2+
+b_2)(0)^2=a_0+b_0=T(p)+T(q)$$ y $$T(\alpha p)=(\alpha p)(0)=\alpha a_0+\alpha a_1(0)+\alpha a_2(0)=\alpha T(p).$$
+
+---
+## El Núcleo y el Rango
+
+> __Definición:__ Sea $T:V\to W$ una transformación lineal: <br/><br/>
+  * __El núcleo:__ es el subespacio vectorial de $V$ definido por todos los vectores que se anulan bajo $T$ $$N(T)=\{v\in V:T(v)=0\}.$$ <br/><br/>
+  * __El rango:__ es el subespacio de $W$ definido por todos los vectores de la forma $T(v)$ para $v\in V$ $$R(T)=\{T(v):v\in V\}.$$
+
+---
+##### Ejemplo 4
+
+Consideremos la transformación lineal $T:\mathbb{R}^2\to \mathbb{R}^2$ definida por $T(x,y)=(x+y,2x-y)$. <br/><br/>
+
+--
+* El núcleo de $T$ es el conjunto de todos los vectores $(x,y)$ tales que $T(x,y)=(0,0)$, es decir, $x+y=0$ y $2x-y=0$ $$\left(\begin{array}{cc|c} 1 & 1 & 0\\ 2 & -1 & 0\end{array}\right)\sim \left(\begin{array}{cc|c} 1 & 1 & 0\\ 0 & -3 & 0\end{array}\right)\sim \left(\begin{array}{cc|c} 1 & 0 & 0\\ 0 & 1 & 0\end{array}\right)$$ por lo tanto, $N(T)=\{(0,0)\}$ y $\dim N(T)=0$.
+
+* Para encontrar el rango de $T$ tomamos un vector genérico $(u,v)$ de $\mathbb{R}^2$ y resolvemos el sistema $$\left(\begin{array}{cc|c} 1 & 1 & u\\ 2 & -1 & v\end{array}\right)\sim \left(\begin{array}{cc|c} 1 & 1 & u\\ 0 & -3 & v-2u\end{array}\right)\sim \left(\begin{array}{cc|c} 1 & 0 & \frac{v+2u}{3}\\ 0 & 1 & \frac{2u-v}{3}\end{array}\right)$$ por lo tanto, $R(T)=\{(u,v)\in \mathbb{R}^2:u=\frac{y+2x}{3},v=\frac{2x-y}{3}\}$ y $\dim R(T)=2$.
+
+---
+##### Ejemplo 5
+
+Consideremos la transformación lineal $D:P_2\to P_1$ definida por $D(p)=p'$. <br/><br/>
+
+--
+* $D(a_0+a_1x+a_2x^2)=a_1+2a_2x=0+0x$ si y solo si $a_1=0$ y $a_2=0$, por lo tanto, $N(D)=\{p\in P_2:a_1=a_2=0\}=\{a_0\}$ y $\dim N(D)=1$.
+
+* Para encontrar el rango de $D$ tomamos un vector genérico $p=a_0+a_1x$ de $P_1$ y calculamos $$D(b_0+b_1x+b_2x^2)=b_1+2b_2x=a_0+a_1x$$, por lo tanto: $a_0=b_1$ y $b_2=\frac{a_1}{2}$, por lo tanto, $R(D)=P_1$ y $\dim R(D)=2$.
+
+---
+##### Ejemplo 6
+
+Consideremos la transformación lineal $T:\mathbb{R}^2\to \mathbb{R}^3$ definida por $T(x,y)=A(x,y)$ donde $$A=\left(\begin{array}{cc} 0 & 1 \\ 2 & 1 \\ 1 & 3\end{array}\right)$$ encuentre el nucleo y el rango <br/><br/>
+
+---
+## Teorema de la Dimensión
+
+> __Teorema:__ Sea $T:V\to W$ una transformación lineal, entonces $$\dim V=\dim N(T)+\dim R(T).$$

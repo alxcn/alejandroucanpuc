@@ -1,0 +1,142 @@
+---
+title: "Funciones de Varias Variables"
+subtitle: "Sesión 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+  * Introducir el concepto de función de $\mathbb{R}^2\to \mathbb{R}$ y $\mathbb{R}^3\to\mathbb{R}$. <br/><br/>
+  * Estudiaremos la gráfica de estas funciones y sus curvas de nivel. <br/><br/>
+  * Presentaremos las cónicas y sus particularidades. <br/><br/>
+
+---
+# Motivación:
+
+> Queremos conocer el movimiento (a través del tiempo) que describe una cuerda (cuyos extremos están fijos) cuando se estira y se suelta. Suponiendo que cada punto de la cuerda en movimiento dependerá no solo de su posición en el plano sino también del tiempo, tenemos que esto será una _función_ de $x$ y $t.$ Es decir, una función $u(x,t)$ que toma valores en $\mathbb{R}^2$ y regresa un valor de $\mathbb{R}.$
+
+<iframe src="https://www.wolframcloud.com/obj/alejandroucan-puc/Published/Basic_wave_ed_sol.nb?_embed=iframe" width="1000" height="300"></iframe>
+
+---
+## ¿Cómo es la función que modela este problema?
+
+> La función que describe mejor este problema es la función $$u(x,t)=\cos(t)\sin(x).$$
+
+<iframe src="https://www.wolframcloud.com/obj/alejandroucan-puc/Published/WaveSol_NivelCurves.nb?_embed=iframe" width="1000" height="400"></iframe>
+
+---
+# Funciones de Varias Variables:
+
+> Una función $f:\mathbb{R}^n\to\mathbb{R}$ (con $n=2,3$) es una relación que asigna a cada punto $x\in\mathbb{R}^n$ un número real $y\in\mathbb{R}.$ $$f(x)=y.$$
+#### Ejemplo:
+  * $f(x_1,x_2)=3x_1 x_2.$ <br/>
+  * $f(x_1,x_2)=x_1^2+x_2^2$ <br/>
+  * $f(x_1,x_2)=e^{x_1}\cos(x_2)$ <br/>
+  * $f(x_1,x_2,x_3)=x_3\sqrt{e^{x_1+x_2}}$ <br/>
+  * $f(x_1,x_2,x_3)=3x_1-4x_2-3x_3^2+x_1x_2.$
+
+--
+
+
+De igual manera que las funciones de 1 variable, las funciones de varias variables tienen un _dominio_ de definición (subconjunto de $\mathbb{R}^n$ donde la función está bien definida) y una _imágen_ (subconjunto de $\mathbb{R}$ dónde se encuentran todos los valores de la función que alcanza).
+
+---
+## Dominio de funciones de varias variables
+
+#### Ejemplo:
+
+Consideremos la función $f(x,y)=\sqrt{1-x^2-y^2}.$ ¿Cuál es el dominio de $f$? <br/><br/>
+
+Consideremos que para que la raíz cuadrada de un número real, este debe ser positivo o cero. De tal manera que $$1-x^2-y^2\geq 0\Leftrightarrow x^2+y^2\leq 1.$$ Esta función solo está definida en el disco unitario.
+
+--
+
+#### Ejemplo:
+
+Consideremos la función $f(x,y)=\ln(x^2+y^2-3).$ ¿Cuál es el dominio de $f$? <br/><br/>
+
+Al igual que para la raíz cuadrada, el logaritmo sólo se aplica para números más grandes que $0.$ De tal manera que $$x^2+y^2-3>0 \Leftrightarrow x^2+y^2>3.$$
+
+---
+## Gráficas de funciones de varias variables.
+
+> __Definición:__ Dada una función $f:\mathbb{R}^2\to \mathbb{R},$ la __gráfica__ de $f$ es el subconjunto de $\mathbb{R}^3$ dado por los puntos $$(x,y,f(x,y)),$$ donde $(x,y)$ pertenecen al dominio de $f.$
+
+--
+
+#### Ejemplo:
+
+Consideremos la función $f(x,y)=3x+2y,$ entonces la gráfica de $f$ es el conjunto de puntos de la forma: $$(x,y,3x+2y).$$ Notemos que $(0,0,0),\,(0,1,2)$ y $(1,0,3)$ pertenecen a la gráfica.
+
+---
+### ¿Qué pasa cuándo $f:\mathbb{R}^3\to\mathbb{R}$?
+
+>__Definición:__ Dada una función $f:\mathbb{R}^n\to\mathbb{R}$ definimos una __curva o superficie de nivel__ como el conjunto de puntos de $\mathbb{R}^n$ tal que $$f(x_1,\cdots,x_n)=k\quad \mbox{con }k\in\mathbb{R}.$$
+
+--
+
+#### Ejemplo:
+
+¿Cuáles son las curvas de nivel de $f(x,y)=3x+y$?
+
+
+---
+#### Ejemplo:
+
+¿Cuáles son las curvas de nivel de $f(x,y)=xy$?
+
+
+---
+#### Ejemplo:
+
+¿Cuáles son las curvas de nivel de $f(x,y,z)=x+y+z$?
+
+
+---
+#### Ejemplo:
+
+¿Cuáles son las curvas de nivel de $f(x,y,z)=x^2+y^2$?
+
+---
+# Superficies básicas
+
+En el siguiente link encontraremos un notebook de Mathematica con la descripción de las superficies básicas.
+
+[Notebook](https://www.wolframcloud.com/obj/alejandroucan-puc/Published/Basic_Surfaces.nb)

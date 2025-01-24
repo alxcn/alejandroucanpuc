@@ -1,0 +1,95 @@
+---
+title: "Variación de Parametros II"
+subtitle: "Sesión 07"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Utilizar el Wronksiano para generar soluciones particulares. <br/><br/>
+* Resolver la solución de una EDO lineal de orden 2 no homogéneas. <br/><br/>
+
+---
+# Motivación del Método
+
+> Recordemos que mi EDO es de la forma $$a_2(x)y''+a_1(x)y'+a_0(x)=g(x)$$ que podemos reescribir como $$y''+P(x)y'+Q(x)y=f(x).$$ <br/><br/> Sabemos que la solución general debe estar formada por una parte homogénea y una particular, además la parte de la solución homogénea está formada por un conjunto l.i $\{y_1(x),y_2(x)\}.$
+
+--
+
+__Nuestra suposición fundamental:__ $$y_p=u_1y_1+u_2y_2$$ donde $u_i$ son funciones de $x$ y son incógnitas.
+
+---
+## Determinación del método:
+
+> Si $y_p=u_1y_1+u_2y_2$ es una solución a la EDO, entonces debe satisfacer la ecuación. Por lo que: $$y_p''+Py_p'+Qy_p=f(x)$$ y de aquí podemos reescribirlo a $$(y_1u_1'+y_2u_2')'+P(y_1u_1'+y_2u_2')+y_1'u_1'+y_2'u_2'=f(x),$$ de aquí podemos suponer que $$\begin{array}{c} y_1u_1'+y_2u_2'=0\\ y_1'u_1'+y_2'u_2'=f(x)\end{array}.$$
+
+---
+## ¿Cómo resolvemos el sistema anterior?
+
+$$u_1'=\frac{W_1}{W}\quad\mbox{y}\quad u_2'=\frac{W_2}{W}$$ dónde $$W=\left|\begin{array}{cc}  y_1 & y_2 \\ y_1' & y_2' \end{array}\right|$$ $$W_1= \left|\begin{array}{cc}  0 & y_2 \\ f(x) & y_2' \end{array}\right| \quad \mbox{y} \quad W_2=\left|\begin{array}{cc}  y_1 & 0 \\ y_1' & f(x) \end{array}\right|$$
+
+---
+### Ejemplo 1:
+
+> Encuentra la solución particular de $y''-4y'+4y=(x+1)e^{2x}.$
+
+--
+Las soluciones de la EDO homogénea es $y_1(x)=e^{2x}$ y $y_2(x)=xe^2x.$
+
+Entonces $$u_1'=\frac{W_1}{W}=\frac{-(x+1)xe^{4x}}{e^{4x}}\quad\mbox{y}\quad u_2'=\frac{W_2}{W}=\frac{(x+1)e^{4x}}{e^{4x}}$$
+
+Por lo que $u_1=\frac{-x^3}{3}-\frac{x^2}{2}$ y $u_2=\frac{x^2}{2}+x.$ Y la solución particular es $$y_p=\left(-\frac{x^3}{3}-\frac{x^2}{2}\right)e^{2x}+\left(\frac{x^2}{2}+x\right)xe^{2x}=\frac{x^3}{6}e^{2x}+\frac{x^2}{2}e^{2x}.$$
+
+---
+### Ejemplo 2:
+
+Encuentra la solución particular de la EDO $$x^2y''-4xy'+6y=\frac{1}{x}.$$ Suponiendo que $y_1=x^2$ y $y_2=x^3.$
+
+--
+
+$$u_1'=\frac{W_1}{W}=\frac{-1}{x^4}\quad\mbox{y}\quad u_2'=\frac{W_2}{W}=\frac{x^{-1}}{x^4}$$ Por lo que $$u_1=\frac{1}{3x^3}\quad\mbox{y}\quad u_2=\frac{-1}{4x^4}$$ $$y_p=\frac{x^2}{3x^3}-\frac{x^3}{4x^4}=\frac{1}{12x}.$$
+

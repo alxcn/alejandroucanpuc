@@ -1,0 +1,133 @@
+---
+title: "Riemann Sums"
+subtitle: "Session 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals:
+
+ * Introduce the problem of compute the area under a curve. <br/><br/>
+ * Interval partitions. <br/><br/>
+ * Riemann sums.
+---
+# Equilibriums
+
+> Assume that you have a string of length $L$ and you want to hang it from a point $P$ on the string. Where should you hang it so that the string is in equilibrium? <br/><br/>
+If the string has a uniform density $\rho$ and the gravitational acceleration is $g$, then the equilibrium point is the center of mass of the string which is at the half-point of the string. <br/><br/>
+
+What if the density is not uniform? <br/><br/>
+
+---
+## Let's picture this
+
+<iframe src="https://www.geogebra.org/calculator/msugc4np?embed" width="1000" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+---
+## How to compute the area under a curve?
+
+> There is no formulae to compute the areas under general curves (except for some special cases). <br/><br/> But we can estimate the value using some approximations via areas of rectangles. <br/><br/>
+
+<iframe src="https://www.geogebra.org/calculator/rkjntqsa?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+## Interval partitions
+
+> __Definition:__ Let $[a,b]$ be an interval. A partition of $[a,b]$ is a finite set of points $P=\{x_0,x_1,\ldots,x_n\}$ such that $a=x_0<x_1<\ldots<x_n=b.$ 
+<br/><br/> The length of the subinterval $[x_{i-1},x_i]$ is denoted by $\Delta x_i=x_i-x_{i-1}.$
+
+<br/><br/><br/>
+__Remark:__ Note that the length of the subintervals are not necessarily equal. In the case were all subintervals have the same length, we say that the partition is __regular__.
+
+---
+#### Example
+
+1. Let $[a,b]=[0,1]$ and $P=\{0,0.2,0.5,0.8,1\}.$ Then $\Delta x_1=0.2,$ $\Delta x_2=0.3,$ $\Delta x_3=0.3,$ $\Delta x_4=0.2.$ <br/><br/>
+
+1. Let $[a,b]=[0,1]$ and $P=\{0,0.25,0.5,0.75,1\}.$ Then $\Delta x_1=0.25,$ $\Delta x_2=0.25,$ $\Delta x_3=0.25,$ $\Delta x_4=0.25.$ <br/><br/>
+
+1. Let $[-10,5]$ and $P=\{-10,-5,0,5\}.$ Then $\Delta x_1=5,$ $\Delta x_2=5,$ $\Delta x_3=5.$ <br/><br/>
+
+---
+#### Practice
+
+1. Find a regular partition of $[0,1]$ with 10 subintervals. <br/><br/>
+1. Find a partition of $[0,1]$ with three subintervals. <br/><br/>
+1. Find a regular partition of $[-1,1]$ with 5 subintervals. <br/><br/>
+1. Find a regular partition of $[-1,1]$ with 10 subintervals. <br/><br/>
+1. Find a partition of $[-10,0]$ with 6 subintervals. <br/><br/>
+1. Find a partition of $[-1,10]$ with 7 subintervals. <br/><br/>
+
+---
+## Riemann sums
+
+> __Definition:__ Let $f:[a,b]\to\mathbb{R}$ be a function and $P=\{x_0,x_1,\ldots,x_n\}$ be a partition of $[a,b].$ <br/><br/> The Riemann sum of $f$ with respect to $P$ is defined as $$S(f,P)=\sum_{i=1}^n f(c_i)\Delta x_i,$$ where $c_i\in[x_{i-1},x_i].$
+
+<br/><br/><br/>
+__Remark:__ Note that the Riemann sum is a weighted sum of the values of the function $f$ at the points $c_i.$ If $c_i=x_{i-1}$ then we call it a __left sum__, if $c_i=x_i$ then we call it a __right sum__, and if $c_i$ is the middle point in $[x_{i-1},x_i]$ then we call it a __middle sum__.
+
+---
+#### Example
+
+1. Let $f(x)=x^2$ and $P=\{0,0.2,0.5,0.8,1\}.$ Compute the left sum, the right sum, and the middle sum. <br/><br/>
+--
+<br/><br/>
+  * Then $S(f,P)=0^2\cdot 0.2+0.2^2\cdot 0.3+0.5^2\cdot 0.3+0.8^2\cdot 0.2=0.3.$ <br/><br/>
+  * Then $S(f,P)=0.2^2\cdot 0.2+0.5^2\cdot 0.3+0.8^2\cdot 0.3+1^2\cdot 0.2=0.5.$ <br/><br/>
+  * Then $S(f,P)=0.1^2\cdot 0.2+0.4^2\cdot 0.3+0.7^2\cdot 0.3+0.9^2\cdot 0.2=0.41.$ <br/><br/>
+
+---
+#### Example
+
+1. Let $f(x)=9-x^2$ and $P=\{0,0.25,0.5,0.75,1\}.$ Compute the left sum, the right sum, and the middle sum. <br/><br/>
+--
+<br/><br/>
+  * Then $S(f,P)=(9-0^2)\cdot 0.25+ (9-0.25^2)\cdot 0.25+(9-0.5^2)\cdot 0.25+(9-0.75^2)\cdot 0.25=8.78125.$ <br/><br/>
+  * Then $S(f,P)=(9-0.25^2)\cdot 0.25+(9-0.5^2)\cdot 0.25+(9-0.75^2)\cdot 0.25+(9-1^2)\cdot 0.25=8.53125.$ <br/><br/>
+  * Then $S(f,P)=(9-0.125^2)\cdot 0.25+(9-0.375^2)\cdot 0.25+(9-0.625^2)\cdot 0.25+(9-0.875^2)\cdot 0.25=8.65625.$ <br/><br/>
+
+---
+#### Practice
+
+1. Let $f(x)=x^2-3x+5$ over the interval $[0,3].$ Compute the left, right and middle Riemann sum with a regular partition made of 5 subintervals. <br/><br/>
+
+
+
+
+

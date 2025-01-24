@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Productos y Aplicaciones</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-08-04" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e8eec3a34adf436593ae9fdb71a361f5","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Productos y Aplicaciones
+]
+.subtitle[
+## Sesión 02
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-08-04
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Introducir los diferentes productos de vectores. &lt;br/&gt; &lt;br/&gt;
+ * Conocer las propiedades de productos de vectores. &lt;br/&gt; &lt;br/&gt;
+ * Aplicaciones de los productos de vectores.
+
+---
+# Producto Escalar
+
+&gt; __Definición:__ Sean `\(\mathbf{v},\mathbf{w}\in\mathbb{R}^3,\)` el _producto escalar_ de estos vectores se define como `$$\mathbf{v}\cdot \mathbf{w}=\langle \mathbf{v},\mathbf{w}\rangle = v_1w_1+ v_2w_2+v_3w_3.$$`
+
+##### Ejemplo:
+ `$$(1,2,3)\cdot (-3,1,1)=\langle (1,2,3),(-3,1,1)\rangle = (1)(-3)+(2)(1)+(3)(1)=2.$$`
+
+---
+## Propiedades del Producto Escalar
+
+  * _Conmutativo:_ `$$\mathbf{v}\cdot\mathbf{w}=\mathbf{w}\cdot\mathbf{v}.$$` &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+  
+  * _Magnitud:_ `$$|\mathbf{v}|^2=\mathbf{v}\cdot\mathbf{v}.$$` &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+  
+  * _Distributiva:_ `$$(\mathbf{v}_1+\mathbf{v}_2)\cdot\mathbf{w}=\mathbf{v}_1\cdot \mathbf{w}+\mathbf{v}_2\cdot \mathbf{w}.$$` &lt;br/&gt;&lt;br/&gt;
+
+
+***
+---
+## Geometría del Producto Escalar
+
+ &gt; __Definición:__ Sean `\(\mathbf{v},\mathbf{w}\in\mathbb{R}^3,\)` el _ángulo_ `\(\theta\)` entre estos vectores se define como el valor que satisface `$$\langle \mathbf{v},\mathbf{w}\rangle=|\mathbf{v}| |\mathbf{w}|\cos(\theta).$$`
+
+
+---
+# Producto Vectorial
+ 
+ &gt; __Definición:__ Sean `\(\mathbf{v},\mathbf{w}\in\mathbb{R}^3,\)` el _producto vectorial_ de estos vectores se define como el vector `$$\mathbf{v}\times \mathbf{w}=\det \left(\begin{array}{ccc} \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k}\\ v_1 &amp; v_2 &amp; v_3 \\ w_1 &amp; w_2 &amp; w_3\end{array}\right).$$`
+
+---
+## Propiedades del Producto Vectorial
+
+  1. _Anticonmutatividad:_ `$$\mathbf{v}\times\mathbf{w}=-\mathbf{w}\times\mathbf{v}.$$` &lt;br/&gt;&lt;br/&gt;
+  2. _Paralelismo:_ si `\(\mathbf{v}\)` y `\(\mathbf{w}\)` son paralelos, entonces `$$\mathbf{v}\times\mathbf{w}=\mathbf{o}.$$`
+  3. _Perpendicularidad:_ `\(\mathbf{v}\times\mathbf{w}\)` es perpendicular a `\(\mathbf{v}\)` y `\(\mathbf{w},\)` `$$(\mathbf{v}\times \mathbf{w})\cdot \mathbf{v}=0.$$`
+  4. _Distributiva:_ `$$(\mathbf{v}_1+\mathbf{v}_2)\times\mathbf{w}=\mathbf{v}_1\times \mathbf{w}+\mathbf{v}_2\times \mathbf{w}.$$`
+---
+## Geometría del Producto Vectorial
+
+&gt; __Definición:__ Dado un plano `\(L\)` en `\(\mathbb{R}^3,\)` el _vector normal_ es el producto vectorial de cualquiera de dos de sus elementos normalizado, es decir, si `\(\mathbf{v},\mathbf{w}\in L,\)` entonces `$$\mathbf{n}_L=\frac{\mathbf{v}\times\mathbf{w}}{|\mathbf{v}\times\mathbf{w}|}.$$` 
+
+&gt; __Definición:__ Si `\(S\)` es una superficie paramétrica, el _vector normal_ es el producto vectorial de los vectores tangentes `\(\mathbf{r}_u\)` y `\(\mathbf{r}_v,\)` es decir, `\(\mathbf{n}_S=\mathbf{r}_u\times\mathbf{r}_v\)` donde `\(r(u,v)\)` es la parametrización de `\(S.\)`
+
+##### Nota: 
+El vector normal nos permite determinar la "orientación" de la superficie, sabiendo que es el anverso y reverso. 
+
+---
+# Trabajo
+
+&gt; Supongamos que una partícula `\(p\)` se desplaza sobre una curva `\(c(t)\)` con `\(t\in[a,b]\)` y conocemos una fuerza `\(\mathbf{F}\)` que afecta el desplazamiento de `\(p\)` en cada punto de `\(c(t).\)` El _trabajo_ realizado por `\(\mathbf{F}\)` del punto `\(t_1\)` al `\(t_2\)` está dado por `$$\mathbf{F}\cdot (c(t_2)-c(t_1)).$$` Suponiendo que queremos conocer el trabajo instantaneo, entonces `$$\mathbf{F}\cdot c'(t),$$` donde `\(c'(t)\)` es el vector tangente a la curva `\(c.\)`
+
+---
+# Torque 
+
+&gt; Supongamos que una partícula `\(p\)` es afectada por una fuerza `\(\mathbf{F},\)` y queremos que tanto la desplaza. Si `\(\mathbf{r}\)` es el vector de posición de `\(p\)` y `\(\mathbf{F}\)` es la fuerza, entonces el _torque_ de `\(\mathbf{F}\)` sobre `\(p\)` está dado por `$$\mathbf{r}\times \mathbf{F}.$$`
+
+---
+# Velocidad Angular
+
+&gt; Supongamos que una partícula se desplaza sobre un cuerpo rígido con una velocidad angular `\(\mathbf{\omega}\)` y queremos conocer la velocidad lineal de un punto `\(p\)` sobre el cuerpo. Si `\(\mathbf{r}\)` es el vector de posición de `\(p,\)` entonces la velocidad de `\(p\)` está dada por `$$\mathbf{\omega}\times \mathbf{r}.$$`
+
+---
+## Triple Producto Escalar
+
+&gt; __Definición:__ Sean `\(\mathbf{u},\mathbf{v},\mathbf{w}\in\mathbb{R}^3,\)` el _triple producto escalar_ de estos vectores se define como `$$\mathbf{u}\cdot (\mathbf{v}\times \mathbf{w}).$$` Y el valor absoluto de esta cantidad coincide con el volumen del paralelepípedo generado por `\(\mathbf{u},\mathbf{v},\mathbf{w}.\)`
+
+__Sketch:__
+
+---
+## Triple Producto Vectorial
+
+&gt; __Definición:__ Sean `\(\mathbf{u},\mathbf{v},\mathbf{w}\in\mathbb{R}^3,\)` el _triple producto vectorial_ de estos vectores se define como `$$\mathbf{u}\times (\mathbf{v}\times \mathbf{w}).$$`
+
+&lt;br/&gt;&lt;br/&gt;
+__Afirmación:__ `$$\mathbf{u}\times (\mathbf{v}\times \mathbf{w})=(\mathbf{u}\cdot \mathbf{w})\mathbf{v}-(\mathbf{u}\cdot \mathbf{v})\mathbf{w}.$$`
+
+---
+### Torque y Momento Angular como triples productos
+
+&gt; __Definición:__ El torque de un vector `\(\mathbf{F}\)` sobre una partícula `\(p\)` con vector de posición `\(\mathbf{r}\)` relativo a una dirección `\(\mathbf{n}\)` está dado por `$$\mathbf{n}\cdot(\mathbf{r}\times \mathbf{F}).$$` &lt;br/&gt;&lt;br/&gt;
+
+&gt; __Definición:__ El momento angular de una partícula con posición `\(\mathbf{r}\)` y velocidad angular `\(\mathbf{\omega}\)` está dado por `$$m\mathbf{r}\times \mathbf{\omega}\times \mathbf{r},$$` donde `\(m\)` es la masa de la partícula.
+
+---
+# Actividad
+
+1. Calcula el volumen del paralelepípedo formado por los vectores `\(\mathbf{o},\,\mathbf{v}=(1,0,1),\, \mathbf{w}=(0,1,0)\)` y `\(\mathbf{v}+\mathbf{w}.\)`
+
+2. Calcula el vector normal a la semiesfera superior de radio `\(r\)` centrada en el origen.
+
+3. Prueba que si `\(p\)` es un punto que no está en la recta `\(L\)` que pasa por los puntos `\(q\)` y `\(r.\)` Entonces la distancia de `\(p\)` a la recta está dada por `$$\frac{|\mathbf{a}\times\mathbf{b}|}{|\mathbf{a}|}$$` donde `\(\mathbf{a}=\vec{qr}\)` y `\(\mathbf{b}=\vec{qp}.\)`
+
+4. Si `\(\mathbf{r}=(x,y,z),\,\mathbf{a}=(a_1,a_2,a_3)\)` y `\(\mathbf{b}=(b_1,b_2,b_3).\)` Demuestre que los vectores que satisfacen `\((\mathbf{r}-\mathbf{a})\cdot(\mathbf{r}-\mathbf{b})=0\)` están en una esfera. ¿Qué radio y centro tiene?
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

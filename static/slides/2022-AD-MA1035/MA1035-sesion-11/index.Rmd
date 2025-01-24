@@ -1,0 +1,113 @@
+---
+title: "Álgebra y Geometría de Vectores"
+subtitle: "Sesión 1"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+
+# Objetivos de la Sesión
+
+* $\mathbb{R}^3$ como espacio vectorial. <br/><br/>
+* . <br/><br/>
+* Vector Products.
+---
+# Estructura de Espacio vectorial
+
+Consideremos $$\mathbb{R}^3=\{\mathbf{x}=(x_1,x_2,x_3): x_j\in \mathbb{R}\}$$ con las siguientes propiedades:
+   1. $\mathbf{x}+\mathbf{y}=(x_1,x_2,x_3)+(y_1,y_2,y_3)=(x_1+y_1,x_2+y_2,x_3+y_3)$.
+   2. Si $c\in\mathbb{R},$ entonces $c\mathbf{x}=c(x_1,x_2,x_3)=(cx_1,cx_2,cx_3).$$
+   3. $c(\mathbf{x}+\mathbf{y})=c\mathbf{x}+c\mathbf{y}.$
+   4. $(c+d)\mathbf{x}=c\mathbf{c}+d\mathbf{x}.$
+   5. $\mathbf{x}+\mathbf{y}=\mathbf{y}+\mathbf{x}.$
+
+---
+# Geometría Vectorial de $\mathbb{R}^3.$$
+
+% Geogebra o Mathematica
+
+---
+# Componentes de un vectorial
+
+> Un __vector__ se define como una cantidad que tiene una magnitud y una dirección, para $\mathbb{x}\in\mathbb{R}^3:$$
+  1. _Magnitud:_ la norma o magnitud del vector $\mathbf{x}$ se define por la cantidad $$|\mathbf{x}|=\sqrt{x_1^2+x_2^2+x_3^2}.$$
+  2. _Dirección:_ la dirección del vector $\mathbf{x}$ es aquella que tomamos cuando nos movemos del origen $\mathbf{o}=(0,0,0)$ hacía $\mathbf{x}.$
+
+---
+# Producto Escalar
+
+> __Definición:__ Sean $\mathbf{v},\mathbf{w}\in\mathbb{R}^3,$ el _producto escalar_ de estos vectores se define como $$\mathbf{v}\cdot \mathbf{w}=\langle \mathbf{v},\mathbf{w}\rangle = v_1w_1+ v_2w_2+v_3w_3.$$
+
+##### Ejemplo:
+ $$(1,2,3)\cdot (-3,1,1)=\langle (1,2,3),(-3,1,1)\rangle = (1)(-3)+(2)(1)+(3)(1)=2.$$
+
+---
+## Propiedades del Producto Escalar
+
+  1. _Conmutativo:_ $$\mathbf{v}\cdot\mathbf{w}=\mathbf{w}\cdot\mathbf{v}.$$ <br/><br/>
+  2. _Magnitud:_ $$|\mathbf{v}|^2=\mathbf{v}\cdot\mathbf{v}.$$ <br/><br/>
+  3. _Distributiva:_ $$(\mathbf{v}_1+\mathbf{v}_2)\cdot\mathbf{w}=\mathbf{v}_1\cdot \mathbf{w}+\mathbf{v}_2\cdot \mathbf{w}.$$
+ ---
+ ## Geometría del Producto Escalar
+
+ > __Definición:__ Sean $\mathbf{v},\mathbf{w}\in\mathbb{R}^3,$ el _ángulo_ $\theta$ entre estos vectores se define como el valor que satisface $$\langle \mathbf{v},\mathbf{w}\rangle=|\mathbf{v}| |\mathbf{w}|\cos(\theta).$$
+
+ ---
+ # Producto Vectorial
+ 
+ > __Definición:__ Sean $\mathbf{v},\mathbf{w}\in\mathbb{R}^3,$ el _producto vectorial_ de estos vectores se define como el vector $$\mathbf{v}\times \mathbf{w}=\det \left( \begin{array}{ccc} \mathbf{i} & \mathbf{j} & \mathbf{k}\\ v_1 & v_2 & v_3 \\ w_1 & w_2 & w_3\right).$$
+
+---
+## Propiedades del Producto Vectorial
+
+  1. _Anticonmutatividad:_ $$\mathbf{v}\times\mathbf{w}=-\mathbf{w}\times\mathbf{v}.$$ <br/><br/>
+  2. _Paralelismo:_ si $\mathbf{v}$ y $\mathbf{w}$ son paralelos, entonces $$\mathbf{v}\times\mathbf{w}=\mathbf{o}.$$
+  3. _Perdedicularidad:_ $\mathbf{v}\times\mathbf{w}$ es perpendicular a $\mathbf{v}$ y $\mathbf{w},$ $$(\mathbf{v}\times \mathbf{w})\cdot \mathbf{v}=0.$$
+  4. _Distributiva:_ $$(\mathbf{v}_1+\mathbf{v}_2)\times\mathbf{w}=\mathbf{v}_1\times \mathbf{w}+\mathbf{v}_2\times \mathbf{w}.$$
+---
+## Geometría del Producto Vectorial
+
+> __Definición:__ Dado un plano $L$ en $\mathbb{R}^3,$ el _vector normal_ es el producto vectorial de cualquiera de dos de sus elementos normalizado, es decir, si $\mathb{v},\mathbf{w}\in L,$ entonces $\mathbf{n}_L=\frac{\mathbf{v}\times\mathbf{w}}{|\mathbf{v}\times\mathbf{w}|}.$$ 

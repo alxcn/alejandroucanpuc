@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Operaciones con Funciones</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x9b47a327ae345a89d68882f532bef54","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Operaciones con Funciones
+]
+.subtitle[
+## Sesión 09
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Realizar operaciones con funciones. &lt;br/&gt; &lt;br/&gt;
+ * Conocer las condiciones cuando se pueden realizar estas operaciones. &lt;br/&gt; &lt;br/&gt;
+ * Saber como se modifican la grafica de la función mediante operaciones con constantes. &lt;br/&gt; &lt;br/&gt;
+ * Saber cómo realizar la composición de dos funciones.
+
+---
+# Transformación de Gráficas:
+&lt;br/&gt;&lt;br/&gt;
+__Desplazamientos:__
+&lt;br/&gt;
+Supongamos que `\(c&gt;0\)` y `\(y=f(x)\)` la expresión de una función. Las siguientes operaciones modifican la gráfica de la siguiente manera:
+
+* `\(y=f(x)+c\)` entonces `\(c\)` desplaza la gráfica de `\(y=f(x)\)` unas `\(c\)` unidades hacia arriba. 
+&lt;br/&gt;&lt;br/&gt;
+* `\(y=f(x)-c\)` entonces `\(c\)` desplaza la gráfica de `\(y=f(x)\)` unas `\(c\)` unidades hacia abajo.
+&lt;br/&gt;&lt;br/&gt;
+* `\(y=f(x+c)\)` entonces `\(c\)` desplaza la gráfica de `\(y=f(x)\)` unas `\(c\)` unidades hacia la izquierda.
+&lt;br/&gt;&lt;br/&gt;
+* `\(y=f(x-c)\)` entonces `\(c\)` desplaza la gráfica de `\(y=f(x)\)` unas `\(c\)` unidades hacia la derecha.
+
+---
+# Veamos
+&lt;iframe src="https://www.geogebra.org/graphing/p4jxv9te?embed" width="800" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# Transformación de funciones
+&lt;br/&gt;
+__Estiramientos:__
+&lt;br/&gt;
+Supongamos que `\(c&gt;1\)` y `\(y=f(x)\)` la expresión de una función. Las siguientes operaciones modifican la gráfica de la siguiente manera:
+
+* `\(y=cf(x)\)` entonces la gráfica de `\(y=f(x)\)` se estira verticalmente un factor de `\(c.\)` 
+&lt;br/&gt;&lt;br/&gt;
+* `\(y=\frac{f(x)}{c}\)` la gráfica de `\(y=f(x)\)` se encoge verticalmente un factor de `\(c.\)`
+&lt;br/&gt;&lt;br/&gt;
+* `\(y=f(cx)\)` la gráfica de `\(y=f(x)\)` se estira de manera horizontal un factor de `\(c.\)` 
+&lt;br/&gt;&lt;br/&gt;
+* `\(y=f(x/c)\)` la gráfica de `\(y=f(x)\)` se comprime de manera horizontal un factor de `\(c.\)`
+&lt;br/&gt;&lt;br/&gt;
+* `\(y=-f(x)\)` la gráfica de `\(y=f(x)\)` se refleja respecto al eje `\(x.\)`
+&lt;br/&gt;&lt;br/&gt;
+* `\(y=f(-x)\)` la gráfica de `\(y=f(x)\)` se refleja respecto al eje `\(y.\)`
+
+---
+# Veamos:
+&lt;iframe src="https://www.geogebra.org/graphing/zcdtukjr?embed" width="800" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+#Álgebra de Funciones:
+
+Dadas dos funciones, podemos combinarlas para formar nuevas funciones y esto mediante las operaciones de artiméticas que conocemos de todo el tiempo: `\(+, -, \times, \div.\)`
+
+&lt;br/&gt;&lt;br/&gt;
+&gt; Sean `\(f\)` y `\(g\)` dos funciones con dominios `\(A\)` y `\(B.\)` Entonces podemos construir las siguientes funciones:
+&lt;br/&gt;&lt;br/&gt;
+* __Suma:__ `\((f+g)(x)=f(x)+g(x)\)`
+&lt;br/&gt;&lt;br/&gt;
+* __Resta:__ `\((f-g)(x)=f(x)-g(x)\)`
+&lt;br/&gt;&lt;br/&gt;
+* __Producto:__ `\((fg)(x)=f(x) g(x)\)`
+&lt;br/&gt;&lt;br/&gt;
+* __Cociente:__ `\(\frac{f}{g}(x)=\frac{f(x)}{g(x)}\)`
+
+---
+## ¿Qué pasa con el dominio de las funciones operadas?
+
+Bueno el dominio se modifica, y se modifica de la siguiente manera:
+
+&lt;br/&gt;&lt;br/&gt;
+&gt; Sean `\(f\)` y `\(g\)` dos funciones con dominios `\(A\)` y `\(B.\)` Entonces podemos construir las siguientes funciones:
+&lt;br/&gt;&lt;br/&gt;
+* En la __suma__ el nuevo dominio es `\(A\cap B.\)`
+&lt;br/&gt;&lt;br/&gt;
+* En la __resta__ el nuevo dominio es `\(A\cap B.\)`
+&lt;br/&gt;&lt;br/&gt;
+* En el __producto__ el nuevo dominio es `\(A\cap B.\)`
+&lt;br/&gt;&lt;br/&gt;
+* En el __cociente__ el nuevo dominio es `\(A\cap B\)` excepto los puntos donde `\(g(x)=0.\)`
+
+---
+# Veamos:
+&lt;iframe src="https://www.geogebra.org/graphing/wjtrkvzt?embed" width="800" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# ¿Qué es la composición de dos funciones?
+
+[![Composición de Funciones](http://4.bp.blogspot.com/-peOo6_R1yO4/Uthoh1QFxyI/AAAAAAAACuo/Ju5FMNU4mX4/s1600/216.+Engranes+rectos+1.jpg)]http://4.bp.blogspot.com/-peOo6_R1yO4/Uthoh1QFxyI/AAAAAAAACuo/Ju5FMNU4mX4/s1600/216.+Engranes+rectos+1.jpg)
+
+---
+# Composición de funciones:
+
+&gt; Si `\(f:B\to C\)` y `\(g:A\to B,\)` definimos la función __composición__ `\(f\circ g: A \to C,\)` dada por la expresión $$ f\circ g(x)=f\left(g(x)\right).$$
+
+&lt;br/&gt;&lt;br/&gt; 
+
+__Nota:__ es importante que el rangel de la función `\(g\)` esté contenido en el dominio de la función `\(f.\)`
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+__Por ejemplo:__
+&lt;br/&gt;
+* `\(\color{green}{f(x)=x+1}\)` y `\(\color{red}{g(x)=x^2}.\)` Chequemos `\(D(f)=\mathbb{R}\)` y `\(Im(f)=\mathbb{[0,\infty)}.\)` Entonces, `$$f\circ g(x)=f(g(x))=f(x^2)=\color{red}{x^2}\color{green}{+1}.$$`
+
+---
+# Composición de funciones:
+__Por ejemplo:__
+&lt;br/&gt;
+* `\(\color{green}{f(x)=x+1}\)` y `\(\color{red}{g(x)=x^2}.\)` Chequemos `\(D(g)=\mathbb{R}\)` y `\(Im(f)=\mathbb{R}.\)` Entonces, `$$g\circ f(x)=g(f(x))=g(x+1)=\color{green}{(x+1)}\color{red}{^2}.$$`
+
+---
+# Veamos:
+
+&lt;iframe src="https://www.geogebra.org/graphing/q7hsg9we?embed" width="800" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

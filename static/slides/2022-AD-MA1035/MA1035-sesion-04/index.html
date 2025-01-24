@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>EDO Lineales de Orden Superior No homogéneas</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x57fd3738e244273911a602c216df199","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# EDO Lineales de Orden Superior No homogéneas
+]
+.subtitle[
+## Sesión 04
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos de la Sesión
+
+* Aprender otras problematicas que modela una EDO lineal no homogénea de orden superior no lineal. &lt;br/&gt;&lt;br/&gt;
+* Resolver EDO lineales no homogéneas de orden superior. &lt;br/&gt;&lt;br/&gt;
+* Aprender el método de coeficientes indeterminados. &lt;br/&gt;&lt;br/&gt;
+
+
+---
+# EDO lineal de orden superior no homogénea
+
+&gt; Recordemos que una EDO lineal de orden superior no homogénea es de la forma `$$a_ny^{(n)}+a_{n-1}y^{(n-1)}+\cdots+a_2y''+a_1y'+a_0y=g(x),$$` por el momento supondremos que nuestros coeficientes son constantes. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; 
+En el caso de EDO líneales no homogéneas de primer orden, tenemos que la solución general se forma mediante `$$y_p+y_h.$$` &lt;br/&gt;&lt;br/&gt; En el caso de orden superior no es la excepción. 
+
+---
+## Algunas consideraciones:
+
+&gt; Notemos que la función `\(g(x)\)` puede ser cualquier tipo de función, pero nos centraremos (restringiremos) a los siguientes tipos de funciones que puede aceptar `\(g(x):\)` &lt;br/&gt;&lt;br/&gt;
+  * Polinomios (dentro los cuales se encuentran las constantes) `$$g(x)=c_0+c_1x+c_2x^2+\cdots+c_nx^n.$$`
+  * Exponenciales: `$$g(x)=e^{cx}$$`
+  * Senos o Cosenos: `$$g(x)=\sin(cx)\mbox{ o } g(x)=\cos(cx).$$`
+  * Combinaciones de estas (producto y/o sumas):
+  
+  __Ejemplos:__ `\(g(x)=10,\)` `\(g(x)=15x-6+8e^{-x}\)` o `\(g(x)=xe^x \sin(x)+(3x^2-1)e^{-4x}.\)`
+  
+---
+# Método de Coeficientes Indeterminados:
+
+El método se aplica para EDOs lineales no homogeneas con:
+* _coeficientes constantes,_
+* `\(g(x)\)` como en la lista anterior.
+
+La idea detrás del método: 
+
+" Las derivadas de funciones `\(g(x)\)` como en la lista anterior, de nuevo son funciones en la lista, es decir, son sumas y/o productos de polinomios, senos, cosenos y/o exponenciales"
+
+---
+## Ejemplo 1:
+
+&gt; Encuentre la solución de la EDO `$$y''+4y'-2y=2x^2-3x+6.$$`
+
+1. Primero resolvemos la versión homogénea de la EDO. `$$y_h=c_1e^{(-2-\sqrt{6})x}+c_2e^{(-2+\sqrt{6})x}.$$`
+
+1. Cómo `\(g(x)\)` es un polinomio de grado dos, entonces la solución particular al menos podría ser un polinomio de grado dos (igual), supongamos que es `$$y_p=Ax^2+Bx+C.$$`
+
+1. Sustituyendo `\(y_p\)` en la EDO lineal: `\(y_p'=2Ax+B\)` y `\(y_p''=2A\)` entonces `$$2A+8Ax+4B-2Ax^2-2Bx-2C=2x^2-3x+6.$$`
+
+---
+## Ejemplo 1:
+
+1. Por teoría de polinomios, los coeficientes deben ser iguales, es decir:
+`$$-2A=2$$` `$$8A-2B=-3$$` `$$2A+4B-2C=6$$`
+
+1. Resolvemos este sistema: &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+1. Entonces `\(y_p=-x^2-\frac{5}{2}x-9.\)`
+
+---
+## Ejemplo 2:
+
+&gt; Encuentra la solución `\(y''-y'+y=2\sin(3x).\)`
+
+Primero calculemos la solución particular. Cómo la `\(g(x)=2\sin(3x)\)` entonces la solución que debe cumplir derivadas entonces tenemos que pensar que esta solución debe contener senos y cosenos. Así:
+
+`$$y_p=A\cos(3x)+B\sin(3x)$$`
+
+---
+## Ejemplo 3:
+
+&gt; Encuentra la solución `\(y''-2y'-3y=4x-5+6xe^{2x}.\)`
+
+En este caso la solución particular debe contener un polinomio y una exponencial. `$$y_p=Ax+B+Cxe^{2x}+Ee^{2x}.$$`
+
+---
+## Un error en la matrix:
+
+&gt; Encuentra la solución de `$$y''-5y'+4y=8e^x.$$` Verifica con el método de coeficientes indeterminados. ¿Qué sucede? ¿La solución particular funciona? ¿Ahora intenta con la forma particulas `\(y_p=A x e^x\)`. ¿Por qué sucede esto?
+
+
+---
+# ¿Cómo decidir que función modelo utilizar?
+
+&lt;div class="figure"&gt;
+&lt;img src="tablafuncionesmodelo.jpg" alt="Funciones Modelo" width="60%" /&gt;
+&lt;p class="caption"&gt;Funciones Modelo&lt;/p&gt;
+&lt;/div&gt;
+
+---
+# Actividad en Clase: 
+
+Encuentra la solución a las siguientes EDOs lineales de orden superior no homogéneas. &lt;br/&gt;&lt;br/&gt;
+ 
+* `\(y''+3y'+2y=6\)` 
+
+* `\(y''-10y'+25y=30x+3\)`
+
+* `\(\frac{1}{4}y''+y'+y=x^2-2x\)`
+
+* `\(y''-8y'+20y=100x^2-26xe^x\)`
+
+* `\(4y''-4y'-3y=\cos(2x)\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

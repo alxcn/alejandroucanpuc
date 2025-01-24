@@ -1,0 +1,101 @@
+---
+title: "Modelación con EDOs lineales de orden superior"
+subtitle: "Sesión 07"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Ejemplos de Modelado con EDOs lineales de segundo orden con coeficientes constantes homogéneas.
+
+---
+# Modelo 1: Sistemas de Control
+
+> Un controlador de temperatura es un dispositivo que ajusta la temperatura de un ambiente (procesador) a un valor deseado mediante la regulación de un elemento de calefacción o refrigeración. Para modelar el comportamiento de un sistema de control de temperatura, utilizamos una EDO lineal de segundo orden como:
+
+
+$$y'' + ay' + by = 0$$
+
+dónde: <br/><br/>
+* $y(t)$ es la desviación de la temperatura real ($T(t)$) respecto a la temperatura deseada ($T_d$). <br/>
+* $a$ Este coeficiente está relacionado con las características de amortiguamiento del sistema. Un amortiguamiento adecuado ayuda a reducir oscilaciones y converge rápidamente a la temperatura deseada. <br/>
+* $b$ Este coeficiente está relacionado con el grado de rigidez o elasticidad del sistema. Un valor mayor en (b) tiende a causar que el sistema regrese más rápidamente a la temperatura deseada.
+
+---
+##### Ejemplos de Modelo 1:
+
+1. Supongamos que al encender un disipador para un procesador, queremos que la temperatura baje a 22°C en un tiempo específico. Los coeficientes (5) y (6) representan las pérdidas de calor y el efecto de la resistencia térmica. Si inicialmente la diferencia de temperatura es de 80 grados y la velocidad de cambio de temperatura es de 0.5 grados por minuto, ¿Cuál es la función que modela la temperatura real del procesador usando el disipador?
+
+---
+# Modelo 2: Activación de Neuronas
+
+> Las redes neuronales son estructuras que imitan el funcionamiento del cerebro humano, y las redes neuronales recurrentes (RNN) son particularmente útiles para tareas que involucran datos secuenciales, como texto o series temporales. La activación de una neurona puede depender no solo de la entrada actual, sino también del historial de activaciones pasadas. Para modelar la activación de una neurona, utilizamos una EDO lineal de segundo orden como:
+$$a_1 y'' + a_2 y' + a_3 y = 0$$
+
+donde: <br/><br/>
+
+* $y(t)$ representa la activación de la neurona en el tiempo (t). <br/>
+* $a_1$ Representa la "inercia" del sistema, o cuán rápidamente la neurona puede cambiar su activación en respuesta a la entrada.<br/>
+* $a_2$ Relacionado con el "damping" o amortiguamiento, que controla la rapidez con que las oscilaciones del estado de la neurona se disipan. <br/>
+* $a_3$ Se relaciona con la fuerza atractiva hacia un estado de activación estable (por ejemplo, un umbral de activación).
+---
+##### Ejemplos de Modelo 2:
+
+1. Estamos revisando un modelo de Redes Neuronales Recurrentes, y queremos modelar la activación de una neurona en el tiempo. Sabemos que esta nuero tiene una tasa de inercia de 1, un coeficiente de amortiguamiento de 2, y un coeficiente de atracción de 3. ¿Cuál es la función que modela la activación de la neurona?
+
+---
+# Modelo 3: Movimiento de un Manipulador Mecánico
+
+> Imagina que tenemos un brazo robótico que puede moverse en dos articulaciones. Cada articulación tiene su propia inercia $I$, un amortiguador que introduce fricción $b$, y un resorte que simulate una fuerza restauradora $k$. El movimiento de la articulación se puede representar con un ángulo ($\theta$) respecto a la posición de equilibrio. Para modelar el movimiento de un manipulador mecánico, utilizamos una EDO lineal de segundo orden como:
+$$I\theta'' + b\theta' + k\theta = 0$$
+
+---
+##### Ejemplos de Modelo 3:
+
+> Consideremos un brazo robótico con dos articulaciones. Sabemos que la inercia en las articulaciones es de 1 kg m^2, el coeficiente de fricción es de 2 N s/m, y la constante del resorte es de 5 N/m. ¿Cuál es la función que modela el movimiento de una de las articulaciones del brazo robótico si al inicio tenemos que cada articulación está en 1radian de abertura y la taza de cambio de esta abertura inicialmente es de 0?
+
+---

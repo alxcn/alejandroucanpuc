@@ -1,0 +1,140 @@
+---
+title: "Espacios Vectoriales"
+subtitle: "Sesión 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width = 9, fig.height = 3.5, fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Definir la estructura de espacio vectorial. <br/><br/>
+* Introducir ejemplos de espacios vectoriales. <br/><br/>
+* Definir los subespacios vectoriales. <br/><br/>
+
+---
+# ¿Qué es un vector y que puedes hacer con ellos?
+
+
+
+---
+# ¿Qué es un espacio vectorial?
+
+> __Definición:__ Un espacio vectorial es una estructura algebraica que consiste de un conjunto $V$ de objetos llamados vectores, y dos operaciones, suma y multiplicación por un escalar, que satisfacen ciertas propiedades. <br/> 
+Las propiedades son:
+  * La suma es conmutativa. <br/>
+  * La suma es asociativa. <br/>
+  * Existe un vector cero. <br/>
+  * Existe un inverso aditivo. <br/>
+  * La multiplicación por un escalar es asociativa. <br/>
+  * La multiplicación por un escalar distribuye sobre la suma de vectores. <br/>
+  * La multiplicación por un escalar distribuye sobre la suma de escalares. <br/>
+  * El escalar 1 es el elemento neutro de la multiplicación. <br/>
+
+---
+## Ejemplos de Espacios Vectoriales.
+
+> Consideremos el espacio de números reales $\mathbb{R}$ como conjunto de vectores y escalares, con las operaciones usuales. Veamos que cumple con las propiedades de un espacio vectorial.
+
+--
+<br/><br/>
+ 
+> Consideremos el espacio el espacio $V=\mathbb{R}^2$ de pares de reales, con la siguientes operaciones: <br/>
+* Suma: $(a,b)+(c,d)=(a+c,b+d).$ <br/>
+* Multiplicación por un escalar: $\lambda(a,b)=(\lambda a,\lambda b).$ <br/><br/>
+Probemos que es un espacio vectorial.
+
+---
+## Ejemplos de Espacios Vectoriales
+
+> Consideremos el espacio $V=\mathbb{R}^n$ de n-tuplas de reales, con las siguientes operaciones: <br/>
+*  Suma: $(a_1,a_2,\dots,a_n)+(b_1,b_2,\dots,b_n)=(a_1+b_1,a_2+b_2,\dots,a_n+b_n).$ <br/>
+* Multiplicación por un escalar: $\lambda(a_1,a_2,\dots,a_n)=(\lambda a_1,\lambda a_2,\dots,\lambda a_n).$ <br/>
+Probemos que es un espacio vectorial.
+
+---
+## Ejemplos de Espacios Vectoriales
+
+> Consideremos el espacio $V=M(n\times m, \mathbb{R})$ de matrices de $n\times m$ con coeficientes reales, con las operaciones de matrices.
+
+--
+<br/><br/>
+
+> Consideremos el espacio $V=P_3(x)$ de polinomios de grado menor o igual a tres en la variable $x,$ con coeficientes reales, con las operaciones usuales de suma de polinomios y producto por escalar. <br/><br/> Probemos que es un espacio vectorial. 
+
+---
+## No Ejemplos de Espacios Vectoriales.
+
+> Consideremos el espacio de polinomios de grado dos en la variable $x,$ con coeficientes reales. Probemos que este no es un espacio vectorial.
+
+
+---
+## No Ejemplos de Espacios Vectoriales.
+
+> Consideremos el conjunto $W=\{(x,y)\in\mathbb{R}^2:x^2+y^2=1\}.$ <br/><br/> Probemos que no es un espacio vectorial con la suma y producto por escalar de vectores en $\mathbb{R}^2.$
+
+
+---
+## Subespacios Vectoriales.
+
+> __Definición:__ Un subespacio vectorial de un espacio vectorial $V$ es un subconjunto $W$ de $V$ que es un espacio vectorial con las operaciones de $V.$ <br/><br/> 
+
+--
+> Por ejemplo, en el espacio vectorial de $\mathbb{R}^2,$ la recta que pasa por el origen es un subespacio vectorial. <br/><br/> Consideremos la recta $W=\{(x,y)\in\mathbb{R}^2:y=mx\}$ donde $m$ es una constante. <br/><br/> Veamos que $W$ es un subespacio vectorial.
+
+
+---
+## Subespacios Vectoriales.
+> Por ejemplo, en el espacio vectorial $\mathbb{R}^3,$ las rectas que pasan por el origen son subespacios vectoriales. <br/><br/> Consideremos la recta $W_1=\{(x,y,z)\in\mathbb{R}^3:ax=z\}$ donde $a$ es constantes. <br/><br/> Veamos que $W_1$ es un subespacio vectorial.
+---
+## Subespacios Vectoriales
+> Por ejmplo, en el espacio vectorial de $\mathbb{R}^3,$ el plano que pasa por el origen es un subespacio vectorial. <br/><br/> Consideremos el plano $W=\{(x,y,z)\in\mathbb{R}^3:ax+by=z\}$ donde $a,b$ son constantes. <br/><br/> Veamos que $W$ es un subespacio vectorial.
+
+---
+## Actividad
+
+1. Consideremos $V=\mathbb{R}^2$ con las operaciones usuales. ¿Puede ser $W=\{(3,x):x\in\mathbb{R}\}$ un subespacio vectorial? <br/><br/>
+1. Prueba que $\mathbb{Z}^2$ es un espacio vectorial con la suma y producto por escalar de $\mathbb{R}^2 $ pero con conjunto de escalares igual a $\mathbb{Z}.$ <br/>
+1. Si $v=(2,2),\, w=(-1,2).$ Realice un representación gráfica para los vectores $2v, v+w, v-w.$ <br/>
+1. Sea $F$ el conjunto de polinomios con coeficientes en $\mathbb{R}$. Prueba que $F$ es un espacio vectorial con las operaciones usuales de suma de polinomios y producto por escalar con escalares el conjunto $\mathbb{R}.$

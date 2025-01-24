@@ -1,0 +1,157 @@
+---
+title: "Operaciones con Funciones"
+subtitle: "Sesión 09"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=5, fig.height=3.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Realizar operaciones con funciones. <br/> <br/>
+ * Conocer las condiciones cuando se pueden realizar estas operaciones. <br/> <br/>
+ * Saber como se modifican la grafica de la función mediante operaciones con constantes. <br/> <br/>
+ * Saber cómo realizar la composición de dos funciones.
+
+---
+# Transformación de Gráficas:
+<br/><br/>
+__Desplazamientos:__
+<br/>
+Supongamos que $c>0$ y $y=f(x)$ la expresión de una función. Las siguientes operaciones modifican la gráfica de la siguiente manera:
+
+* $y=f(x)+c$ entonces $c$ desplaza la gráfica de $y=f(x)$ unas $c$ unidades hacia arriba. 
+<br/><br/>
+* $y=f(x)-c$ entonces $c$ desplaza la gráfica de $y=f(x)$ unas $c$ unidades hacia abajo.
+<br/><br/>
+* $y=f(x+c)$ entonces $c$ desplaza la gráfica de $y=f(x)$ unas $c$ unidades hacia la izquierda.
+<br/><br/>
+* $y=f(x-c)$ entonces $c$ desplaza la gráfica de $y=f(x)$ unas $c$ unidades hacia la derecha.
+
+---
+# Veamos
+<iframe src="https://www.geogebra.org/graphing/p4jxv9te?embed" width="800" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Transformación de funciones
+<br/>
+__Estiramientos:__
+<br/>
+Supongamos que $c>1$ y $y=f(x)$ la expresión de una función. Las siguientes operaciones modifican la gráfica de la siguiente manera:
+
+* $y=cf(x)$ entonces la gráfica de $y=f(x)$ se estira verticalmente un factor de $c.$ 
+<br/><br/>
+* $y=\frac{f(x)}{c}$ la gráfica de $y=f(x)$ se encoge verticalmente un factor de $c.$
+<br/><br/>
+* $y=f(cx)$ la gráfica de $y=f(x)$ se estira de manera horizontal un factor de $c.$ 
+<br/><br/>
+* $y=f(x/c)$ la gráfica de $y=f(x)$ se comprime de manera horizontal un factor de $c.$
+<br/><br/>
+* $y=-f(x)$ la gráfica de $y=f(x)$ se refleja respecto al eje $x.$
+<br/><br/>
+* $y=f(-x)$ la gráfica de $y=f(x)$ se refleja respecto al eje $y.$
+
+---
+# Veamos:
+<iframe src="https://www.geogebra.org/graphing/zcdtukjr?embed" width="800" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+#Álgebra de Funciones:
+
+Dadas dos funciones, podemos combinarlas para formar nuevas funciones y esto mediante las operaciones de artiméticas que conocemos de todo el tiempo: $+, -, \times, \div.$
+
+<br/><br/>
+> Sean $f$ y $g$ dos funciones con dominios $A$ y $B.$ Entonces podemos construir las siguientes funciones:
+<br/><br/>
+* __Suma:__ $(f+g)(x)=f(x)+g(x)$
+<br/><br/>
+* __Resta:__ $(f-g)(x)=f(x)-g(x)$
+<br/><br/>
+* __Producto:__ $(fg)(x)=f(x) g(x)$
+<br/><br/>
+* __Cociente:__ $\frac{f}{g}(x)=\frac{f(x)}{g(x)}$
+
+---
+## ¿Qué pasa con el dominio de las funciones operadas?
+
+Bueno el dominio se modifica, y se modifica de la siguiente manera:
+
+<br/><br/>
+> Sean $f$ y $g$ dos funciones con dominios $A$ y $B.$ Entonces podemos construir las siguientes funciones:
+<br/><br/>
+* En la __suma__ el nuevo dominio es $A\cap B.$
+<br/><br/>
+* En la __resta__ el nuevo dominio es $A\cap B.$
+<br/><br/>
+* En el __producto__ el nuevo dominio es $A\cap B.$
+<br/><br/>
+* En el __cociente__ el nuevo dominio es $A\cap B$ excepto los puntos donde $g(x)=0.$
+
+---
+# Veamos:
+<iframe src="https://www.geogebra.org/graphing/wjtrkvzt?embed" width="800" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# ¿Qué es la composición de dos funciones?
+
+[![Composición de Funciones](http://4.bp.blogspot.com/-peOo6_R1yO4/Uthoh1QFxyI/AAAAAAAACuo/Ju5FMNU4mX4/s1600/216.+Engranes+rectos+1.jpg)]http://4.bp.blogspot.com/-peOo6_R1yO4/Uthoh1QFxyI/AAAAAAAACuo/Ju5FMNU4mX4/s1600/216.+Engranes+rectos+1.jpg)
+
+---
+# Composición de funciones:
+
+> Si $f:B\to C$ y $g:A\to B,$ definimos la función __composición__ $f\circ g: A \to C,$ dada por la expresión $$ f\circ g(x)=f\left(g(x)\right).$$
+
+<br/><br/> 
+
+__Nota:__ es importante que el rangel de la función $g$ esté contenido en el dominio de la función $f.$
+
+<br/><br/><br/>
+__Por ejemplo:__
+<br/>
+* $\color{green}{f(x)=x+1}$ y $\color{red}{g(x)=x^2}.$ Chequemos $D(f)=\mathbb{R}$ y $Im(f)=\mathbb{[0,\infty)}.$ Entonces, $$f\circ g(x)=f(g(x))=f(x^2)=\color{red}{x^2}\color{green}{+1}.$$
+
+---
+# Composición de funciones:
+__Por ejemplo:__
+<br/>
+* $\color{green}{f(x)=x+1}$ y $\color{red}{g(x)=x^2}.$ Chequemos $D(g)=\mathbb{R}$ y $Im(f)=\mathbb{R}.$ Entonces, $$g\circ f(x)=g(f(x))=g(x+1)=\color{green}{(x+1)}\color{red}{^2}.$$
+
+---
+# Veamos:
+
+<iframe src="https://www.geogebra.org/graphing/q7hsg9we?embed" width="800" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>

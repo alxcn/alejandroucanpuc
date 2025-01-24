@@ -1,0 +1,112 @@
+---
+title: "Optimización con Restricciones"
+subtitle: "Sesión 08"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+* Conocer las condiciones necesarias y suficientes para la existencia de valores extremos en problemas con restricción. <br/><br/>
+ * Encontrar estos valores mediante el método de los multiplicadores de Lagrange.
+ 
+---
+# ¿Optimización con restricciones?
+
+> __Ejemplo:__ Una caja rectangular sin tapa está hecha con $12m^2$ de cartón. Encuentre el volumen máximo de la caja.
+
+<br/>
+--
+
+Notemos que tenemos una restricciones de las variables y es que satisfagan $$A_{sup}=2xz+2y+xy=12.$$
+
+---
+# Intuitivamente
+
+Queremos encontrar los valores extremos de una función $f(x,y)$ de tal manera que las variables cumplan una restricción que pueda expresarse como una curva de nivel de una función $g(x,y).$ <br/><br/>
+
+Queremos encontrar los $(x,y)$ tal que $$f(x,y)\mbox{ tiene un valor extremo}$$ $$g(x,y)=k.$$
+
+---
+## Visualmente esto se ve como
+
+<iframe src="https://www.geogebra.org/classic/uebb3j98?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+## El mutiplicador
+
+> __Definición:__ Dada las condiciones del dibujo anterior, diremos que $\lambda$ es un __multiplicador de Lagrange__ si satisface que $$\nabla f(x_0,y_0,z_0)=\lambda \nabla g(x_0,y_0,z_0).$$
+
+---
+# El método de Multiplicadores de Lagrange.
+
+> Para encontrar los valores extremos de $f(x,y,z)$ sujeto a la restricción $g(x,y,z)=k,$ suponiendo que $\nabla g\neq 0.$ <br/><br/>
+  * Encontrar los valores $x,y,z$ y $\lambda$ para los que se cumpla $$\nabla f(x,y,z)=\lambda \nabla g(x,y,z)$$ $$g(x,y,z)=k.$$
+  * Evalua $f$ en estos puntos, el mayor de estos números es al máximo y el menor el mínimo. 
+  
+---
+# Ejemplo 1:
+
+> Calcule los valores extremos de la función $f(x,y)=5x^2+6y^2-xy$ restringida a $x+2y=24.$
+
+--
+1. Calculamos el gradiente de la función objetivo: $$\nabla f= (10x-y,12y-x)$$
+1. Calculamos el gradiente de la restricción: $$\nabla g =(1,2)$$
+1. Identificamos nuestro sistema de ecuaciones $$10x-y=\lambda$$ $$12y-x=\lambda$$ $$x+2y=24$$
+1. Resolvemos el sistema con técnicas de sistemas ecuaciones:
+1. Mi resultado es $$y=-\frac{-288}{25},\quad x=\frac{576}{5}.$$
+
+---
+# Ejemplo 2:
+
+> Encuentre los valores extremos de la función $f(x,y,z)=2x^2+y^2+3z^2$ bajo la restrincción  $2x-3y-4z=49.$
+
+
+---
+# Ejemplo 3:
+
+> La función de producción de Cobb-Douglas para una producción está dada por $f(x,y)=100x^{3/4}y^{1/4}.$ Dónde $x$ son las unidades de producción (a 150mxn por unidad) y $y$ son las unidades de capital (a 250mxn por unidad). Si nuestras unidades de producción y capital están restringidas a 50000mxn. Encuentra la máxima producción para esta manufactura.
+
+---
+# Ejemplo 4:
+
+>  El fabricante de prótesis biólogicas BioTech ha desarrollado un modelo de ganancias que depende del número de protesis ($x$) que vende al mes (en miles) y el número de horas al mes que invierte en publicidad ($y$). $$f(x,y)=48x+96y-x^2-2xy-9y^2.$$
+Nuestro presupuesto de producción de unidades de prótesis y publicidad está dada por $20x+4y=216.$ Halle el número de protesis y horas de publicidad que maximizan mi ganacia.
+
+

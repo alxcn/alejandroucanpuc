@@ -1,0 +1,93 @@
+---
+title: "Physics and Differential Equations"
+subtitle: "Session 04"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals:
+
+ * Broaden the type of Differential Equations. <br/><br/>
+ * State physical systems via differential equations. <br/><br/>
+ * Look for solutions.
+ 
+---
+# A key example.
+
+> Imagine that we have a contaminated slice of bread with some bacteria. After some observations, we can assure that the growing rate of the population is 3 times each second. <br/><br/>
+If $P(t)$ denotes the measure of the bacteria population (by thousands), then the __growing rate__ corresponds to $$\frac{dP}{dt}.$$ <br/><br/>
+Following our observations, we can state that $$\frac{dP}{dt}=3P.$$
+
+---
+## Information of our problem. 
+
+> Recall that (from Differential Calculus) there is one function whose derivative its almost the same as the function (up to a constant). If $f(t)=e^{3t},$ then $$\frac{df}{dt}=3e^{3t}=3f(t).$$ <br/><br/> But this also works for the function $f_1(t)=2e^{3t},$ $f_1(t)=10e^{3t},$ etc. 
+
+---
+## A picture of this. 
+
+<iframe src="https://www.geogebra.org/calculator/eqekpbc2?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# A physical model.
+
+> Assume that we have an object of mass $m$ attached at the end of a spring, and the other end of the spring is fixed. <br/><br/> Hooke's law says that:<br/> If a spring is stretched (compressed) $x$ units from its natural length, then it exerts a force that is proportional to $x:$ $$\mbox{restoring force}=-kx.$$
+By Newton's second law (ignoring all other external forces), says that _force is equal mass times acceleration_ $$m\frac{d^2x}{dt^2}=-kx.$$
+
+---
+## The mass-spring model
+
+> Previous differential equations is a model of the physical phenomena. This differential equation doesn't look like solvable. To find its solution we need more refinated techniques for differential equations theory. <br/><br/>
+We can picture what should happend. 
+
+---
+## A picture of the phenomenon
+
+<iframe src="https://www.geogebra.org/calculator/j7vydp2d?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# A less-ideal model
+
+> Let's assume that in our last model we consider the presence of a new external force, for example the existence of resistance. <br/><br/> This could be think as that our spring-mass is inmersed in a viscous medium. <br/><br/> In mechanics, the force induced by the viscous medium acts proportionally to the instant velocity. Our model transforms to $$m\frac{d^2x}{dt^2}=-kx-\beta \frac{dx}{dt}.$$
+
+---
+## Lets see some pictures.
+
+

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to ODEs</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-09-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xf66dacbc1ed4d27bf4d75ab3f4f69d2","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Introduction to ODEs
+]
+.subtitle[
+## Session 01
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-09-15
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Session's Goals
+
+  * Define ODEs. &lt;br/&gt;&lt;br/&gt;
+  * Modelling using ODEs. &lt;br/&gt;&lt;br/&gt;
+  * Qualitative Analysis of ODEs. &lt;br/&gt;&lt;br/&gt;
+
+---
+# What we understand for Modelling?
+
+
+&gt; **Definition:** A model is a simplified (mathematical) representation of a real problem. &lt;br/&gt;&lt;br/&gt;
+  1. Clear hypothesis where the problem is based (it must describe the relationship between the quantities to be studied). &lt;br/&gt;
+  1. Define the variables and parameters involved in the problem. &lt;br/&gt;
+  1. Use the hypotheses to generate equations that relate the variables and parameters. &lt;br/&gt;
+  1. Solve the equations to obtain the solution. &lt;br/&gt;&lt;br/&gt;
+---
+## A growing population problem
+
+--
+&gt; **Hyphotesis:** The infection rate of a virus in cells is proportional to the number of infected cells. &lt;br/&gt;&lt;br/&gt;
+--
+**Variables and parameters:** &lt;br/&gt;
+  * `\(P(t)\)`: Population at time `\(t.\)` &lt;br/&gt;
+  * `\(k\)`: Proportionality constant. &lt;br/&gt;&lt;br/&gt;
+--
+**Equation:** Remember that the growth rate is a _rate of change_: `$$\frac{dP}{dt}=kP.$$`
+
+---
+## What happens if we change my hypothesis?
+
+&gt; **Hyphotesis 1:** If the population of infected cells is small then the growth rate is proportional to the elements of the population. But if the population is too large (to be supported), the population will begin to decrease. &lt;br/&gt;&lt;br/&gt;
+--
+**Variables and parameters:** &lt;br/&gt;
+  * `\(P(t)\)`: Population at time `\(t.\)` &lt;br/&gt;
+  * `\(k\)`: Proportionality constant. &lt;br/&gt;&lt;br/&gt;
+  * `\(N\)`: Population limit. &lt;br/&gt;&lt;br/&gt;
+--
+**Equation:** $$ \frac{dP}{dt}=kP(1-\frac{P}{N}).$$
+
+---
+# What is an ODE?
+
+&gt; **Definition:** An _ordinary differential equation_ is an equation whose unknown is a function and involves derivatives (of the unknown) and the independent variable. `$$f(y^{(n)},y^{(n-1)},\cdots, y',y,x)=0$$`&lt;br/&gt;&lt;br/&gt;
+  * The independent variable is the variable with respect to which the functions are derived. &lt;br/&gt;
+  * The dependent variable is the function to be found. &lt;br/&gt;&lt;br/&gt;
+  * The order of the equation is the order of the highest derivative that appears in the equation. &lt;br/&gt;&lt;br/&gt;
+  * The ODE is linear if the functions and their derivatives appear raised to the first power and are not multiplied together. &lt;br/&gt;&lt;br/&gt;
+  * The ODE is non-homogeneous if the ODE has an independent term (function of the independent variable) different from zero.
+---
+## Examples of ODEs
+
+* **Generic:** `\(yy'-\sin(x)=3y,\)` `\(y''-2y+\sqrt{3x}=0,\)` etc. &lt;br/&gt;&lt;br/&gt;
+
+* **Homogeneous:** `\(y'+y=0,\)` `\(y'y=0,\)` `\(\sqrt{y''-3xy}=0,\)` etc. &lt;br/&gt;&lt;br/&gt;
+
+* **Linear:** `\(y'+y=3x,\)` `\(3y'''+2y''-xy=0,\)` etc. &lt;br/&gt;&lt;br/&gt;
+
+---
+## Solutions of an ODE.
+
+&gt; **Definition:** We say that `\(f\)` is a function defined on a certain interval `\(I,\)` with continuous derivatives in `\(I\)` (as many derivatives as the order of the equation) is a solution of a differential equation if when we substitute the function we obtain an identity.
+
+**Example:** The function `\(f(x)=e^x\)` defined in `\(\mathbb{R},\)` is a solution of the ODE `$$y'-y=0.$$` Let's see, `\(f'(x)=e^x\)` and if `\(y=f(x),\)` then `$$y'-y=e^x-e^x=0.$$`
+
+Is it true if we substitute `\(y=4e^x\)` in the ODE `\(y'-y=0\)`?
+
+---
+## Solution by Curves
+
+&gt; **Definition:** The graph of a function solution to an ODE is known as a solution curve. Note that the solution curve may differ from the graph of the function given that the solution curve **depends on the interval of definition of the solution.**&lt;br/&gt;&lt;br/&gt;
+
+**Example:** Consider the equation `\(xy'+y=0.\)` The function `\(y=f(x)=1/x\)` is a solution, but remember that `\(f(x)\)` is not differentiable at `\(x=0,\)` so we must define the interval we will take, if `\((-\infty,0)\)` or `\((0,\infty).\)`
+
+---
+### Implicit Solutions.
+
+&gt; **Definition:** Sometimes the ODE can be satisfied by a relationship `\(G(x,y)\)` (equation involving `\(x\)` and $y), but always with the premise that there is a function that satisfies this relationship that will behave as the solution of the ODE.
+--
+
+&lt;br/&gt;&lt;br&gt;
+** Example:** The relationship `\(x^2+y^2=k^2\)` is a solution of the equation `\(yy'+x=0.\)` And the associated functions are `\(f(x)=\sqrt{k^2-x^2}\)` and `\(f(x)=-\sqrt{k^2-x^2}\)` in their respective intervals of definition.
+
+---
+# Growth and Decay Problems
+
+&gt; **Hyphotesis:** In these problems, the central hypothesis is that the rate of change of a certain quantity is in proportion to its population or quantitie at any moment. &lt;br/&gt;&lt;br/&gt;
+  * If the proportionality constant is positive, then we say it is _growth._ &lt;br/&gt;
+  * If the proportionality constant is negative, then we say it is _decay._ &lt;br/&gt;&lt;br/&gt;
+
+
+&lt;br/&gt;&lt;br/&gt;
+--
+The ODE that models these problems is `$$\frac{dP}{dt}=kP.$$`
+
+---
+# In and Out Problems
+
+&gt; **Hyphotesis:** In these problems, the central hypothesis is that the rate of change of a certain quantity is in proportion to the difference between the quantity and the quantity of the medium in which it is found. &lt;br/&gt;&lt;br/&gt;
+  * If the proportionality constant is positive, then we say it is _inflow._ &lt;br/&gt;
+  * If the proportionality constant is negative, then we say it is _outflow._ &lt;br/&gt;&lt;br/&gt;
+
+&lt;br/&gt;&lt;br/&gt;
+--
+The ODE that models these problems is `$$\frac{dP}{dt}=k(P-P_m).$$`
+
+---
+### Examples of These: 
+
+&gt; **Temperature hypotheses:** The rate of change of the temperature that a body experiences is proportional to the difference between the temperature of the body and the temperature of the medium in which it is found. &lt;br/&gt;&lt;br/&gt;
+
+
+**Example:** A motor's temperature is placed in a room with a temperature of 20°C. When the motor is turned on, the temperature of the motor is 30°C. The motor's temperature increases at a rate of 2°C per minute. What will be the temperature of the motor after 10 minutes?
+
+
+---
+### Examples of these:
+
+&gt; **Mixtures Hypotheses:** In a tank with `\(N\)` liters of water mixed with an agent (salt, sugar, etc.). Consider the following: &lt;br/&gt;
+  * The amount that enters and leaves the tank is always the same. &lt;br/&gt;
+  * The concentration of the mixture is uniform throughout the tank. &lt;br/&gt;
+  * The water mixed by tube `\(A\)` that enters at a rate of `\(a\)` liters per minute with a mixture of `\(k\)` units of agent per liter. &lt;br/&gt;
+  * The mixed water leaves through tube `\(B\)` at a rate of `\(b\)` gallons per minute.
+
+--
+  `$$\frac{d S}{dt}=ak-b\frac{S}{N}.$$`
+  
+---
+# Qualitative Analysis of ODEs
+
+&gt; **Definition:** The qualitative analysis of an ODE consists of studying the behavior of the solutions of the ODE without solving it. &lt;br/&gt;&lt;br/&gt;
+  * The qualitative analysis is based on the study of the slope field of the ODE. &lt;br/&gt;
+  * The slope field is a graphical representation of the direction of the solutions of the ODE. &lt;br/&gt;&lt;br/&gt;
+
+---
+## Slope Field
+
+&gt; **Definition:** The _slope field_ of the ODE `\(y'=f(x,y)\)` is constructed with a representation of a line with slope `\(f(x,y)\)` at each point `\((x,y).\)` &lt;br/&gt;&lt;br/&gt;
+
+Study the slope field of the following ODEs:
+
+1. `\(y'=x+y.\)`
+2. `\(y'=2.\)`
+3. `\(y'=-x.\)`
+4. `\(y'=4y(1-y).\)`
+
+---
+## Solution Curves
+
+&gt; The solution curves are the curves that follow the direction of the slopes of the slope field. &lt;br/&gt;&lt;br/&gt; We can classify these curves by: &lt;br/&gt;
+  * Equilibrium curves. &lt;br/&gt;
+  * Stable and unstable curves. &lt;br/&gt;&lt;br/&gt;
+
+Study the slope field of the ODE `\(y'=4y(1-y).\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

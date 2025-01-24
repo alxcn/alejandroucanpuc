@@ -1,0 +1,174 @@
+---
+title: "SEDOs de 1er Orden"
+subtitle: "Sesión 01 - Módulo 1"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos 
+
+* Describir que es un Sistema de Ecuaciones Diferenciales Ordinarias (SEDO). <br/><br/>
+* Presentar los teoremas de existencia y unicidad de soluciones. <br/><br/>
+* Forma matricial de un SEDO. <br/><br/>
+---
+# ¿Qué es una SEDO?
+
+Supongamos que tenemos $n-$funciones incógnita que dependen de una misma variable independiente: $$y_1(x),y_2(x),\ldots,y_n(x).$$ Bajo ciertos supuestos, podemos encontrar una relación entre las *razones de cambio* de estas funciones y las funciones mismas: $$\frac{dy_i}{dx}=f_i(x,y_1,y_2,\ldots,y_n),\quad i=1,2,\ldots,n.$$
+---
+#### Ejemplo 1:
+
+$$
+\frac{dx}{dt} = \alpha x - \beta xy
+$$
+$$
+\frac{dy}{dt} = \delta xy - \gamma y
+$$
+
+Donde:
+
+(x) es la población de presas.<br/>
+(y) es la población de depredadores. <br/>
+(\alpha) es la tasa de crecimiento natural de las presas. <br/>
+(\beta) es la tasa de depredación. <br/>
+(\delta) es la tasa de crecimiento de depredadores por consumo de presas. <br/>
+(\gamma) es la tasa de muerte de los depredadores. <br/>
+---
+#### Ejemplo 2:
+
+$$\frac{dx_1}{dt} = -\lambda x_1 + \mu x_2 $$
+
+$$\frac{dx_2}{dt} = \lambda x_1 - \mu x_2$$
+
+
+Donde:
+
+(x_1) y (x_2) son las poblaciones en los estados S1 y S2, respectivamente. <br/>
+(\lambda) es la tasa de transición de S1 a S2. <br/>
+(\mu) es la tasa de transición de S2 a S1. <br/>
+---
+#### Ejemplo 3:
+
+Consideremos la EDO de orden $n$ dada por: $$y^{(n)}= f(x,y,y',y'',\ldots,y^{(n-1)}).$$  <br/><br/>
+
+Este tipo de ecuaciones se pueden reducir a un sistema de ecuaciones diferenciales ordinarias de primer orden, mediante la introducción de variables auxiliares: $$y_1=y,y_2=y',y_3=y'',\ldots,y_n=y^{(n-1)}.$$
+
+Por ejemplo, la ecuación $y''+y=0$ se puede escribir como el sistema: $$\begin{aligned} y_1'&=y_2,\\ y_2'&=-y_1. \end{aligned}$$
+
+---
+# Teoremas de Existencia y Unicidad
+
+> **Teorema:** Sean $f_1, f_2, \ldots, f_n$ y sus derivadas parciales respecto a $x, y_1,\cdots, y_n$ funciones continuas en un dominio de $\mathbb{R}^{n+1}$ que contenga al punto $(x_0,y_{01},y_{02},\ldots,y_{0n})$. Entonces, el problema de valor inicial: $$\begin{aligned} y_1'&=f_1(x,y_1,y_2,\ldots,y_n),\\ y_2'&=f_2(x,y_1,y_2,\ldots,y_n),\\ &\vdots\\ y_n'&=f_n(x,y_1,y_2,\ldots,y_n),\\ y_1(x_0)&=y_{01},\\ y_2(x_0)&=y_{02},\\ &\vdots\\ y_n(x_0)&=y_{0n}, \end{aligned}$$ tiene solución única en el dominio.
+
+
+---
+# Forma Matricial de un SEDO
+
+> En el caso particular de un sistema con dos ecuaciones lineales de primer orden: $$\begin{aligned} y_1'&=a_{11}(t) y_1+a_{12}(t)y_2 +b_1(t),\\ y_2'&=a_{21}(t)y_1+a_{22}(t)y_2+b_2(t). \end{aligned}$$ podemos valernos de la teoría de matrices para escribir el sistema en forma matricial: $$\begin{bmatrix} y_1'\\ y_2' \end{bmatrix}=\begin{bmatrix} a_{11}(t)&a_{12}(t)\\ a_{21}(t)&a_{22}(t) \end{bmatrix}\begin{bmatrix} y_1\\ y_2 \end{bmatrix}+\begin{bmatrix} b_1(t)\\ b_2(t) \end{bmatrix}.$$
+
+---
+#### Ejemplo 4:
+
+Consideremos el sistema: $$\begin{aligned} y_1'&=y_1+2y_2,\\ y_2'&=-y_1+y_2. \end{aligned}$$ cuya forma matricial es:
+
+$$\begin{bmatrix} y_1'\\ y_2' \end{bmatrix}=\begin{bmatrix} 1&2\\ -1&1 \end{bmatrix}\begin{bmatrix} y_1\\ y_2 \end{bmatrix}.$$
+
+---
+## Solución de un SEDO
+
+> **Definición:** Una solución a un SEDO es un conjunto de funciones $y_1(x),y_2(x),\ldots,y_n(x)$ que satisface todas las ecuaciones del sistema y las condiciones iniciales dadas. Si consideramos el sistema en forma matricial, la solución se puede escribir como un vector columna de funciones: $$\begin{bmatrix} y_1(x)\\ y_2(x)\\ \vdots\\ y_n(x) \end{bmatrix}$$ lo cual nos permite entender esta solución como una curva en el espacio $\mathbb{R}^n$.
+
+--
+**NOTA:** En caso de no tener condiciones iniciales, la solución se convierte a una familia de funciones (vectores de funciones, curvas en $\mathbb{R}^n$) que satisfacen el sistema. Conocido como *solución general* del sistema.
+
+---
+## Principio de Superposición
+
+> **Teorema:** Si $\mathbf{y}_1(x),\mathbf{y}_2(x),\ldots,\mathbf{y}_n(x)$ son soluciones de un SEDO, entonces cualquier combinación lineal de estas funciones: $$c_1\mathbf{y}_1(x)+c_2\mathbf{y}_2(x)+\cdots+c_n \mathbf{y}_n(x)$$ también es solución del sistema.
+
+--
+<br/><br/>
+
+##### Sketch:
+
+---
+#### Ejemplo 5:
+
+Consideremos el sistema: $$\begin{aligned} y_1'&=y_1-2y_2,\\ y_2'&=-y_1+y_2. \end{aligned},$$ podemos verificar que las siguientes curvas son soluciones $$\begin{aligned} \mathbf{y}_1(x)&=\begin{bmatrix} -\sqrt{2}e^{(1+\sqrt{2})x}\\ e^{(1+\sqrt{2})x} \end{bmatrix},\\ \mathbf{y}_2(x)&=\begin{bmatrix} \sqrt{2}e^{(1-\sqrt{2})x}\\ e^{(1-\sqrt{2})x} \end{bmatrix} \end{aligned}$$ podemos verificar que la combinación lineal: $$\mathbf{y}(x)=c_1\mathbf{y}_1(x)+c_2\mathbf{y}_2(x)$$ también es solución del sistema.
+
+---
+# Espacio de Funciones
+
+> **Definición:** Consideremos el conjunto de funciones $$\mathcal{F}=\{f:I\rightarrow \mathbb{R}^n: \mbox{ diferenciable y continua}\}$$, bajo la operación de suma y multiplicación por un escalar, $\mathcal{F}$ es un espacio vectorial.
+
+--
+**NOTA:** El espacio de soluciones de un SEDO es un subconjunto de $\mathcal{F}$ y más aún es un subespacio vectorial de $\mathcal{F}.$
+
+---
+## Conjuntos L.I. de Funciones soluciones
+
+> **Definición:** Un conjunto de funciones $\mathbf{y}_1(x),\mathbf{y}_2(x),\ldots,\mathbf{y}_n(x)$ es linealmente independiente si no existe una combinación lineal de estas funciones que sea igual a cero, excepto la trivial. Todo espacio de solución general de una SEDO cuenta con una base de curvas solución.
+
+--
+**NOTA:** Esto implica que mi espacio de soluciones generales es un espacio de dimensión finita y cuenta con una base de curvas soluciones. Más aún, la dimensión de este espacio es igual al número de ecuaciones del sistema.
+
+---
+## El Wronksiano
+
+> **Definición:** Sea $\mathbf{y}_1(x),\mathbf{y}_2(x),\ldots,\mathbf{y}_n(x)$ un conjunto de funciones solución de un SEDO, el Wronksiano de estas funciones es la determinante de la matriz cuyas columnas estan dadas por las funciones componente de las curvas solución.
+
+
+---
+## Teorema de Abel
+
+> **Teorema:** Sea $\mathbf{y}_1(x),\mathbf{y}_2(x),\ldots,\mathbf{y}_n(x)$ un conjunto de funciones solución de un SEDO, si el Wronksiano de estas funciones no se anula en un intervalo $I$, entonces estas funciones son linealmente independientes en $I$.
+
+--
+
+#### Ejemplo 6:
+
+
+Pruebe que el siguiente conjunto de soluciones es linealmente independiente: $$\begin{aligned} \mathbf{y}_1(x)&=\begin{bmatrix} e^x\\ e^{-x} \end{bmatrix},\\ \mathbf{y}_2(x)&=\begin{bmatrix} e^{-x}\\ e^x \end{bmatrix}. \end{aligned}$$
+

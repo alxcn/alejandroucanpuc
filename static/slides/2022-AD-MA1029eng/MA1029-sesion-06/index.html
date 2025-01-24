@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Total Derivative and Tangent Plane</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-02-25" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x634a71b80af499eb94fb16102f286cc","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Total Derivative and Tangent Plane
+]
+.subtitle[
+## Session 06
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-02-25
+]
+
+---
+
+
+
+
+
+
+
+# Goals for the session:
+
+  * Approximate a function using a plane. &lt;br/&gt;&lt;br/&gt;
+  * Introduce the equation of the plane (and the Taylor polynomial). &lt;br/&gt;&lt;br/&gt;
+  * Describe the total derivative using this approximation. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Motivation
+
+&gt; The function `\(f(x,y)=\ln(x+y)\)` models the height of a physiological fault in California. Because we are in a field investigation, we do not have tools to calculate the value of the height at the point `\((0.3,-0.3).\)` How would you approximate this height?
+
+![Falla](Falla.jpg)
+
+---
+# Recall 
+
+&gt; Recall that my partial derivatives `\(f_x\)` and `\(f_y\)` are the slopes of the tangent lines to the function at `\((x_0,y_0).\)` Let's see these tangent lines at the point `\((1,0)\)` which is close to the desired point.
+
+&lt;iframe src="https://www.geogebra.org/classic/txd5dnqk?embed" width="1000" height="300" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# The tangent plane
+
+&gt; Note that if we want to know the equation of the plane `\(T\)` tangent to `\(f\)` at the point `\((x_0,y_0),\)` it necessarily has to contain all the tangent lines to the curves that pass through `\((x_0,y_0,f(x_0,y_0)).\)` &lt;br/&gt;&lt;br/&gt;
+Remember that the equation of a line is: `$$z-z_0 = A(x-x_0)+B(y-y_0),$$` where `\(z_0=f(x_0,y_0).\)` &lt;br/&gt;&lt;br/&gt;
+If we cut the function and the plane with the plane `\(y=y_0,\)` we obtain that `$$z-z_0=A(x-x_0)$$` and this is a tangent line to the curve.
+
+---
+# The tangent plane
+
+&gt; If we cut the function and the plane with the plane `\(x=x_0,\)` we obtain that `$$z-z_0 = B(y-y_0)$$` and this is a tangent line to the curve. &lt;br/&gt;&lt;br/&gt;
+These two tangent lines are known, we know that they have slopes `$$f_x(x_0,y_0)\quad \mbox{and}\quad f_y(x_0,y_0).$$` Therefore, the equation of the tangent plane is `$$z-z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0).$$`
+
+---
+## How we approximate with the tangent plane?
+
+&gt; Recall that we want to approximate the value of `\(\ln(0.3,-0.3)\)` and for this we will use the equation of the tangent plane to `\(f\)` at the point `\((1,0).\)` The partial derivatives of `\(f\)` at `\((1,0)\)` are: `$$f_x(1,0)=1\quad \mbox{and}\quad f_y(1,0)=-1.$$` So the tangent plane to `\(f\)` at `\((1,0)\)` is: `$$z-0=1(x-1)+(-1)(y-0).$$` The value of `\(z\)` when `\(x=0.3\)` and `\(y=-0.3.\)` &lt;br/&gt;&lt;br/&gt; Substituting in the equation of the plane we obtain: `$$z=(0.3-1)+(-1)(-0.3)=-0.4.$$` So `\(f(0.3,-0.3)\approx -0.4.\)`
+
+---
+#### Example 1:
+
+&gt; Compute the equation of the tangent plane to `\(f(x,y)=2x^2+y^2\)` at the point `\((1,1,3).\)`
+
+--
+
+
+1. Find the partial derivatives of `\(f\)` at `\((1,1):\)` `$$f_x(1,1)=4(1)=4 \quad \mbox{y} \quad f_y(1,1)=2(1)=2.$$`
+
+&lt;br/&gt;&lt;br/&gt;
+
+2. Substituting the values of the partial derivatives and `\((x_0,y_0,z_0)=(1,1,3)\)` in the equation of the plane `$$z-3=4(x-1)+2(y-1).$$`
+
+
+---
+
+#### Example 2:
+
+&gt; Using the linearization of the function `\(f(x,y)=xe^{xy}\)` approximate the value of the function at `\((1.1,-0.1).\)`
+
+ 
+--
+
+1. Note that the point `\((1,0)\)` is close to `\((1.1,-0.1).\)` 
+
+2. Compute the partial derivatives of `\(f\)` at `\((1,0):\)` `$$f_x(1,0)=1e^0+(1)(0)e^0=1\,\mbox{y}\, f_y(1,0)=(1)^2e^0=1.$$`
+
+3. Write the tangent plane: `$$z-1=1(x-1)+1(y-0)=x-1+y$$`
+
+4. Aproximate `\(f(1.1,-0.1)\)` `$$z-1=1.1-1-0.1\Leftrightarrow z=0.1-0.1+1=1.$$`
+
+---
+
+### Example 3:
+
+&gt; With the following table, approximate the values of the function when they are close to `\((96,70).\)`
+
+![Sensación Termica](SensacionTermica.jpg)
+
+
+---
+
+## Total Derivative
+
+&gt; With the equation of the tangent plane to `\(f\)` at `\((x_0,y_0)\)` we can induce the value of the _total_ change of the function. Remember that the equation of the tangent plane is `$$z-z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0).$$` 
+--
+&lt;br/&gt;&lt;br/&gt;
+If we move closer to `\((x_0,y_0)\)` my increments become infinitesimal and we can rewrite them as `$$dz=f_x dx + f_y dy$$` where `\(dx\)` and `\(dy\)` mean the increment that we have given from `\((x_0,y_0)\)` to `\((x,y).\)`
+
+---
+
+#### Ejemplo
+
+&gt; Find the total derivative of `\(f(x,y)=x^2+3xy-y^2.\)` Calculate the value of the total derivative when we change from `\((2,3)\)` to `\((2.05,2.95).\)`
+
+--
+
+1. Find the partial derivatives of `\(f:\)` `$$f_x(x,y)=2x+3y\quad\mbox{y}\quad f_y(x,y)=3x-2y.$$`
+
+2. Express the diferencial: `$$dz= f_x dx+ f_y dy =(2x+3y)dx+(3x-2y)dy$$`
+
+3. Compute the value of the total derivative: `$$dz=(2(2)+3(3))(0.05)+(3(2)-2(3))(-0.05)= 0.65$$`
+
+---
+
+#### Example 4:
+
+&gt; The radious of the base and the height of a circular cone have measures of `\(10cm\)` and `\(25cm,\)` respectively. But an error of `\(0.1cm\)` was detected in the measurement. Use the differential to estimate the maximum possible error in the volume.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

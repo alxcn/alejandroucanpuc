@@ -1,0 +1,114 @@
+---
+title: "Eigenfunctions for Systems of LODEs"
+subtitle: "Session 07"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Goals
+
+* Use eigenvalues and eigenvectors to solve systems of ODEs. <br/><br/>
+* Use the Wronskian to test for linear independence. <br/><br/>
+
+---
+# Conventions for Systems of ODEs
+
+> In what follows we will deal with systems of two equations with two unknown functions whose ODEs are linear with constant coefficients. This is described in the general form $$\begin{array}{c} x'= a_{11}x+a_{22}y+f_1(t) \\ y'=a_{21}x+a_{22}y+f_2(t) \end{array}$$ where $a_{ij}$ are constants and $f_1(t)$ and $f_2(t)$ are functions of $t.$
+
+---
+# Solving for Homogeneous systems
+
+> Given the system $$X'=AX$$ consider the matrix $A.$ Suppose that $(\lambda,v)$ is an eigenvalue-eigenvector pair of $A$ and assume that $\lambda$ is real. Let $F=e^{\lambda t}v$ be a vector of functions, then the vector $F$ is a solution vector of the system.
+
+
+---
+#### Example: 
+
+> Consider the system $$X'=AX$$ where $$A=\left(\begin{array}{cc} 3 & 1 \\ 0 & -3 \end{array}\right).$$ Find the eigenvalues and eigenvectors of $A$ and construct the general solution.
+
+---
+#### Example: 
+
+> Consider the system $$X'=\left(\begin{array}{cc} 1 & 2 \\ -2 & -3 \end{array}\right) X.$$ Find the eigenvalues and eigenvectors of $A$ and construct the general solution.
+
+---
+## Test for linear independence
+
+> __Definition:__ Consider the solution function vectors $X_1$ and $X_2$ for a system of ODEs. The __Wronskian__ of the solutions is the determinant of the matrix $$\left(\begin{array}{cc} x_1 & x_2 \\ y_1  & y_2\end{array}\right)$$ and is denoted by $W(X_1,X_2).$
+<br/><br/>
+> __Theorem [Abel's]:__ The solutions $X_1$ y $X_2$ are __linearly independents__ if $$W(X_1,X_2)\neq 0.$$
+
+---
+## Solution for Systems of ODEs
+
+> __Method of Eigenfunctions:__ For the system $X'=AX.$ 
+  1. Find the eigenvalues and eigenvectors of $A.$ 
+      * If the eigenvalues are real and distinct, then the general solution $$X_1=e^{\lambda_1}v_1\mbox{ and } X_2=e^{\lambda_2}v_2.$$
+      * If the eigenvalues are real and repeated, then the general solution $$X_1=e^{\lambda}v_1\mbox{ and } X_2=te^{\lambda}v_2.$$
+      * If the eigenvalues are complex conjugated, then the general solution $$X_1=e^{\alpha t}\left(\cos(\beta t)v_1+\sin(\beta t)v_2\right)\mbox{ and } X_2=e^{\alpha t}\left(\cos(\beta t)v_1-\sin(\beta t)v_2\right).$$
+      
+  2. Express the general solution as $$X=c_1 X_1+c_2 X_2.$$
+  3. If there are initial conditions, use them to find the constants $c_1$ and $c_2.$
+  
+
+---
+#### Example 1:
+
+Find the general solution for $X'=AX$ if $A=\left(\begin{array}{cc} 1 & 2 \\ 4 & 3 \end{array}\right).$ <br/><br/>
+  
+  * $A=\left(\begin{array}{cc} -4 & 2 \\ -\frac{5}{2} & 2 \end{array}\right).$ <br/><br/>
+
+---
+#### Example 2:
+
+Find the general solution for $X'=AX$ if $A=\left(\begin{array}{cc} 10 & -5 \\ 8 & -12 \end{array}\right).$ <br/><br/>
+
+---
+#### Example 3:
+
+Find the general solution for $A=\left(\begin{array}{cc} 3 & -1 \\ 9 & -3 \end{array}\right).$ <br/><br/>
+
+---

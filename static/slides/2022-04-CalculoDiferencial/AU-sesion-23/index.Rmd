@@ -1,0 +1,121 @@
+---
+title: "Valores extremos en Abiertos"
+subtitle: "Sesión 23"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Encontrar los valores extremos de funciones en intervalos abiertos. <br/><br/>
+ * Conocer los criterios para decidir valores extremos. <br/><br/>
+ * Aplicar el criterio de la primera derivada. <br/><br/>
+ 
+---
+# ¿Cuál es la diferencia entre cerrados y abiertos?
+
+.pull-left[ __en cerrados:__<br/><br/><br/>
+* Siempre hay puntos fronterizos.<br/><br/>
+* Siempre hay más de un punto para poder comparar. <br/><br/>
+* Siempre hay un mínimo y un máximo]
+
+.pull-right[__en abiertos:__ <br/><br/><br/>
+* Nunca hay puntos fronterizos. <br/><br/>
+* No siempre es posible encontrar dos puntos para comparar. <br/><br/>
+* En algunos casos puede no haber alguno o ninguno.]
+
+---
+# Ejemplo (no hay puntos de comparación):
+
+> Calcular los valores extremos de $f(x)=x^2-6x+5.$
+
+No hay puntos fronterizos, así que solo falta encontrar los estacionarios. Deribamos y resolvemos $f'(x)=0.$
+
+$$ f'(x)=2x-6\Rightarrow 2x-6=0\Rightarrow x=3.$$
+<br/>
+¿Cómo decidimos si en $x=3$ la función alcanza un mínimo o un máximo?
+
+---
+# Ejemplo (no hay máximos y mínimos globales):
+
+> Consideremos la función $f(x)= 2x^3-3x^2-12x+7.$
+
+<iframe src="https://www.geogebra.org/graphing/phdrmjus?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Criterio de la Primera Derivada:
+
+> Supongamos que $f$ es una función con un punto crítico (estacionario) en $x=c.$ Entonces: <br/>
+* $f$ tiene un mínimo local en $x=c,$ si $f'$ cambia de negativo a positivo en $x=c.$ <br/><br/>
+* $f$ tiene un máximo local en $x=c,$ si $f'$ cambia de positivo a negativo en $x=c.$
+
+---
+# Ejemplo:
+Encuentra los valores extremos locales de la función $f(x)=x^2-6x+5.$ <br/><br/>
+
+* Encontramos los puntos _críticos_: derivamos $f'(x)=2x-6$ y resolvemos la ecuación $f'(x)=0.$ $$2x-6=0 \Leftrightarrow x=3.$$
+
+* Aplicamos el criterio de la primera derivada: 
+
+---
+# Ejemplo 2:
+Encuentra los valores extremos locales de la función $f(x)=2x^3-3x^2-12x+7.$ <br/><br/>
+
+* Encontramos los puntos _críticos_: derivamos $f'(x)=6x^2-6x-12$ y resolvemos la ecuación $f'(x)=0.$ $$6x^2-6x-12=0 \Leftrightarrow x_1=-1, x_2=2.$$
+
+* Aplicamos el criterio de la primera derivada: 
+
+---
+# Ejemplo 3:
+Encuentra los valores extremos locales de la función $f(x)=\frac{x^5}{5}-\frac{5}{3}x^3+4x-2,$ en el intervalos $(-3/2,4).$ <br/><br/>
+
+* Encontramos los puntos _críticos_: derivamos $f'(x)=x^4-5x^2+4$ y resolvemos la ecuación $f'(x)=0.$ $$x^4-5x^2+4=(x^2-1)(x^2-4)=0 \Leftrightarrow x_1=-1, x_2=1, x_3=-2,x_4=2.$$
+
+* Aplicamos el criterio de la primera derivada: 
+
+---
+# Ejercicios:
+
+Encuentre los valores extremos locales de las siguientes funciones en su dominio o en el intervalo donde se indica. <br/><br/>
+
+1. $f(x)=2x^3-2x^2+6x+4.$ <br/>
+2. $f(x)=5+6x-2x^3.$ <br/>
+3. $f(x)=1-e^{-x^2}$ en $(-2,2).$ <br/>
+4. $f(x)=e^{x^3-x}$ en $(0,4).$
+

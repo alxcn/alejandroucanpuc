@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Teoremas de Green, Stokes y Gauss</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ce43708d9af440fd9fdcb876aeeeb396","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Teoremas de Green, Stokes y Gauss
+]
+.subtitle[
+## Sesión 06
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Conocer las condiciones (hipótesis) para usar los teorema anteriores. &lt;br/&gt;&lt;br/&gt;
+ * Comprender las consecuencias de los teoremas anteriores. &lt;br/&gt;&lt;br/&gt;
+ * Aplicar los teoremas anteriores en problemas físicos. &lt;br/&gt;&lt;br/&gt;
+
+---
+# El teorema de Green: requerimientos.
+
+&gt; __Definición:__ Una _curva simple_ es una curva que corresponde al borde de una región simple ($x-$simple y `\(y-\)`simple).
+
+
+__Ejemplo:__ Para la región `\(R=\{(x,y)\in \mathbb{R}^2: x^2+y^2=1\}.\)` Su frontera `\(\partial R\)` corresponde a la circulo unitario.
+
+&lt;br/&gt;&lt;br/&gt;
+
+__Ejemplo:__ 
+
+---
+# El teorema de Green: requerimientos.
+
+  * Es importante mencionar que las curvas simples tienen una __orientación__ asociada. Existen dos posibilidades: el recorrer la curva sentido _horario_ y sentido _anti-horario_. 
+  &lt;br/&gt;&lt;br/&gt;
+  * La parametrización de la curva influye en la orientación.
+&lt;br/&gt;&lt;br/&gt;
+  * Genéricamente, estas curvas se expresan como "sumas" de curvas. 
+  &lt;br/&gt;&lt;br/&gt;
+  * Así, a lo más, nuestra curva tendra una expresión `$$C = B_1^- + C_1^+ + B_2^+ + C_2^-.$$`
+  
+---
+# Teorema de Green: resultado.
+
+&gt; __Teorema:__ Sea `\(D\)` una región simple del plano y sea `\(C\)` su frontera. Supongamos que `\(P,Q:D\to \mathbb{R}^2\)` son funciones continuas en `\(D.\)` Para el campo `\(\mathbf{F}(x,y)=(P(x,y),Q(x,y))\)` se cumple la siguiente igualdad: `$$\int_C \mathbf{F}\cdot ds = {\int\!\int}_D \left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right) dA.$$`
+
+### ¿Qué obtengo con esto?
+
+Este teorema nos permite relacionas integrales de línea con integrales de área, y poder escoger la más sencilla a calcular.
+---
+# Teorema de Green: aplicación.
+
+&gt; Calcule la integral de línea del campo `\(\mathbf{F}(x,y)=(y,-x)\)` donde `\(C\)` es la frontera del cuadrado `\([0,1]\times[0,1].\)`
+
+&lt;br/&gt;&lt;br/&gt;
+* ¿La región es simple? &lt;br/&gt;
+* ¿Las funciones componente son continuas?
+
+---
+# Teorema de Green: aplicación.
+
+&gt; Calcule la integral de línea del campo `\(\mathbf{F}(x,y)=(x^2y^2,x^3y+y^2)\)` sobre la curva frontera de la región descrita en la figura. ]
+
+---
+# Teorema de Stokes: requerimientos.
+
+&gt; __Definición:__ Una superficie _paramétrica_ es una función `\(\Phi:[a,b]\times[c,d]\to \mathbb{R}^3\)` con una regla de asignación `$$\Phi(u,v)=\left(\phi_1(u,v),\phi_2(u,v),\phi_3(u,ve)\right).$$`
+
+&lt;br/&gt;&lt;br/&gt;
+
+__Ejemplos:__ 
+  * Una gráfica de una función `\(f(x,y)\)` es una superficie paramétrica, cuya parametrización es `\((u,v,f(u,v)).\)` &lt;br/&gt;&lt;br/&gt;
+  
+  * El casco esférico del norte es una superficie paramétrica, cuya parametrización es `$$(\cos(\theta)\sin(\phi),\sin(\theta)\sin(\phi),\cos(\phi)).$$`
+
+---
+# Teorema de Stokes: requerimientos.
+
+&gt; __Definición:__ La __integral de superficie__ de un campo vectoria `\(\mathbf{F}\)` definido sobre una superficie paramétrica `\(S\)` (con parametrización `\(\Phi\)`) es la cantidad: `$$\int_\Phi \mathbf{F}\cdot dS = {\int\!\int}_D \mathbf{F}\cdot \left(T_u \times T_v\right) du dv.$$`
+
+&lt;br/&gt;&lt;br/&gt;
+__Nota:__ en este caso `\(T_u\)` y `\(T_v\)` representan los vectores tangentes a la superficie en las direcciones `\(u\)` y `\(v.\)` Para calcularlos basta con derivar cada función coordenada respecto a la dirección.
+
+---
+# Teorema de Stokes: resultado.
+
+&gt; __Teorema:__ Sea `\(S\)` una superficie orientada parametrizada uno-a-uno por `\(\Phi:D\to\mathbb{R}^3\)` y `\(D\)` es una región simple, y sea `\(\partial S\)` la curva frontera. Para un campo vectorial `\(\mathbf{F}\)` definida sobre `\(S,\)` se cumple la siguiente igualdad `$${\int\!\int}_S (\nabla\times \mathbf{F})\cdot dS = \int_{\partial S} \mathbf{F}\cdot ds.$$`
+
+### ¿Qué gano con esto?
+
+Obtenemos que la integral de la parte _normal_ del campo sobre la superficie coincide con la parte _tangencial_ del campo sobre su frontera.
+
+---
+# Teorema de Stokes: aplicación.
+
+&gt; Queremos medir el flujo de agua que pasa en una sección de un tubo de radio 10 `\(m\)` y cuya frontera está parametrizada por `\((0,\cos t, \sin t)\)` con `\(0\leq t\leq 2\pi.\)` Si la velocidad del agua está dada por el campo `\(\mathbf{F}(x,y,z)=(0,y^2,\cos(x)).\)`
+
+---
+# Teorema de Gauss: requerimientos.
+
+&gt; __Definición:__ Una región __elemental__ en `\(\mathbb{R}^3\)` es una región en la cual una de las variables está acotada entre dos funciones de las otras dos variables.
+
+&lt;br/&gt;&lt;br/&gt;
+
+__Ejemplo:__ La __bola__ de radio uno en `\(\mathbb{R}^3\)` es una región elemental descrita por la siguientes inecuaciones: `$$-1\leq x\leq 1,$$`
+`$$-\sqrt{1-x^2} \leq y\leq \sqrt{1-x^2},$$` 
+$$ -\sqrt{1-x^2-y^2} \leq z \leq \sqrt{1-x^2-y^2}.$$
+
+---
+# Teorema de Gauss: requerimientos.
+
+* Una región elemental en `\(\mathbb{R}^3\)` tiene una frontera que corresponde a una _superficie_ a "trozos".
+
+&lt;br/&gt;&lt;br/&gt;
+
+* Estos trozos pueden ser mínimo 2 y máximo 6.
+
+---
+# Teorema de Gauss: resultado.
+
+&gt; __Teorema:__ Sea `\(W\)` una región elemental _simétrica_. Denotemos por `\(\partial W\)` la superficie cerrada orientada que delimita `\(W.\)` Para un campo `\(\mathbf{F}\)` vectorial suave definido en `\(W,\)` se cumple la siguiente igualdad: `$${\int\!\int\!\int}_W (\nabla\cdot \mathbf{F})dV = {\int\!\int}_{\partial W} \mathbf{F}\cdot S.$$` 
+
+### ¿Qué gano con esto?
+
+Este teorema nos indica que la integral del flujo que sale del exterior de una superficie, está relacionado con la integral triple del volumen de la divergencia de mi campo. 
+
+---
+# Teorema de Gauss: aplicación.
+
+&gt; Se quiere calcular el flujo de partículas elementales que pasan a través de una esfera de radio uno centrada en el origen cuando se realiza la fisión de un átomo (posicionado en el centro). Si se sabe que el campo de velocidades de las partículas está dado por `\(\mathbf{F}(x,y,z)=(2x,3y,z).\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

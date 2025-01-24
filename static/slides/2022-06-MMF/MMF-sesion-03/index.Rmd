@@ -1,0 +1,191 @@
+---
+title: "Transformaciones Curvilíneas"
+subtitle: "Sesión 03"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Realizar cambio de coordenadas en $\mathbb{R}^3.$ <br/> <br/>
+ * Realizar rotaciones y reflexiones en $\mathbb{R}^3.$ <br/> <br/>
+ * Aplicar estas transformaciones en sistemas físicos.
+
+---
+# Motivación:
+ ### Coordenadas Polares en $\mathbb{R}^2.$
+<iframe src="https://www.geogebra.org/calculator/aubzbhsd?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# ¿Podemos generalizar esta construcción en $\mathbb{R}^3$?
+
+### Coordenadas Cilíndricas $(\theta,r,z).$
+
+<iframe src="https://www.geogebra.org/calculator/za424zgv?embed" width="1200" height="350" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+### Coordenadas Esféricas $(\phi,\psi,\rho).$
+
+<iframe src="https://www.geogebra.org/calculator/eq77abfs?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# ¿Cómo traduzco entre coordenadas?
+
+Existen expresiones que nos permiten hacer la conversión entre distintos tipos de coordenadas. Por ejemplo:
+
+> Si tengo un punto $(x,y,z)$ (coordenadas rectangulares) y lo quiero en coordenadas _cilíndricas_, entonces se cumple: <br/>
+- $r^2= x^2+y^2,$ <br/>
+- $\tan(\theta)=\frac{y}{x}$ y <br/>
+- $z=z.$
+
+<br/>
+
+> Si tengo un punto $(\theta,r,z)$ y lo quiero en coordenadas _rectangulares_, entonces se cumple: <br/>
+- $x=r\cdot \cos(\theta)$ <br/>
+- $y=r\cdot \sin(\theta)$ y 
+- $z=z.$
+
+---
+# ¿Cómo traduzco entre coordenadas?
+
+> Si tengo un punto $(x,y,z)$ (coordenadas rectangulares) y lo quiero en coordenadas _esféricas_, entonces se cumple: <br/>
+- $\rho^2= x^2+y^2+z^2,$ <br/>
+- $\tan(\phi)=\frac{y}{x}$ y <br/>
+- $\cos(\psi)=\frac{z}{\sqrt{x^2+y^2+z^2}}.$
+
+<br/>
+
+> Si tengo un punto $(\phi,\psi,\rho)$ y lo quiero en coordenadas _rectangulares_, entonces se cumple: <br/>
+- $x=\rho\cdot \cos(\phi)\cdot \sin(\psi)$ <br/>
+- $y=\rho\cdot \sin(\phi) \cdot \sin(\psi)$ y <br/>
+- $z=\rho\cdot \cos(\psi)$.
+
+
+---
+# Aplicaciones del cambio de coordenadas.
+
+Dada la siguiente superficie $x^2+y^2-3z^2=0,$ encuentre su expresión en coordenadas esféricas y calculé las derivadas parciales asociadas a la nueva expresión usando regla de la cadena.
+
+
+---
+# Transformaciones (rígidaz) de Coordenadas.
+
+## Rotación
+
+<iframe src="https://www.geogebra.org/calculator/rphkvtg6?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+### Lo anterior pero vectorialmente,
+
+> Los vectores $\mathbf{e}_1=\cos(\psi)\tilde{\mathbf{e}}_1-\sin(\psi)\tilde{\mathbf{e}}_2$ y $\mathbf{e}_2=\cos(\psi)\tilde{\mathbf{e}}_1+\sin(\psi)\tilde{\mathbf{e}}_2.$
+
+<br/><br/>
+
+Si tenemos un vector $\mathbf{v}=k\mathbf{e}_1+ l\mathbf{e}_2.$ ¿Qué coordenadas tendrá el vector $\mathbf{v}$ en el nuevo sistema $\tilde{\mathbf{e}}_1$ y $\tilde{\mathbf{e}}_2.$
+
+$$\mathbf{v}=k\mathbf{e}_1+ l\mathbf{e}_2= k(\cos(\psi)\tilde{\mathbf{e}}_1-\sin(\psi)\tilde{\mathbf{e}}_2)+ l(\cos(\psi)\tilde{\mathbf{e}}_1+\sin(\psi)\tilde{\mathbf{e}}_2)$$
+$$= \left(k\cos(\psi)+l\sin(\psi)\right)\tilde{\mathbf{e}}_1 + \left(-k\sin(\psi)+l\cos(\psi)\right)\tilde{\mathbf{e}}_2.$$
+
+<br/><br/>
+
+> Matricialmente: $$\left(\begin{array}{c} v_1 \\v_2 \end{array}\right) =\left(\begin{array}{cc} \cos(\psi) & \sin(\psi) \\ -\sin(\psi) & \cos(\psi) \end{array} \right) \left(\begin{array}{c} k \\ l \end{array}\right)$$
+
+---
+### ¿y si quiero volver al sistema original?
+
+> Bastará con aplicar la rotación por $-\psi$ al sistema de coordenadas $\{\tilde{\mathbf{e}}_1,\tilde{\mathbf{e}}_2\}.$ Es decir:
+
+$$\left(\begin{array}{c} k \\ l \end{array}\right) =\left(\begin{array}{cc} \cos(-\psi) & \sin(-\psi) \\ -\sin(-\psi) & \cos(-\psi) \end{array} \right) \left(\begin{array}{c} v_1 \\ v_2 \end{array}\right)$$
+
+---
+## Reflexiones
+
+Un tipo especial de rotaciones en el plano, es cuando rotamos por un ángulo de $\pi$ o $180^\circ.$ En este caso la matriz de rotación tiene la forma:
+
+$$\left(\begin{array}{cc} -1 & 0 \\ 0 & -1 \end{array}\right)$$
+
+y en coordenadas se ve como $(k,l)$ rotado se ve como $(-k,-l).$
+
+> La rotación anterior se le conoce como _reflexión en el origen_.
+
+Existen otros tipos de _reflexiones_, similares a la reflexión en el origen, como son la _reflexión en el eje $x$_ que cambia a coordenadas $(x,-y).$ Y la _reflexión en el eje $y$_ que cambia a coordenadas $(-x,y).$ Cuyas matrices asociadas son:
+
+$$\left(\begin{array}{cc} 1 & 0 \\ 0 & -1 \end{array}\right) \quad \mbox{y} \quad \left(\begin{array}{cc} -1 & 0 \\ 0 & 1 \end{array}\right),$$ respectivamente.
+---
+## Reflexiones en general.
+
+Antes de hablar de reflexiones en general, primero tenemos que hablar de el segundo producto que podemos definir en un espacio vectorial: __el producto punto.__
+
+> Dado dos vectors $\vec{v}=(v_1,v_2,v_3)$ y $\vec{w}=(w_1,w_2,w_3),$ definimos el _producto punto_, $\vec{v}\cdot\vec{w},$ como el escalar $$v_1 w_1 + v_2 w_2 + v_3 w_3.$$
+
+El producto punto cumple las siguientes propiedades:
+- $\vec{v}\cdot \vec{v} = || v ||^2.$ 
+- $\vec{v}\cdot \vec{w}=\vec{w}\cdot \vec{v}.$
+- $(l\vec{v})\cdot (k\vec{w})=kl\vec{v}\cdot\vec{w}.$
+- $\vec{v}\cdot(\vec{w}_1+\vec{w}_2)=\vec{v}\cdot\vec{w}_1 +\vec{v}\cdot \vec{w}_2.$
+- Si $\vec{v}\cdot \vec{w}=0,$ se dice que $\vec{v}$ y $\vec{w}$ son _orthogonales._
+- Al vector $\frac{(\vec{v}\cdot \vec{w})}{\vec{w}\cdot \vec{w}} \vec{w}$ es la proyección de $\vec{w}$ en la dirección de $\vec{v}.$
+---
+## Forma general de un reflexión.
+
+> La reflexión de $\mathbb{R}^m$ respecto a la dirección $\vec{v},$ está dada por la función vectorial $proj_{\vec{v}}:\mathbb{R}^m\to \mathbb{R}^m,$ cuya regla de asignación es:
+
+$$\vec{w}-\frac{2\vec{v}\cdot \vec{w}}{\vec{v}\cdot \vec{v}}\vec{v}.$$
+<br/><br/>
+__Ejemplo:__ Calcule la expresión del campo vectorial dado por la reflexión en la dirección $\vec{v}=(1,1,2).$
+
+---
+## Rotaciones en $\mathbb{R}^3.$
+
+<iframe src="https://www.geogebra.org/calculator/hnp4qmzy?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Actividad 
+
+1. Dadas las siguientes ecuaciones de superficie, traduzcalas a las coordenadas que indiquen.
+  * El ovoide de los borregos: $4x^2+4y^2+z^2=1$ en coordenadas cilíndricas.
+  * Cono: $z=\sqrt{x^2+y^2}$ en coordenadas esféricas.
+
+2. Calcule la regla de asignación de la reflexión en $\mathbb{R}^2$ en la dirección de $(-1,-4).$
+
+3. Calcule la regla de asignación de la rotación en $\mathbb{R}^2$ por el ángulo $\pi/4.$
+
+4. Calcule la regla de asignación de la rotación en $\mathbb{R}^3$ por los ángulos $\theta_z=\pi/2$ y $\theta_x=\pi/2$ y $\theta_y=0.$
+
+5. __Reto:__ calcula la expresión matricial de una reflexión general en $\mathbb{R}^3$.

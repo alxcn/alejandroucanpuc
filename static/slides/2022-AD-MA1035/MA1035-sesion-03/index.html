@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Ecuaciones Líneales de orden superior</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e45dea624e5145f198dc6f87d21be680","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Ecuaciones Líneales de orden superior
+]
+.subtitle[
+## Sesión 03
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos de la Sesión
+
+* Conocer la forma genérica de una EDO lineal de orden superior. &lt;br/&gt;&lt;br/&gt;
+* Conocer la forma genérica de un problema de valor inicial con una EDO lineal de orden superior. &lt;br/&gt;&lt;br/&gt;
+* Aprender la solución para EDO's lineales de orden superior. &lt;br/&gt;&lt;br/&gt;
+* Aplicar el método para resolver EDO's lineales de orden superior con coeficientes constantes.
+
+---
+# EDO lineal de orden superior.
+
+&gt; __Definción:__ La forma genérica de una EDO lineal de orden superior es: `$$a_n(x)y^{(n)}+a_{n-1}(x)y^{(n-1)}+\cdots+a_2(x)y''+a_1(x)y'+a_0(x)y+g(x)=0.$$`
+
+Esta se convierte en un problema de valores iniciales cuando le agregamos las condiciones: `$$y(x_0)=y_0,\, y'(x_0)=y_1,\,y''(x_0)=y_2,\cdots,\,y^{(n-1)}(x_0)=y_{n-1}.$$`
+
+__Nota:__ necesitamos tantas condiciones como el orden de la EDO.
+
+---
+# Ejemplo:
+
+&gt; Supongamos que tenemos la EDO $$3y'''+5y''-y'+7y=0.$
+
+La función `\(y=0\)` es una solución a la ED0.
+
+&gt; Supongamos que tenemos la EDO $$y''-4y=12x$ con condiciones iniciales `\(y(0)=4\)` y `\(y'(0)=1.\)` 
+
+La función `\(y=3e^{2x}+e^{-2x}-3x\)` es una solución de este problema de valores iniciales.
+
+---
+# EDO's lineales de orden superior con coeficientes constantes.
+
+&gt; Recordemos que para una EDO líneal homogenea `$$ay'+by=0$$` &lt;br/&gt;&lt;br/&gt;
+ * Posible solución es `\(y=e^{mx},\)` &lt;br/&gt;&lt;br/&gt;
+ * Sustituyendo en la EDO `$$ame^{mx}+be^{mx}=0=e^{mx}(am+b),$$` 
+ *cómo `\(e^{mx}\neq 0\)` entonces `$$am+b=0\Rightarrow m=-b/a.$$`
+
+Este prodecimiento lo podemos generalizar.
+
+---
+# Ejemplo:
+
+&gt; Supongamos que tenemos la EDO `$$ay''+by'+cy=0.$$` &lt;br/&gt;
+* Nuestro __polinomio auxiliar__ es: `$$am^2+bm+c=0.$$` &lt;br/&gt;
+* Aplicando la fórmula general tendremos que las raíces son `$$m_{1,2}=\frac{-b\pm \sqrt{b^2-4ac}}{2a}.$$` &lt;br/&gt;
+* Esto implica que: 
+    * Las soluciones son reales diferentes `\(\Delta=b^2-4ac&gt;0.\)` 
+    * Las soluciones son reales iguales `\(\Delta=0.\)`
+    * Las soluciones son complejas conjugadas `\(\Delta&lt;0.\)`
+    
+---
+## Caso 1: Soluciones diferentes:
+
+&gt; Cuando las raíces son reales y distintas, es decir, dos números `\(m_1\)` y `\(m_2,\)` entonces la solución general de la EDO es `$$y=c_1 e^{m_1 x}+c_2e^{m_2 x}.$$`
+
+__Ejemplo:__ Encuentra las soluciones de `\(2y''-5y'-3y=0,\)` &lt;br/&gt;&lt;br/&gt;
+
+* Mi polinomio auxiliar es: `\(2m^2-5m-3=0\)` &lt;br/&gt;
+* Sus raíces son `\(m_1=-1/2\)` y `\(m_2=3\)` &lt;br/&gt;
+* La solución general `$$y=c_1e^{-x/2}+c_2e^{3x}.$$`
+
+---
+## Caso 2: Soluciones iguales
+
+&gt; Cuando las raíces son reales pero iguales, es decir, `\(m_1=m_2=m,\)` entonces la solución general de la EDO es `$$y=c_1e^{mx}+c_2xe^{mx}.$$`
+
+__Ejemplo:__ Encuentra las soluciones de `\(y''-10y'+25y=0.\)`
+
+* Mi polinomio auxiliar es: `\(m^2-10m+25=0\)` &lt;br/&gt;
+* Su raíz es `\(m_1=m_2=5.\)` &lt;br/&gt;
+* La solución general `$$y=c_1e^{5x}+c_2xe^{5x}.$$`
+
+---
+## Caso 3: Soluciones Complejas conjugadas
+
+&gt; Cuando las raíces son complejas conjugadas, es decir, `\(m_1=a+bi\)` y `\(m_2=a-bi,\)` entonces la solución general de la EDO es `$$y=c_1e^{ax}\cos(bx)+c_2e^{ax}\sin(bx).$$`
+
+__Ejemplo:__ Encuentra las soluciones de `\(y''+4y'+7y=0.\)`
+
+* Mi polinomio auxiliar es `\(m^2+4m+7=0\)` &lt;br/&gt;
+* Sus raíces son `\(m_1=-2+\sqrt{3}i\)` y `\(m_2=-2-\sqrt{3}i.\)` Por lo que `\(a=-2\)` y `\(b=\sqrt{3}.\)` &lt;br/&gt;
+
+* La solución general es `$$y=c_1e^{-2x}\cos(\sqrt{3}x)+c_2e^{-2x}\sin(\sqrt{3}x).$$`
+
+---
+### Un problema de valores iniciales.
+
+&gt; Encuentren la solución a la EDO `\(4y''+4y'+17y=0\)` dados que `\(y(0)=-1\)` y `\(y'(0)=2.\)`
+
+---
+# Modelando con EDOs lineales de orden superior:
+
+&gt; Suongamos que tenemos un resorte suspendido verticalmente de un soporte rígido y que sostiene un peso de masa `\(m\)` en su punta libre. La cantidad de "estiramiento" depende de la masa que le pongamos. &lt;br/&gt;&lt;br/&gt;
+* _Ley de Hooke:_ la fuerza de restablecimiento que ejerce el resorte es opuesta a la dirección de estiramiento y proporcional a esta cantidad, es decir: `$$F=-ks.$$` &lt;br/&gt;
+* _Segunda Ley de Newton_ `$$m\frac{d^2x}{dt^2}=-kx.$$`
+
+---
+# Gráfica
+
+
+
+&lt;div class="figure"&gt;
+&lt;img src="vertspringmodel.jpg" alt="Vista gráfica del modelo." width="50%" /&gt;
+&lt;p class="caption"&gt;Vista gráfica del modelo.&lt;/p&gt;
+&lt;/div&gt;
+---
+## Solución general del modelo
+ 
+ &gt; Queremos encontrar la solución general de `$$m\frac{d^2x}{dt^2}=-kx.$$` Notemos que esta ecuación es equivalente a `$$x''+\frac{k}{m}x=0.$$`
+&gt; Mi polinomio auxiliar es `$$m^2+\frac{k}{m}=0$$` cuyas soluciones son `\(m_1=\sqrt{\frac{k}{m}}i\)` y `\(m_2=-\sqrt{\frac{k}{m}}i.\)` Por lo que mi solución general de la EDO es: `$$x(t)=c_1\cos\left(\frac{k}{m}t\right)+c_2\sin\left(\frac{k}{m}t\right).$$`
+
+---
+### Algunas componentes de la solución:
+
+* Al número `\(w=\sqrt{\frac{k}{m}}\)` se le conoce como _frecuencia circular._
+
+* El período de la función solución es `$$T=\frac{2\pi}{w}.$$`
+
+* La frecuencia de la función es `$$f=1/T.$$`
+
+---
+### Ejemplo:
+
+&gt; Una masa de peso `\(2lbs\)` estira un resorte de `\(6\)` pulgadas. Si en `\(t=0\)` la masa es liberada desde un punto `\(8\)` pulgadas por debajo del equilibrio con una velocidad de `\(4/3\)` pies/s. Determine la ecuación de movimiento.
+
+Realizando las conversiones adecuadas (pulgas en pies, y libras en unidades de masa), obtenemos que la ecuación diferencial es: `$$\frac{1}{16}x''+4x=0.$$` Con las condicions inciales de `\(x(0)=2/3\)` y `\(x'(0)=-4/3.\)` Por lo tanto `\(w^2=64\)` y `\(w=8,\)` así que la función de movimiento es: `$$x(t)=c_1\cos(8t)+c_2\sin(8t).$$`
+
+Sustituyendo las condiciones iniciales obtenemos que `\(c_1=2/3\)` y `\(c_2=-1/6.\)`
+
+---
+### Ejercicio:
+
+&gt; Una masa que pesa 4 libras esta atada a un resorte cuya constante de Hooke es 16lb/ft. ¿Cuál es el período del movimiento armónico simple?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

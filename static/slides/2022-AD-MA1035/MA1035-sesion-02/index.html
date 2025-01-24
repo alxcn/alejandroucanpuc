@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>EDO Lineales No homogéneas</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e04b981222c046168a9ae40554ebfe7e","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# EDO Lineales No homogéneas
+]
+.subtitle[
+## Sesión 02
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos de la Sesión
+
+* Conocer la forma genérica de una EDO lineal &lt;br/&gt;&lt;br/&gt;
+* Aprender otras problematicas que modela una EDO lineal. &lt;br/&gt;&lt;br/&gt;
+* Resolver EDO lineales no homogéneas. &lt;br/&gt;&lt;br/&gt;
+* Aprender el método de variación de parámetros. &lt;br/&gt;&lt;br/&gt;
+
+
+---
+# EDO lineal.
+
+&gt; La forma genérica de una EDO lineal es `$$a_1(x)y'+a_0(x)y+g(x)=0,$$` donde `\(a_0(x)\)` y `\(a_1(x)\)` son los coeficientes. &lt;br/&gt;&lt;br/&gt;
+Si `\(g(x)=0,\)` entonces la EDO se dice __homogénea__, de lo contrario es __no homogénea.__
+
+__Por ejemplo:__ `\(xy'-4y-x^6e^x=0.\)`
+
+---
+## ¿Cómo es la solución de EDO lineal?
+
+&gt; Podemos escribir la ecuación generica como sigue `$$y'+P(x)y=f(x).$$` Queremos una solución en un intervalo `\(I\)` donde `\(P(x)\)` y `\(f(x)\)` sean funciones continuas. &lt;br/&gt;&lt;br/&gt;
+Si `\(y_h\)` es una solución a la versión homogénea de la EDO anterior y `\(y_p\)` es una solución particular de la ecuación. Entonces `$$y_h+y_p$$` es una solución de la ecuación no homogenea.
+
+__Reto:__ comprueba esto de manera genérica.
+
+---
+## Soluciones de EDO lineales no homogéneas.
+
+&gt; __Variación de Paramétros:__ la idea es encontrar una solución de la forma `\(y_p=u(x)y_1(x)\)` donde `\(y_1\)` es la solución de la versión homogénea de la EDO. &lt;br/&gt;&lt;br/&gt;
+Método:
+  1. Escribir la EDO de la forma: `$$y'+P(x)y=f(x).$$`
+  1. Identifica `\(P(x)\)` y calcula el _factor integrador_ `$$e^{\int P(x)dx}.$$`
+  1. Multiplica en la EDO por el factor integrador. Esto modifica a la ecuación a la forma `$$\frac{d}{dx}\left[e^{\int P(x)dx} y\right]= e^{\int P(x)dx}f(x).$$` 
+  1. Integra ambos lados y simplifica.
+
+---
+### Ejemplo 1 (EDO lineal homogénea)
+
+&gt; Resuelva `\(y'-3y=0.\)`
+
+1. Ya se encuentra en la forma estándar.
+
+1. `\(P(x)=-3,\)` por lo que el factor integrador es `$$e^{\int -3dx}=e^{-3x}.$$`
+
+1. Multiplicamos y nuestra ecuación se reduce a `$$\frac{d}{dx}\left[e^{-3x}y\right]=0.$$`
+
+1. Integramos y despejamos: `$$e^{-3x}y=c\Rightarrow y=c e^{3x}.$$`
+
+---
+### Ejemplo 2 (EDO lineal no homogénea)
+
+&gt; Resuelva la ecuación `\(y'-2y=6.\)`
+
+1. Ya se encuentra en la forma estándar.
+
+1. `\(P(x)=-2,\)` por lo que el factor integrador es `$$e^{\int -2dx}=e^{-2x}.$$`
+
+1. Multiplicamos y nuestra ecuación se reduce a `$$\frac{d}{dx}\left[e^{-2x}y\right]=6e^{-2x}.$$`
+
+1. Integramos y despejamos: `$$e^{-2x}y=-3e^{-2x}+c\Rightarrow y=-3+ce^{-2x}.$$`
+
+---
+### Ejemplo 3 (No homogénea)
+
+&gt; Resuelva la ecuación `\(y'-2xy=2.\)` 
+
+Notemos que nuestro factor integrador es: `$$e^{\int -2xdx}=e^{-x^2}.$$` Esto implica que debemos integrar `$$\int 2e^{-x^2}.$$`
+
+Esta integral no tiene solución explícita, pero se puede expresar como la integral definida `$$\int_0^x e^{-t^2}dt.$$` También denotada por `\(\frac{1}{2}\sqrt{\pi} erf(x).\)`
+
+---
+# Caída No libre
+
+&gt; Consideremos un cuerpo que está cayendo pero el medio en donde cae presenta una resistencia (digamos el aire). Si la velocidad con la caé el cuerpo está dada por `\(v(t)\)` entonces satisface la EDO lineal no homogénea: `$$mv'+\beta v=mg,$$` dónde `\(m\)` es la masa del objeto, `\(\beta\)` es la constante de resistencia, y `\(g\)` es la fuerza de gravedad. 
+
+---
+## La solución de la caída no libre.
+
+Usando __variación de parametros__ podemos resolver esta EDO, veamos.
+
+1. `\(P(x)=\beta/m,\)` `\(f(x)=g\)` y factor integrador es: `$$e^{\frac{\beta t}{m}}.$$`
+
+1. Multiplicando el factor y transformado la ecuación obtenemos: `$$\frac{d}{dt}\left[e^{\frac{\beta t}{m}}v\right]=ge^{\frac{\beta t}{m}}.$$`
+
+1. Realizando la integral y simplicando obtenemos: `$$v(t)=\frac{mg}{\beta}+ce^{-\frac{\beta t}{m}}.$$`
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

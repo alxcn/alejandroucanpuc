@@ -1,0 +1,100 @@
+---
+title: "Funciones a trozos"
+subtitle: "Sesión 08"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=5, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Aprender la definición de función a trozos. <br/> <br/>
+ * Graficar una función a trozos. <br/> <br/>
+ * Determinar cuándo una función es definida a trozos. <br/> <br/>
+
+---
+# Función a trozos.
+
+> Una función a trozos es una función cuya regla de asignación cambia _depende_ de los intervalos donde se esté. __Por ejemplo:__
+
+
+$$
+f(x) =\left\{
+        \begin{array}{ll}
+            3x+1 & -3<x\leq 0 \\
+            x^2 &  1<x< 3 \\
+            -\sqrt{x} & 4\leq x <10
+        \end{array}
+    \right.
+$$ 
+
+
+---
+# Propiedades de las funciones a trozos.
+
+* El dominio está dado por la unión de los intervalos en la regla de asignación. 
+<br/><br/>
+>  __Por ejemplo:__ en el ejemplo anterior $D(f)=(-3,0]\cup (1,3)\cup [4,10).$
+
+<br/><br/>
+* El rango depende de la la expresións en cada intervalo, es recomendable graficarla.
+<br/><br/>
+
+> __Por ejemplo:__ en el ejemplo anterior $Im(f)=[-9,0)\cup(1,9).$
+
+<br/><br/>
+* Para graficarla hay que graficar cada trozo (en cada intervalo).
+
+---
+# Gráfica de la función
+
+<iframe src="https://www.geogebra.org/graphing/sunqfaey?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Notas
+
+> 
+* El tipo de funciones que puede ser parte de una función a trozos puede ser cualquiera, siempre y cuando este bien definida en el intervalo.
+<br/><br/><br/><br/>
+* El tipo de intervalos igual puede ser cualquiera, siempre que no se sobre pongan y hagan que la expresión no sea función.
+
+---
+# Ejemplo 2
+
+<iframe src="https://www.geogebra.org/graphing/hbbguye5?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+

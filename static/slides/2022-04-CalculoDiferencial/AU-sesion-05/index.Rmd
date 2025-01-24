@@ -1,0 +1,103 @@
+---
+title: "Inecuaciones cuadráticas"
+subtitle: "Sesión 05"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Determinar cuando una inecuación es cuadrática. <br/> <br/>
+ * Reducir inecuaciones cuadráticas. <br/> <br/>
+ * Describir un conjunto solución a una inecuación cuadrática.
+
+---
+# Desigualdades Racionales
+
+Una __inecuación cuadrática__ es una desigualdad que involucre una expresión igual a un polinomio de grado dos.
+
+__Por ejemplo:__ $x^2-2<2$ o $x^2+2x>15.$
+
+> __Importante:__ Para este tipo de desigualdades es importante dejarlas hacia a una desigualdad con cero, es decir, $>0$ o $<0.$
+
+---
+# Solución de una inecuación Cuadrática
+
+En el ejemplo $x^2-2<2,$ no comparamos con cero, por lo que hay que dejarla en la forma usual.
+<br/><br/>
+
+> Usando la Monotonía Suma: $(x^2-2)-2<2-2$ lo que es equivalente a $$x^2-4<0.$$ 
+
+<br/>
+> El siguiente paso es __factorizar__: $(x+2)(x-2)<0.$
+
+<br/>
+ Por la regla de los signos sabemos que para que un producto sea negativo debemos tener signos distintos. De donde obtenemos casos:
+
+---
+# Solución de una inecuación Cuadrática
+
+> __Caso 1:__ $x+2<0$ y $x-2>0$
+
+Notemos que la solución a cada una de esas ecuaciones es: $x<-2$ y $x>2.$ Con las regiones así
+
+![Región 1](/Users/koyomi/Documents/GitHub/alejandro_ucan.github.io/static/slides/2022-04-CalculoDiferencial/AU-sesion-05/region1.jpg)
+
+> __Caso 2:__ $x+2>0$ y $x-2<0.$ 
+
+En este caso, la solución a cada una de esas ecuaciones es: $x>-2$ y $x<2.$ Por lo que en este caso, si hay interssión. 
+
+La solución es $(-2,2).$
+
+---
+# Solución de una inecuación cuadrática
+
+__Ejemplo:__ Encontrar el conjunto donde es válida $$x^2+2x>15.$$
+
+
+> Usando la Monotonía Suma: $(x^2+2x)-15>15-15$ lo que es equivalente a $$x^2+2x-15>0.$$ 
+
+<br/>
+> El siguiente paso es __factorizar__: $(x-3)(x+5)>0.$
+
+<br/>
+
+.pull-left[ __Caso 1__: $x-3>0$ y $x+5>0$] 
+ 
+.pull-right[ __Caso 2__: $x-3<0$ y $x+5<0$]

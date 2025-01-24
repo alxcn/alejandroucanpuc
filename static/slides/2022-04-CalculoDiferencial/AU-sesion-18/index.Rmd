@@ -1,0 +1,98 @@
+---
+title: "Reglas de Derivación (II)"
+subtitle: "Sesión 18"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Conocer la regla de la cadena. <br/><br/>
+ * Aprender a aplicar la regla de la cadena. <br/><br/>
+ * Dedudir las reglas generalizadas de derivación. <br/><br/>
+
+---
+# Recapitulación:
+
+Derive la función $$f(x)=x^2\cos x-2x\sin x-2\cos x.$$
+
+---
+# Regla de la Cadena.
+
+> Supongamos que tenemos una función $h(x)$ que se puede escribir como una composición de funciones, es decir, $h(x)=f(g(x))$ para algunas funciones $f$ y $g.$ Entonces se cumple que:
+
+$$h'(x)=f'(g(x))\cdot g'(x),$$ es decir, la derivada de una composición es la derivada de la función exterior evaluada en la función interior por la derivada de la función interior. 
+<br/><br/>
+__Por ejemplo:__ Deriva la función $h(x)=\sqrt{\sin x}.$ En este caso, $f(x)=\sqrt{x}$ y $g(x)=\sin x,$ y notemos que $f(g(x))=h(x).$ Recordemos que $f'(x)=\frac{1}{2\sqrt{x}}$ y $g'(x)=\cos x.$ <br/>
+Sustituyendo en la regla de la cadena tenemos: $$h'(x)=f'(g(x))g'(x)=\frac{1}{2\sqrt{\color{red}{\sin x}}}\cdot \cos x.$$
+
+---
+# Ejemplo 2:
+
+Sea $h(x)=(\sin x)^6,$ en este caso $f(x)=x^6$ y $g(x)=\sin x,$ y la derivadas son:<br/><br/> $$f'(x)=6x^5\mbox{ y }g'(x)=\cos x,$$ entonces sustituimos en la regla de la cadena:
+<br/><br/>
+$$h'(x)=f'(g(x))g'(x)=6(\sin x)^5\cdot \cos x.$$
+
+---
+# Ejemplo 3:
+
+Calcule la derivada de $h(x)=(3x^3+17x^2+2x-1)^{100}.$ 
+
+<br/><br/>
+En este caso $f(x)=x^{100}$ y $g(x)=3x^3+17x^2+2x-1,$ y calculamos sus derivadas:
+<br/><br/>
+$$f'(x)=100x^{99}\mbox{ y }g'(x)=9x^2+34x+2,$$ y sustituimos en la regla de la cadena:
+<br/><br/>
+$$h'(x)=f'(g(x))g'(x)=100(3x^3+17x^2+2x-1)^{99}(9x^2+34x+2).$$
+
+---
+# Reglas generalizadas
+
+Utilizando la regla de la cadena, podemos ahora aplicarla para construir las siguientes reglas generales, si $u$ es una función de $x$ y calculamos la derivada respecto a $x,$ tenemos:
+
+.pull_left[* $\frac{d}{dx}((u)^n)=nu^{n-1}\cdot \frac{du}{dx}.$
+* $\frac{d}{dx}\sin(u)=\cos(u)\cdot \frac{du}{dx}$
+* $\frac{d}{dx}\cos(u)=-\sin(u)\cdot \frac{du}{dx}$
+* $\frac{d}{dx}\tan(u)=(\sec(u))^2\cdot \frac{du}{dx}$]
+
+.pull_right[* $\frac{d}{dx}\cot(u)=(-\csc(u))^2\cdot \frac{du}{dx}$
+* $\frac{d}{dx}\csc(u)=-\csc(u)\cdot \cot(u)\cdot \frac{du}{dx}$
+* $\frac{d}{dx}\sec(u)=\sec(u)\cdot \tan(u)\cdot \frac{du}{dx}$
+* $\frac{d}{dx}e^u=e^u\cdot \frac{du}{dx}$
+* $\frac{d}{dx}\ln(u)=\frac{1}{u}\frac{du}{dx}$]

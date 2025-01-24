@@ -1,0 +1,158 @@
+---
+title: "Vectores y Valores Propios"
+subtitle: "Sesión 07"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Definir los conceptos de vectores y valores propios. <br/><br/>
+* Calcular vectores y valores propios. <br/><br/>
+
+---
+# Motivación
+
+Cosideremos la transformación $T(x,y)=(x+y,x-y).$ Calculemos la matrix asociada a esta transformación lineal cuando la base es $B=\{(1,0),(0,1)\}$ y cuando $B'=\{(1-\sqrt{2},1),(1+\sqrt{2},1)\}$. <br/><br/>
+
+--
+##### Solución:
+
+En el primer caso la matriz asociada es $$T_B=\left(\begin{array}{cc} 1 & 1 \\ 1 & -1 \end{array}\right)$$ y en el segundo caso la matriz asociada es $$T_{B'}=\left(\begin{array}{cc} -\sqrt{2} & 0 \\ 0 & \sqrt{2} \end{array}\right)$$
+
+---
+# Motivación
+
+A la matrix $T_{B'}$ se le conoce como la _diagolinazación_ de la transformación $T$. <br/><br/>
+
+¿Es posible encontrar una base $B$ tal que la matriz asociada a $T$ sea diagonal? <br/><br/> Suponiendo que esto es posible, necesitamos cumplir que $$T_B(v_j)=\lambda_j v_j$$ para cada vector $v_j$ de la base encontrada y donde $\lambda_j$ es un real.
+
+---
+# Vectores y valores propios
+
+> __Definición:__ Dada una transformación lineal $T:V\to W$, un vector $v\in V$ se llama __vector propio__ de $T$ si $v\neq 0$ y existe un escalar $\lambda$ tal que $T(v)=\lambda v$. El escalar $\lambda$ se llama __valor propio__ de $T$ asociado al vector propio $v$.
+
+--
+##### Ejemplo 1:
+
+Sea $T(x,y)=(2x,-y)$, entonces $T(1,0)=(2,0)$ y $T(0,1)=(0,-1)$. Por lo tanto, $T$ tiene como vectores propios a $(1,0)$ y $(0,1)$ con valores propios $\lambda_1=2$ y $\lambda_2=-1$ respectivamente.
+
+---
+##### Ejemplo 2:
+
+Sea $T(x,y)=(x+y,x-y)$, afirmamos que $v_1=(1-\sqrt{2},1)$ y $v_2=(1+\sqrt{2},1)$ son vectores propios de $T$ con valores propios $\lambda_1=-\sqrt{2}$ y $\lambda_2=\sqrt{2}$ respectivamente.
+
+--
+##### Solución:
+
+$$T(1-\sqrt{2},1)=(1-\sqrt{2}+1, 1-\sqrt{2}-1)=(2-\sqrt{2},-\sqrt{2})=(-\sqrt{2})(1-\sqrt{2},1)$$
+
+$$T(1+\sqrt{2},1)=(1+\sqrt{2}+1, 1+\sqrt{2}-1)=(2+\sqrt{2},\sqrt{2})=(\sqrt{2})(1+\sqrt{2},1)$$
+
+---
+## ¿Cómo calcular los vectores y valores propios?
+
+Notemos que si $v$ es un vector propio de $T$ con valor propio $\lambda$ y $M$ es una matriz que representa a $T$ entonces se debe cumplir que $$Mv=\lambda v$$ y por lo tanto $$(M-\lambda I)v=0$$ donde $I$ es la matriz identidad y esto es para todo vector propio. <br/><br/> Por lo tanto, el sistema de ecuaciones debe tener soluciones infinitas y esto solo sucede si $$\det(M-\lambda I)=0.$$
+
+---
+## Polinomio Característico
+
+> __Definición:__ Dada una matriz $M$ cuadrada, el _polinomio característico_ de $M$ es el polinomio en variable $\lambda$ que se obtiene de $$\det(M-\lambda I).$$
+
+--
+<br/><br/>
+
+> __Afirmación:__ Si $\lambda_j$ es raíz del polinomio del característico de $M$ entonces $\lambda_j$ es un valor propio.
+
+---
+##### Ejemplo 3:
+
+> Calcule el polinomio característico y sus raíces de la transformación de $T(x,y)=(3x-2y,x+2y)$.
+
+--
+<br/><br/>
+##### Solución:
+
+$$\det\left(\begin{array}{cc} 3-\lambda & 2 \\ 1 & 2-\lambda \end{array}\right)=(3-\lambda)(2-\lambda)-4=\lambda^2-5\lambda+4$$
+
+y sus soluciones son: $$\lambda_{1,2}=\frac{5\pm\sqrt{5^2-4(4)}}{2}$$ donde $$\lambda_1=\frac{5-\sqrt{9}}{2}\quad \lambda_2=\frac{5+\sqrt{9}}{2}$$
+
+---
+##### Ejemplo 4:
+
+> Calcule el polinomio característico y sus raíces de la transformación de $T(x,y,z)=(0,x+2y-7z,-2x-3y-2z)$.
+
+--
+<br/><br/>
+##### Solución:
+$$\det\left(\begin{array}{ccc} 0-\lambda & 0 & 0 \\ 1 & 2-\lambda & -7 \\ -2 & -3 & -2-\lambda \end{array}\right)$$. <br/><br/> Resolviendo el determinante obtenemos el polinomio $$\lambda^3-25\lambda$$ y sus raíces son $$\lambda_1=0,\quad \lambda_2=5,\quad \lambda_3=-5$$
+
+---
+## Encontrar los vectores propios
+
+> __Afirmación:__ Si $\lambda_j$ es valor propio de la transformación $T,$ entonces cualquier $v$ que esté en el núcleo de $T-\lambda_j I$ es un vector propio de $T$ con valor propio $\lambda_j$. 
+
+--
+##### Ejemplo 5:
+
+> Sabemos que $1$ es valor propio de la transformación $T(x,y)=(3x-2y,x+2y).$ Encuentre un vector propio asociado a este valor propio.
+
+--
+##### Solución:
+
+El kernel de la matriz $T-1I$ es $$\left(\begin{array}{cc} 2 & 2 \\ 1 & 1 \end{array}\right)$$ y por lo tanto, el vector de la forma $(1,-1)$ es un vector propio asociado a $1.$
+
+---
+##### Ejemplo 6:
+
+> Sabemos que $5$ es valor propio de la transformación $T(x,y,z)=(0,x+2y-7z,-2x-3y-2z).$ Encuentre un vector propio asociado a este valor propio.
+
+--
+<br/><br/>
+##### Solución:
+
+El kernel de la matriz $T-5I$ es $$\left(\begin{array}{ccc} -5 & 0 & 0 \\ 1 & -3 & -7 \\ -2 & -3 & -7 \end{array}\right)$$ y por lo tanto, el vector de la forma $(0,7,3)$ es un vector propio asociado a $5.$
+

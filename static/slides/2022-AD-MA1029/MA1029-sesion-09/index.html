@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Integrales Multiples</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2023-03-25" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x05d2c1d6e2949b29b61aca71f235cfa","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Integrales Multiples
+]
+.subtitle[
+## Sesión 09
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2023-03-25
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Utilizar el concepto de integral multiple para calcular volúmenes y áreas. &lt;br/&gt;&lt;br/&gt;
+ * Utilizar el teorema de Fubini para calcular integrales multiples como integrales iteradas. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Partición de un rectángulo y Sumas de Riemann.
+
+Supongamos que tenemos una _región_ rectangular `\(R\)` en `\(\mathbb{R}^2,\)` acotada por `\(a\leq x\leq b\)` y `\(c\leq y\leq d.\)` Una __partición__ es una _malla_ formada por los pares de puntos `\((x_i,y_j)\)` tales que `$$x_{i+1}-x_i=\frac{b-a}{n}\quad\mbox{y}\quad y_{j+1}-y_j=\frac{c-d}{m}.$$`
+
+
+---
+# Partición de un rectángulo y Sumas de Riemann.
+
+&gt; Si `\(f:\mathbb{R}^2\to \mathbb{R}\)` es una función continua y acotada en la región rectangular `\(R,\)` entonces la suma `$$\sum_{i=1}^{n} \sum_{j=1}^m f(x_i,y_j) \Delta x \Delta y$$` _aproxima_ el volumen bajo la superficie (gráfica de la función).
+
+---
+# Refinando Sumas de Riemann
+
+![Sumas](refriemannsums.png)
+
+---
+# La integral doble
+
+&gt; Mientras más refinamos nuestra partición, nuestra aproximación del volumen mejora. Por lo que _en el límite_ de refinamientos obtenemos el volumen. &lt;br/&gt;&lt;br/&gt;
+La _integral doble_ se conoce de `\(f(x,y)\)` en la región `\(R\)` se denota como `\(\int_{R}f\, dA,\)` y define como el límite: `$${\int\!\int}_R f(x,y)dA =\lim_{(n,m)\to (0,0)} \sum_{i=1}^{n} \sum_{j=1}^m f(x_i,y_j) \Delta x \Delta y.$$`
+
+
+---
+# Propiedades de la integral doble
+
+&gt; __Teorema:__ Cualquier función continua definida en un rectángulo es integrable. &lt;br/&gt;
+
+&gt; __Teorema:__ La integral doble es lineal, es decir, si `\(f\)` y `\(g\)` son funciones continuas sobre una región `\(R,\)` entonces: `$$\int_R (kf+lg)\,dA=k\int_R f\,dA+l\int_R g\,dA.$$` &lt;br/&gt;
+
+
+---
+# ¿Cómo calculo integrales dobles sin utilizar sumas y límites?
+
+&gt; __Teorema (de Fubini):__ Si `\(f(x,y)\)` es una función integrable en la región `\(R=[a,b]\times[c,d],\)` entonces la integral `\(\int_R f\,dA\)` coincide con la cantidad: `$$\int_c^d \left[ \int_a^b f(x,y)dx \right]dy=\int_a^b \left[ \int_c^d f(x,y)dy \right]dx.$$`
+
+---
+# Ejemplo 1:
+
+Calcula la integral de la función `\(f(x,y)=x^2+yx\)` en el rectángulo `\(R=[0,1]\times[0,1].\)`
+
+
+---
+# Ejemplo 2: 
+
+Calcula la integral de la función `\(f(x,y)=x^3y-12xy\)` en el rectángulo `\(R=[-2,1]\times[0,1].\)`
+
+
+---
+# ¿Siempre integraremos en rectángulos?
+
+&gt; __Definición:__ Una región elemental en `\(\mathbb{R}^2\)` es una región del plano que es `\(x-\)`simple y `\(y-\)`simple. &lt;br/&gt;
+  * Una región en `\(\mathbb{R}^2\)` es `\(y-\)`simple si se puede escribir como `$$a\leq x\leq b \quad \mbox{y} \quad \phi_1(x)\leq y \leq \phi_2(x).$$` &lt;br/&gt;&lt;br/&gt;
+  * Una región en `\(\mathbb{R}^2\)` es `\(x-\)`simple si se puede escribir como `$$c \leq y \leq d \quad \mbox{y} \quad \psi_1(y)\leq x\leq \psi_2(y).$$`
+
+---
+# El Teorema de Fubini más general.
+
+Podemos usar propiedades de integrales de una variable, y finalmente nuestra integral doble se expresa de la manera:
+
+&gt; __Teorema:__ Si `\(D\)` es una región simple y `\(f\)` es integrable en `\(D,\)` entonces `$$\int_D f\,dA = \int_a^b \int_{\phi_1(x)}^{\phi_2(x)} f(x,y)dydx.$$`
+
+---
+# Ejemplo 3:
+
+Calcule el valor de la integral de `\(f(x,y)=\sqrt{\frac{x}{y}}\)` en la región `\(R\)` acotada entre `\(0\leq x \leq 1\)` y `\(x^2\leq y \leq x.\)`
+
+
+---
+# Ejemplo 4: 
+
+Encuentre el volumen del prisma cuya base se encuentra en el plano `\(xy\)` acotado por el eje `\(x\)` y las rectas `\(y=x\)` y `\(x=1,\)` y cuya tapa pertenece al plano `$$z=f(x,y)=3-x-y.$$`
+
+---
+# Ejercicio:
+
+Encuentra el volumen acotado por el plano `\(xy\)` y la función `\(f(x,y)=16-x^2-y^2,\)` sobre la región `\(R\)` dada por las curvas `\(y=2\sqrt{x},\)` `\(y=4x-2\)` y el eje `\(x.\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

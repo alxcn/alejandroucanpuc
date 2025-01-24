@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Redes Neuronales</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-11-20" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xacb16e2a66f4e208b286eb25153f988","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Redes Neuronales
+]
+.subtitle[
+## Sesión 03 - Módulo Reto
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-11-20
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos 
+
+* Introducir las bases de *redes neuronales*. &lt;br/&gt;&lt;br/&gt;
+* Introducir las funciones de activación. &lt;br/&gt;&lt;br/&gt;
+* Introducir el concepto de *backpropagation*. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Motivación
+
+* Las redes neuronales son un modelo computacional que se inspira en la estructura y funcionamiento del cerebro humano. &lt;br/&gt;&lt;br/&gt;
+
+* Las redes neuronales son capaces de aprender basados en datos y realizar tareas como clasificación, regresión, segmentación, entre otras. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Redes Neuronales
+
+&gt; Las **redes neuronales**, también conocidas como *Artificial Neural Networks* (ANN), son sistemas computacionales que modelan una relación entre un conjunto de señales de entrada y un conjunto de señales de salida. &lt;br/&gt;&lt;br/&gt;
+
+&gt; Estas redes están conformadas por *neuronas* que se relacionan por medio de *sinapsis*.
+
+---
+## Neuronas (de a de veras)
+
+Biológicamente, una neurona es una célula que se encarga de transmitir información. &lt;br/&gt;&lt;br/&gt;
+
+Esta recibe señales eléctricas por medio de sus dendritas. &lt;br/&gt;&lt;br/&gt;
+
+La acumulación de estas señales hace que se active una respuesta (basado en un umbral) dado por el axón. &lt;br/&gt;&lt;br/&gt;
+
+La señal se transmite a otras neuronas vecinas.
+
+---
+# Neurona Artificial
+
+Recibe información de entrada `\(x_1, x_2, \ldots, x_n\)` o señales. &lt;br/&gt;&lt;br/&gt;
+
+Procesa la información y la "acumula" hasta que la función de *activación* llega al umbral deseado. &lt;br/&gt;&lt;br/&gt;
+
+La neurona artificial emite una señal de salida `\(y\)`, y en caso dado de conexión la transmite a otras neuronas.
+
+---
+## Modelo de Neurona Artificial
+
+Dado lo anterior, la expresión que relaciona las entradas y la salida de una neurona artificial es:
+
+$$ y = \phi \left(\sum_{i=0}^n w_i x_i\right)= \phi (w^T x)$$
+
+donde `\(w\in\mathbb{R}^{n+1}\)` es un vector de pesos, `\(x_0=1\)` y `\(\phi\)` es la *función de activación*.
+
+---
+## Funciones de Activición
+
+La función de activación es el mecanismo por medio del cual la neurona procesa la información de entrada y genera una señal de salida. Las función de activación más comunes son: &lt;br/&gt;&lt;br/&gt;
+  * **Sigmoide:** `\(\sigma(x)=\frac{1}{1+e^{-x}}\)` &lt;br/&gt;
+  * **Tangente hiperbólica:** `\(\phi(x)=2\sigma(x)-1\)` &lt;br/&gt;
+  * **Unidad Lineal Rectificada (ReLU):** `\(\phi(x)=\max(0,x)\)` &lt;br/&gt;
+  * **Identidad:** `\(\phi(x)=x\)` &lt;br/&gt;
+
+---
+## Backpropagation
+
+El entrenamiento de una red neuronal que resuelve un problema de clasificación se realiza minimizando la siguente función de costo:
+
+`$$C(W)=-\frac{1}{n}\sum_{i=1}^n \sum_{k=1}^K \left(y_k^{(i)} \log(h_w (x^{(i)}))_k + (1-y_k^{(i)})\log(1-h_w(x^{(i)}))_k\right)$$` donde `\(K\)` es el número de neuronas en la capa de salida. &lt;br/&gt;&lt;br/&gt;
+
+---
+## Backpropagation
+
+*Entrenar* una red neuronal significa: encontrar los pesos `\(W\)` óptimos que minimizan la función de costo anterior. &lt;br/&gt;
+Para ello necesitamos el algoritmo de *descenso gradiente* y es posible gracias al algoritmo de *backpropagation*. &lt;br/&gt;
+
+Esto es, **backpropagation** nos permite calcular estas derivadas parciales `$$\frac{\partial C}{\partial w_{ij}^{(l)}}$$`
+
+la derivada parcial respecto a la entrada `\(j\)` de la neurona `\(i\)` de la capa `\(l+1.\)` 
+
+---
+## Backpropagation
+
+Sea `\(a^{(l)}\)` con `\(l=2,\cdots, L\)` es un vector que contiene las *activaciones* de las neuronas de la capa `\(l,\)` con `\(a^{(1)}=x.\)` &lt;br/&gt;&lt;br/&gt;
+
+Sea `\(\delta^{(L)}=a^{(L)}-y\)` el error entre la salida esperada ( `\(y\)` ) y lo entregado por la última capa de la red neuronal `\(a^{(L)}.\)` &lt;br/&gt;&lt;br/&gt;
+
+Definimos `\(\delta^{(l)},\)` con `\(l=2\cdots, L-1\)` como `$$\delta^{(l)}=((W^{(l)})^T \delta^{(l+1)})\odot a^{(l)} \odot (1-a^{(l)})$$` donde `\(\odot\)` es el producto de Hadamard. 
+
+---
+## Backpropagation (Pseudo-código)
+
+Dado un conjunto de entrenamiento `\(\{(x^{(i)},y^{(i)})\}_{i=1}^n\)`,$ el algoritmo de backpropagation es el siguiente:
+
+1. **Inicializar** `\(\Delta^{(l)}=0\)` para `\(l=1,\cdots, L-1,\)` `\(i=1\)` &lt;br/&gt;
+2. **repetir** `\(n\)` veces: `\(a^{(1)}=x^{(i)}\)` &lt;br/&gt;
+    **calcular** `\(a^{(l)}\)` para `\(l=2,\cdots, L\)` &lt;br/&gt;
+    `\(\delta^{(L)}=a^{(L)}-y^{(i)}\)` &lt;br/&gt;
+    **calcular** `\(\delta^{(l)}\)` para `\(l=L-1,\cdots, 2\)` &lt;br/&gt;
+    **calcular** `\(\Delta^{(l)}=\Delta^{(l)}+\delta^{(l+1)}(a^{(l)})^T,\)` `\(l=1,2,\cdots, L-1\)` &lt;br/&gt;
+    `\(i=i+1\)` &lt;br/&gt;
+3. **retornar** `\(D^{(l)}=\frac{1}{n}\Delta^{(l)}\)` para `\(l=1,2,\cdots, L-1\)`
+
+---
+## Backpropagation (Pseudo-código)
+
+Teniendo en cuenta lo anterior, el entrenamiento de una red neuronal totalmente conectada se puede llevar a cabo ejecutando el siguiente algoritmo: 
+
+1. **inicializar** `\(W=W_0,\)` `\(\alpha\in (0,1)\)` &lt;br/&gt;
+2. **repetir**
+    **calcular** `\(\nabla C(W)\)` usando el algoritmo de backpropagation &lt;br/&gt;
+    `\(W=W-\alpha \nabla C(W)\)` &lt;br/&gt;
+3. **hasta** cumplir con un criterio de parada.
+4. **retornar** `\(W\)`
+
+
+---
+## Referencias
+
+1. Haykin, S. (2009). Neural Networks and Learning Machines. Pearson Education. &lt;br/&gt;&lt;br/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

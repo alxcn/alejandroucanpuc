@@ -1,0 +1,137 @@
+---
+title: "Series de funciones complejas"
+subtitle: "Sesión 19"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos:
+
+ * Introducir la fórmula integral de Cauchy. <br/><br/>
+ * Introducir el concepto de Series y su convergencia. <br/><br/>
+ * Definir las series de funciones asociadas a una función compleja  (Taylor y Laurent). <br/><br/>
+
+---
+# La fórmula Integral de Cauchy
+
+> __Teorema:__ Sea $f$ una función holomorfa dentro y en un contorno simple cerrada $C,$ orientadas positivamente. Si $z_0$ es un punto interior a $C,$ entonces $$f(z_0)=\frac{1}{2\pi i} \int_C \frac{f(z)}{z-z_0}dz.$$
+
+### Ejemplo:
+
+Calcula $\displaystyle{\int_C \frac{zdz}{(9-z^2)(z+i)}=\frac{\pi}{5}},$ donde $C$ es el circulo $|z|=2.$
+---
+# Sucesiones y Series
+
+> __Definición:__ una serie es una función $f:\mathbb{N}\to \mathbb{C}$ que asigna a cada natural un número complejo $$n\mapsto z_n$$ y usualmente se denota como $(z_n)$ como un vector con "infinitas" entradas.
+
+### Ejemplos:
+
+---
+## Convergencia:
+
+> __Definición:__ decimos que una sucesión $(z_n)$ es __convergente__ si existe un complejo $w$ que cumple con la siguiente propiedad $$|z_n-w|<\varepsilon \mbox{ para todo} n\geq N.$$ Al complejo $w$ se le conoce como __límite__ de la sucesión. <br/><br/>
+Si no existe el límite, decimos que la sucesión es __divergente.__
+
+---
+## Ejemplos:
+
+> Consideremos la función $f(n)=1/n.$ Esta es convergente. Por lo contrario, la sucesión $f(n)=n^2$ es divergente.
+
+<br/><br/>
+> __Teorema:__ Sea $(z_n)$ convergente a $z.$ Y consideremos que $z_n=x_n+iy_n.$ Si $(x_n)$ y $(y_n)$ son convergentes a $x$ y $y$ respectivamente. Entonces, $z=x+iy.$
+
+---
+## Series
+
+> __Definición:__ una __serie__ es una _sucesión_ particular definida por sumas, es decir, $(S_n)$ donde $$S_n=\sum_{j=1}^n z_n.$$
+
+### Ejemplo:
+
+Consideremos la serie dada por la sumas parciales de la sucesión $z_n=\frac{1}{2^n},$ es una serie convergente. Al igual que la serie dada por la suma de la sucesión $z_n=i^n.$
+
+---
+## Series de Potencias:
+
+> __Definición:__ Una serie de potencias es una serie dada de la forma: $$a_0+\sum_{n=1}^N a_n(z-z_0)^n.$$
+
+<br/><br/>
+__Teorema:__ Sea $f$ una función analítica en un disco $C_0$ con centro $z_0$ y radio $r_0.$ Para un punto $z\in C_0$ definimos $$f(z)=f(z_0)+f'(z_0)(z-z_0)+\frac{f''(z_0)}{2!}(z-z_0)^2+\cdots+ \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n+\cdots$$
+y es convergente cuando $|z-z_0|<r_0.$
+
+---
+### Sketch de la prueba:
+
+Por la fórmula integral de Cauchy, tenemos $$f(z)=\frac{1}{2\pi i}\int_{C_1}\frac{f(s)ds}{s-z}.$$
+
+Notemos que $$\frac{1}{s-z}=\left(\frac{1}{s-z_0}\right)\left(\frac{1}{1-\frac{z-z_0}{s-z_0}}\right)$$ y aplicando la identidad de Legendre $$\frac{1}{s-z}=\left(\frac{1}{s-z_0}\right) \left(1+\frac{z-z_0}{s-z_0}+\cdots +\left(\frac{z-z_0}{s-z_0}\right)^{N-1}+\frac{1}{1-\frac{z-z_0}{s-z_0}}\left(\frac{z-z_0}{s-z_0}\right)^N\right)$$
+
+---
+Lo anterior implica que $$\frac{f(s)}{s-z}=\frac{f(s)}{s-z_0}+\frac{f(s)}{(s-z_0)^2}(z-z_0)+\cdots$$
+
+y además sabemos que $$\frac{1}{2\pi i}\int_{C_1}\frac{f(s)ds}{(s-z_0)^{n+1}}=\frac{1}{n!}f^{(n)}(z_0).$$
+
+---
+### Ejemplo:
+
+Encuentre la expansión en serie de potencias de $f(z)=\exp(z)$ al rededor de $0.$
+
+---
+### Ejemplo:
+
+A partir de lo anterior, deduzca la serie de potencias de $f(z)=\sin(z)$ al rededor de $z=0.$
+
+---
+### Ejemplo:
+
+Calcula la expansión en series de la función $f(z)=(1+z)^{-1}$ al rededor del cero.
+
+---
+
+## Series de Laurent
+
+Supongamos que $C_1$ y $C_2$ son dos circulos concentricos a un punto $z_0$ con radios $r_1$ y $r_2$ respectivamente. 
+
+> __Teorema:__ Si $f$ es analítica en $C_i$ y en el anillo que acotan, entonces en cada punto $z$ en el dominio se tiene que $$f(z)=\sum_{n=0}^\infty a_n (z-z_0)^n + \sum_{n=1}^\infty \frac{b_n}{(z-z_n)^n},$$ donde $$a_n=\frac{1}{2\pi i}\int_{C_1}\frac{f(s)ds}{(s-z_0)^{n+1}}$$ $$b_n=\frac{1}{2\pi i}\int_{C_2} \frac{f(s)}{(s-z_0)^{-n+1}}.$$

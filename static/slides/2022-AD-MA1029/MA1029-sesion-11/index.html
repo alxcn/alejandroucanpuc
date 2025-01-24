@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Coordenadas Polares</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2023-04-09" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e3105f7c8e104b699667a1834961a466","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Coordenadas Polares
+]
+.subtitle[
+## Sesión 11
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2023-04-09
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Conocer la definición de coordenadas polares. &lt;br/&gt;&lt;br/&gt;
+ * Establecer las identidades de cambio de coordenadas. &lt;br/&gt;&lt;br/&gt;
+ * Mostrar como se afecta la integral en este nuevo sistema de coordenadas.
+
+---
+# Motivación:
+ ### Coordenadas Polares en `\(\mathbb{R}^2.\)`
+&lt;iframe src="https://www.geogebra.org/calculator/aubzbhsd?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# El cambio de coordenadas
+
+&gt; Si tenemos un punto `\((x,y)\)` en `\(\mathbb{R}^2\)` entonces se cumple: &lt;br/&gt;&lt;br/&gt;
+  * `\(r=\sqrt{x^2+y^2}\)` y `\(\tan(\theta)= \frac{y}{x}.\)` &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+  * `\(x=r\cos(\theta)\)` y `\(y=r\sin(\theta)\)`
+
+---
+## Determinar regiones polares:
+
+&gt; Dadas las siguientes regiones determina si son regiones polares o no.
+
+![RegionesPolares](regiones.png)
+
+---
+# El diferencial de Área en el nuevo sistem
+
+&lt;div class="figure"&gt;
+&lt;img src="https://f54648cc-a-62cb3a1a-s-sites.googlegroups.com/site/pesqueriagrupocal/5-calculo-de-varias-variables/integrales-dobles-en-coordenadas-polares/dip%205.png?attachauth=ANoY7crO9XTlPhJdk1W3FnjzKSSzcM8y8zxXDkO_S8slkccFSBJvngN9KLQgCG7eBBwkLciMoyI6Bf8-Lf5AJnSc1H3DJ-9--JOv2xs-Nd-whsCLxc9oee_Fj8TcDZV8m_LsXLI5C6B_w38wCbBO8fOi7_x2QrVW_PKogYdJXLOs5XRfOFaGZw951qmR3cfb6oMq-fwPbYFdFCv1yUqBfysnbm4nPdSUKrFBOvAyFVTosv2vrMqSXqSXUFdV6QP3xDNqSTWNEzGQf2kgycoOm_sUIxh__B35mW1GyG5x4iHd5xTdIJMU8n94X4aUfNbfCtaVl3jpMH1i&amp;attredirects=0
+" alt="Diferencial de área" width="60%" /&gt;
+&lt;p class="caption"&gt;Diferencial de área&lt;/p&gt;
+&lt;/div&gt;
+
+---
+# Apliquemos el cambio de variable en una integral.
+
+&gt; Calcule el área de la región acotada por el eje `\(x\)` y la curva `\(f(x)=\sqrt{1-x^2}\)` utilizando las coordenadas polares.
+
+
+---
+# La adaptación al diferencial de área.
+
+De lo anterior notamos que no es posible calcular integral solo cambiando los datos, hace falta hacer una adecuación. Esta adecuación se hace en el diferencial de área `$$dxdy=rdrd\theta.$$`
+&gt; Calcule el área de la región acotada por el eje `\(x\)` y la curva `\(f(x)=\sqrt{1-x^2}\)` utilizando las coordenadas polares.
+
+---
+# Ejemplo:
+
+&gt; Calcule el valor de la integral de `\(f(x,y)=e^{x^2+y^2}\)` en la mitad positiva del circulo unitario.
+
+---
+# Ejemplo:
+
+&gt; Calcule el valor de la integral de `\(f(x,y)=e^{x^2+y^2}\)` en la mitad positiva del circulo unitario.
+
+`$$\int\int_R e^{x^2+y^2}=\int_0^\pi\int_0^1 e^{r^2} rdrd\theta =\int_0^\pi \left[\frac{1}{2}e^{r^2}\right]_0^1 d\theta = \frac{\pi(e-1)}{2}.$$`
+
+---
+# Ejercicio:
+
+&gt; Calcula la integral de `\(f(x,y)=x\)` en el cuarto de disco de radio `\(a\)` que se encuentra en el primer cuadrante.
+
+---
+# ¿Por qué es mejor calcular la integral con un cambio de variable?
+
+&gt; Intenta calcular la integral `$$\int_0^1\int_0^{\sqrt{1-x^2}}x^2+y^2 dydx$$` en coordenadas rectangulares y luego con un cambio de coordenadas.
+
+
+---
+
+![Región](regione1.png) `\(C=\{(r,\theta): 0\leq r\leq 1, 0\leq \theta \leq \frac{\pi}{4}\}.\)` Por lo que la integral es: `$$\int_0^1\int_0^{\pi/4} (r\cos(\theta))^2+(r\sin(\theta))^2 rd\theta dr=\int_0^1\int_0^{\pi/4}r^3d\theta\ dr =\left.\frac{\pi}{4}\frac{r^4}{4}\right|_0^1=\frac{\pi}{4}.$$`
+
+---
+# Ejemplo:
+
+&gt; Encuentra el volumen del cilindro sólido que se encuentra sobre el circulo unitario y tiene tapa en el paraboloide `\(z=9-x^2-y^2.\)`
+
+
+---
+# Ejemplo:
+
+&gt; Encuentre el área de la parte inferior al plano `\(z=4\)` del paraboloide `\(z=x^2+y^2\)` 
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

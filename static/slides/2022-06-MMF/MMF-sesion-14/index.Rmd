@@ -1,0 +1,130 @@
+---
+title: "Transformada de Fourier"
+subtitle: "Sesión 14"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos:
+
+ * Definir la problematica: expandir el tipo de señales. <br/><br/>
+ * Definir la transformada de Fourier como solución a esta problemática. <br/><br/>
+ * Calcular transformadas de Fourier.
+---
+# Problemática
+
+> ¿Podemos expandir el tipo de señales que podemos transformar? <br/><br/>
+  * ¿Es posible definir un análogo a la serie de Fourier para una función no periódica? <br/><br/>
+  * ¿podemos extender o modificar las series de Fourier para cubrir el caso de señales de luz o sonido?
+  
+---
+# Idea intuitiva:
+
+> Imaginemos que hacemos tomamos funciones periódicas cuyo periodo tiende a infinito (cada vez más pequeño). Esto implicaria que nuestra suma se hace cada vez más __fina.__
+$$\sum_{j=-\infty}^\infty \to \int_{-\infty}^\infty.$$
+
+---
+# ¿Qué señales podemos utilizar en este caso?
+
+> La __integral de Fourier__ nos ayuda a representar funciones cómo: <br/><br/>
+  * un pulso de voltaje. <br/><br/>
+  * un rayo de luz. <br/><br/>
+  * un sonido no repetido. <br/><br/>
+  * un rango de tonos musicales. <br/><br/>
+  * un rango completo de colores en la luz.
+
+---
+# Transformada de Fourier
+
+> __Definición:__ Sea $f$ una función (integrable). Definimos el _operador lineal_ $\mathscr{F}$ que va desde el espacio de funciones integrables en si mismo dada por $$g(\alpha)=\mathscr{F}(f)(\alpha)=\int_{-\infty}^\infty f(x)\exp\left(-2\pi i x\alpha\right)dx$$
+$$f(x)=\mathscr{F}^{-1}(g)(x)=\frac{1}{2\pi}\int_{-\infty}^\infty g(\alpha)\exp\left(2\pi i x\alpha\right)dx$$
+
+---
+## Ejemplo:
+
+> Calcule la transformada de Fourier para la función $f(x)=1$ si $-1\leq x \leq 1$ y $f(x)=0$ de otra manera. 
+
+Por definición tenemos que calcular: $$\mathscr{F}(f)(\alpha)=\int_{-\infty}^\infty f(x)\exp(-2i\pi \alpha x)dx$$
+
+Por el tipo de función, solamente sobrevive la integral $$\int_{-1}^1 \exp(-2i\pi \alpha x)dx=\int_{-1}^1\cos(2\pi x \alpha) -i \sin(2\pi \alpha x) dx=\int_{-1}^1\cos(2\pi \alpha x)dx-i\int_{-1}^1\sin(2\pi \alpha x)dx$$
+$$=\frac{\sin(2\pi\alpha )}{\pi\alpha}$$
+
+La tranformada de $f(x)$ es la función $g(\alpha)=\frac{\sin(2\pi\alpha)}{\pi\alpha}.$
+
+---
+## Ejercicio:
+
+> Calcula la transformada de Fourier para la función $f(x)=1$ para $a\leq x\leq b$ y $f(x)=0$ de lo contrario.
+
+
+---
+## Ejercicio:
+
+> Calcula la transformada de Fourier para la función $f(x)=1$ para $-a\leq x\leq a$ y $f(x)=0$ de lo contrario.
+
+$$\int_{-a}^a \exp(-2i\pi \alpha x)dx=\int_{-a}^a\cos(2\pi \alpha x)dx-i\int_{-a}^a\sin(2\pi \alpha x)dx$$
+$$=\frac{\sin(2\pi\alpha a)}{\pi\alpha}$$
+> ¿Cómo se vería esta transformada para la función definida en $[a,b]$?
+
+---
+# Propiedades de la transformada de Fourier
+
+> __Proposición:__ Sea $f$ una función integrable, entonces se cumple: <br/><br/>
+* \overline{$\mathscr{F}^{-1}(f)}=\mathscr{F}^{-1}(\overline{f}).$ <br/><br/>
+  * $\mathscr{F}(f)(-\alpha)=\mathscr{F}(f_\sigma)$ dónde $f_\sigma(x)=f(-x).$ <br/><br/>
+  * Si $f(x)$ es par (impar) entonces $g(\alpha)$ es par (impar).  <br/><br/>
+  * Si $f(x)$ es real y par (real e impar) entonces $g(\alpha)$ es real y real (imaginaria e impar).
+  
+---
+# Actividad en clase:
+
+> Calcula la transformada de Fourier de la funciones: <br/><br/>
+  * $f(x)=-1$ si $-\pi <x \leq 0,$ $f(x)=1$ si $0\leq x < \pi$ y cero en otra forma. <br/><br/>
+  * $f(x)=|x|$ si $-1\leq x\leq 1$ y $f(x)=0$ de otra manera. <br/><br/>
+  * $f(x)=2a-|x|$ si $-a\leq x\leq a$ y $f(x)=0$ de otra manera. <br/><br/>
+>Supongamos que $u(x)=1$ si $x\geq 0$ y $u(x)=0$ si $x<0.$ Calcule las transformadas de Fourier de $f_1(x)=u(x)e^{-bx}$ con $b>0.$
+
+

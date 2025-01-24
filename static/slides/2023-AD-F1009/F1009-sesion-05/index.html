@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Integrales de Linea y Trabajo</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-08-20" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ec64fbf4476e44b28121b3e5ea492bed","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Integrales de Linea y Trabajo
+]
+.subtitle[
+## Sesión 05
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-08-20
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Definir la integral de línea. &lt;br/&gt;&lt;br/&gt;
+ * Calcular integrales de línea. &lt;br/&gt;&lt;br/&gt;
+ * Resolver problemas aplicados al trabajo. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Integral de línea
+
+&gt; __Definición:__ Sea `\(\mathbf{F}:\mathbb{R}^n\to\mathbb{R}^n\)` un campo vectorial y `\(c:[a,b]\rightarrow \mathbb{R}^n\)` una curva suave. La integral de línea de `\(\mathbf{F}\)` sobre `\(c,\)` denotada por `\(\int_c\mathbf{F}\cdot d\mathbf{s}\)`, se define como `$$\int_c\mathbf{F}\cdot d\mathbf{s}=\int_a^b\mathbf{F}(c(t))\cdot c'(t)dt.$$`
+
+---
+##### Ejemplo 1
+
+&gt; Calcular `\(\int_c\mathbf{F}\cdot d\mathbf{s}\)`, donde `\(\mathbf{F}(x,y)=( x^2y,2xy^2 )\)` y `\(c\)` es la curva parametrizada por `\(c(t)=\langle t^2,t^3\rangle\)` para `\(0\leq t\leq 1.\)`
+
+--
+##### Solución
+
+Notemos que `\(c'(t)=(2t,3t^2)\)` y `\(\mathbf{F}(c(t))=((t^2)^2(t^3),2(t^2)(t^3)^2)=(t^7,2t^8).\)` Por lo tanto, `$$\int_c\mathbf{F}\cdot d\mathbf{s}=\int_0^1\mathbf{F}(c(t))\cdot c'(t)dt=\int_0^1(t^7,2t^8)\cdot(2t,3t^2)dt=\int_0^1(2t^8+6t^9)dt$$`
+`$$=\left.\frac{2}{9}t^9+\frac{6}{10}t^{10}\right|_0^1=\frac{2}{9}+\frac{6}{10}=\frac{47}{45}.$$`
+
+---
+##### Ejemplo 2
+
+&gt; Calcular `\(\int_c\mathbf{F}\cdot d\mathbf{s}\)`, donde `\(\mathbf{F}(x,y)=( y,2x )\)` y `\(c\)` es la circunferencia centrada en `\((1,1)\)` de radio `\(2.\)`
+
+--
+##### Solución
+
+Notemos que `\(c(t)=(1+2\cos t,1+2\sin t)\)` y `\(c'(t)=(-2\sin t,2\cos t).\)` Por lo tanto, `$$\int_c\mathbf{F}\cdot d\mathbf{s}=\int_0^{2\pi}\mathbf{F}(c(t))\cdot c'(t)dt=\int_0^{2\pi}(1+2\sin t,2+4\cos t)\cdot(-2\sin t,2\cos t)dt$$`
+`$$=\int_0^{2\pi}(-4\sin t+4\cos t+8\cos^2t)dt=\left.4\cos t+4\sin t+\frac{8}{3}\cos^3t\right|_0^{2\pi}$$`
+`$$=4+0+\frac{8}{3}-4-0-\frac{8}{3}=0.$$`
+
+---
+## ¿Qué pasa si cambio de parametrización?
+
+&gt; __Teorema:__ Sea `\(\mathbf{F}:\mathbb{R}^n\to\mathbb{R}^n\)` un campo vectorial y `\(c:[a,b]\rightarrow \mathbb{R}^n\)` una curva suave. Si `\(c_1:[\alpha,\beta]\rightarrow \mathbb{R}^n\)` es una reparametrización (que preserva la orientación) de `\(c,\)` entonces `$$\int_c\mathbf{F}\cdot d\mathbf{s}=\int_{c_1}\mathbf{F}\cdot d\mathbf{s}.$$`
+
+---
+## ¿Qué pasa si cambiamos la orientación?
+
+&gt; __Teorema:__ Sea `\(\mathbf{F}:\mathbb{R}^n\to\mathbb{R}^n\)` un campo vectorial y `\(c:[a,b]\rightarrow \mathbb{R}^n\)` una curva suave. Si `\(c_1:[\alpha,\beta]\rightarrow \mathbb{R}^n\)` es una reparametrización (que no preserva la orientación) de `\(c,\)` entonces `$$\int_c\mathbf{F}\cdot d\mathbf{s}=-\int_{c_1}\mathbf{F}\cdot d\mathbf{s}.$$`
+
+---
+## ¿Qué pasa si mi curva está en pedazos?
+
+&gt; __Teorema:__ Sea `\(\mathbf{F}:\mathbb{R}^n\to\mathbb{R}^n\)` un campo vectorial y `\(c:[a,b]\rightarrow \mathbb{R}^n\)` una curva suave. Si `\(c=c_1+c_2+\cdots+c_n\)` con `\(c_i:[a_i,b_i]\to\mathbb{R}^n,\)` entonces `$$\int_c\mathbf{F}\cdot d\mathbf{s}=\int_{c_1}\mathbf{F}\cdot d\mathbf{s}+\int_{c_2}\mathbf{F}\cdot d\mathbf{s}+\cdots+\int_{c_n}\mathbf{F}\cdot d\mathbf{s}.$$`
+
+---
+##### Ejemplo 3
+
+Sea `\(\mathbf{F}=(\sin(x),\cos(y),t)\)` y `\(c\)` la curva formada por el triángulo formado por `\((1,0,0),(0,1,0),(0,0,1)\)` en el sentido contrario a las manecillas del reloj. Calcular `\(\int_c\mathbf{F}\cdot d\mathbf{s}.\)`
+
+
+---
+## Trabajo
+
+&gt; __Definición:__ Sea `\(\mathbf{F}:\mathbb{R}^n\to\mathbb{R}^n\)` un campo vectorial y `\(c:[a,b]\rightarrow \mathbb{R}^n\)` una curva suave. El trabajo realizado por `\(\mathbf{F}\)` sobre `\(c\)` se define como `$$W=\int_c\mathbf{F}\cdot d\mathbf{s}.$$`
+
+---
+##### Ejemplo 4
+
+&gt; Una partícula se mueve a lo largo de la curva `\(c(t)=( e^t\cos(t),e^t\sin(t) )\)` para `\(0\leq t\leq 1.\)` Si la fuerza que actúa sobre la partícula es `\(\mathbf{F}(x,y)=( x^2y,2xy^2 )\)`, ¿cuánto trabajo se realiza sobre la partícula?
+
+
+---
+# Actividad
+
+1. Si `\(\mathbf{F}\)` es perpendicular a `\(c'(t)\)` a lo largo de su dominio. Demuestra que `\(\int_c\mathbf{F}\cdot d\mathbf{s}=0.\)` &lt;br/&gt;&lt;br/&gt;
+
+1. Si `\(\mathbf{F}=\nabla f,\)` demuestra que `\(\int_c\mathbf{F}\cdot d\mathbf{s}=f(c(b))-f(c(a)).\)` &lt;br/&gt;&lt;br/&gt;
+
+1. Un ciclista sube la montaña `\(x^2+y^2+z=2pi\)` dando una vuelta completa en sentido contrario a las manecillas del reloj con una altura de incremento constante (derivada constante). Si la fuerza que actúa sobre el ciclista es `\(\mathbf{F}(x,y,z)=(y,x,0),\)` ¿cuánto trabajo se realiza sobre el ciclista? &lt;br/&gt;&lt;br/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

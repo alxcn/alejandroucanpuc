@@ -1,0 +1,157 @@
+---
+title: "Conjuntos e Intervalos"
+subtitle: "Sesión 02"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Aprender a construir subconjuntos de los números reales. <br/> <br/>
+ * Aprender la notación intervalos. <br/> <br/>
+ * Aprender las operaciones de conjuntos.
+
+---
+# Conjunto:
+
+Es una _reunión_ de objetos (llamados _elementos_) y que cumplen una relación particular.
+
+> <span style="font-size:35px"> Por ejemplo: $S=\{\mbox{números pares}\}$ y $2\in S.$
+
+Algunos elementos:
+
+- $S$ es el _nombre_ del conjunto.
+- $\{\,\}$ denotan el inicio y final del conjunto, todo lo que este dentro pertenece al conjunto.
+- _números pares_ denota la relación y quienes pertenecen al conjunto.
+- $\in$ denota _"pertenece"_, por lo que $2\in S$ se traduce como: dos pertenece a $S.$ Para denotar la _"no pertenencia"_ usamos $\not\in.$
+
+---
+<br/><br/>
+> <span style="font-size:35px"> Por ejemplo: $S_1=\{1,2,3,4,5\}.$  ¿ $3 \,\,\,\,S_1$ ? Sí, $3\color{red}{\in} S_1.$
+<br/> <br/><br/><br/>
+> <span style="font-size:35px"> Por ejemplo: $S_2=\{p \in \mathbb{Z}: p \mbox{ es negativo}.\}$ y $20\color{red}{\not\in} S_2.$
+
+<br/><br/>
+- $p\in \mathbb{Z}$ nos está delimitando donde vamos a encontrar nuestros elementos, y $p$ se le conoce como variable. <rb/><br/>
+- Los dos puntos (:) se traducen como _"tal que"_, por lo que el conjunto se leería: los enteros tales que son negativos.
+
+
+---
+# Operaciones de conjuntos:
+
+Consideremos los siguientes conjuntos: $A=\{2,4,6,8,10,12\}$, $B=\{1,4,9,16\},$ y $C=\{2,10\}.$ 
+
+> La _unión_ de $B$ y $C$ es un nuevo conjunto, denotado $B\cup C$ que consta de los elementos de $B$ "más" los de $C.$
+
+$$ 
+B\cup C= \{ 1,2,4,9,10,16 \} .
+$$
+<br/> <br/>
+
+> La _intersección_ de $A$ y $B$ es un nuevo conjunto, denotado $A\cap B,$ que consta de los elementos que están en $A$ y $B$ (al mismo tiempo).
+
+$$ A\cap B = \{ 4 \} .$$
+_Nota:_ En los conjuntos $B\cup C$ y $A\cap B$ debería de salir unas llaves $\{,\}$ pero el programa no quiere que aparezcan, no sé por qué.
+---
+# Operaciones de Conjuntos:
+
+Consideremos los siguientes conjuntos: $A=\{2,4,6,8,10,12\}$, $B\{1,4,9,16\},$ y $C=\{2,10\}.$ 
+
+> La _diferencia_ de $B$ menos $A$ es un nuevo conjunto, denotado $B\setminus A$ que consta de los elementos de $B$ que no pertencen a $C.$
+
+$$B\setminus A= \{1,9,16\}.$$
+
+<br/> <br/>
+
+> Decimos que un conjunto está _contenido_  o es _subconjunto_ de si todos sus elementos pertenecen al otro, y lo denotamos con $\subset$.
+
+$$C\subset A.$$
+
+---
+# Los Intervalos
+
+## Desigualdades en los reales:
+
+Los números reales se pueden __ordenar__ mediante $<$, que se lee _menor que_ y se define así:
+
+.pull-left[
+> Si $a,\,b\in \mathbb{R},$ entonces:
+  - $a<b$ si y sólo si $b-a$ es positiva.
+  
+]
+  
+.pull-right[
+__Por ejemplo:__
+- $3<4$
+- $-4 <0$
+- $\sqrt{2}<2.1$
+]
+---
+
+Utilizando el "menor que" ( $<$ ), podemos definir otro comparador llamado _"menor o igual que"_ y que se denota por $\leq$ y que se define:
+.pull-left[
+> Si $a,\,b\in \mathbb{R},$ entonces:
+  - $a\leq b$ si y sólo si $a<b$ o $a=b.$
+  
+]
+  
+.pull-right[
+__Por ejemplo:__
+- $4\leq 4$
+- $-4 \leq 0$
+- $\frac{1}{4}\leq \frac{2}{8}$
+]
+
+> <span style="font-size:30px"> Los enunciados $a<b$ y $a\leq b$ se conocen como __desigualdades__. Cuando involucran a $<$ se conocen como desigualdades _estrictas_ y cuando involucran a $\leq$ se conocen como _no estrictas._
+
+---
+# Los intervalos
+
+> <span style="font-size:30px"> Subconjuntos especiales de $\mathbb{R}$ son aquellos formados mediante desigualdades. 
+<br/>
+
+__Ejemplo 1:__ Sea $S$ el conjunto de números reales mayores a $3$ y menores que $10,$ y se denota por $(3,10)$ conocido como __intervalo abierto__.
+<br/><br/>
+__Ejemplo 2:__ Sea $S$ el conjunto de números reales mayores o iguales que $3$ y menores o iguales que $10,$ y se denota por $[3,10]$ conocido como __intervalo cerrado__.
+<br/><br/>
+__Ejemplo 3:__ Sea $S$ el conjunto de números reales mayores o iguales que $3$ y menores que $10,$ y se denota por $[3,10)$ conocido como __intervalo semi-abierto__.
+<br/><br/>
+__Ejemplo 4:__ Sea $S$ el conjunto de números reales mayores que $3$ y se denota por $(3,\infty)$ conocido como __rayo__. Otros ejemplos son: $[3,\infty),\, (-\infty, 3),\,(-\infty,3].$  
+---
+ 

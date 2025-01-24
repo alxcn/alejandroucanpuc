@@ -1,0 +1,192 @@
+---
+title: "Integrales Multiples y de Línea."
+subtitle: "Sesión 05"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Utilizar el concepto de integral multiple para calcular volúmenes y áreas. <br/><br/>
+ * Utilizar el teorema de Fubini para calcular integrales multiples como iteradas. <br/><br/>
+ * Utilizar el concepto de integral de línea en campos. <br/><br/>
+
+---
+# Partición de un rectángulo y Sumas de Riemann.
+
+Supongamos que tenemos una _región_ rectangular $R$ en $\mathbb{R}^2,$ acotada por $a\leq x\leq b$ y $c\leq y\leq d.$ Una __partición__ es una _malla_ formada por los pares de puntos $(x_i,y_j)$ tales que $$x_{i+1}-x_i=\frac{b-a}{n}\quad\mbox{y}\quad y_{j+1}-y_j=\frac{c-d}{m}.$$
+
+
+---
+# Partición de un rectángulo y Sumas de Riemann.
+
+> Si $f:\mathbb{R}^2\to \mathbb{R}$ es un campo escalar __acotado__ y continuo en la región rectangular $R,$ entonces la suma $$\sum_{i=1}^{n} \sum_{j=1}^m f(x_i,y_j) \Delta x \Delta y$$ _aproxima_ el volumen bajo la superficie (gráfica de la función).
+
+---
+# Sumas de Riemann
+
+<iframe src="https://www.geogebra.org/calculator/gauchpwj?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# La integral doble
+
+> Mientras más refinamos nuestra partición, nuestra aproximación del volumen mejora. Por lo que _en el límite_ de refinamientos obtenemos el volumen. <br/><br/>
+La _integral doble_ se conoce de $f(x,y)$ en la región $R$ se denota como $\int_{R}f\, dA,$ y define como el límite: $$\int_{R} f\, dA ={\int\!\int}_R f(x,y)dxdy =\lim_{(n,m)\to (0,0)} \sum_{i=1}^{n} \sum_{j=1}^m f(x_i,y_j) \Delta x \Delta y.$$
+
+
+---
+# Propiedades de la integral doble
+
+> __Teorema:__ Cualquier función continua definida en un rectángulo es integrable. <br/>
+
+> __Teorema:__ Si $f(x,y)$ es una función acotada y definida en un rectángulo, y su conjunto de discontinuidad es unión de gráficas de funciones continuas, entonces $f$ es integrable en la región. <br/>
+
+> __Teorema:__ La integral doble es lineal, es decir, si $f$ y $g$ son funciones continuas sobre una región $R,$ entonces: $$\int_R (kf+lg)\,dA=k\int_R f\,dA+l\int_R g\,dA.$$ <br/>
+
+
+---
+# ¿Cómo calculo integrales dobles sin utilizar sumas y límites?
+
+> __Teorema (de Fubini):__ Si $f(x,y)$ es una función integrable en la región $R=[a,b]\times[c,d],$ entonces la integral $\int_R f\,dA$ coincide con la cantidad: $$\int_c^d \left[ \int_a^b f(x,y)dx \right]dy=\int_a^b \left[ \int_c^d f(x,y)dy \right]dx.$$
+
+<br/><br/>
+__¿Y si mi función tiene discontinuidades? Sólo hay que tener cuidado que nuestras integral iteradas están bien definidas.__
+
+---
+# Ejemplo 1:
+
+Calcula la integral de la función $f(x,y)=x^2+yx$ en el rectángulo $R=[0,1]\times[0,1].$
+
+
+---
+# Ejemplo 2: 
+
+Calcula la integral de la función $f(x,y)=x^3y-12xy$ en el rectángulo $R=[-2,1]\times[0,1].$
+
+
+---
+# ¿Siempre integraremos en rectángulos?
+
+> __Definición:__ Una región elemental en $\mathbb{R}^2$ es una región del plano que es $x-$simple y $y-$simple. <br/>
+  * Una región en $\mathbb{R}^2$ es $y-$simple si se puede escribir como $$a\leq x\leq b \quad \mbox{y} \quad \phi_1(x)\leq y \leq \phi_2(x).$$ <br/><br/>
+  * Una región en $\mathbb{R}^2$ es $x-$simple si se puede escribir como $$c \leq y \leq d \quad \mbox{y} \quad \psi_1(y)\leq x\leq \psi_2(y).$$
+  
+---
+# La integral doble en regiones elementales.
+
+Tomemos el rectangulo que mejor se adapte a mi región elemental y definamos la función auxiliar: $$\tilde{f}(x,y)=\left\{\begin{array}{ll} f(x,y) & \mbox{si } (x,y)\in D \\ 0 & \mbox{si } (x,y)\in R \mbox{ y } (x,y)\not\in D\end{array}\right.$$
+
+Entonces $$\int_D f\,dA =\int_R \tilde{f}\,dA.$$
+
+---
+# Lo anterior no fue de mucha ayuda...
+
+Podemos usar propiedades de integrales de una variable, y finalmente nuestra integral doble se expresa de la manera:
+
+> __Teorema:__ Si $D$ es una región simple y $f$ es integrable en $D,$ entonces $$\int_D f\,dA = \int_a^b \int_{\phi_1(x)}^{\phi_2(x)} f(x,y)dydx.$$
+
+---
+# Ejemplo 3:
+
+Calcule el valor de la integral de $f(x,y)=x^3y+\cos(x)$ en la región $T$ formada por el triángulo formado por las regiones $0<x<\pi/2$ y $0<y<x.$
+
+---
+# Integral triple:
+
+> Sea $f(x,y,z)$ una función continua en una región caja dada por $B=[a,b]\times [c,d]\times [e,f].$ Dada una partición de la región $(x_i,y_j,z_k)$ con 
+$$x_{i+1}-x_{i}=\Delta x,\quad y_{j+1}-y_j=\Delta y \mbox{ y } z_{k+1}-z_k =\Delta z.$$ Entonces la siguiente suma aproxima el volumen debajo de la gráfica de $f,$ $$\sum_{i=1}^n \sum_{j=1}^m \sum_{k=1}^s f(x_i,y_j,z_k)\Delta x \Delta y \Delta k.$$ 
+<br/><br/>
+Refinando la partición, en el límite obtenemos la integral de la función en la región $R,$ denotada por $$\int_B f \, dV.$$
+
+---
+# ¿Cómo calculo integrales triples?
+
+El teorema de Fubini es valido para integrales triples, así que para calcularlo basta realizar una integración iterada.
+
+---
+# Integral de Línea
+
+
+> Dado un campo vectorial $\mathbf{F}(x,y,z)$ continuo sobre una curva $c:[a,b]\to \mathbb{R}^3.$ Definimos la _integral de línea_ del campo sobre la curva, denotada por $$\int_c \mathbf{F}\cdot ds,$$ como la integral $$\int_a^b \mathbf{F}(c(t))\cdot c'(t) dt.$$
+
+__Ejemplo:__ Calcula la integral del campo $\mathbf{F}(x,y,z)=(x,y,z)$ sobre la curva $c(t)=(\cos(t),\sin(t),t)$ con $0\leq t\leq 2\pi.$
+
+
+---
+# ¿Cómo se interpreta la integral de línea?
+
+Imaginemos que tenemos un campo de vectores $\mathbf{F}$ en el espacio que nos mide la fuerza que ejerce sobre una partícula (carga en un campo eléctrico o masa en un campo gravitacional).
+<br/><br/><br/>
+
+Si la partícula se desplaza en el espacio, supongamos en línea recta $c.$ Si suponemos que la fuerza es constante y el desplazamiento rectilíneo, entonces el __trabajo__ realizado por $\mathbf{F}$ sobre la partícula es $$\mathbf{F}\cdot c.$$ 
+
+
+---
+# ¿Las curvas tienen que ser especiales?
+
+No, las curvas pueden ser de cualquier manera y siempre y cuando se puedan expresar como una función de $\mathbb{R}$ en $\mathbb{R}^m.$ 
+
+<br/><br/>
+
+En particular, las curvas pueden ser formadas por pedazos de curva o curvas a trozos, y la integral de línea es la suma de las integrales en cada trozo.
+
+#### Ejemplo: 
+
+Calcula la integral del campo $\mathbf{F}(x,y)=(3x,-2y)$ sobre la curva dada por $$c(t)=\left\{\begin{array}{cc} (\cos(2t\pi),\sin(2t\pi)) & \mbox{ si }0\leq t\leq 1/2 \\ (-3+4t,0) & \mbox{ si } 1/2\leq t \leq 1\end{array}\right.$$
+
+---
+# Actividad de Clase:
+
+1. Calcula la integral de la función indicada en la región $R=[0,1]\times[0,1].$ 
+  * $f(x,y)=ye^{xy}.$
+  * $f(x,y)=\ln\left[(x+1)(y+1)\right].$
+
+2. Calcula las siguientes integrales:
+  * $\displaystyle{\int_{-1}^1 \int_{-2|x|}^{|x|} e^{x+y}dydx.}$
+  * $\displaystyle{\int_{0}^{\pi/2}\int_{0}^{\cos x}y\sin x dy dx.}$
+  
+3. __Reto:__ Si $f(x)$ es continua en $[a,b]$ y $g(y)$ es continua en $[c,d].$ Pruebe que para la función $h(x,y)=f(x)g(y)$ se cumple $$\int_{[a,b]\times [c,d]}h(x,y) dA= \left[\int_a^b f(x)dx\right] \left[\int_c^d g(y)dy\right].$$
+
+---
+
+4. Integre $f(x,y,z)=ze^{x+y}$ en la caja $B=[0,1]^3.$
+
+5. Calcule la integral de línea del campo $\mathbf{F}(x,y,z)=(x,y,z)$ sobre las siguientes trayectorias:
+  * $c(t)=(\sin(t),0,\cos(t))$ con $0\leq t\leq 2\pi.$
+  * $c(t)=(t^2,3t,2t^3)$ con $-1\leq t \leq 2.$

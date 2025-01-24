@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Directional Derivative</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-02-25" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x6441634ff9844c3810ae25e31d89df2","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Directional Derivative
+]
+.subtitle[
+## Sesion 05
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-02-25
+]
+
+---
+
+
+
+
+
+
+
+# Goals of the session
+
+  * Determine how to calculate the rate of change in arbitrary directions (directional derivative). &lt;br/&gt;&lt;br/&gt;
+  * Define the directional derivative as the product of two vectors. &lt;br/&gt;&lt;br/&gt;
+  * Model using the directional derivative. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Motivation
+
+&gt; The following level curves indicate the amount of moisture with respect to position and we want to know the rate of change of moisture obtained by following the direction of the hurricane.
+![Problematica](isobaras.png)
+
+---
+## Visual Motivation
+
+
+![Problematica 2](LevelCurves.jpg)
+
+---
+# Motivation:
+
+&gt; If `$$h(x,y)=\cos(2x^2-xy+y^2)$$` represents the humidity of the map. And we move along the curve given by `\(x(t)=1+3t\)` and `\(y(t)=1+4t\)` with `\(0\leq t\leq 1.\)` &lt;br/&gt;&lt;br/&gt;
+&gt; Then the change of variable `$$h(t)=h(x(t)+y(t))=\cos(2(1+3t)^2-(1+3t)(1+4t)+(1+4t)^2)=\cos(22 t^2 + 13 t + 2)$$` measures the humidity along the path. &lt;br/&gt;&lt;br/&gt;
+&gt; We want to know the rate of change of humidity at the point `\((1,1)\)` in the direction of the curve.
+---
+## Solving
+
+If we calculate `\(h_t\)` with the change of variable we will obtain the rate of change of humidity along the path. The derivative is $$h_t = h_x x_t+h_y y_t = -\sin(2x^2-xy+y^2)\cdot (4x-y)\cdot 3 - \sin(2x^2-xy+y^2)\cdot (-x+2y)\cdot 4 $$
+
+When we evaluate at `\(t=0,\)` the value of `\(x(1)=1\)` and `\(y(1)=1,\)` so the rate at time `\(t=0\)` is: `$$h_t(0)=h_x(1,1)x_t(0)+h_y(1,1)y_t(0)$$`
+
+`$$=-\sin(2(1)-(1)(1)+(1)^2)\cdot (4(1)-1)\cdot 3 - \sin(2(1)^2-(1)(1)+(1)^2)\cdot (-1+2(1))\cdot 4$$` `$$h_t(0)=-13\sin(2)\approx -11.82$$`
+
+---
+# Directional Derivative|
+
+&gt; **Definition:** If `\((u,v)\)` is a direction in `\(\mathbb{R}^2,\)` `\(f(x,y)\)` is a function and `\(p=(x_0,y_0)\)` then the __directional derivative__ of `\(f\)` at the point `\(p\)` and direction `\((u,v)\)` is the derivative of the function `\(f\)` with the change of variable `$$x(t)=x_0+ut\,quad y(t)=y_0+vt,$$` and is denoted by `\(D_{(u,v)}f(p).\)`
+--
+
+&lt;br/&gt;&lt;br/&gt;
+Note that `\(h(t)=f(x(t),y(t))\)` has as derivative `$$h(t)=f_x(x_0,y_0)u+f_y(x_0,y_0)v$$` to this special product we denote by `\(\nabla f(p)\cdot (u,v).\)`
+
+---
+#### Example 1:
+
+&gt; Compute the directional derivative of `\(f(x,y)=x^2y^3-4y\)` at point `\((2,-1)\)` in the direction `\((2,5)\)`.
+
+--
+
+
+1. Compute the gradient vector `\(\nabla f\)` at point `\((2,-1):\)` `$$\nabla f(2,-1)=(2xy^3,3x^2y^2-4)|_{(2,-1)}=(-4,8)$$`
+
+2. Compute the directional derivative `\(D_{(u,v)}f=\nabla f(2,-1)\cdot (2,5)=(-4)(2)+(-1)(5)\)`
+---
+#### Example 2:
+
+&gt; Compute the directional derivative of `\(f(x,y)=y^2/x\)` at point `\((1,1)\)` in direction `\((2,1)\)`.
+
+--
+
+
+1. Compute the gradient vector `\(\nabla f\)` at point `\((1,1):\)` `$$\nabla f(1,1)=\left(-\frac{y^2}{x^2},\frac{2y}{x}\right)|_{(1,1)}=(-1,1)$$`
+
+2. Compute the directional derivative `$$D_{(u,v)}f=\nabla f(1,1)\cdot (2,1)=(-1)(2)+(1)(2)$$`
+
+
+---
+# What happens if we change the curve we follow?
+
+&gt; In the example we can have `\(x(t)=1+3t\)` and `\(y(t)=1+4t,\)` we can consider:
+&lt;br/&gt;&lt;br/&gt;
+  * `\(x(t)=1+\frac{3}{2}t\)` y `\(y(t)=1+2t,\)` we have that `\(h_t(0)=\frac{-13\sin(2)}{2}\approx -5.91\)` &lt;br/&gt;&lt;br/&gt;
+  * `\(x(t)=1+\frac{3}{5}t\)` y `\(y(t)=1+\frac{4}{5}t,\)` we have that `\(h_t(0)=-\frac{13 \sin(2)}{5}\approx -2.36\)` &lt;br/&gt;&lt;br/&gt;
+  * `\(x(t)=1+t\)` y `\(y(t)=1+\frac{4}{3}t,\)` we have that `\(h_t(0)=\frac{-13\sin(2)}{3}\approx -3.94\)` &lt;br/&gt;&lt;br/&gt;
+  
+---
+
+## Unitary Directions
+
+If we take a direction that is not unitary, the value of the directional derivative will be affected by the magnitude of the vector. To avoid this, we can take the unitary vector `$$\left(\frac{u}{\sqrt{u^2+v^2}},\frac{v}{\sqrt{u^2+v^2}}\right)$$`
+
+--
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; **Note:** From now on, whenever we are asked for an address, we will take the unitary address of the vector. For this we need to take the vector `$$\left(\frac{u}{\sqrt{u^2+v^2}},\frac{v}{\sqrt{u^2+v^2}}\right)$$`.
+
+---
+#### Ejemplos:
+
+&gt; Calcule la derivada de la función `\(f(x,y)=x^4y-4y^2\)` en el punto `\((2,-1)\)` y en la dirección `\((2,5)\)`.
+
+--
+
+
+1. Primero volvemos unitario mi vector: `$$\left(\frac{2}{\sqrt{2^2+5^2}},\frac{5}{\sqrt{2^2+5^2}}\right)=\left(\frac{2}{\sqrt{29}},\frac{5}{\sqrt{29}}\right)$$`
+
+2. Calculamos el vector gradiente `\(\nabla f\)` en el punto `\((2,-1):\)` `$$\nabla f(2,-1)=(4x^3y,x^3-8y)|_{(2,-1)}=(32,16)$$`
+
+3. Calculamos calculamos la derivada direccional `$$D_{(u,v)}f=\nabla f(2,-1)\cdot \left(\frac{2}{\sqrt{29}},\frac{5}{\sqrt{29}}\right)=\frac{(32)(2)+(16)(5)}{\sqrt{29}}$$`
+
+---
+#### Example 3:
+
+&gt; Compute the directional derivative of `\(f(x,y)=\frac{\ln(y)}{x-3}\)` at point `\((1,1)\)` in direction `\((1,1)\)`.
+
+--
+
+
+1. We verify that our direction is unitary: `$$\left(\frac{1}{\sqrt{1^2+1^2}},\frac{1}{\sqrt{1^2+1^2}}\right)=\left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right)$$`
+
+2. Compute the gradient `\(\nabla f\)` at point `\((1,1):\)` `$$\nabla f(1,1)=\left(-\frac{\ln(y)}{(x-3)^2},\frac{1}{y(x-3)}\right)|_{(1,1)}=\left(0,\frac{-1}{2}\right)$$`
+
+3. Compute the directional derivative 
+`$$D_{(u,v)}f=\nabla f(1,1)\cdot \left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right)=(0)\left(\frac{1}{\sqrt{2}}\right)+\left(-\frac{1}{2}\right)\left(\frac{1}{\sqrt{2}}\right)$$`
+
+---
+# Modelling using the directional derivative
+
+&gt; Temperature at position `\((x,y,z)\)` is given by `\(T(x,y,z)=200e^{-x^2-3y^2-9z^2}\)` find the rate of change at point `\(P(2,-1,2)\)` in direction `\((3,-3,3).\)`
+
+--
+
+
+1. Make unitary the direction `\(\left(\frac{3}{\sqrt{3^2+(-3)^2+3^2}},\frac{-3}{\sqrt{3^2+(-3)^2+3^2}},\frac{3}{\sqrt{3^2+(-3)^2+3^2}}\right)=\left(\frac{1}{\sqrt{3}},-\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}}\right)\)`
+
+2. Compute the gradient at  `\((2,-1,2)\)`
+`$$\nabla f (2,-1,2)=(-400 e^{-x^2 - 3 y^2 - 9 z^2} x, -1200 e^{-x^2 - 3 y^2 - 
+   9 z^2} y, -3600 e^{-x^2 - 3 y^2 - 9 z^2) z}|_{(2,-1,2)}$$ `$$=(-800e^{-43}, 1200e^{-43}, -7200e^{-43})$$`
+
+3. Compute the directional derivative
+`$$D_{(3,-3,3)}f(2,-1,2)=(-800e^{-43}, 1200e^{-43}, -7200e^{-43})\cdot \left(\frac{1}{\sqrt{3}},-\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}}\right)$$`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

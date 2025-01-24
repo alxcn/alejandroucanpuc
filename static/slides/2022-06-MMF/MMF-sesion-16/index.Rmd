@@ -1,0 +1,152 @@
+---
+title: "Aplicaciones de la Transformada de Laplace"
+subtitle: "Sesión 16"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos:
+
+ * Propiedades básicas de la transformada de Laplace. <br/><br/>
+ * Derivada e Integral de una transformada de Laplace. <br/><br/>
+ * Definir la transformada de Laplace de la derivada de una función.<br/><br/>
+ * Aplicación a Ecuaciones Diferenciales. <br/><br/>
+---
+# Propiedades Básicas.
+
+> __Linealidad:__ Si $f_1$ y $f_2$ son dos funciones, $$\mathcal{L}\{c_1f_1+c_2f_2\}=c_1\mathcal{L}\{f_1\}+c_2\mathcal{L}\{f_2\}.$$ <br/><br/>
+
+### Ejemplo:
+
+$$\mathcal{L}\{\cosh(\omega t)\}=\mathcal{L}\left\{\frac{e^{\omega t}+e^{-\omega t}}{2}\right\}=\frac{1}{2}\left(\mathcal{L}\{e^{\omega t}\}+\mathcal{L}\{e^{-\omega t}\}\right)=\frac{1}{2}\left(\frac{1}{s-\omega}+\frac{1}{s+\omega}\right)=\frac{s}{s^2-\omega^2}$$
+---
+# Biyectividad
+
+> __Teorema:__  Distintas funciones continuas en $[0,\infty)$ tienen transformadas de Laplace distintas.<br/><br/>
+__Corolario:__ Si $g=\mathcal{L}\{f\},$ entonces $f$ es la única función en $[0,\infty)$ que cumple esto, y se define como $f=\mathcal{L}^{-1}\{g\}.$
+
+### Ejemplo:
+
+$$\mathcal{L}^{-1}\left\{\frac{\omega}{s^2+\omega^2}\right\}=\sin(\omega t).$$
+---
+### Ejemplo 2:
+
+> Calcula la transformada de Laplace inversa de la función $F(s)=\frac{1}{(s-2)(s-3)}.$
+
+Usemos _fracciones parciales_ para simplificar esta expresión:
+
+$$\frac{1}{(s-2)(s-3)}=\frac{A}{s-2}+\frac{B}{s-3}$$ $$1=A(s-3)+B(s-2),$$ podemos concluir que $A=-1$ y $B=1,$ por lo que $$f(t)=\mathcal{L}^{-1}\{F(s)\}=-\mathcal{L}^{-1}\left\{\frac{1}{s-2}\right\}+\mathcal{L}^{-1}\left\{\frac{1}{s-3}\right\}=-e^{2t}+e^{3t}.$$
+
+---
+# Teoremas de Traslación
+
+> __Teorema [Primer Teorema de Traslación]:__ Si $F(s)=\mathcal{L}\{f(t)\},$ entonces $$F(s-a)=\mathcal{L}\{e^{at}f(t)\}.$$
+
+### Ejemplo:
+
+Dado que $\mathcal{L}(t)=\frac{1}{s^2}$ entonces $$\mathcal{L}\{te^{at}\}=\frac{1}{(s-a)^2}.$$
+---
+# Teoremas de Traslación
+
+> __Teorema [Segundo Teorema de Traslación]:__ Si $u_a(t)=1$ si $t>a$ y $u_0(t)=0$ si $t<a.$ Ademas sea $F(s)=\mathcal{L}\{f(t)\}$ entonces $$\mathcal{L}\{u_a(t)f(t-a)\}=e^{-as}F(s).$$
+
+---
+# Diferenciación
+
+> __Teorema:__ Si $f$ es una función continua a trozos en $[0,\infty)$ y tal que $$|f(t)|\leq Me^{at}$$ para algún $a>0$ y $F(s)=\mathcal{L}\{f(t)\}.$ Entonces, $$\frac{d^n F}{ds^n}=\mathcal{L}\left\{(-1)^nt^n f(t)\right\}.$$
+
+---
+## Derivadas de Orden Superior
+
+> __Teorema:__ Supongamos que $f(t),f'(t),\cdots, f^{(n-1)}(t)$ son continuas en $(0,\infty)$ con regularidad exponencial, mientras que $f^(n)(t)$ es continua a trozos en $[0,\infty).$ Entonces, $$\mathcal{L}\{f^{(n)}(t)\}=s^n\mathcal{L}\{f(t)\}-s^{n-1}f(0^+)-s^{n-2}f'(0^+)-\cdots-f^{(n-1)}(0^+).$$
+
+### Ejemplo: 
+
+$$\mathcal{L}\{t\cos(\omega t)\}=-\frac{d}{ds}\mathcal{L}\{\cos(\omega t)\}=-\frac{d}{ds}\frac{s}{s^2+\omega^2}=\frac{s^2-\omega^2}{(s^2+\omega^2)^2}.$$
+---
+
+# $\mathcal{L}\{\cdot\}$ de una derivada
+
+> Supongamos que $f$ es una función y $f'$ su derivada. Queremos calcular $$\mathcal{L}\{f'\}.$$ <br/><br/>
+__Teorema:__ Supongamos que $f$ es una función continua en $(0,\infty)$ y además $$|f(t)|\leq M e^{\alpha t}$$ para todo $t.$ Además consideremos que $f'$ es continua a trozos en $[0,\infty).$ Entonces $$\mathcal{L}\{f'(t)\}=s\mathcal{L}\{f(t)\}-f(0^+)$$ cuando $\mbox{Re}(s)>\alpha$ y $f(0^+)$ denota el límite de $f$ cuando $t$ tiende a cero por la derecha.
+
+---
+## Prueba del teorema
+
+---
+### Ejemplo
+
+> Calcula $\mathcal{L}\left\{\sin^2(\omega t\right\}$ y $\mathcal{L}\left\{\cos^2(\omega t\right\}$
+
+
+Notemos que para $f(t)=\sin^2(\omega t),$ tenemos que $f'(t)=2\omega \sin(2\omega t).$ Entonces se debe cumplir $$\mathcal{L}\left\{\omega \sin(2\omega t)\right\}=s\mathcal{L}\{\sin^2(\omega t)\}-\sin^2(0),$$
+dado que $\sin^2(0)=0.$ Podemos decir que $$\mathcal{L}\{\sin^2(\omega t)\}=\frac{1}{s}\mathcal{L}\{\omega \sin(2\omega t)\}=\frac{\omega}{s}\frac{2\omega}{s^2+4\omega^2}.$$
+
+---
+# Aplicación a la EDOs
+
+### Ejemplo:
+
+Consideremos el problema de valores iniciales: $$\frac{d^2y}{dt^2}+y=1,\,y(0)=y'(0)=0.$$
+
+Aplicando la transformada de Laplace en ambos lados d ela ecuación obtengo: $$\mathcal{L}\{y''\}+\mathcal{L}\{y\}=\mathcal{L}\{1\}.$$
+
+Por el teorema de anterior obtenemos: $$s^2\mathcal{L}\{y\}-sy(0)-y'(0)+\mathcal{L}\{y\}=\frac{1}{s},$$
+
+---
+### Continuación ejemplo:
+
+simplificando obtenemos $$\mathcal{L}\{y\}=\frac{1}{s(s^2+1)}.$$
+
+Apliquemos fracciones parciales: $$\frac{1}{s(s^2+1)}=\frac{A}{s}+\frac{Bs+C}{s^2+1},$$ de donde obtenemos que $$\mathcal{L}\{y\}=\frac{1}{s}-\frac{s}{s^2+1}.$$ Aplicando la Transformada inversa, deducimos que $$y=1-\cos(t).$$
+
+---
+# Actividad en clase:
+
+1. Calcula $\mathcal{L}\{t\cosh(\omega t)\}$ y $\mathcal{L}\{t^2\sin(\omega t)\}.$ <br/><br/>
+1. Calcula $\mathcal{L}^{-1}\left\{\frac{s+1}{s^2(s-1)}\right\}.$ <br/><br/>
+1. Usando la regla de la enésima derivada, calcule $$\mathcal{L}\{\sin^3(\omega t)\}.$$ <br/><br/>
+1. Usando transformadas de Laplace, encuentra una solución a $$y'''+y''=e^t+t+1,\quad y(0)=y'(0)=y''(0)=0.$$

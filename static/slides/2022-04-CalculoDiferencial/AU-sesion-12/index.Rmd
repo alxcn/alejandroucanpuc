@@ -1,0 +1,129 @@
+---
+title: "Límites Algebraícos"
+subtitle: "Sesión 12"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Calcular el valor de un límite sin utilizar tablas de aproximación. <br/><br/>
+ * Conocer cuando utilizar técnicas algebraicas para calcular un límite. <br/><br/>
+
+---
+# ¿Cómo calculo un límite?
+
+> Para encontrar el límite: $$ \lim_{x\to a} f(x)$$ podemos seguir los siguientes pasos:
+
+1. Evaluar la función $f$ en $a$ ( $f(a)$ ). Si existe el valor, entonces:
+$$\lim_{x\to a}f(x)=f(a).$$
+2. Si $f(a)$ es un indeterminado $\frac{0}{0},$ entonces utilizamos un recurso algebraico (factorizar, racionalizar, etc) para eliminar esta indeterminación.
+
+3. En cualquier otro caso, utilizar la tabla de aproximación a $x=a.$
+
+---
+# Ejemplo 1:
+
+$$\lim_{x\to -3}\frac{3x+10}{5-x}=\color{red}{\frac{1}{8}}.$$
+
+Veamos por qué:
+<br/><br/>
+
+Notemos que $f(x)=\frac{3x+10}{5-x},$ evaluemos $f$ en $x=-3,$
+
+$$ f(\color{red}{-3})=\frac{3(\color{red}{ -3} )+10}{5-(\color{red}{-3})}=\frac{1}{8}.$$
+
+Como podemos ver $\frac{1}{8}$ es un número real bien definido, y podemos decir que la afirmación inicial es correcta.
+
+---
+# Ejemplo 2 (factorización): 
+$$ \lim_{x\to 2} \frac{x^2-x-2}{x^2-2x}=\color{red}{\frac{3}{x}}.$$
+
+Primero evaluemos $f(x)=\frac{x^2-x-2}{x^2-2x}$ en $x=2.$
+
+$$ f(2)=\frac{(\color{red}2)^2-\color{red}2-2}{(\color{red}2)^2-2(\color{red}2)}=\frac{0}{0},$$ entonces $f(2)$ no existe (hay una indeterminación 0/0) por lo que utilizaremos _factorización_ como recurso algebraico.
+
+Notemos que la fracción algebraíca no está simplificada, es decir, podemos factorizar y ver si existen factores que se reducen.
+
+$$\frac{x^2-x-2}{x^2-2x}=\frac{(x-2)(x+1)}{x(x-2)}=\frac{x+1}{x},$$
+
+---
+# Ejemplo 2 (factorización):
+
+Entonces la ultima fracción es _equivalente_ a la primera, veamos que sucede cuando evaluamos $x=2$ en la nueva fracción: $$ \frac{\color{red}2+1}{\color{red}2}= \frac{3}{2},$$ la indeterminación desapareció, y ahora si podemos evaluar. Por lo tanto:
+
+$$\lim_{x\to 2} \frac{x^2-x-2}{x^2-2x}=\lim_{x\to 2}\frac{x+1}{x}=\frac{3}{2}.$$
+
+---
+# Ejemplo 3 (racionalización):
+
+Encuentra el valor de $$\lim_{t\to 4}\frac{t-4}{\sqrt{t}-2}.$$
+<br/><br/>
+Si evaluamos $f$ en $t=4,$ vemos que existe una indeterminación $0/0.$ Utilizaremos _racionalización_ como recurso algebraico.
+
+$$ \frac{t-4}{\sqrt{t}-2}\cdot \color{red}{\frac{\sqrt{t}+2}{\sqrt{t}+2}}= \frac{(t-4)(\sqrt{t}+2)}{t-4}=\sqrt{t}+2.$$
+
+Verifiquemos si con esto removimos la indeterminación: $$\sqrt{\color{red}4}+2=2+2=4.$$
+
+---
+# Ejemplo 3 (racionalización):
+
+Por lo tanto, 
+
+$$\lim _ {t\to 4} \frac{t-4}{ \sqrt{t} - 2 } = \lim_{t\to 4} \sqrt{t} + 2 = 4$$
+
+--- 
+# Ejemplo 4 (racionalización):
+
+<br/>
+
+Encuentre el valor del siguiente límite $$ \lim_{r\to 9} \frac{3-\sqrt{r}}{18-2r}.$$
+
+Checamos si hay alguna indeterminación, $f(9)=\frac{3-\sqrt{\color{red}9}}{18-2(\color{red}9)}=\frac{0}{0}.$ 
+
+---
+# Ejemplo 4 (racionalización):
+Utilizamos racionalización para eliminar la indeterminación:
+
+$$ \frac{3-\sqrt{r}}{18-2r}\cdot\color{red}{\frac{3+\sqrt{r}}{3+\sqrt{r}}}=\frac{9-r}{(18-2r)(3+\sqrt{r})}=\frac{1}{2(3+\sqrt{r})}$$
+
+Entonces calculamos el límite, 
+
+$$\lim_{ r\to 9 } \frac{ 3-\sqrt{r} }{ 18-2r } = \lim_{ r\to 9 }  \frac{1}{ 2 (3 + \sqrt{r}) } = \frac{1}{12}.$$
+

@@ -1,0 +1,114 @@
+---
+title: "U-Substitution and By Parts"
+subtitle: "Session 10"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Goals
+
+
+* Apply the Method of Substitution to calculate integrals. <br/><br/>
+* Apply the Method of Integration by Parts to calculate integrals. <br/><br/>
+
+---
+---
+# Substitution
+
+> __Method:__ Substitution is a method of integration in which we use a change of variable to transform the integrand into a form that is easier to integrate (and use direct integration). <br/><br/>
+
+$$\int f(g(x))g'(x)dx = \int f(u)du= F(u)+C$$
+
+__Remarks:__ The choice of $u$ in the integral depend in the following criteria: the choice of $u$ must be an internal function on a composite function. <br/><br/>
+
+---
+#### Example
+
+1. $\int \frac{2x+2}{(x^2 + 2x + 1)} dx$ <br/><br/>
+2. $\int xe^{3x^2} dx$ <br/><br/>
+3. $\int \tan(x)dx$ <br/><br/>
+4. $\int \frac{1}{x\ln(x)}dx$ <br/><br/>
+5. $\int \frac{3x}{\sqrt{x^2+2}e^{\sqrt{x^2+2}}dx$ <br/><br/>
+
+---
+# By Parts
+
+> __Method:__ By parts is a method of integration in which we use the product rule of differentiation to transform the integrand into a form that is easier to integrate (and use direct integration). <br/><br/>
+
+$$\int f(x)g'(x)dx = f(x)g(x) - \int f'(x)g(x)dx$$
+$$\int udv= uv - \int vdu$$
+
+__Remarks:__ The choice of $f$ and $g'$ in the integral depend in the following criteria: the choice of $f$ must be the function that simplify when we derive it, and the choice of $g'$ should be the one that is easier to integrate. <br/><br/>
+
+---
+## ILATE
+
+The ILATE rule is a mnemonic to help you remember which function to differentiate and which to integrate when using integration by parts. <br/><br/> If the term is a product is upper in the list, then it should be the function to differentiate. <br/><br/>
+
+1. Inverse functions. <br/><br/>
+2. Logarithmic functions. <br/><br/>
+3. Algebraic functions. <br/><br/>
+4. Trigonometric functions. <br/><br/>
+5. Exponential functions. <br/><br/>
+
+---
+#### Example
+
+1. $\int x\ln(3x)dx$ <br/><br/>
+2. $\int 4x e^{x+3} dx$ <br/><br/>
+
+---
+#### Multiple Times By Parts
+
+1. $\int x^2e^{4x-3}dx$ <br/><br/>
+1. $\int x^2\sin(3x+2)dx$ <br/><br/>
+
+#### Cyclic Integration by Parts
+
+1. $\int \cos(x)e^x dx$ <br/><br/>
+1. $\int \sin(x)e^{4x+1} dx$ <br/><br/>
+
+

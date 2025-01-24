@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Cálculo en Varias Variables</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x38ef17552e7464d94f4c825059cb26f","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Cálculo en Varias Variables
+]
+.subtitle[
+## Sesión 02
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Determinar la existencia de límites en campos escalares. &lt;br/&gt; &lt;br/&gt;
+ * Calcular límites en campos escalares y en campos vectoriales. &lt;br/&gt; &lt;br/&gt;
+ * Calcular derivadas parciales de un campo escalar.
+
+---
+# Límites
+
+&gt; Sea `\(f:\mathbb{R}^m\to \mathbb{R}^n\)` una función (con `\(n=1,2,3\)`). Decimos que la función `\(f\)` tiende a `\(\vec{L}\)` cuando `\(\vec{x}\)` tiende a `\(\vec{x}_0\)` si sucede que para cada _entorno_ `\(U\)` de `\(\vec{L}\)` existe un _entorno_ `\(V\)` de `\(\vec{x_0}\)` tal que `$$f(V)\subset U.$$` &lt;br/&gt;&lt;br/&gt;
+En símbolos escribimos, `$$\lim_{\vec{x}\to \vec{x}_0}f(\vec{x})=\vec{L}.$$`
+
+---
+# Ejemplo:
+
+Calcule el límite de la función `\(f(x,y)=x^2+y^2+2\)` cuando `\((x,y)\)` tiende a `\((0,1).\)`
+
+&lt;iframe src="https://www.geogebra.org/calculator/nhnmmvej?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# No Ejemplo:
+
+Calcule el límite de la función `\(f(x,y)=\displaystyle{\frac{x^2-y^2}{x^2+y^2}}\)` cuando `\((x,y)\)` tiende a `\((0,0).\)`
+
+&lt;iframe src="https://www.geogebra.org/calculator/hywpmx8h?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+---
+# ¿Cuándo no existe un límite?
+
+&gt; Decimos que `$$\lim_{\vec{x}\to \vec{x}_0}f(\vec{x})=\vec{L}$$` existe si para cualquier trayectoria `\(c(t)\)` en `\(\mathbb{R}^m\)` que cumpla `\(c(0)=\vec{x}_0\)` se cumple que `$$\lim_{t\to 0}f(c(t))=\vec{L}.$$` &lt;br/&gt;&lt;br/&gt;
+Entonces, si existen __dos trayectorias__ con límites distintos, entonces el límite completo no existe.
+
+---
+# Ejemplo
+
+Calcule el límite de la función `\(f(x,y)=\displaystyle{\frac{x^2-y^2}{x^2+y^2}}.\)`
+
+Pensemos en la trayectoria, `\(c(t)=(t,t)\)` (o séa la recta `\(x=y\)`), notemos que `\(c(0)=(0,0).\)` `$$f(c(t))=\frac{t^2-t^2}{t^2+t^2}=\frac{0}{2t^2}=0.$$`
+
+&lt;br/&gt;&lt;br/&gt;
+
+Pensemos en le trayectoria, `\(s(t)=(0,t)\)` (o séa, la recta `\(x=0\)`), notemos que `\(s(0)=(0,0).\)`
+
+`$$f(s(t))=\frac{-t^2}{t^2}=-1.$$`
+---
+# ¿Cómo calculamos un límite?
+
+Para realizar esto necesitamos recurrir al concepto de __continuidad__. &lt;br/&gt;
+
+&gt; Una función `\(f:\mathbb{R}^n\to \mathbb{R}^m\)` es continua en el vector `\(\vec{v}\in\mathbb{R}^n\)` si se cumple:
+- Si `\(\displaystyle{\lim_{\vec{x}\to \vec{v}}f(\vec{x})}\)` existe,
+- y `\(\displaystyle{\lim_{\vec{x}\to \vec{v}}f(\vec{x})}=f(\vec{v}).\)`
+
+
+La definición anterior puede ser un poco contraintuitiva, pero para fines practicos:
+
+&gt; Un _campo escalar_ es __continuo__ si la gráfica no tiene huecos o roturas. Un _campo vectorial_ es __continuo__, si cada función coordenada (en la regla de asignación) es continuo cuando las tomamos como funciones de una variable o campos escalares.
+
+---
+# Ejemplo:
+
+- La función `\(f(x,y)=3x^2+2xy+y^3\)` es continua para todo vector de `\(\mathbb{R}^2.\)` &lt;br/&gt;
+
+- La función `\(f(x,y,z)=\sin(x+y)+\cos(z)+e^z\)` es continua para todo vector de `\(\mathbb{R}^3.\)` &lt;br/&gt;
+
+- La función `\(f(x,y)=(\sin(x),\cos(y))\)` es continua para todo vector de `\(\mathbb{R}^2.\)` &lt;br/&gt;
+
+- La función `\(f(x,y)=\frac{1}{x+y}\)` es continua para todo vector de `\(\mathbb{R}^2\)` excepto `\((0,0).\)` &lt;br/&gt;
+
+- La función `\(f(x,y)=\sec(x)+\csc(y)\)` es discontinua en varias partes de `\(\mathbb{R}^2.\)`
+
+---
+# Cálculo de Límites:
+
+&gt; Para calcular el límite de una función en varias variables realizamos el siguiente razonamiento:&lt;br/&gt;&lt;br/&gt;
+  - ¿La función es continua? Si la función es continua, entonces el límite será el resultado de evaluar la función en el valor a donde tendemos. &lt;br/&gt;&lt;br/&gt;
+  - ¿La función no es continua? Entonces comprobamos si existe el límite utilizando trayectorias. &lt;br/&gt;&lt;br/&gt;
+  
+__Ejemplo 1:__ Calcule `\(\displaystyle{\lim_{\vec{x}\to (0,1)}3x^2+2y^3-2xy-1}\)`
+
+
+---
+# Ejemplos:
+
+__Ejemplo 2:__ Calcule `\(\displaystyle{\lim_{\vec{x}\to (1,1)}(3x^2,-2xy,3-x^2y^2)}\)`
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+__Ejemplo 3:__ Calcule `\(\displaystyle{\lim_{\vec{x}\to(0,0,0)}e^{x^2+y+z^3}}\)`
+
+
+---
+# Ejemplos: 
+
+__Ejemplo 4:__ Calcule límite `\(\displaystyle{\lim_{(x,y)\to (0,0)}\frac{xy\cos(y)}{3x^2+y^2}}.\)`
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+__Ejemplo 5:__ Calcule límite `\(\displaystyle{\lim_{(x,y,z)\to (0,0,0)}\frac{xy+xz^2+yz^2}{x^2+y^2+z^4}}.\)`
+
+---
+# Derivación
+
+La derivación si hace distinción entre campos escalares y vectoriales, pero en ambas necesitamos la siguiente definición:
+
+&gt; __Definición:__ Supongamos que tenemos un campo escalar `\(f:\mathbb{R}^m\to \mathbb{R},\)` con variables `\((x_1,x_2,\cdot,x_m).\)` Definimos la __derivada parcial de `\(f\)` respecto a `\(x_j\)`__ como el límite `$$\lim_{h\to 0} \frac{f(x_1,\cdots,x_j+h,\cdots,x_m)-f(x_1,\cdots,x_j,\cdots,x_m)}{h}.$$` A tal derivada parcial se le denotará por `\(\frac{\partial f}{\partial x_j}\)` o `\(D_{x_j}f.\)`
+
+
+La definición anterior solamente indica, que la derivada parcial de una función respecto a cualquiera de sus variables es simplemente derivar la función respecto a la variable deseada y el resto de las variables se consideran constantes.
+
+---
+# Ejemplo 1:
+
+Encuentre `\(\frac{\partial f}{\partial x}\)` y `\(\frac{\partial f}{\partial y}\)` para el campo escalar `$$f(x,y) =3x^2y+e^y+4\cos(x).$$`
+
+
+---
+# Ejemplo 2:
+
+Calcule todas las derivadas parciales del campo escalar `\(f(x,y,z)=\ln(xyz)+x+y+z.\)`
+
+---
+# Visión geométrica de las Derivadas Parciales
+
+Aquí vemos las derivadas parciales de la función `\(f(x,y)=x^2+xy+y^3\)` en el punto `\((1,1).\)`
+
+&lt;iframe src="https://www.geogebra.org/calculator/uagaabd5?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# Modelación con Derivadas Parciales:
+
+La altura de un terreno está dada por la función `\(h(x,y)=e^{x+y}\sqrt{4-3x^2-2y^2},\)` donde `\(h\)` está medida en `\(km,\)` al igual que `\(x\)` y `\(y.\)` ¿A qué razón cambia la altura cuando nos restringimos a la dirección de `\(y\)`? ¿A qué razón cambia la altura cuando nos restringimos a `\(x\)`?
+
+
+---
+# Regla de la Cadena
+
+Supongamos que `\(f(x,y)\)` es un campo escalar, y supongamos que existen campos escalares `\(x=g(s,t)\)` y `\(y=h(s,t).\)` Entonces las `\(f\)` se puede expresar como una función de `\(s\)` y `\(t,\)` y las derivadas parciales respecto a `\(s\)` y `\(t\)` están dadas por:
+
+`$$\frac{\partial f(g(s,t),h(s,t))}{\partial s}=\frac{\partial f}{\partial x}\frac{\partial x}{\partial s}+\frac{\partial f}{\partial y}\frac{\partial y}{\partial s}$$`
+`$$\frac{\partial f(g(s,t),h(s,t))}{\partial t}=\frac{\partial f}{\partial x}\frac{\partial x}{\partial t}+\frac{\partial f}{\partial y}\frac{\partial y}{\partial t}$$`
+__Ejemplo:__ Supongamos que `\(f(x,y)=e^x\sin y,\)` y `\(x=st^2\)` y `\(y=s^2t.\)` Calcule las derivadas parciales respecto a `\(s\)` y `\(t\)` de la función `\(f(g,h).\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

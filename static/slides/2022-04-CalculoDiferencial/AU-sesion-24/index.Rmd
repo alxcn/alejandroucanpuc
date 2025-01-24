@@ -1,0 +1,128 @@
+---
+title: "Monotonía y Concavidad"
+subtitle: "Sesión 24"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Determinar los intervalos de monotonía. <br/><br/>
+ * Determinar los intervalos de concavidad. <br/><br/>
+ 
+---
+# Mononotía.
+
+> Monotonía se refiere al comportamiento de la función cuando se ve un crecimiento o decrecimiento. 
+
+<iframe src="https://www.geogebra.org/graphing/mcwuyrqz?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Monotonía y Derivadas.
+
+> Si $f(x)$ es una función, entonces tenemos que: <br/><br/>
+* $f(x)$ es __creciente__ en el intervalo $(a,b),$ si $f'(x)>0$ en el intervalo $(a,b).$ <br/><br/>
+* $f(x)$ es __decreciente__ en el intervalo $(a,b),$ si $f'(x)<0$ en el intervalo $(a,b).$
+
+---
+# Ejemplo:
+
+Encuentra los intervalos donde la función $f(x)=x^2-6x+5$ es monotona.
+
+> Solución:
+
+<br/>
+* Encontrar los puntos _críticos_ (resolver $f'(x)=0$): $$f'(x)=2x-6=0\Rightarrow x=3.$$
+
+* Realicemos un test: chequemos el signo de la derivada en un punto $x<3$ y el signo de la derivada de un punto $x>3.$ <br/><br/>
+
+* Creciente en $(3,+\infty)$ y Decreciente en $(-\infty,3).$
+
+---
+# Ejemplo:
+Encuentre donde la función $f(x)=2x^3-3x^2-12x+7$ es decreciente.
+
+> Solución:
+
+<br/>
+
+* Calculemos la derivada $f'(x)=6x^2-6x-12.$ <br/>
+
+* Resolvemos la desigualdad $f'(x)<0.$ $$6x^2-6x-12<0 \Rightarrow (x-2)(x+1)<0.$$ <br/><br/><br/>
+
+
+* Es decreciente en $(-1,2).$
+
+---
+# Concavidad de Funciones:
+
+> Ahora nos interesa conocer donde la función parace una cúpula o un valle, y cuales son los puntos donde hace el cambio.
+
+---
+# Concavidad y Derivadas.
+
+> Si $f(x)$ es una función, entonces se cumple que: <br/><br/><br/>
+* $f(x)$ es __cóncava hacia arriba__ en $(a,b),$ si $f''(x)>0$ en el intervalo $(a,b).$ <br/><br/>
+* $f(x)$ es __cóncava hacia abajo__ en $(a,b),$ si $f''(x)<0$ en el intervalo $(a,b).$ <br/><br/>
+* Si $f''(x)$ realiza un cambio de signo en $x=c,$ entonces $f$ tiene un punto de inflexión en $x=c.$ 
+
+---
+# Ejemplo:
+Encuentre los intervalos de concavidad y puntos de inflexión para la función $f(x)=2x^3-3x^2-12x+7.$
+
+> Solución:
+
+<br/>
+
+* Resolver $f''(x)=0.$ $$ f''(x)=12x-6=0\Rightarrow x=\frac{1}{2}.$$
+
+* Realizamos un test con $f''$ para puntos $<1/2$ y $>1/2.$ <br/><br/><br/>
+
+
+* Cóncava hacia arriba en $(1/2,\infty),$ cóncava hacía abajo en $(-\infty, 1/2)$ y tiene un punto de inflexión en $x=1/2.$
+
+---
+# Ejercicios:
+
+Determine los intervalos de monotonía, los intervalos de concavidad y los puntos de inflexión de las siguientes funciones: <br/><br/>
+
+1. $f(x)=x^2-12x+1.$ <br/><br/>
+2. $f(x)=5-3x^2+x^3.$ <br/><br/>
+3. $f(x)=x^2 e^x$ <br/><br/>
+4. $f(x)=\frac{x}{(1+x)^2}.$

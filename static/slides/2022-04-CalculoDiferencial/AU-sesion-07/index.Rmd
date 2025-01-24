@@ -1,0 +1,97 @@
+---
+title: "Funciones II"
+subtitle: "Sesión 07"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=5, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Aprender a evaluar una función. <br/> <br/>
+ * Realizar una tabulación para una función. <br/> <br/>
+ * Realizar la gráfica asociada a una función. <br/> <br/>
+
+---
+# ¿Cómo evaluar una función?
+
+<span style="font-size:25px"> Dada la función $f:\mathbb{R}\to\mathbb{R}$ dada por la expresión $f(x)=x^2-1.$ Tomemos cualquier número en el dominio: $\mathbb{R}.$
+<br/><br/><br/>
+> * $f(3)=$
+<br/><br/><br/>
+* $f(-1)=$
+<br/><br/><br/>
+* $f(0)=$
+<br/><br/><br/>
+* $f(3.1)=$
+
+---
+# ¿Qué es una tabulación?
+
+<span style="font-size:25px"> Consideremos aún la función $f(x)=x^2-1.$ Para tabular necesitamos una serie de datos ordenados en el dominio.
+.pull-left[
+```{r make table, results='asis'}
+table=matrix(NA,nrow=5,ncol=2)
+colnames(table)=c("x","f(x)")
+table[1,]=c(-2,"")
+table[2,]=c(-1,"")
+table[3,]=c(0,"")
+table[4,]=c(1,"")
+table[5,]=c(2,"")
+
+library(knitr)
+kable(table)
+```
+]
+---
+# ¿Cómo gráficar una función?
+
+<iframe src="https://www.geogebra.org/classic/QvtDXhyN?embed" width="700" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+---
+# Ejemplo 1: $f(x)=3$
+
+<iframe src="https://www.geogebra.org/classic/QvtDXhyN?embed" width="700" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Ejemplo 2: $f(x)=x$
+
+<iframe src="https://www.geogebra.org/classic/QvtDXhyN?embed" width="700" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+---
+# Ejemplo 3: $f(x)=\sqrt{x}$
+
+<iframe src="https://www.geogebra.org/classic/QvtDXhyN?embed" width="700" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Álgebra de Matrices</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-05-11" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x8594f88dd7f429a8021a554683499bb","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Álgebra de Matrices
+]
+.subtitle[
+## Sesión 01
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-05-11
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos de la Sesión
+
+* Introducir el Concepto de Matriz (Tamaño y Tipo). &lt;br/&gt;&lt;br/&gt;
+* Definir las operaciones básicas con matrices (Suma, Resta, Multiplicaciones). &lt;br/&gt;&lt;br/&gt;	
+
+---
+# Motivación
+
+&gt; ¿Qué entiendes por una matriz? &lt;br/&gt;&lt;br/&gt;
+¿Haz usado alguna vez una matriz? &lt;br/&gt;&lt;br/&gt;
+En caso que sí, ¿cómo podemos usarlas de manera matemática? &lt;br/&gt;&lt;br/&gt;
+
+---
+# El espacio de Matrices
+
+&gt; **Definición:** Una matriz es un arreglo rectangular de números, símbolos o expresiones, dispuestos en filas y columnas. &lt;br/&gt;&lt;br/&gt; 
+
+--
+##### Ejemplo 1:
+
+Las tablas de Excel son un ejemplo de matrices. &lt;br/&gt;&lt;br/&gt;
+
+---
+##### Ejemplo 2:
+
+Supongamos que las ventas de una empresa se pueden ordenar por bimestre y sucursal como se muestra en la siguiente tabla:
+
+| Sucursal | Bimestre 1 | Bimestre 2 | Bimestre 3 | Bimestre 4 |
+|----------|------------|------------|------------|------------|
+| A        | 1000       | 1200       | 1300       | 1400       |
+| B        | 1500       | 1600       | 1700       | 1800       |
+| C        | 2000       | 2100       | 2200       | 2300       |
+
+
+¿Cómo sería la matriz asociada a esta información?
+---
+# Notación Matricial
+
+&gt; **Definición:** Una matriz de tamaño `\(m \times n\)` es un arreglo de `\(m\)` filas y `\(n\)` columnas de números, usualmente se denota como `\(A=(a_{ij})\)` donde `\(a_{ij}\)` denota el elemento en la fila `\(i\)` y columna `\(j.\)` &lt;br/&gt;&lt;br/&gt;
+
+`$$A= \begin{bmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{bmatrix}$$`
+
+---
+##### Ejemplo 3:
+
+De tal manera que la matriz asociada a la tabla anterior sería:
+
+`$$A= \begin{bmatrix} 1000 &amp; 1200 &amp; 1300 &amp; 1400 \\ 1500 &amp; 1600 &amp; 1700 &amp; 1800 \\ 2000 &amp; 2100 &amp; 2200 &amp; 2300 \end{bmatrix}$$`
+
+---
+# Tipos de Matrices
+
+A continuación se presentan algunos tipos de matrices:
+
+1. **Vector fila:** `\(A_{1 \times n}.\)` *Ejemplo:* `\((1, -4, \sqrt{2}, \pi)\)` &lt;br/&gt;&lt;br/&gt;
+
+2. **Vector columna:** `\(A_{m \times 1}.\)` *Ejemplo:* `\(\begin{bmatrix} -5 \\ \sqrt{5} \\ e \end{bmatrix}\)` &lt;br/&gt;&lt;br/&gt;
+
+3. **Matriz cuadrada:** `\(A_{n \times n}.\)` *Ejemplo:* `\(\begin{bmatrix} 1 &amp; 2 \\ 0 &amp; 5  \end{bmatrix}\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+
+4. **Matriz diagonal:** `\(D_{n \times n}\)` con `\(a_{ij}=0\)` para `\(i \neq j.\)` *Ejemplo:* `\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{bmatrix}\)` &lt;br/&gt;&lt;br/&gt;
+
+5. **Matriz triangular superior:** `\(A_{n \times m}\)` con `\(a_{ij}=0\)` para `\(i &gt; j.\)` *Ejemplo:* `\(\begin{bmatrix} 1 &amp; 2  \\ 0 &amp; 4  \\ 0 &amp; 0  \end{bmatrix}\)` &lt;br/&gt;&lt;br/&gt;
+
+6. **Matriz triangular inferior:** `\(A_{n \times m}\)` con `\(a_{ij}=0\)` para `\(i &lt; j.\)` *Ejemplo:* `\(\begin{bmatrix} 1 &amp; 0  \\ 2 &amp; 4  \\ 3 &amp; 5  \end{bmatrix}\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+7. **Matriz identidad:** `\(I_{n \times n}\)` con `\(a_{ij}=1\)` para `\(i=j\)` y `\(a_{ij}=0\)` para `\(i \neq j.\)` *Ejemplo:* `\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)` &lt;br/&gt;&lt;br/&gt;
+
+8. **Matriz nula:** `\(O_{n \times m}\)` con `\(a_{ij}=0\)` para todo `\(i\)` y `\(j.\)` *Ejemplo:* `\(\begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+# Operaciones con Matrices
+
+## Suma de Matrices
+
+&gt; **Definición:** La suma (resta) de dos matrices `\(A\)` y `\(B\)` del mismo tamaño `\(m \times n\)` es una matriz `\(C\)` del mismo tamaño tal que `\(c_{ij}=a_{ij}+b_{ij}.\)` `\((c_{ij}=a_{ij}-b_{ij})\)` &lt;br/&gt;&lt;br/&gt;
+
+-- 
+##### Ejemplo 4:
+
+Sean `\(A=\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}\)` y `\(B=\begin{bmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{bmatrix}.\)` ¿Cuál es la matriz `\(C=A+B?\)` y ¿la matriz `\(B-A\)`?
+
+---
+### Propiedades de la Suma
+
+1. **Conmutativa:** `\(A+B=B+A.\)` &lt;br/&gt;&lt;br/&gt;
+2. **Asociativa:** `\((A+B)+C=A+(B+C).\)` &lt;br/&gt;&lt;br/&gt;
+3. **Elemento neutro:** `\(A+O=A.\)` &lt;br/&gt;&lt;br/&gt;
+4. **Elemento opuesto:** `\(A+(-A)=O\)` donde si `\(A=(a_{ij})\)` entonces `\(-A=(-a_{ij}).\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+## Multiplicación por un Escalar
+
+&gt; **Definición:** La multiplicación de una matriz `\(A\)` por un escalar `\(k\)` es una matriz `\(B\)` tal que `\(b_{ij}=ka_{ij}.\)` &lt;br/&gt;&lt;br/&gt;
+
+--
+##### Ejemplo 5:
+
+Sea `\(A=\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}.\)` ¿Cuál es la matriz `\(B=2A\)`? y ¿la matriz `\(C=-3A\)`?
+
+---
+### Propiedades de la Multiplicación por un Escalar
+
+1. **Distributiva:** `\(k(A+B)=kA+kB.\)` &lt;br/&gt;&lt;br/&gt;
+2. **Distributiva:** `\((k+l)A=kA+lA.\)` &lt;br/&gt;&lt;br/&gt;
+3. **Asociativa:** `\(k(lA)=(kl)A.\)` &lt;br/&gt;&lt;br/&gt;
+4. **Elemento neutro:** `\(1A=A.\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+## Multiplicación de Matrices
+
+**Nota:** Esta operación solo puede realizarse entre matrices de tamaños específicos y el orden de los factores *SI* altera el producto.
+
+&gt; **Definición:** Sea `\(A_{n\times m}\)` y `\(B_{m\times k}\)` entonces existe una matrix `\(C_{n\times k}\)` que corresponde al producto `\(AB.\)` 
+
+--
+##### Ejemplo 6:
+
+Sean `\(A=\begin{bmatrix} 1 &amp; 2 &amp; 3\\ 3 &amp; 4 &amp; -1 \end{bmatrix}\)` y `\(B=\begin{bmatrix} 5 &amp; 6 \\ 7 &amp; 8 \\ -5 &amp; -2 \end{bmatrix}.\)` ¿Cuál es la matriz `\(C=AB?\)` y ¿la matriz `\(D=BA?\)`
+
+---
+### Propiedades de la Multiplicación de Matrices
+
+1. **Asociativa:** `\((AB)C=A(BC).\)` &lt;br/&gt;&lt;br/&gt;
+2. **Distributiva:** `\(A(B+C)=AB+AC.\)` &lt;br/&gt;&lt;br/&gt;
+3. **No conmutativa:** En general `\(AB \neq BA.\)` &lt;br/&gt;&lt;br/&gt;
+4. **Elemento neutro:** `\(IA=AI=A.\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+## Transpuesta de una Matriz
+
+&gt; **Definición:** La transpuesta de una matriz `\(A\)` es una matriz `\(A^T\)` tal que `\(a_{ij}^T=a_{ji}.\)`
+
+--
+##### Ejemplo 7:
+
+Sea `\(A=\begin{bmatrix} 1 &amp; 2 &amp; -2\\ 3 &amp; 4 &amp; 0 \end{bmatrix}.\)` ¿Cuál es la matriz `\(B=A^T?\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

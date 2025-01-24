@@ -1,0 +1,209 @@
+---
+title: "Linear Function Models"
+subtitle: "Session 02"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=5, fig.height=3, fig.retina=3,
+  out.width = "60%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Session's Goals
+
+* Introduce the concept of mean change. <br/><br/>
+* Introduce the linear functions. <br/><br/>
+* Apply the mean change to characterize linear functions. <br/><br/>
+
+---
+# Motivation
+
+> An online add publication service is offered by a company. At the physical store, the company offers the following prices: Publication during 7 days is of 186mxn  and for 14 days at a price of 237mxn. In the website, the company offers the following prices: Publication during 7 days is of 176.7mxn,  and for 14 days at a price of 226.1mxn.
+--
+<br/><br/>
+1. If the service is not bought online, how much does the price change from 7 to 14 days? What if the service is bought online? <br/><br/>
+1. Do you consider that both difference are "similar" or there is one better? <br/><br/>
+1. How can we measure the difference between the prices for both services? <br/><br/>
+
+---
+# Mean Change
+
+> __Definition:__ Given a dataset that contains the information (modeled by a function) we can measure the change of the function by the difference between the values of the function at some step: $$\frac{\mbox{change } y}{\mbox{change } x}=\frac{y_2-y_1}{x_2-x_1}=\frac{f(x_2)-f(x_1)}{x_2-x_1}$$<br/><br/>
+
+---
+# Linear functions
+
+> __Definition:__ A function $f$ is said to be linear if it can be written as $f(x)=mx+b,$ where $m$ and $b$ are constants. <br/><br/>
+
+--
+<br/><br/>
+1. $m$ is called the slope of the function.
+2. $b$ is called the intercept of the function.
+
+---
+## How linear data looks like?
+
+```{r, echo=FALSE, fig.cap="Graph of the function $f(x)=-3x+2$"}
+library(ggplot2)
+ggplot(data.frame(x=c(-5,5)), aes(x)) + 
+  stat_function(fun = function(x) -3*x+2, geom = "line") +
+  labs(x = "x", y = "f(x)")
+```
+
+---
+#### Example 1
+
+Given the function $f(x)=3x+2,$ compute value of $f$ on $x=-3,-1,0,1,3$ and then plot the function.
+
+--
+```{r}
+x <- c(-3,-1,0,1,3)
+y <- 3*x+2
+plot(x,y)
+```
+---
+#### Example 2
+
+Given the function $f(x)=-4x+1,$ compute value of $f$ on $x=-2,-1,0,1,2$ and then plot the function.
+
+--
+```{r}
+x <- c(-2,-1,0,1,2)
+y <- -4*x+1
+plot(x,y)
+```
+
+---
+## What is the mean change of a linear function?
+
+> __Definition:__ Given a linear function $f(x)=mx+b,$ the mean change of $f$ is $m.$ <br/><br/>
+
+--
+#### Example 3
+
+Convince yourself that the mean change of the function $f(x)=3x+2$ is $3.$
+
+---
+#### How to determine if our data fits a linear function model?
+
+```{r}	
+tab <- as.table(rbind(c(327, 468,500,762), c(239, 477,382,472)))
+dimnames(tab) <- list(data = c("x", "f(x)"),
+                      index  = c("1", "2", "3","4"))
+tab
+
+```
+---
+#### How to determine if our data fits a linear function model?
+
+> __Criterion:__ If the mean change of the function is constant, then the data fits a linear function model. <br/><br/>
+
+--
+<br/><br/>
+In the previous data, we have that the mean changes between steps are:
+
+$$mc_1=\frac{477-239}{468-327}=1.68$$
+$$mc_2=\frac{382-477}{500-468}=-2.96$$
+$$mc_3=\frac{472-382}{762-500}=0.34$$
+
+---
+#### Example 4
+
+Determine if the following data fixed a linear model
+
+```{r}	
+tab <- as.table(rbind(c(3, 6,9,12), c(8,17,26,35)))
+dimnames(tab) <- list(data = c("x", "f(x)"),
+                      index  = c("1", "2", "3","4"))
+tab
+```
+
+<br/><br/>
+* Does it fit to a linear model? <br/><br/>
+* What is the mean change of the function? <br/><br/>
+* What is the expresion of the function?
+
+---
+#### Business linear functions
+
+> __Definition:__ The __total cost__ function represent the cost of producing $x$ units of a product. <br/><br/>The total cost is equal to the sum of the fixed costs and the variable ones. $$C_{total}=C_{fixed}+C_{variable}$$
+
+
+--
+
+<br/><br/>
+> __Definition:__ The __income__ function represents the total amount of money obtained by selling $q$ items at price $p.$ Therefore, $$I=p\cdot q.$$
+
+---
+#### Example 5
+
+A company produces a product that has a fixed cost of 1000mxn and a variable cost of 10mxn per unit. <br/><br/> If each unit is selled at 20mxn, determine the total cost and the income functions.
+
+--
+<br/><br/>
+
+* Let $x$ be the number of units produced. <br/><br/>
+* Total cost function: $C_{total}(x)=1000+10x$ <br/><br/>
+* Income function: $I(x)=20x$ <br/><br/>
+
+---
+#### Example 6
+
+A small company offers offers e-markating services. The company pays the salary of one content creator and one web designer. If the fixed expenses of the company are 500mxn of web servers, 1000mxn of rent and 800mxn of light bills. The concent creator earns 100mxn per hour and the web designer earns 150mxn per hour. <br/><br/> If the company charges 200mxn per hour of work, determine the total cost and the income functions.
+
+--
+<br/><br/>
+
+* Let $t$ be the number of hours. <br/><br/>
+* Total cost function: $C_{total}(t)=2300+ 100t+150t=2300 +250t$ <br/><br/>
+* Income function: $I(x)=200t$ <br/><br/>
+
+---
+#### Business linear functions
+
+> __Definition:__ The _utility or revenue_ function is defined as the difference between the income and the total cost functions. $$U(x)=I(x)-C_{total}(x)$$
+
+--
+<br/><br/>
+
+In example 5, the utility function is $$U(x)=20x-(1000+10x)=10x-1000.$$ And in example 6, the utility function is $$U(t)=200t-(2300+250t)=-50t+2300.$$
+

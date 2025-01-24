@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Movimiento Rectilineo y Tiro Parabólico</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x385f1b455344f63b7e0528a8133646d","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Movimiento Rectilineo y Tiro Parabólico
+]
+.subtitle[
+## Sesión 21
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Utilizar la derivada para conocer la velocidad y aceleración de una partícula. &lt;br/&gt; &lt;br/&gt;
+ * Aplicar la derivada hacia el movimiento rectilineo y el tiro parabólico. &lt;br/&gt; &lt;br/&gt;
+ * Conocer las interpretaciones físicas de la derivada.
+
+---
+# La derivada como Velocidad y Aceleración.
+
+&gt; Supongamos que un objeto se mueve en el plano y su posición está dada por la función `\(f(t)\)` en el tiempo `\(t.\)` Entonces se cumple que:
+&lt;br/&gt;&lt;br/&gt;
+* `\(f'(t_0)\)` mide la velocidad (instantánea) del objeto en el tiempo `\(t=t_0.\)` &lt;br/&gt;&lt;br/&gt;
+* `\(f''(t_0)\)` mide la aceleración (instantánea) del objeto en el tiempo `\(t=t_0.\)`
+
+---
+# Movimiento Rectilínea.
+
+Supongamos que `\(f(t)\)` es una función que determina la posición que tiene un objeto que se mueve a lo largo de una __recta__ con respecto al origen.
+
+![MR](/users/koyomi/Documents/Github/alejandro_ucan.github.io/static/slides/2022-04-CalculoDiferencial/AU-sesion-21/MR.jpg)
+
+El movimiento del objeto esta determinado por la velocidad del mismo. Es decir:
+ * Si `\(v&lt;0,\)` entonces el objeto se mueve a la izquierda. &lt;br/&gt;&lt;br/&gt;
+ * Si `\(v=0,\)` entonces el objeto está quieto. &lt;br/&gt;&lt;br/&gt;
+ * Si `\(v&gt;0,\)` entonces el objeto se mueve a la derecha.
+ 
+---
+# Ejemplo 1:
+
+Un objeto se mueve en línea recta de tal manera que su posición (en metros) está dada por la función `$$f(t)=t^2-12t+5,$$` donde `\(t\)` son los segundos transcurridos. ¿Cuál es la posición del objeto a los dos segundos? ¿Cuál es la velocidad del objeto a los tres segundos? ¿ Cúando el objeto se está moviendo a la izquierda?
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; Para conocer la posición hay que evaluar la __función posición__ en `\(t=2.\)` `$$f(2)=(2)^2-12(2)+5=-15.$$` Entonces el objeto se encuentra a 15$m$ a la izquierda del cero.
+
+---
+# Ejemplo 1:
+
+&gt; Para conocer la velocidad hay que calcular primera la derivada en `\(t=3.\)` `$$v(t)=f'(t)=2t-12 \Rightarrow v(3)=2(3)-12=-6.$$` Entonces el objeto tiene velocidad de `\(-6m/s\)` a los 3 segundos.
+
+&lt;br/&gt;
+
+&gt; Tenemos que encontrar cuando `\(v&lt;0,\)` lo que es equivalente a resolver la inecuación `$$2t-12&lt;0 \Rightarrow 2t&lt;12 \Rightarrow t&lt;12/2=6 \Rightarrow t\in (-\infty,6).$$` El objeto se mueve a la izquierda desde `\(t=0\)` y hasta los 6 segundos.
+
+---
+# Ejemplo 2:
+
+Un objeto se mueve en una línea recta de tal manera que su posición en metros está dada por la función `\(f(t)=t^3-12t^2+36t-30,\)` donde `\(t\)` son los segundos transcurridos desde que el objeto inicia su movimiento. ¿Cuándo el objeto tiene velocidad de 15$m/s$? ¿Cuál es la aceleración del objeto a los 2$s$? ¿Cuándo el objeto se está moviendo a la derecha?
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; Primero calculamos la función velocidad `$$v(t)=f'(t)=3t^2-24t+36.$$` Y ahora resolvemos la ecuación `$$3t^2-24t+36=15 \Leftrightarrow 3t^2-24t+36=0.$$` Usamos ya sea factorización o fórmula general y encontramos que la ecuación anterior se vale cuando `\(t=1\)` and `\(t=7.\)`
+
+---
+# Ejemplo 2:
+
+&gt;  Primero calculamos la función aceleración `$$a(t)=f''(t)=6t-24$$` y evaluamos en `\(t=2,\)` lo que nos da `\(a(2)=6(2)-24=-12.\)` Así que la aceleración del objeto en `\(t=2\)` es `\(-12m/s^2.\)`
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; El objeto se mueve a la derecha cuando `\(v&gt;0\)` o lo que es igual `$$3t^2-24t+36&gt;0$$` y resolvemos nuestra ecuación. Esto ocurre cuando `\(t\in (-\infty,2)\cup(6,+\infty).\)`
+
+---
+# Movimiento Parabólico
+
+La distancia (en pies) entre el suelo y un objeto que cae está dado por la función `$$f(t)=-16t^2+v_0 t+s_0$$` donde `\(v_0\)` es la velocidad inicial, y `\(s_0\)` es la altura inicial.
+
+---
+# Ejemplo 3:
+
+Desde lo alto de un edificio de 160 `\(pies\)` de altura se lanza una pelota hacia arriba con una velocidad inicial de `\(64 pies/s.\)`
+
+&gt; Encuentre la función que mide la altura de la pelota. 
+
+En este caso `\(v_0=64\)` y `\(s_0=160,\)` así que si sustituimos en la fórmula anterior obtenemos: `$$f(t)=-16t^2+64t+160.$$`
+
+&lt;br/&gt;
+
+&gt; ¿Cuál es la altura de la pelota a los dos segundos?
+
+Calculamos `\(f(2)=-16(2)^2+64(2)+160=224.\)`
+
+---
+# Ejemplo 3:
+
+&gt; ¿Cúal es la velocidad de la pelota a los 3.5$s$?
+
+Primero calculamos la función velocidad, que es `\(v(t)=f'(t)=-32t+64\)` y evaluamos en `\(t=3.5\)` `$$v(3.5)=-32(3.5)+64=-48.$$` Entonces la velocidad es de -48 `\(pies/s.\)`
+
+&lt;br/&gt;
+
+&gt;  ¿Cuándo la pelota alcanza la temperatura máxima?
+
+La pelota alcanza la altura máxima cuando `\(v(t)=0,\)` es decir, en `$$-32t+64=0 \Rightarrow t=\frac{-64}{-32}=2.$$`
+
+---
+# Ejemplo 4:
+Desde lo alto de un edificio de 100 `\(pies\)` de altura se lanza una pelota hacia arriba con una velocidad inicial de 50 `\(pies/s.\)` ¿cuándo llega la pelota al piso?
+
+&gt; La pelota llega al piso cuando la altura es cero. Primero calculemos la función que mide la altura, es decir, sustituyamos en la fórmula los valores iniciales: `$$f(t)=-16t^2+50t+100.$$`
+Ahora calculemos donde la altura es cero, para eso resolvemos la ecuación `$$f(t)=0\Leftrightarrow -16t^2+50t+100=0.$$` Usamos la fórmual general y obtenemos que esto pasa cuando `\(t=-1.3\)` y `\(t=4.5\)`. Cómo no hay tiempo negativo, la pelota llega al piso a los 4.5 `\(s.\)`
+
+---
+# Ejercicios: 
+
+1. Desde lo alto de un edificio de 256 `\(pies\)`, se dispara un proyectil hacia arriba con una velocidad inicial de 48 `\(pies/s.\)` &lt;br/&gt;
+  (a) ¿A qué altura del piso se encuentra el proyectil en el primer segundo?&lt;br/&gt;
+  (b) ¿Cuándo alcanza la altura máxima? &lt;br/&gt;
+  (c) Encuentra la velocidad del proyectil al primer segundo. &lt;br/&gt;
+  (d) ¿Cuál es la altura máxima? &lt;br/&gt;
+  
+  &lt;br/&gt;&lt;br/&gt;
+  
+2. Desde lo alto de un edificio de 96 `\(pies\)` de altura, se lanza una pelota hacia arriba con una velocidad de 16 `\(pies/s.\)` &lt;br/&gt;
+  (a) ¿Cuándo tiene la pelota una altura de 100 `\(pies\)`? &lt;br/&gt;
+  (b) ¿Cuándo llega la pelota al piso? &lt;br/&gt;
+  (c) ¿A qué velocidad llega al piso? &lt;br/&gt;
+  (d) ¿Cuál es la aceleración de la pelota al segundo 5?
+  
+  
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

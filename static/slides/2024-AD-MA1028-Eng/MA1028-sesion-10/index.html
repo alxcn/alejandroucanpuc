@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>U-Substitution and By Parts</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-11-20" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x9f0b7d42f8a4657a0ee98b14d8cb255","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# U-Substitution and By Parts
+]
+.subtitle[
+## Session 10
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-11-20
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Goals
+
+
+* Apply the Method of Substitution to calculate integrals. &lt;br/&gt;&lt;br/&gt;
+* Apply the Method of Integration by Parts to calculate integrals. &lt;br/&gt;&lt;br/&gt;
+
+---
+---
+# Substitution
+
+&gt; __Method:__ Substitution is a method of integration in which we use a change of variable to transform the integrand into a form that is easier to integrate (and use direct integration). &lt;br/&gt;&lt;br/&gt;
+
+`$$\int f(g(x))g'(x)dx = \int f(u)du= F(u)+C$$`
+
+__Remarks:__ The choice of `\(u\)` in the integral depend in the following criteria: the choice of `\(u\)` must be an internal function on a composite function. &lt;br/&gt;&lt;br/&gt;
+
+---
+#### Example
+
+1. `\(\int \frac{2x+2}{(x^2 + 2x + 1)} dx\)` &lt;br/&gt;&lt;br/&gt;
+2. `\(\int xe^{3x^2} dx\)` &lt;br/&gt;&lt;br/&gt;
+3. `\(\int \tan(x)dx\)` &lt;br/&gt;&lt;br/&gt;
+4. `\(\int \frac{1}{x\ln(x)}dx\)` &lt;br/&gt;&lt;br/&gt;
+5. `\(\int \frac{3x}{\sqrt{x^2+2}e^{\sqrt{x^2+2}}dx\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+# By Parts
+
+&gt; __Method:__ By parts is a method of integration in which we use the product rule of differentiation to transform the integrand into a form that is easier to integrate (and use direct integration). &lt;br/&gt;&lt;br/&gt;
+
+`$$\int f(x)g'(x)dx = f(x)g(x) - \int f'(x)g(x)dx$$`
+`$$\int udv= uv - \int vdu$$`
+
+__Remarks:__ The choice of `\(f\)` and `\(g'\)` in the integral depend in the following criteria: the choice of `\(f\)` must be the function that simplify when we derive it, and the choice of `\(g'\)` should be the one that is easier to integrate. &lt;br/&gt;&lt;br/&gt;
+
+---
+## ILATE
+
+The ILATE rule is a mnemonic to help you remember which function to differentiate and which to integrate when using integration by parts. &lt;br/&gt;&lt;br/&gt; If the term is a product is upper in the list, then it should be the function to differentiate. &lt;br/&gt;&lt;br/&gt;
+
+1. Inverse functions. &lt;br/&gt;&lt;br/&gt;
+2. Logarithmic functions. &lt;br/&gt;&lt;br/&gt;
+3. Algebraic functions. &lt;br/&gt;&lt;br/&gt;
+4. Trigonometric functions. &lt;br/&gt;&lt;br/&gt;
+5. Exponential functions. &lt;br/&gt;&lt;br/&gt;
+
+---
+#### Example
+
+1. `\(\int x\ln(3x)dx\)` &lt;br/&gt;&lt;br/&gt;
+2. `\(\int 4x e^{x+3} dx\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+#### Multiple Times By Parts
+
+1. `\(\int x^2e^{4x-3}dx\)` &lt;br/&gt;&lt;br/&gt;
+1. `\(\int x^2\sin(3x+2)dx\)` &lt;br/&gt;&lt;br/&gt;
+
+#### Cyclic Integration by Parts
+
+1. `\(\int \cos(x)e^x dx\)` &lt;br/&gt;&lt;br/&gt;
+1. `\(\int \sin(x)e^{4x+1} dx\)` &lt;br/&gt;&lt;br/&gt;
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

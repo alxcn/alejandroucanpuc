@@ -1,0 +1,113 @@
+---
+title: "Teorema de Green."
+subtitle: "Sesión 06"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Establecer el teorema de Green. <br/><br/>
+ * Demostrar el Teorema de Green. <br/><br/>
+ * Aplicar el Teorema de Green. <br/><br/>
+
+---
+# Curvas simples de $\mathbb{R}^2$.
+
+> __Definición:__ Unca _curva simple_ $c$ en $\mathbb{R}^2$ es una función continua $c:[a,b]\rightarrow \mathbb{R}^2$ tal que $c(t_1)\neq c(t_2)$ si $t_1\neq t_2$.
+
+--
+##### Nota:
+
+* Una curva cerrada simple, es aquella que es simple y además $c(a)=c(b)$.
+* Las curvas simples acotan un dominio $D$ (subconjunto conexo y compacto) en $\mathbb{R}^2$.
+
+---
+## Orientación estándar.
+
+> __Convención:__ En lo que resta, tomaremos la orientación que cumpla que el dominio $D$ quede a la izquierda de la curva $c,$ la cual se le conoce como _orientación estándar_.
+
+---
+# Teorema de Green.
+
+> __Teorema:__ Sea $D$ un dominio acotado en $\mathbb{R}^2$ cuya frontera $\partial D$ es una curva cerrada simple y $c:[a,b]\rightarrow \mathbb{R}^2$ una parametrización de $\partial D$ con orientación estándar. Si $P(x,y)$ y $Q(x,y)$ son funciones continuas en $D$ y tienen derivadas parciales continuas en $D,$ entonces se cumple que $$\int_{\partial D}P(x,y)dx+Q(x,y)dy=\int\int_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy.$$
+
+---
+# Demostración.
+
+> __Lema 1:__ Sea $D$ una región $y-$simple y sea $C$ su frontera. Supongamos que $P:D\to\mathbb{R}$ es una función diferenciable. Entonces $$\int_C P(x,y)dx=-\int\int_D\frac{\partial P}{\partial y}dxdy.$$
+
+---
+## Demostración.
+
+> __Lema 2:__ Sea $D$ una región $x-$simple y sea $C$ su frontera. Supongamos que $Q:D\to\mathbb{R}$ es una función diferenciable. Entonces $$\int_C Q(x,y)dy=\int\int_D\frac{\partial Q}{\partial x}dxdy.$$
+
+---
+##### Ejemplo
+
+> Queremos comprobar el teorema de Green para el campo $\mathbf{F}=x\mathbf{i}+xy\mathbf{j},$ donde $D$ es el circulo unitario $x^2+y^2\leq 1.$
+
+--
+##### Solución:
+
+* La frontera de $D$ es la curva $c(t)=(\cos t,\sin t),$ con $t\in[0,2\pi].$
+* Entonces, $$\int_{\partial D}P(x,y)dx+Q(x,y)dy=\int_0^{2\pi}(\cos t)(-\sin t)+(\cos t)(\cos t)(\sin t)dt=0.$$
+* Por otro lado, $$\int\int_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy=\int\int_Dydxdy=0.$$
+
+---
+## ¿Cómo usar el Teorema de Green?
+
+> Algunos tips para usar el Teorema de Green: <br/><br/>
+  * Si el dominio $D$ es fácil de expresar en lugar de la curva frontera, entonces es mejor usar el teorema de Green para calcular la integral de línea. <br/><br/>
+  * Si es más simple la parametrización de la frontera que calcular la integral doble, utilizar el teorema de Green para calcular la última.
+
+---
+# Actividad:
+
+* Sea $\mathbf{F}(x,y)=y\mathbf{i}+-x\mathbf{j}.$ Queremos encontrar el trabajo que realiza el campo $\mathbf{F}$ al mover una partícula a lo largo de la curva que acota al cuadrado con vértices $(1,0), (0,1), (-1,0)$ y $(0,-1).$
+
+* Hallar el área de la región acotada por la curva cicloide.
+
+* Calcula el trabajo realizado por el campo $\mathbf{F}(x,y)=(2x^3-y^3)\mathbf{i}+(x^3+y^3)\mathbf{j}$ al mover una particula sobre la frontera del anillo $1\leq x^2+y^2\leq 4.$
+---
+# Actividad:
+
+ * Demostrar la siguiente generalización del teorema de Green: <br/><br/> Si $D$ es una región que puede expresarse como una unión de regiones simples $D_1,\ldots,D_n$ y $P(x,y)$ y $Q(x,y)$ son funciones continuas en $D$ y tienen derivadas parciales continuas en $D,$ entonces se cumple que $$\int_{\partial D}P(x,y)dx+Q(x,y)dy=\sum_{i=1}^n\int\int_{D_i}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy.$$
+
+ * Demostrar que bajo las condiciones del Teorema de Green, que $$\int_{\partial D} PQdx+PQdy=\int\int_D\left[ Q\left(\frac{\partial P}{\partial x}-\frac{\partial P}{\partial y}\right)+P\left(\frac{\partial Q}{\partial x}-\frac{\partial Q}{\partial y}\right)\right]dxdy.$$

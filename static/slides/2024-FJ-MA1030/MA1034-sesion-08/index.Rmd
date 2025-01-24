@@ -1,0 +1,109 @@
+---
+title: "Diagonalización"
+subtitle: "Sesión 08"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Matrices de cambio de base. <br/><br/>
+* Diagonalización de transformaciones lineales. <br/><br/>
+
+---
+# Matrices de cambio de base
+
+> Supongamos que tenemos un espacio vectorial $V$ y dos bases para $V,$ digamos $B_1$ y $B_2.$ La matriz de cambio de base de $B_1$ a $B_2$ es la matriz $P$ tal que $[v]_{B_2}=P[v]_{B_1}$ para todo $v\in V.$
+
+--
+##### Ejemplo
+
+> Calcule la matriz de cambio de base de $\mathbb{R}^2$ con las bases $\{(1,0),(0,1)\}$ y $\{(-3,2),(2,3)\}.$
+
+La matriz de cambio de base es $$P=\left(\begin{array}{cc} -3 & 2 \\ 2 & 3 \end{array} \right).$$
+
+---
+##### Ejemplo:
+
+> Calcule la matriz de cambio de base de $\mathbb{R}^2$ con las bases $\{(1,2),(3,4)\}$ y $\{(1,1),(1,-1)\}.$ <br/><br/>
+
+--
+<br/<br/>
+Escribir la base $\{(1,2),(3,4)\}$ en combinaciones lineales de $\{(1,1),(1,-1)\}:$ 
+<br/><br/>
+$$\left(\begin{array}{cc|cc} 1 & 1 & 1 & 3 \\ 1 & -1 & 2 & 4 \end{array}\right)\sim \left(\begin{array}{cc|cc} 1 & 1 & 1 & 3 \\ 0 & 1 & \frac{-1}{2} & \frac{-1}{2} \end{array}\right)\sim \left(\begin{array}{cc|cc} 1 & 0 & \frac{3}{2} & \frac{7}{2} \\ 0 & 1 & \frac{-1}{2} & \frac{-1}{2} \end{array}\right)$$
+
+---
+##### Diagonalización de transformaciones lineales
+
+> __Definición:__ Sea $T:V\to V$ una transformación lineal. Decimos que $T$ es diagonalizable si existe una base $B$ de $V$ tal que $[T]_B$ es una matriz diagonal. <br/><br/>
+
+--
+<br/><br/> 
+
+En el caso de matrices, una matriz $A$ es diagonalizable si existe una matriz invertible $P$ tal que $P^{-1}AP$ es diagonal. Entonces, si los vectores propios de $A$ forman una base, la matriz de cambio de base de la canónica al conjunto de vectores propios es la matriz que funciona para diagonalizar.
+
+---
+##### Ejemplo
+
+Encuentra la diagonalización de la transformación $T(x,y)=(5x-12y,-12x-5y)$ y la matriz de cambio de bases para la diagonalización.
+
+--
+<br/><br/>
+##### Solución:
+
+El polinomio característico de $T$ es $\lambda^2-169$ cuyas raíces son $13$ y $-13.$ Los vectores propios asociados son $(-2,3)$ y $(3,2).$ La matriz de cambio de base de estandar a los vectores propios es $$P=\left(\begin{array}{cc} -2 & 3 \\ 3 & 2 \end{array}\right).$$ Así que la diagonalización es $$T=\left\{\left(\begin{array}{cc} 13 & 0 \\ 0 & -13 \end{array}\right),\left(\begin{array}{cc} -2 & 3 \\ 3 & 2 \end{array}\right)\right\}.$$
+
+---
+##### Ejemplo
+
+Encuentra la diagonalización de la transformación $T(x,y)=(7x-2y,2x+2y)$ y la matriz de cambio de bases para la diagonalización.
+
+--
+<br/><br/>
+##### Solución:
+
+El polinomio característico de $T$ es $\lambda^2+9\lambda-18$ y sus raíces son $3$ y $6.$ Los vectores propios esta transformación son $(1,2)$ y $(2,1).$ La matriz de cambio de base canónica a la de los vectores propios es $$P=\left(\begin{array}{cc} 1 & 2 \\ 2 & 1 \end{array}\right).$$ Así que la diagonalización es $$T=\left\{\left(\begin{array}{cc} 3 & 0 \\ 0 & 6 \end{array}\right),\left(\begin{array}{cc} 1 & 2 \\ 2 & 1 \end{array}\right)\right\}.$$

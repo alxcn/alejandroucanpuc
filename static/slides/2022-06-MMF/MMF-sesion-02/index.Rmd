@@ -1,0 +1,182 @@
+---
+title: "Cálculo en Varias Variables"
+subtitle: "Sesión 02"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Determinar la existencia de límites en campos escalares. <br/> <br/>
+ * Calcular límites en campos escalares y en campos vectoriales. <br/> <br/>
+ * Calcular derivadas parciales de un campo escalar.
+
+---
+# Límites
+
+> Sea $f:\mathbb{R}^m\to \mathbb{R}^n$ una función (con $n=1,2,3$). Decimos que la función $f$ tiende a $\vec{L}$ cuando $\vec{x}$ tiende a $\vec{x}_0$ si sucede que para cada _entorno_ $U$ de $\vec{L}$ existe un _entorno_ $V$ de $\vec{x_0}$ tal que $$f(V)\subset U.$$ <br/><br/>
+En símbolos escribimos, $$\lim_{\vec{x}\to \vec{x}_0}f(\vec{x})=\vec{L}.$$
+
+---
+# Ejemplo:
+
+Calcule el límite de la función $f(x,y)=x^2+y^2+2$ cuando $(x,y)$ tiende a $(0,1).$
+
+<iframe src="https://www.geogebra.org/calculator/nhnmmvej?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# No Ejemplo:
+
+Calcule el límite de la función $f(x,y)=\displaystyle{\frac{x^2-y^2}{x^2+y^2}}$ cuando $(x,y)$ tiende a $(0,0).$
+
+<iframe src="https://www.geogebra.org/calculator/hywpmx8h?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+---
+# ¿Cuándo no existe un límite?
+
+> Decimos que $$\lim_{\vec{x}\to \vec{x}_0}f(\vec{x})=\vec{L}$$ existe si para cualquier trayectoria $c(t)$ en $\mathbb{R}^m$ que cumpla $c(0)=\vec{x}_0$ se cumple que $$\lim_{t\to 0}f(c(t))=\vec{L}.$$ <br/><br/>
+Entonces, si existen __dos trayectorias__ con límites distintos, entonces el límite completo no existe.
+
+---
+# Ejemplo
+
+Calcule el límite de la función $f(x,y)=\displaystyle{\frac{x^2-y^2}{x^2+y^2}}.$
+
+Pensemos en la trayectoria, $c(t)=(t,t)$ (o séa la recta $x=y$), notemos que $c(0)=(0,0).$ $$f(c(t))=\frac{t^2-t^2}{t^2+t^2}=\frac{0}{2t^2}=0.$$
+
+<br/><br/>
+
+Pensemos en le trayectoria, $s(t)=(0,t)$ (o séa, la recta $x=0$), notemos que $s(0)=(0,0).$
+
+$$f(s(t))=\frac{-t^2}{t^2}=-1.$$
+---
+# ¿Cómo calculamos un límite?
+
+Para realizar esto necesitamos recurrir al concepto de __continuidad__. <br/>
+
+> Una función $f:\mathbb{R}^n\to \mathbb{R}^m$ es continua en el vector $\vec{v}\in\mathbb{R}^n$ si se cumple:
+- Si $\displaystyle{\lim_{\vec{x}\to \vec{v}}f(\vec{x})}$ existe,
+- y $\displaystyle{\lim_{\vec{x}\to \vec{v}}f(\vec{x})}=f(\vec{v}).$
+
+
+La definición anterior puede ser un poco contraintuitiva, pero para fines practicos:
+
+> Un _campo escalar_ es __continuo__ si la gráfica no tiene huecos o roturas. Un _campo vectorial_ es __continuo__, si cada función coordenada (en la regla de asignación) es continuo cuando las tomamos como funciones de una variable o campos escalares.
+
+---
+# Ejemplo:
+
+- La función $f(x,y)=3x^2+2xy+y^3$ es continua para todo vector de $\mathbb{R}^2.$ <br/>
+
+- La función $f(x,y,z)=\sin(x+y)+\cos(z)+e^z$ es continua para todo vector de $\mathbb{R}^3.$ <br/>
+
+- La función $f(x,y)=(\sin(x),\cos(y))$ es continua para todo vector de $\mathbb{R}^2.$ <br/>
+
+- La función $f(x,y)=\frac{1}{x+y}$ es continua para todo vector de $\mathbb{R}^2$ excepto $(0,0).$ <br/>
+
+- La función $f(x,y)=\sec(x)+\csc(y)$ es discontinua en varias partes de $\mathbb{R}^2.$
+
+---
+# Cálculo de Límites:
+
+> Para calcular el límite de una función en varias variables realizamos el siguiente razonamiento:<br/><br/>
+  - ¿La función es continua? Si la función es continua, entonces el límite será el resultado de evaluar la función en el valor a donde tendemos. <br/><br/>
+  - ¿La función no es continua? Entonces comprobamos si existe el límite utilizando trayectorias. <br/><br/>
+  
+__Ejemplo 1:__ Calcule $\displaystyle{\lim_{\vec{x}\to (0,1)}3x^2+2y^3-2xy-1}$
+
+
+---
+# Ejemplos:
+
+__Ejemplo 2:__ Calcule $\displaystyle{\lim_{\vec{x}\to (1,1)}(3x^2,-2xy,3-x^2y^2)}$
+<br/><br/><br/><br/><br/><br/>
+
+__Ejemplo 3:__ Calcule $\displaystyle{\lim_{\vec{x}\to(0,0,0)}e^{x^2+y+z^3}}$
+
+
+---
+# Ejemplos: 
+
+__Ejemplo 4:__ Calcule límite $\displaystyle{\lim_{(x,y)\to (0,0)}\frac{xy\cos(y)}{3x^2+y^2}}.$
+<br/><br/><br/><br/><br/><br/>
+
+__Ejemplo 5:__ Calcule límite $\displaystyle{\lim_{(x,y,z)\to (0,0,0)}\frac{xy+xz^2+yz^2}{x^2+y^2+z^4}}.$
+
+---
+# Derivación
+
+La derivación si hace distinción entre campos escalares y vectoriales, pero en ambas necesitamos la siguiente definición:
+
+> __Definición:__ Supongamos que tenemos un campo escalar $f:\mathbb{R}^m\to \mathbb{R},$ con variables $(x_1,x_2,\cdot,x_m).$ Definimos la __derivada parcial de $f$ respecto a $x_j$__ como el límite $$\lim_{h\to 0} \frac{f(x_1,\cdots,x_j+h,\cdots,x_m)-f(x_1,\cdots,x_j,\cdots,x_m)}{h}.$$ A tal derivada parcial se le denotará por $\frac{\partial f}{\partial x_j}$ o $D_{x_j}f.$
+
+
+La definición anterior solamente indica, que la derivada parcial de una función respecto a cualquiera de sus variables es simplemente derivar la función respecto a la variable deseada y el resto de las variables se consideran constantes.
+
+---
+# Ejemplo 1:
+
+Encuentre $\frac{\partial f}{\partial x}$ y $\frac{\partial f}{\partial y}$ para el campo escalar $$f(x,y) =3x^2y+e^y+4\cos(x).$$
+
+
+---
+# Ejemplo 2:
+
+Calcule todas las derivadas parciales del campo escalar $f(x,y,z)=\ln(xyz)+x+y+z.$
+
+---
+# Visión geométrica de las Derivadas Parciales
+
+Aquí vemos las derivadas parciales de la función $f(x,y)=x^2+xy+y^3$ en el punto $(1,1).$
+
+<iframe src="https://www.geogebra.org/calculator/uagaabd5?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# Modelación con Derivadas Parciales:
+
+La altura de un terreno está dada por la función $h(x,y)=e^{x+y}\sqrt{4-3x^2-2y^2},$ donde $h$ está medida en $km,$ al igual que $x$ y $y.$ ¿A qué razón cambia la altura cuando nos restringimos a la dirección de $y$? ¿A qué razón cambia la altura cuando nos restringimos a $x$?
+
+
+---
+# Regla de la Cadena
+
+Supongamos que $f(x,y)$ es un campo escalar, y supongamos que existen campos escalares $x=g(s,t)$ y $y=h(s,t).$ Entonces las $f$ se puede expresar como una función de $s$ y $t,$ y las derivadas parciales respecto a $s$ y $t$ están dadas por:
+
+$$\frac{\partial f(g(s,t),h(s,t))}{\partial s}=\frac{\partial f}{\partial x}\frac{\partial x}{\partial s}+\frac{\partial f}{\partial y}\frac{\partial y}{\partial s}$$
+$$\frac{\partial f(g(s,t),h(s,t))}{\partial t}=\frac{\partial f}{\partial x}\frac{\partial x}{\partial t}+\frac{\partial f}{\partial y}\frac{\partial y}{\partial t}$$
+__Ejemplo:__ Supongamos que $f(x,y)=e^x\sin y,$ y $x=st^2$ y $y=s^2t.$ Calcule las derivadas parciales respecto a $s$ y $t$ de la función $f(g,h).$

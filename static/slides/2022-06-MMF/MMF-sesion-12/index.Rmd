@@ -1,0 +1,126 @@
+---
+title: "Series de Fourier p. II"
+subtitle: "Sesión 12"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos:
+
+ * Definir lo que entendemos por aproximación a una función periódica. <br/><br/>
+ * Enunciar el teorema de aproximación de Fourier mediante series. <br/><br/>
+ * Enunciar propiedades de los coeficientes de la aproximación.
+---
+# ¿Si tenemos una función pediódica general cómo la representamos en senos y cosenos? 
+
+> * Considerando sólo sumas __finitas__ esto no es posible. <br/><br/>
+  * En un paper de 1807, Joseph Fourier demostró que si es posible con técnicas de ese época. <br/><br/>
+  * Nos restringiremos a las funciones tales que $$\int_0^a |f(t)|^2dt<\infty.$$
+  
+---
+# El espacio de funciones (infinito)
+
+> __Definición:__ Denotaremos por $L_p^2(0,a)$ al conjunto de funciones $f:\mathbb{R}\to\mathbb{C}$ de módulo integrable de periodo $a.$
+
+<br/><br/>
+
+> Con la suma de funciones y el producto por complejos, tenemos que $L_p^2(0,a)$ es un espacio vectorial complejo. Podemos extender la definición de producto interno de los polinomio trigonométricos a este caso, es decir, $$(f,g)=\int_0^af(t)\overline{g(t)}dt$$
+
+---
+# El espacio $L_p^2(0,a)$
+
+> Es importante mencionar, que pensaremos que en este espacio dos funciones representan la misma si sólo se diferencian en un número finito de puntos, o lo que es equivalente $$\int_0^a|f(t)-g(t)|^2dt=0.$$ Esto implica que si $$\int_0^a|f(t)|^2dt=0 \Rightarrow f=0.$$
+
+---
+# Nuestro objetivo
+
+> Queremos encontrar un polinomio trigonométrico $p(t)$ tal que minimice $$ ||f-p||_2=\sqrt{(f,p)}.$$
+
+<br/><br/>
+
+Si $p(t)=\sum_{j=-N}^Nk_j\varepsilon_j(t),$ y $c_j$ son los coeficientes de Fourier para $f,$ entonces lo anterior es equivalente a $$k_n=c_n.$$
+
+---
+## La mejor aproximación:
+
+> __Teorema:__ Para cualquier función $f\in L_p^2(0,a),$ existe un único polinomio trigonométrico $f_N\in T_N$ tal que $$||f-f_N||_2=\min_{p\in T_N}||f-p||_2$$ donde el polinomio $$f_N=\sum_{j=-N}^N c_j\varepsilon_j(t)$$ y $$c_j=\frac{1}{a}\int_0^af(t)\exp\left(\frac{2\pi n i t}{a}\right)dt.$$
+
+---
+# Ejemplo:
+
+> Consideremos la función periódica $f(t)=1$ si $0\leq t<\pi,$ $f(t)=-1$ si $\pi\leq t < 2\pi$ y $f(t+2\pi)=f(t).$
+
+---
+# Ejemplo:
+
+<iframe src="https://www.wolframcloud.com/obj/alejandroucan-puc/Published/SerieFourierEjemploClase.nb?_embed=iframe" width="1200" height="450"></iframe>
+
+---
+# El teorema de Aproximación de Fourier
+
+> __Teorema:__ Para $f\in L_p^2(0,a)$ y $f_N$ su mejor aproximación en $T_N$ tenemos que $$f_N\to f$$ as $n\to \infty$ o equivalentemente $$\int_0^a |f(t)-f_N(t)|^2dt =0 \mbox{ cuando } n\to \infty.$$
+
+---
+## Implicaciones del Teorema
+
+> Ahora ya es correcto decir que $$f(t)=\sum_{j=-\infty}^\infty c_j \varepsilon_j(t)$$ $$f(t)=a_n +\sum_{j=1}^\infty (a_n\cos\left(\frac{2\pi n t}{a}\right)+ b_n\sin\left(\frac{2\pi n t}{a}\right)).$$
+
+---
+# Propiedades de los Coeficientes de Fourier:
+
+* __Unicidad:__ Si $f=g$ entonces $$c_n(f)=c_n(f)$$ en particular $$c_n(f)=0\Rightarrow f=0.$$
+
+<br/><br/>
+* __Reales:__ Si $f$ es una función realvaluada, entonces $c_n$ es real. 
+
+---
+# Actividad en clase:
+
+> Calculas los coeficientes de Fourier para las siguientes funciones y escribelas en terminos de series de senos y cosenos. <br/><br/>
+  * $f(t)=|t|$ si $-1\leq t <1$ y $f(t+2)=f(t)$ <br/><br/>
+  * $f(t)=|\sin(t)|$ <br/><br/>
+  * $f(t)=\sin^3(t)$
+

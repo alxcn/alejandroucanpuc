@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Definite Integram and Fundamental Theorem of Calculus</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-11-20" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xc772af5fc394102a3f29d57219d9396","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Definite Integram and Fundamental Theorem of Calculus
+]
+.subtitle[
+## Session 12
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-11-20
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+# Goals
+
+* The problem of area bounded by a curve and the x-axis. &lt;br/&gt;&lt;br/&gt;
+* Riemann sums and the approximation of the area. &lt;br/&gt;&lt;br/&gt;
+* The definite integral and the Fundamental Theorem of Calculus. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Motivation:
+
+Imagine that you have a piece of land with a shape that is not easy to calculate the area, but you know that the irregular side follows the graph of a given fucntion `\(f(x)\)`. We can approximate the value of the area by dividing the land into small rectangles and summing the areas of these rectangles. To ease our calculations, we can assume that the rectangles has base in a regular side and the height is the value of the function at the initial point of the base.
+
+
+---
+# Riemann Sums
+
+## Interval partitions
+
+&gt; __Definition:__ Let `\([a,b]\)` be an interval. A partition of `\([a,b]\)` is a finite set of points `\(P=\{x_0,x_1,\ldots,x_n\}\)` such that `\(a=x_0&lt;x_1&lt;\ldots&lt;x_n=b.\)` 
+&lt;br/&gt;&lt;br/&gt; The length of the subinterval `\([x_{i-1},x_i]\)` is denoted by `\(\Delta x_i=x_i-x_{i-1}.\)`
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+__Remark:__ Note that the length of the subintervals are not necessarily equal. In the case were all subintervals have the same length, we say that the partition is __regular__.
+
+---
+#### Example
+
+1. Let `\([a,b]=[0,1]\)` and `\(P=\{0,0.2,0.5,0.8,1\}.\)` Then `\(\Delta x_1=0.2,\)` `\(\Delta x_2=0.3,\)` `\(\Delta x_3=0.3,\)` `\(\Delta x_4=0.2.\)` &lt;br/&gt;&lt;br/&gt;
+
+1. Let `\([a,b]=[0,1]\)` and `\(P=\{0,0.25,0.5,0.75,1\}.\)` Then `\(\Delta x_1=0.25,\)` `\(\Delta x_2=0.25,\)` `\(\Delta x_3=0.25,\)` `\(\Delta x_4=0.25.\)` &lt;br/&gt;&lt;br/&gt;
+
+1. Let `\([-10,5]\)` and `\(P=\{-10,-5,0,5\}.\)` Then `\(\Delta x_1=5,\)` `\(\Delta x_2=5,\)` `\(\Delta x_3=5.\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+#### Practice
+
+1. Find a regular partition of `\([0,1]\)` with 10 subintervals. &lt;br/&gt;&lt;br/&gt;
+1. Find a partition of `\([0,1]\)` with three subintervals. &lt;br/&gt;&lt;br/&gt;
+1. Find a regular partition of `\([-1,1]\)` with 5 subintervals. &lt;br/&gt;&lt;br/&gt;
+1. Find a regular partition of `\([-1,1]\)` with 10 subintervals. &lt;br/&gt;&lt;br/&gt;
+1. Find a partition of `\([-10,0]\)` with 6 subintervals. &lt;br/&gt;&lt;br/&gt;
+1. Find a partition of `\([-1,10]\)` with 7 subintervals. &lt;br/&gt;&lt;br/&gt;
+
+---
+## Riemann sums
+
+&gt; __Definition:__ Let `\(f:[a,b]\to\mathbb{R}\)` be a function and `\(P=\{x_0,x_1,\ldots,x_n\}\)` be a partition of `\([a,b].\)` &lt;br/&gt;&lt;br/&gt; The Riemann sum of `\(f\)` with respect to `\(P\)` is defined as `$$S(f,P)=\sum_{i=1}^n f(c_i)\Delta x_i,$$` where `\(c_i\in[x_{i-1},x_i].\)`
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+__Remark:__ Note that the Riemann sum is a weighted sum of the values of the function `\(f\)` at the points `\(c_i.\)` If `\(c_i=x_{i-1}\)` then we call it a __left sum__, if `\(c_i=x_i\)` then we call it a __right sum__, and if `\(c_i\)` is the middle point in `\([x_{i-1},x_i]\)` then we call it a __middle sum__.
+
+---
+#### Example
+
+1. Let `\(f(x)=x^2\)` and `\(P=\{0,0.2,0.5,0.8,1\}.\)` Compute the left sum, the right sum, and the middle sum. &lt;br/&gt;&lt;br/&gt;
+--
+&lt;br/&gt;&lt;br/&gt;
+  * Then `\(S(f,P)=0^2\cdot 0.2+0.2^2\cdot 0.3+0.5^2\cdot 0.3+0.8^2\cdot 0.2=0.3.\)` &lt;br/&gt;&lt;br/&gt;
+  * Then `\(S(f,P)=0.2^2\cdot 0.2+0.5^2\cdot 0.3+0.8^2\cdot 0.3+1^2\cdot 0.2=0.5.\)` &lt;br/&gt;&lt;br/&gt;
+  * Then `\(S(f,P)=0.1^2\cdot 0.2+0.4^2\cdot 0.3+0.7^2\cdot 0.3+0.9^2\cdot 0.2=0.41.\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+#### Example
+
+1. Let `\(f(x)=9-x^2\)` and `\(P=\{0,0.25,0.5,0.75,1\}.\)` Compute the left sum, the right sum, and the middle sum. &lt;br/&gt;&lt;br/&gt;
+--
+&lt;br/&gt;&lt;br/&gt;
+  * Then `\(S(f,P)=(9-0^2)\cdot 0.25+ (9-0.25^2)\cdot 0.25+(9-0.5^2)\cdot 0.25+(9-0.75^2)\cdot 0.25=8.78125.\)` &lt;br/&gt;&lt;br/&gt;
+  * Then `\(S(f,P)=(9-0.25^2)\cdot 0.25+(9-0.5^2)\cdot 0.25+(9-0.75^2)\cdot 0.25+(9-1^2)\cdot 0.25=8.53125.\)` &lt;br/&gt;&lt;br/&gt;
+  * Then `\(S(f,P)=(9-0.125^2)\cdot 0.25+(9-0.375^2)\cdot 0.25+(9-0.625^2)\cdot 0.25+(9-0.875^2)\cdot 0.25=8.65625.\)` &lt;br/&gt;&lt;br/&gt;
+
+---
+#### Practice
+
+1. Let `\(f(x)=x^2-3x+5\)` over the interval `\([0,3].\)` Compute the left, right and middle Riemann sum with a regular partition made of 5 subintervals. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Definite Integral
+
+&gt; __Definition:__ Let `\(f\)` be a function defined on the interval `\([a,b]\)`. The definite integral of `\(f\)` from `\(a\)` to `\(b\)` is defined as the limit of a Riemann sum when we increase the number of subintervals in a partition. In symbols `$$\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^*) \Delta x_i$$` provided that this limit exists and gives the same value for all possible choices of sample points `\(x_i^*\)` in the subintervals `\([x_{i-1}, x_i]\)`.
+
+---
+## Some conventions:
+
+* We will only use regular partitions but the definition is valid for any kind of partition. &lt;br/&gt;&lt;br/&gt;
+* We will only consider left Riemann sums, but this computation is also valid for right and middle sums. &lt;br/&gt;&lt;br/&gt;
+* We will use the notation `\(\Delta x = \frac{b-a}{n}\)` and `\(x_i = a + i \Delta x\)`.
+
+---
+#### Example 1:
+
+1. Compute the definite integral `\(\int_0^1 x dx\)` using the definition. &lt;br/&gt;&lt;br/&gt;
+
+--
+Let's start by computing the Riemann sum for `\(n\)` subintervals. The length of the subintervals is given by `\(\Delta x= \frac{1-0}{n}\)` and the left points are `$$x_j=0 + j \Delta x = \frac{j}{n}$$` for `\(j=0,1,2,\ldots,n\)`. The Riemann sum is given by `$$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n \frac{j}{n} \frac{1}{n} = \frac{1}{n^2} \sum_{j=1}^n j = \frac{1}{n^2} \frac{n(n+1)}{2} = \frac{n+1}{2n}$$` &lt;br/&gt;&lt;br/&gt;
+
+Let's take the limit in the number of intervals: `$$\lim_{n \to \infty} \frac{n+1}{2n} = \frac{1}{2}.$$`
+
+---
+#### Example 2:
+
+1. Compute the definite integral `\(\int_1^4 4x+3 dx\)` using the definition. &lt;br/&gt;&lt;br/&gt;
+
+--
+Let's start by computing the Riemann sum for `\(n\)` subintervals. The length of the subintervals is given by `\(\Delta x= \frac{1-{-1}}{n}\)` and the left points are `$$x_j=-1 + j \Delta x = -1 + \frac{j}{n}$$` for `\(j=0,1,2,\ldots,n\)`. The Riemann sum is given by `$$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n (4(-1 + \frac{j}{n})+3) \frac{2}{n} = \frac{2}{n} \sum_{j=1}^n (4(-1 + \frac{j}{n})+3) = \frac{2}{n} \sum_{j=1}^n (4-4\frac{j}{n}+3) = \frac{2}{n} \sum_{j=1}^n (7-4\frac{j}{n}) = \frac{2}{n} (7n-4\frac{n(n+1)}{2}) = 7-2\frac{n+1}{n}$$` &lt;br/&gt;&lt;br/&gt;
+
+Let's take the limit in the number of intervals: `$$\lim_{n \to \infty} 7-2\frac{n+1}{n} = 7-2 = 5.$$`
+
+---
+#### Example 3:
+
+1. Compute the definite integral `\(\int_0^1 x^2 dx\)` using the definition. &lt;br/&gt;&lt;br/&gt;
+
+--
+Let's start by computing the Riemann sum for `\(n\)` subintervals. The length of the subintervals is given by `\(\Delta x= \frac{1-0}{n}\)` and the left points are `$$x_j=0 + j \Delta x = \frac{j}{n}$$` for `\(j=0,1,2,\ldots,n\)`. The Riemann sum is given by `$$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n \frac{j^2}{n^2} \frac{1}{n} = \frac{1}{n^3} \sum_{j=1}^n j^2 = \frac{1}{n^3} \frac{n(n+1)(2n+1)}{6} = \frac{(n+1)(2n+1)}{6n^2}$$` &lt;br/&gt;&lt;br/&gt;
+
+Let's take the limit in the number of intervals: `$$\lim_{n \to \infty} \frac{(n+1)(2n+1)}{6n^2} = \frac{2}{3}.$$`
+
+---
+# The Fundamental Theorem of Calculus
+
+&gt; __Theorem:__ Let `\(f\)` be a continuous function on the interval `\([a,b]\)`. If `\(F\)` is any antiderivative of `\(f\)`, then `$$\int_a^b f(x) dx = F(b) - F(a).$$`
+
+#### Example 4:
+
+1. Compute the definite integral `\(\int_0^1 x dx\)` using the Fundamental Theorem of Calculus. &lt;br/&gt;&lt;br/&gt;
+
+The antiderivative of `\(x\)` is `\(\frac{x^2}{2}\)` and the definite integral is given by `$$\int_0^1 x dx = \frac{1^2}{2} - \frac{0^2}{2} = \frac{1}{2}.$$`
+
+---
+#### Example 5:
+
+Compute the following definite integrals using the Fundamental Theorem of Calculus.
+
+1. `\(\int_-1^4 4x+3 dx\)` &lt;br/&gt;&lt;br/&gt;
+1. `\(\int_0^1 x^2 dx\)` &lt;br/&gt;&lt;br/&gt;
+1. `\(\int_0^3 x^2-3x+5 dx\)` &lt;br/&gt;&lt;br/&gt;
+1. `\(\int_1^e \frac{1}{x} dx\)` &lt;br/&gt;&lt;br/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+---
+title: "Chain Rule"
+subtitle: "Session 04"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Goals for the Session:
+
+  * Introduce the concept of change of variables. <br/><br/>
+  * Define the chain rule. <br/><br/>
+  * Apply the chain rule. <br/><br/>
+
+---
+# Motivation:
+
+> Consider the function $W(T,v)=13.12+0.62T -11.37v^{0.16}+0.39Tv^{0.16}$ that measures the body's thermal sensation where $T$ is the temperature and $v$ is the wind speed. <br/><br/>
+But, both $T$ and $v$ depend on the position of the city where we are: $$T(x,y)=17+3xy$$ $$v(x,y)=-x^2+y^2$$
+<br/><br/>
+Using a substitution we can express the Thermal sensation in terms of position doing: $$W(T(x,y),v(x,y))$$
+
+---
+# Change of variables
+
+> **Definition:** A change of variables for a function $f:\mathbb{R}^n\to \mathbb{R}$ is a collection of $n-$functions $g_1,\cdots,g_n:\mathbb{R}^m\to\mathbb{R}$ such that $$f(g_1(x_1,\cdots, x_m),g_2(x_1,\cdots, x_m),\cdots,g_n(x_1,\cdots, x_m)).$$$
+
+--
+
+#### Example 1:
+
+Consider the function $f(x,y)=xy$ and the change of variable $$x(u,v,w)=u+v+w\quad y(u,v,w)=u-v+w.$$ Compute the function $f$ with its change of variable.
+
+--
+
+$$f(x(u,v,w),y(u,v,w))=(u+v+w)(u-v+w).$$
+
+---
+
+#### Example 2:
+
+Consider the function $f(x,y)=\ln(x\cos(y^2))$ and the change of variable $$x(u,v)=\sin(uv)\quad y(u,v)=e^{uv}.$$ Compute the function $f$ with its change of variable.
+
+--
+$$f(x(u,v),y(u,v))=\ln(\sin(uv)\cos(e^{2uv}))$$
+---
+#### Example 3:
+
+Consider the function $f(x,y,z)=\sqrt{x^2+y^2+z^2}$ and the change of variable $$x(u,v)=\sin(u) \quad y(u,v)=\cos(u)\quad z(u,v)=uv.$$ Compute the function $f$ with its change of variable.
+
+--
+$$ f(x(u,v),y(u,v),z(u,v))=\sqrt{u^2v^2}$$
+
+---
+# Chain Rule
+
+> **Theorem:** Assume that $u:\mathbb{R}^n\to \mathbb{R}$ is a function of $n-$variables and $g_1,\cdots,g_n:\mathbb{R}^m\to\mathbb{R}$ are functions of $m-$variables. Then, the chain rule states that $$\frac{\partial u}{\partial x_j}=\frac{\partial u}{\partial u}\frac{\partial g_2}{\partial x_j}+ \frac{\partial u}{\partial g_2}\frac{\partial g_2}{\partial x_j}+\cdots +\frac{\partial u}{\partial u}\frac{\partial g_n}{\partial x_j}$$ for $j=1,\cdots,m.$
+
+---
+ # How it looks like that chain rule?
+ 
+ ![Chain Rule](Regla_Cadena.jpg)
+
+---
+
+#### Example 1:
+
+Compute the partial derivatives of the function $f(x,y)=xy$ with the change of variable $$x(u,v,w)=u+v+w\quad y(u,v,w)=u-v+w.$$
+
+--
+$$f_u(u,v,w)=(u-v+w)+(u+v+w)$$ $$f_v(u,v,w)=(u-v+w)-(u+v+w)$$
+$$f_w(u,v,w)=(u-v+w)+(u+v+w)$$
+
+---
+
+#### Example 2:
+
+Compute the partial derivatives of the function $f(x,y)=\ln(x\cos(y^2))$ with the change of variable $$x(u,v)=\sin(uv)\quad y(u,v)=e^{uv}.$$
+
+--
+
+$$ f_u(u,v)=\frac{1}{\sin(uv)}\cos(uv)v+\frac{-2e^{xy}\sin(e^{2uv})}{\sin(uv)\cos(e^{2uv})}ve^{uv}$$

@@ -1,0 +1,165 @@
+---
+title: "Cualitative Analysis and Applications"
+subtitle: "Session 06"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Goals
+
+* Deduction of the Tangent line and relation with the derivative. <br/><br/>
+* Deduction of the Normal line and relation with the derivative. <br/><br/>
+* Monotonicity of a function. <br/><br/>
+* Concavity of a function. <br/><br/>
+
+---
+# Motivation
+
+Assume that we are following a circular path really fast, and suddenly we make an stop. What will happen to us? What path will be following by the law of physics?
+
+Let us translate this problem for us. If our position is given by a function $d(t),$ then our mean velocity is given by the function $$v(t)=\frac{v(t)-v(t_0)}{t-t_0}.$$
+
+---
+# Motivation
+
+Now, if we reduce the time interval to zero, then we have the instantaneous velocity 
+
+$$v(t)=\lim_{t\to t_0}\frac{v(t)-v(t_0)}{t-t_0}.$$
+
+
+---
+# Tangent Line
+
+> **Definition:** Given a function $f$ and a point $P(a,f(a))$ in the graph of $f$, the tangent line to the graph of $f$ at the point $P$ is the line that passes through $P$ and has slope $f'(a)$.
+
+-- 
+
+#### Remarks
+
+1. The tangent line to the graph of $f$ at the point $P(a,f(a))$ is given by the equation $y=f(a)+f'(a)(x-a).$
+2. The tangent line to the graph of $f$ at the point $P(a,f(a))$ is the best linear approximation to the graph of $f$ near the point $P.$
+3. The tangent line is the first order Taylor polynomial of $f$ at the point $P.$
+
+---
+# Examples
+
+1. Find the equation of the tangent line to the graph of $f(x)=x^2$ at the point $P(1,1).$ <br/><br/>
+
+--
+
+#### Solution
+
+We have that $f'(x)=2x,$ then $f'(1)=2.$ Therefore, the equation of the tangent line is $y=1+2(x-1)=2x-1.$ <br/><br/>
+
+---
+# Examples
+
+2. Without calculator find the approximate value of $\sqrt{16.1}.$
+
+--
+#### Solution
+
+We have that $f(x)=\sqrt{x}$ and $f'(x)=\frac{1}{2\sqrt{x}}.$ Then, $f'(16)=\frac{1}{2\sqrt{16}}=\frac{1}{8}.$ Therefore, the equation of the tangent line is $y=4+\frac{1}{8}(x-16)=\frac{1}{8}x+3.$ Then, $\sqrt{16.1}\approx \frac{1}{8}(16.1)+3=4.0125.$
+
+---
+# Normal line
+
+> **Definition:** Given a function $f$ and a point $P(a,f(a))$ in the graph of $f$, the normal line to the graph of $f$ at the point $P$ is the line that passes through $P$ and is perpendicular to the tangent line to the graph of $f$ at the point $P.$
+
+---
+# Cualitative Analysis 
+
+## Monotonicity
+
+> **Definition:** A function $f$ is said to be increasing in an interval $I$ if for all $x_1,x_2$ in $I$ such that $x_1<x_2,$ then $f(x_1)<f(x_2).$ A function $f$ is said to be decreasing in an interval $I$ if for all $x_1,x_2$ in $I$ such that $x_1<x_2,$ then $f(x_1)>f(x_2).$
+
+-- 
+#### Derivatives and Monotonicity
+
+1. If $f'(x)>0$ for all $x$ in an interval $I,$ then $f$ is increasing in $I.$
+2. If $f'(x)<0$ for all $x$ in an interval $I,$ then $f$ is decreasing in $I.$
+
+---
+#### Examples
+
+Describe the Monotonicity of the following functions.
+
+1. $f(x)=3x+$
+2. $f(x)=x^3-x^2+x-1$
+3. $f(x)=\cos(x).$
+
+---
+# Cualitative Analysis
+
+## Concavity
+
+> **Definition:** A function $f$ is said to be concave up in an interval $I$ if for all $x_1,x_2$ in $I$ such that $x_1<x_2,$ then the graph of $f$ lies above the tangent line to the graph of $f$ at the point $(x_1,f(x_1)).$ A function $f$ is said to be concave down in an interval $I$ if for all $x_1,x_2$ in $I$ such that $x_1<x_2,$ then the graph of $f$ lies below the tangent line to the graph of $f$ at the point $(x_1,f(x_1)).$
+
+--
+#### Derivatives and Concavity
+
+1. If $f''(x)>0$ for all $x$ in an interval $I,$ then $f$ is concave up in $I.$
+2. If $f''(x)<0$ for all $x$ in an interval $I,$ then $f$ is concave down in $I.$
+
+---
+
+#### Examples
+
+Describe the Concavity of the following functions.
+
+1. $f(x)=3x^2$
+2. $f(x)=x^3-x^2+x-1$
+3. $f(x)=\cos(x).$
+
+---
+### Examples
+
+Describe the behavior of the following functions:
+
+1. $f(x)=x^3-x^2+x-1$
+2. $f(x)=\sqrt{3x+1}$
+3. $f(x)=x^3-3x^2+3x-1$
+

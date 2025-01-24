@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Qualitative Description of a Function via its derivative</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"aed1f555cdec46d195483c063ce3e2bb","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Qualitative Description of a Function via its derivative
+]
+.subtitle[
+## Session 02
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+
+# Goals:
+
+ * Describe the function via its derivative. &lt;br/&gt;&lt;br/&gt;
+ * Compute: extreme values, monotony intervals, and concavity intervals. &lt;br/&gt;&lt;br/&gt;
+ 
+---
+# How the Derivative is related to the function?
+
+&lt;iframe src="https://www.desmos.com/calculator/2ew0jangf3?embed" width="1200" height="450" style="border: 1px solid #ccc" frameborder=0&gt;&lt;/iframe&gt;
+
+---
+# Extreme Values:
+
+&gt; To find the extreme values of a function, we need to search for those values of `\(x\)` where the derivative is cero. These points are called __critical__ points and satisfy `$$f'(x)=0.$$`
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; __First derivative criterium:__ A critical point `\(x_0\)` is said to be:
+  * a _minimum_ of the function if `\(f'(x)&lt;0\)` for `\(x&lt;x_0\)` and `\(f'(x)&gt;0\)` if `\(x&gt;x_0.\)` &lt;br/&gt;&lt;br/&gt;
+  * a _maximum_ of the function if `\(f'(x)&gt;0\)` for `\(x&lt;x_0\)` and `\(f'(x)&lt;0\)` if `\(x&gt;x_0.\)`
+
+---
+## Example:
+
+&gt; The function `\(f(x)=-x^2\)` has a maximum in `\(x=0.\)`
+
+&lt;iframe src="https://www.desmos.com/calculator/hlq2dsx9yj?embed" width="1200" height="300" style="border: 1px solid #ccc" frameborder=0&gt;&lt;/iframe&gt;
+---
+## Example:
+
+&gt; `\(f'(x)=-2x\)` &lt;br/&gt;&lt;br/&gt;.
+
+Which are the critical points? `$$-2x=0\Rightarrow x=0.$$`
+
+---
+# Monotony.
+
+&gt; We say that a function `\(f\)` is:
+  * _increasing_ in an interval `\((a,b)\)` if `\(f'(x)&gt;0\)` for each point of `\((a,b).\)` &lt;br/&gt;
+  * _decreasing_ in an interval `\((a,b)\)` if `\(f'(x)&lt;0\)` for each point of `\((a,b).\)`
+
+---
+## Example:
+
+Find the intervals where `\(f(x)=x^2-6x+5\)` is monotonus.
+
+&gt; Solution:
+
+&lt;br/&gt;
+* Find the critical points (solve for `\(f'(x)=0\)`): `$$f'(x)=2x-6=0\Rightarrow x=3.$$`
+
+* We made a test: we check the sign of the derivative at one point in `\(x&lt;3\)` and in other point in `\(x&gt;3.\)` &lt;br/&gt;&lt;br/&gt;
+
+* Increasing at `\((3,+\infty)\)` and decreasing at `\((-\infty,3).\)`
+
+---
+# Excercise:
+Find the intervals where `\(f(x)=2x^3-3x^2-12x+7\)` is decresing.
+
+---
+# Excercise:
+Find the intervals where `\(f(x)=2x^3-3x^2-12x+7\)` is decresing.
+
+&gt; Solution:
+
+&lt;br/&gt;
+
+* We compute the derivative `\(f'(x)=6x^2-6x-12.\)` &lt;br/&gt;
+
+* Solve for `\(f'(x)&lt;0.\)` `$$6x^2-6x-12&lt;0 \Rightarrow (x-2)(x+1)&lt;0.$$` &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+
+* Is decresing at `\((-1,2).\)`
+
+---
+# Concavity:
+
+&gt; We are interested to know where a function looks like a mointain, like a valler and where these types changes.
+
+---
+# Concavity and derivaties.
+
+&gt; For a function `\(f(x)\)`: &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+* `\(f(x)\)` es __concave up__ at `\((a,b),\)` if `\(f''(x)&gt;0\)` at `\((a,b).\)` &lt;br/&gt;&lt;br/&gt;
+* `\(f(x)\)` es __cóncava down__ at `\((a,b),\)` if `\(f''(x)&lt;0\)` at `\((a,b).\)` &lt;br/&gt;&lt;br/&gt;
+* If `\(f''(x)\)` changes it sign at `\(x=c,\)` then `\(f\)` has an __inflection point__ at `\(x=c.\)` 
+
+---
+# Example:
+Find the concavity intervals and inflection points of `\(f(x)=2x^3-3x^2-12x+7.\)`
+
+&gt; Solution:
+
+&lt;br/&gt;
+
+* Solve `\(f''(x)=0.\)` $$ f''(x)=12x-6=0\Rightarrow x=\frac{1}{2}.$$
+
+* We made a test for `\(f''\)` for `\(x&lt;1/2\)` y `\(x&gt;1/2.\)` &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+
+* It is concave up at `\((1/2,\infty),\)` concave down at `\((-\infty, 1/2)\)` and has an inflection point at `\(x=1/2.\)`
+
+---
+# Practical excercise:
+
+&gt; Determine the monotony intervals, the concavity intervals and inflections points of the following points. Made a sketch of the graph of the function using this information. &lt;br/&gt;&lt;br/&gt;
+1. `\(f(x)=x^2-12x+1.\)` &lt;br/&gt;&lt;br/&gt;
+2. `\(f(x)=5-3x^2+x^3.\)` &lt;br/&gt;&lt;br/&gt;
+3. `\(f(x)=-3x^2+2x-3.\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

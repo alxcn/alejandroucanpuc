@@ -1,0 +1,122 @@
+---
+title: "Integrales Multiples parte II"
+subtitle: "Sesión 10"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Realizar cambios de orden en integrales generales. <br/><br/>
+ * Conocer las aplicaciones generales de la integral. <br/><br/>
+
+---
+# Ejemplo: 
+
+> Encuentra el valor de la integral de $f(x,y)=4x+2$ en la región acotada por $y=x^2$ y $y=2x,$ integrando primero respecto a $x.$
+
+
+
+---
+# Ejercicio:
+
+> Calcula el valor de la integral de $f(x,y)=x$ en la región acotada por $x=0,$ $y=0$ y $y=\sqrt{1-x^2}.$
+
+
+---
+# Otras propiedades de la integral
+
+1. __Dominación:__ 
+  * Si $f(x,y)\leq 0$ entonces $$\int\int_{R} f(x,y)dA \leq 0.$$
+  * Si $f(x,y)\leq g(x,y)$ en una región $R$ entonces $$\int\int_{R}f dA \leq \int\int_R g dA.$$
+  
+1. __Aditividad (en regiones):__ Supongamos que $R$ se puede expresar como la unión de dos regiones disjuntas simples $R_1$ y $R_2,$ entonces $$\int\int_R f dA =\int\int_{R_1}f dA + \int\int_{R_2} f dA.$$
+
+---
+# Área de una región:
+
+> __Definición:__ el área de una región plana $R$ en $\mathbb{R}^2$ está dada por la integral $$\int\int_{R}dA.$$
+
+__Ejemplo:__ Calcular el región de la región acotada por las rectas $y=\sqrt{x}$ y $y=x^2.$
+
+
+---
+# Ejercicio:
+
+> Encuentre el área de la región acotada por la parábola $y=x^2$ y $y=x+2.$
+
+
+---
+# El valor promedio
+
+> __Definción:__ el valor promedio de una función sobre una región $R$ se define como la integral $$prom(f,R)=\frac{\int\int_{R}fdA}{\int\int_{R}dA}.$$
+
+__Ejemplo:__ Calcule el valor promedio de la función $f(x,y)=x\cos(xy)$ en el rectángulo $0\leq x\leq \pi $ y $0\leq y\leq 1.$
+
+
+---
+# Ejercicio: 
+
+> La siguiente función muestra la distribución de las edades en años de una escuela donde $x$ representa el número de hombre y $y$ el de mujeres, $f(x,y)=xy+x^2+y^3,$ si sabemos que hay $0<x<10$ y $0<y<5.$ Calcule el valor promedio de la edad.
+
+---
+# Masa y Centro de Masa
+
+> __Definición:__ Supongamos que tenemos una región $R$ cuya distribución de densidades está dada por la función $\delta(x,y),$ entonces <br/><br/>
+1. La masa del objeto se define como $$\int\int_R \delta(x,y)dA.$$ <br/>
+1. Los momento de masa son: $$M_x=\int\int_R y\delta(x,y)dA \mbox{ y } M_y=\int\int_R x\delta(x,y)dA.$$ <br/>
+1. El centroide de masa estará dado por $$\left(\frac{M_y}{M},\frac{M_x}{M}\right).$$
+
+---
+# Ejercicio:
+
+> En el triángulo acotado por la región $0\leq x\leq 1$ y $0\leq y \leq 2x$ tenemos una distribución de densidades dada por $\delta(x,y)=6x+6y+6.$ Calcula la masa y el centro de masa.
+
+
+---
+# Probabilidades
+
+> Supongamos que tenemos variables aleatorias $x$ y $y,$ y $P(x,y)$ es la distribución de probabilidad en una región $R,$ es decir, $$\int_R PdA=1.$$ Si queremos conocer la probabilidad que ocurra un evento $C,$ entonces calculamos $$\int_C PdA.$$
+
+---
+
+#### Ejemplo
+
+> Considere las variables $x,y$ con distribución de probabilidad $$f(x,y)=\frac{x+2y}{1500}$$ en $[0,10]\times[0,10].$ Calcule la probabilidad que ocurra $y\geq 7$ y $x\leq 2$.
+

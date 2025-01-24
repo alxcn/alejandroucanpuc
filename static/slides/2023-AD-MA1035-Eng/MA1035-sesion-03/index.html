@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Higher Order Linear Differential Equations with constant coefficients</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-09-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xd91df6f050b4b1a892a267f203edcf6","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Higher Order Linear Differential Equations with constant coefficients
+]
+.subtitle[
+## Session 03
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-09-15
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Goals
+
+* Describe the general form of a linear homogeneous differential equation with constant coefficients and the IVP. &lt;br/&gt;&lt;br/&gt;
+* Determine the general solution for a linear homogeneous differential equation with constant coefficients. &lt;br/&gt;&lt;br/&gt;
+* Deduce the method to solve linear homogeneous differential equations with constant coefficients. &lt;br/&gt;&lt;br/&gt;
+* Apply the method to solve linear homogeneous differential equations with constant coefficients.
+
+---
+# Linear homogeneous differential equations with constant coefficients.
+
+&gt; __Definition:__ the generic form of a linear homogeneous differential equation of order `\(n\)` is: `$$a_n(x)y^{(n)}+a_{n-1}(x)y^{(n-1)}+\cdots+a_2(x)y''+a_1(x)y'+a_0(x)y=g(x).$$`
+
+To define an IVP we need to add the initial conditions: `$$y(x_0)=y_0,\, y'(x_0)=y_1,\,y''(x_0)=y_2,\cdots,\,y^{(n-1)}(x_0)=y_{n-1}.$$`
+
+---
+#### Example 1:
+
+&gt; For the `\(3y'''+7y''-7y'-3y=0\)` we have that `\(y(x)=ce^{x}\)` and `\(y(x)=ce^{-x/3}+ke^{-3x}\)` are solutions. &lt;br/&gt;&lt;br/&gt;
+
+--
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; The function `\(y=3e^{2x}+e^{-2x}-3x\)` is the solution for the IVP `\(y''-4y=12x\)` with initial conditions `\(y(0)=4\)` and `\(y'(0)=1.\)` 
+
+---
+# First Order LODE with cc.
+
+&gt; The general form of a first order LODE with cc is `\(ay'+by=g(x),\)` lets try to solve the homogeneous case. &lt;br/&gt;&lt;br/&gt;
+  * The solution have to be of the form `\(y=e^{mx}.\)` &lt;br/&gt;&lt;br/&gt;
+  * Substituting in the LODE we have that `$$ame^{mx}+be^{mx}=0=e^{mx}(am+b),$$` 
+  * From the fact that `\(e^{mx}\neq 0\)` we have that `$$am+b=0\Rightarrow m=-b/a.$$`
+  * Therefore the solution is `\(y(x)=ce^{-bx/a}.\)`
+---
+# Second Order LODE with cc.
+
+&gt; Lets take the second order homogeneous LODE with cc. &lt;br/&gt;&lt;br/&gt;
+  * The solution have to be of the form `\(y=e^{mx}.\)` &lt;br/&gt;&lt;br/&gt;
+  * Substituting in the LODE we obtain that our __auxiliary polynomial__ is `$$am^2+bm+c=0.$$` &lt;br/&gt;&lt;br/&gt;
+  * We have that there two roots to this polynomio (they might be egual): `\(m_1\)` and `\(m_2.\)` &lt;br/&gt;&lt;br/&gt;
+  * Remember that if:
+    * If `\(\Delta=b^2-4ac&gt;0\)` then the roots are real and different.
+    * If `\(\Delta=0\)` then the roots are real and equal.
+    * If `\(\Delta&lt;0\)` then the roots are complex conjugates.
+    
+---
+## First Case: Different real roots:
+
+&gt; In the case the roots are real and different, `\(m_1\)` and `\(m_2,\)` then the general solution is `$$y=c_1 e^{m_1 x}+c_2e^{m_2 x}.$$`
+
+--
+&lt;br/&gt;
+#### Example 1: 
+
+Find the general solution to `\(2y''-5y'-3y=0,\)` 
+
+--
+&lt;br/&gt;
+#### Solution:
+* The auxiliary polynomio is `\(2m^2-5m-3=0\)` &lt;br/&gt;&lt;br/&gt;
+* The roots are `\(m_1=3\)` and `\(m_2=-1/2\)` &lt;br/&gt;&lt;br/&gt;
+* Therefore, the general solution is: `$$y=c_1e^{3x}+c_2e^{-x/2}.$$`
+---
+## Second Case: Equal real roots:
+
+&gt; In the case the roots are real and equal, `\(m_1=m_2=m,\)` then the general solution is `$$y=c_1 e^{mx}+c_2xe^{mx}.$$`
+
+--
+&lt;br/&gt;
+#### Example 2:
+Find the general solution to `\(y''-10y'+25y=0.\)`
+
+--
+&lt;br/&gt;
+#### Solution:
+* The auxiliary polynomio is `\(m^2-10m+25=0\)` &lt;br/&gt;&lt;br/&gt;
+* The roots are `\(m_1=m_2=5\)` &lt;br/&gt;&lt;br/&gt;
+* Therefore, the general solution is: `$$y=c_1e^{5x}+c_2xe^{5x}.$$`
+
+---
+## Third Case: Complex conjugate roots:
+&gt; In the case the roots are complex conjugates, `\(m_1=a+bi\)` and `\(m_2=a-bi,\)` then the general solution is `$$y=c_1 e^{a}\cos(bx)+c_2e^{ax}\sin(bx).$$`
+
+--
+&lt;br/&gt;
+#### Example 3:
+Find the general solution to `\(y''+4y'+7y=0.\)`
+
+--
+&lt;br/&gt;
+#### Solution:
+* The auxiliary polynomio is `\(m^2+4m+7=0\)` &lt;br/&gt;&lt;br/&gt;
+* The roots are `\(m_1=-2+\sqrt{3}i\)` and `\(m_2=-2-\sqrt{3}i.\)` &lt;br/&gt;&lt;br/&gt;
+* Therefore, the general solution is: `$$y=c_1e^{-2x}\cos(\sqrt{3}x)+c_2e^{-2x}\sin(\sqrt{3}x).$$`
+---
+#### Example 4:
+
+Find the solution of `\(4y''+4y'+17y=0\)` if `\(y(0)=-1\)` y `\(y'(0)=2.\)`
+
+--
+&lt;br/&gt;
+#### Solution:
+* The auxiliary polynomio is `\(4m^2+4m+17=0\)` &lt;br/&gt;&lt;br/&gt;
+* The roots are `\(m_1=-\frac{1}{2}-2i\)` and `\(m_2=-\frac{1}{2}+2i.\)` &lt;br/&gt;&lt;br/&gt;
+* Therefore, the general solution is: `$$y=c_1e^{-\frac{1}{2}x}\cos(2x)+c_2e^{-\frac{1}{2}x}\sin(2x).$$`
+* Applying the initial condition we have the following system of equations: `$$\begin{cases} c_1=-1 \\ -\frac{1}{2}c_1+2c_2=2 \end{cases}$$`
+whose solution are `\(c_1=-1\)` and `\(c_2=1.\)` Therefore the solution is `$$y=-e^{-\frac{1}{2}x}\cos(2x)+e^{-\frac{1}{2}x}\sin(2x).$$`
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

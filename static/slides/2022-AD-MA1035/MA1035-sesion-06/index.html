@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Sistemas de EDOs lineales</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x4b16b4e63e8492a8ea0768a88190dc1","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Sistemas de EDOs lineales
+]
+.subtitle[
+## Sesión 06
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:2em;right:2em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+# Objetivos de la Sesión
+
+* Conocer diferentes problematicas que involucran sistemas de EDOs. &lt;br/&gt;&lt;br/&gt;
+* Conocer la forma matricial de un sistema de EDOs. &lt;br/&gt;&lt;br/&gt;
+* Estudiar la solución (vector de funciones) de un sistema. 
+
+---
+# Recordando:
+
+&gt; Recordemos que si tenemos una población `\(P(t),\)` su crecimiento puede ser modelado mediante la ecuación diferencial `$$\frac{dP}{dt}=kP,$$` &lt;br/&gt;&lt;br/&gt; de igual manera podemos considerar la presencia de una fracción de inmigrantes (por el momento constante) `$$\frac{dP}{dt}=kP-r.$$` &lt;br/&gt;&lt;br/&gt;
+Realmente sabemos que la población que inmigra no es constante en el tiempo, así que el modelo anterior no es tan real.
+
+---
+# Un modelo más real
+
+&gt; Nuestro modelo sería más realista si `\(R(t)\)` define la población de inmigrantes en el tiempo `\(t,\)` `$$\frac{dP}{dt}=kP-R,$$` y si además tenemos información del crecimiento de la población inmigrante, por ejemplo `$$\frac{dR}{dt}=sR.$$` &lt;br/&gt;&lt;br/&gt; 
+Entonces el modelo sería `$$\frac{dP}{dt}=kP-R,$$` `$$\frac{dR}{dt}=sR.$$`
+
+---
+# Sistema de EDOs lineales
+
+&gt; Un sistema de ecuaciones diferenciales es un par de EDOs que involucran dos funciones variables, de la forma general `$$\frac{dx}{dt}=g_1(t,x,y)$$` `$$\frac{dy}{dt}=g_2(t,x,y)$$` y si pedimos que sean lineales las ecuaciones entonces `$$g_1(t,x,y)=c_1x+c_2y+f_1(t)$$` `$$g_2(t,x,y)=k_1 x+k_2y+f_2(t).$$`
+
+---
+# Sistema Predador-Presa
+
+&gt; Supongamos que tenemos dos especies que interactuan en un ecosistemas `\(x(t)\)` y `\(y(t),\)` de donde `\(x(t)\)` es extrictamente vegetariana y `\(y(t)\)` carnivora (consume a `\(x(t)\)`) entonces `$$\frac{dy}{dt}=-ay+bxy$$` `$$\frac{dx}{dt}=cx-dxy.$$` Este modelo se conoce como el __Lotka-Volterra para predador-presa.__
+
+---
+# ¿Cómo se ve?
+
+&lt;div class="figure"&gt;
+&lt;img src="https://strimas.com/post/2017-10-13-lotka-volterra/index_files/figure-html/time-plot-1.png" alt="Ejempo de Soluciónes" width="60%" /&gt;
+&lt;p class="caption"&gt;Ejempo de Soluciónes&lt;/p&gt;
+&lt;/div&gt;
+---
+# Sistema de EDOs lineales
+
+&gt; Consideremos el siguiente sistema de EDOS lineales de `\(n\)` ecuaciones con `\(n\)` incognitas: $$ \begin{array}{ccc} a_{11} x_1 + a_{12} x_2 +\cdots + a_{1n} x_n +f_1(t)&amp;=&amp; x'_1 \\ a_{12} x_1 + b_{22} x_2 +\cdots + a_{2n} x_n +f_2(t) &amp;=&amp; x'_2 \\ \vdots &amp; = &amp; \vdots \\ a_{n1} x_1 + a_{n2} x_2 +\cdots + a_{nn} x_n +f_n(t)&amp;=&amp; x'_n \\ \end{array}$$  
+
+---
+## Versión matricial 
+
+&gt; La expresión anterior se puede expresar de forma matricial: 
+
+`$$\left(\begin{array}{c} x'_1 \\ x'_2 \\ \vdots \\ x'_n \end{array}\right) =\left(\begin{array}{c} a_{11} &amp; a_{12} &amp; \ldots &amp; a_{1n}\\ a_{21} &amp; a_{22} &amp; \ldots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\ a_{n1} &amp; a_{n2} &amp; \ldots &amp; a_{nn} \end{array}\right) \left(\begin{array}{c} x_1 \\ x_2 \\ \vdots \\ x_n \end{array}\right)+ \left(\begin{array}{c} f_1(t) \\ f_2(t) \\ \vdots \\ f_n(t) \end{array}\right)$$`
+$$ X' = A X+F$$
+
+---
+# ¿Cómo se ve la solución?
+
+&gt; La solución de un sistema es un vector `$$X=\left(\begin{array}{c} x_1(t) \\ x_2(t) \\ \vdots \\ x_n(t) \end{array}\right)$$` que satisface las ecuaciones anteriores.
+
+---
+# Ejemplo
+
+&gt; Verifique que el siguiente vector `$$\left(\begin{array}{c} e^{-2t} \\ -e^{-2t}  \end{array}\right)$$` es resultado del sistema `$$X'=\left(\begin{array} 1 &amp; 3 \\ 5 &amp; 3 \end{array}\right) X$$` y también `$$\left(\begin{array}{c} 3e^{6t} \\ 5e^{6t}  \end{array}\right)$$`
+
+---
+# Superposición e Independencia Lineal
+
+&gt; En un sistema de EDOs homogéneas, si `\(X_1\)` y `\(X_2\)` son soluciones, para cualquier número reales `\(c_1\)` y `\(c_2,\)` entonces `$$c_1 X_1 + c_2 X_2$$` también es solución. &lt;br/&gt;&lt;br/&gt; 
+__Definición:__ decimos que las soluciones `\(X_1, \, X_2,\, \cdots,\, X_n\)` son __linealmente indepentiendes__ si la unica combinación `$$c_1 X_1+c_2 X_2+\cdots + c_n X_n=0$$` entonces `\(c_1=c_2=\cdots=c_n=0.\)`
+
+---
+## Ejemplo:
+
+&gt; En el ejemplo anterior, los vectores solución `$$X_1=\left(\begin{array}{c} e^{-2t} \\ -e^{-2t}  \end{array}\right)\quad \mbox{y} \quad \left(\begin{array}{c} 3e^{6t} \\ 5e^{6t}  \end{array}\right)$$` son linealmente independientes.
+
+---
+## Actividad:
+
+&gt; Compruebe que las funciones vectores `$$X_1=\left(\begin{array}{c} \cos(t) \\ \frac{-\cos(t)}{2}+\frac{\sin(t)}{2}\\ -\cos(t)-\sin(t) \end{array}\right) \mbox{ y } \left(\begin{array}{c} 0 \\ e^t \\ 0  \end{array}\right)$$` es un conjunto solución linealmente independiente para el sistema `$$X'=\left(\begin{array}{ccc} 1 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 0 \\ -2 &amp; 0 &amp; -1\end{array}\right) X$$`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

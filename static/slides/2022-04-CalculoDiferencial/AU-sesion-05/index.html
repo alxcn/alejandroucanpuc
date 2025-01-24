@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Inecuaciones cuadráticas</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2022-10-15" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x30d0308304241b5b754fe1c8b2ac1a6","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Inecuaciones cuadráticas
+]
+.subtitle[
+## Sesión 05
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2022-10-15
+]
+
+---
+
+
+
+
+
+
+
+# Objetivos:
+
+ * Determinar cuando una inecuación es cuadrática. &lt;br/&gt; &lt;br/&gt;
+ * Reducir inecuaciones cuadráticas. &lt;br/&gt; &lt;br/&gt;
+ * Describir un conjunto solución a una inecuación cuadrática.
+
+---
+# Desigualdades Racionales
+
+Una __inecuación cuadrática__ es una desigualdad que involucre una expresión igual a un polinomio de grado dos.
+
+__Por ejemplo:__ `\(x^2-2&lt;2\)` o `\(x^2+2x&gt;15.\)`
+
+&gt; __Importante:__ Para este tipo de desigualdades es importante dejarlas hacia a una desigualdad con cero, es decir, `\(&gt;0\)` o `\(&lt;0.\)`
+
+---
+# Solución de una inecuación Cuadrática
+
+En el ejemplo `\(x^2-2&lt;2,\)` no comparamos con cero, por lo que hay que dejarla en la forma usual.
+&lt;br/&gt;&lt;br/&gt;
+
+&gt; Usando la Monotonía Suma: `\((x^2-2)-2&lt;2-2\)` lo que es equivalente a `$$x^2-4&lt;0.$$` 
+
+&lt;br/&gt;
+&gt; El siguiente paso es __factorizar__: `\((x+2)(x-2)&lt;0.\)`
+
+&lt;br/&gt;
+ Por la regla de los signos sabemos que para que un producto sea negativo debemos tener signos distintos. De donde obtenemos casos:
+
+---
+# Solución de una inecuación Cuadrática
+
+&gt; __Caso 1:__ `\(x+2&lt;0\)` y `\(x-2&gt;0\)`
+
+Notemos que la solución a cada una de esas ecuaciones es: `\(x&lt;-2\)` y `\(x&gt;2.\)` Con las regiones así
+
+![Región 1](/Users/koyomi/Documents/GitHub/alejandro_ucan.github.io/static/slides/2022-04-CalculoDiferencial/AU-sesion-05/region1.jpg)
+
+&gt; __Caso 2:__ `\(x+2&gt;0\)` y `\(x-2&lt;0.\)` 
+
+En este caso, la solución a cada una de esas ecuaciones es: `\(x&gt;-2\)` y `\(x&lt;2.\)` Por lo que en este caso, si hay interssión. 
+
+La solución es `\((-2,2).\)`
+
+---
+# Solución de una inecuación cuadrática
+
+__Ejemplo:__ Encontrar el conjunto donde es válida `$$x^2+2x&gt;15.$$`
+
+
+&gt; Usando la Monotonía Suma: `\((x^2+2x)-15&gt;15-15\)` lo que es equivalente a `$$x^2+2x-15&gt;0.$$` 
+
+&lt;br/&gt;
+&gt; El siguiente paso es __factorizar__: `\((x-3)(x+5)&gt;0.\)`
+
+&lt;br/&gt;
+
+.pull-left[ __Caso 1__: `\(x-3&gt;0\)` y `\(x+5&gt;0\)`] 
+ 
+.pull-right[ __Caso 2__: `\(x-3&lt;0\)` y `\(x+5&lt;0\)`]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

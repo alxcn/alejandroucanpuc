@@ -1,0 +1,129 @@
+---
+title: "Derivadas como razón de cambio"
+subtitle: "Sesión 16"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Entender por qué vamos a estudiar la derivada de una función. <br/><br/>
+ * Conocer la definición de derivada de una función. <br/><br/>
+ * Conocer algunas aplicaciones de las derivadas. <br/><br/>
+ 
+---
+# ¿Qué vamos a hacer?
+
+.pull_left[
+* Si conocermos la posición de un carro en cada momento, estamos interesados en saber la __velocidad__ del carro cuando esta viajando a cierto tiempo.
+<br/><br/>
+* Queremos conocer, que __tan rápido__ crece la población en un momento específico.
+<br/><br/>
+* ¿Ustedes conocen la otro fenómeno con este comportamiento?
+]
+
+.pull_right[
+<iframe src="https://giphy.com/embed/UNVdEj8LK9iuY" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/watch-years-how-UNVdEj8LK9iuY">via GIPHY</a></p>
+]
+---
+# La razón de cambio.
+
+Consideremos una función $f(x)$ y vamos a calcular una razón de cambio en el punto $a.$ $$m=\frac{\Delta y}{\Delta x}=\frac{f(a+h)-f(a)}{(a+h)-a}=\frac{f(a+h)-f(a)}{h}.$$
+
+El cociente anterior mide que tanto crece la función en razon del crecimiento de los valores que evaluamos.
+
+---
+# Visualmente.
+
+<iframe src="https://www.geogebra.org/graphing/mj5najqr?embed" width="1200" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# La mejor razón de cambio
+
+De lo anterior podemos decir que la mejor razón de cambio se da por el límite: $$f'(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}.$$
+
+> La función anterior ( $f'(x)$ ) se conoce como la __derivada__ de la función $f(x),$ y el límite anterior se conoce como la definición de la derivada.
+
+---
+# Ejemplo 1:
+
+Encuentre la derivada de la función $f(x)=5x.$
+
+
+> Solución:
+
+Calculemos primero quien es $f(x+h)=5(x+h)=5x+5h,$ entonces sustituimos en el límite 
+$$f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=\lim_{h\to 0}\frac{(5x+5h)-5x}{h}=\lim_{h\to 0}\frac{5h}{h}=5.$$
+
+Por lo tanto, $f'(x)=5.$
+
+---
+# Ejemplo 2:
+
+Encuentre la derivada de la función $f(x)=3x-10.$
+
+> Solución:
+
+Calculemos primero quien es $f(x+h)=3(x+h)-10=3x+3h-10,$ entonces sustituimos en el límite 
+$$f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=\lim_{h\to 0}\frac{(3x+3h-10)-(3x-10)}{h}=\lim_{h\to 0}\frac{3h}{h}=3.$$
+Por lo tanto, $f'(x)=3.$
+---
+# Ejemplo 3:
+
+Encuentre la derivada de la función $f(x)=x^2.$
+
+> Solución:
+
+Calculemos primero quien es $f(x+h)=(x+h)^2=x^2+2xh+h^2,$ y sustituimos en el límite
+$$f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=\lim_{h\to 0}\frac{x^2+2xh+h^2-x^2}{h}=\lim_{h\to 0}\frac{h(2x+h)}{h}=\lim_{h\to 0}(2x+h)=2x.$$
+
+Por lo tanto, $f'(x)=2x.$
+
+---
+# Ejemplo 4:
+
+Encuentre la derivada de la función $f(x)=\sqrt{x}.$
+
+> Solución:
+
+Calculemos primero quien es $f(x+h)=\sqrt{x+h}$ y sustituimos en el límite
+$$f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=\lim_{h\to 0}\frac{\sqrt{x+h}-x}{h}=\lim_{h\to 0}\frac{\sqrt{x+h}-x}{h}\cdot\frac{\sqrt{x+h}+x}{\sqrt{x+h}+h}$$
+$$=\lim_{h\to 0}\frac{x+h-x}{h(\sqrt{x+h}+\sqrt{x})}=\lim_{h\to 0}\frac{1}{\sqrt{x+h}+\sqrt{x}}=\frac{1}{2\sqrt{x}}.$$
+
+Por lo tanto, $f'(x)=\frac{1}{2\sqrt{x}}.$

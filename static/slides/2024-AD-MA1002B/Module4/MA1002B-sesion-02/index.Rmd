@@ -1,0 +1,78 @@
+---
+title: "Método de Runge-Kutta"
+subtitle: "Sesión 02 - Módulo Reto"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos 
+
+* Introducir el método de Runge-Kutta. <br/><br/>
+
+---
+# Método de Runge-Kutta
+
+El método de Runge-Kutta es un método numérico para resolver ecuaciones diferenciales ordinarias (EDOs) con un valor inicial dado. Su inspiración proviene del método de Euler con una modificación: $$y_{n+1} = y_n + h (k_1w_1+\cdots +h_k w_k)$$
+
+1. $w_i$ se conocen como pesos y cumplen la condición $\sum_{i=1}^k w_i = 1$.
+2. $k_i$ es la función $f(t,y) en ciertos puntos.
+
+---
+# Método de Runge-Kutta (2do Orden)
+
+Para el caso de 2do orden, el método de Runge-Kutta se puede expresar como: $$y_{n+1} = y_n + h \left( w_1 k_1 + w_2 k_2 \right)$$ de tal manera que coincida con el polinomio de Taylor de segundo orden donde $k_1=f(t_n,y_n)$ y $k_2=f(t_n+h,y_n+hk_1)$. Para esto se requiere que $w_1=w_2=1/2.$$
+
+---
+# Método de Runge-Kutta (4to Orden)
+
+Para el caso de 4to orden, el método de Runge-Kutta se puede expresar como: $$y_{n+1} = y_n + h \left( w_1 k_1 + w_2 k_2 + w_3 k_3 + w_4 k_4 \right)$$ de tal manera que coincida con el polinomio de Taylor de cuarto orden donde $k_1=f(t_n,y_n)$, $k_2=f(t_n+h/2,y_n+hk_1/2)$, $k_3=f(t_n+h/2,y_n+hk_2/2)$ y $k_4=f(t_n+h,y_n+hk_3)$. Para esto se requiere que $w_1=w_4=1/6$, $w_2=w_3=1/3.$$
+
+---
+## Error en el Método de Runge-Kutta
+
+Para el caso de 4to orden, el error en el método de Runge-Kutta se puede expresar como: $$y(t_n)-y_n = \frac{h^5}{5!}y^{(5)}(\xi)$$ donde $\xi \in [t_n,t_{n+1}]$.
+
+

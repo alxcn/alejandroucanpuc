@@ -1,0 +1,115 @@
+---
+title: "Matriz Exponencial"
+subtitle: "Sesión 05 - Módulo 1"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos 
+
+* Introducir la exponencial de una matriz. <br/><br/>
+* Calcular algunas exponenciales de matrices. <br/><br/>
+* Entender la relación entre la exponencial de una matriz y la solución de un sistema de ecuaciones diferenciales lineales. <br/><br/>
+
+---
+# Función Exponencial
+
+De cálculo de una variable sabemos que la función exponencial se puede aproximar (usando derivadas) mediante:
+$$e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots O(x^{n+1})$$
+
+lo cual converge cuando tomamos una serie infinita de términos: $$e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}$$
+
+---
+# Matrices y Polinomios:
+
+Dada una matrix $A$ y un un polinomio $p(t)$ de coeficientes reales, podemos definir el polinomio de la matriz $p(A)$ como:
+$$ p(A) = a_0 I + a_1 A + a_2 A^2 + \cdots + a_n A^n$$ donde $A^k$ es el producto de $A$ consigo misma $k$ veces.
+
+--
+<br/><br/>
+Usando la aproximación de la función exponencial, podemos definir la exponencial de una matriz $A$ como:
+$$e^{At} = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots=\sum_{i=0}^\infty \frac{A^n t^n}{n!}$$
+
+---
+# Propiedades de la Exponencial de una Matriz
+
+> **Teorema:** La matriz exponencial $e^{At}$ de una matriz $A$ converge para cualquier matriz $A$ y cualquier número real $t$.
+
+#### Ejemplo:
+
+Dada la matriz $A=\begin{bmatrix} 3 & 0 \\ 0 & -2 \end{bmatrix}$, calcular $e^{At}$ y verificar su convergencia.
+
+---
+# Propiedades de la Exponencial de una Matriz
+
+> **Afirmación:** Dada $A$ y $e^{At},$ entonces $$\frac{d}{dt} e^{At} = A e^{At}.$$
+
+---
+## SEDO Lineal con CC Homogéneas
+
+> Dado un SEDO lineal homogéneo con coeficientes constantes: $$\mathbf{X}'=\mathbf{A}\mathbf{X}$$ entonces $X=e^{At}C$ es la solución general de la EDO, donde $C$ es una matriz constante. 
+
+---
+## ¿Cómo calcular la exponencial de una matriz?
+
+Usemos la transformada de Laplace para calcular la exponencial de una matriz $A$: $$\mathbf{X}'=\mathbf{A}\mathbf{X}\quad \mathbf{X}(0)=\mathbf{I}$$
+
+Aplicando Laplace obtenemos $$s\mathbf{x}(s)-\mathbf{I}=\mathbf{A}\mathbf{x(s)$$
+
+---
+#### Ejemplo:
+
+Calcule la matriz exponencial de la matriz $A=\begin{bmatrix} 1 & -1 \\ 2 & -2 \end{bmatrix}$.
+
+---
+#### Ejemplo:
+
+Calcule la matriz exponencial de la matriz $A=\begin{bmatrix} 0 & 0 & 0\\ 3 & 0 & 0 \\ 5 & 1 & 0  \end{bmatrix}$.
+
+---
+#### Ejemplo:
+
+Encuentre la solución al SEDO $$\mathbf{X}'=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}\mathbf{X}+\begin{matrix} 1 \\ 1 \end{bmatrix}$$ con condición inicial $\mathbf{X}(0)=\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$.

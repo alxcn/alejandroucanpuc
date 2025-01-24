@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Higher Order Partial Derivatives and Gradient</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-02-18" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xa0983d083b44ad19010e0c5fde84004","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Higher Order Partial Derivatives and Gradient
+]
+.subtitle[
+## Session 02
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-02-18
+]
+
+---
+
+
+
+
+
+
+
+# Goals for the session
+
+  * Compute higher order partial derivatives. &lt;br/&gt;&lt;br/&gt;
+  * Deduce what is the gradient of a function. &lt;br/&gt;&lt;br/&gt;
+  * Geometric interpretation of the gradient. &lt;br/&gt;&lt;br/&gt;
+  * Modelling with the gradient.
+
+---
+# Higher Order Partial Derivatives
+
+&gt; If `\(f\)` is a function of two variables, then `$$f_x \mbox{ and } f_y$$` are functions of several variables as well. So we can also find their partial derivatives: `$$(f_x)_x,\, (f_x)_y,\, (f_y)_x,\, (f_y)_y.$$` These new partial derivatives are called __second order partial derivatives__ and measure the rate of change of the rate of change.
+
+---
+#### Example 1:
+
+&gt; Compute the second derivatives of the function `\(f(x,y)=x^3+x^2y^2-2y^2.\)`
+
+--
+&lt;br/&gt;&lt;br/&gt;
+`$$f_x(x,y)=3x^2 +2xy^2 \quad f_y(x,y)=2x^2y-4y$$`
+
+`$$f_{xx}= 6x-2y^2 \quad f_{yx}=4xy$$` 
+`$$f_{xy}=4xy \quad f_{yy}=2x^2-4$$`
+
+---
+## Clairaut's Theorem
+
+&gt; **Theorem:** If `\(f\)` is a function of two variables and the second order partial derivatives `\(f_{xy}\)` and `\(f_{yx}\)` are continuous in a region `\(D,\)` then `$$f_{xy}=f_{yx}.$$`
+
+---
+# Gradient Vector
+
+&gt; **Definition:** If `\(f\)` is a function of two variables `\(x\)` and `\(y,\)` the __gradient__ of `\(f\)` is the vector (denoted by `\(\nabla f\)` ) defined by `$$\nabla f(x,y) =f_x \mathbf{i} +f_y \mathbf{j}.$$`
+
+--
+
+#### Example 2:
+
+&gt; Compute the gradient of `\(f(x,y)=\sin(x)+e^{xy}.\)`
+
+--
+&lt;br/&gt;&lt;br/&gt;
+`$$\nabla f(x,y)=(\cos(x)+ye^{xy})\mathbf{i}+xe^{xy}\mathbf{j}.$$`
+
+---
+## Geometric Interpretation of the Gradient
+
+&lt;iframe src="https://www.geogebra.org/classic/fasatszx?embed" width="1000" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+## Some Pictures
+
+#### Gradient of `\(f(x,y)=x^2-y^2\)`
+
+![Gradient Hyperboloid](Gradiente_Hiperboloid.png)
+
+---
+#### Gradient of `\(f(x,y)=-x^2-y^2\)`
+
+![Gradient Paint](Gradiente_Pintura.png)
+
+
+---
+
+#### Gradient of `\(f(x,y)=\cos(x)+e^{xy}\)`
+
+![Gradient ](Gradiente_Ejemplo.png)
+
+
+---
+## Gradient in three variables
+
+&gt; If `\(f(x,y,z)\)` is a function, then its gradient is given by `$$\nabla f(x,y,z)=f_x\mathbf{i}+f_y\mathbf{j}+f_z\mathbf{k}.$$`
+
+--
+
+&gt; **Theorem:** If `\(f\)` is a function, then the direction of maximum increase of `\(f\)` at a point `\((x_0,y_0,z_0)\)` is given by the vector `\(\nabla f(x_0,y_0,z_0).\)`
+---
+# Modelling with the Gradient
+
+&gt; Assume that we are in the Chair Hill and the height of the hill is given by the following graph of level curves. What direction would we take if we want to descend as fast as possible? What if we want to ascend?
+
+![Curvas de Nivel](LevelsE1A1.png)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

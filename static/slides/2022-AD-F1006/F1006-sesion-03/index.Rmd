@@ -1,0 +1,110 @@
+---
+title: "Functions via Only Derivatives"
+subtitle: "Session 03"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals:
+
+ * State a differential equation and its solution. <br/><br/>
+ * Approximate solutions for some applicated differential equations. <br/><br/>
+ 
+---
+# Knowing the function only by its derivative.
+
+> Sometimes, in a problem, we only have information about the derivative (instant velocity or acceleration) but nothing related to the function. We would like to have some information about the function associated to the derivative (the displacement).
+
+<br/><br/>
+> __Example:__ We have that the velocity of an object has the expression: $$v(t)=2t.$$ If we denote the displacement function by $d(t)$ then the previous equation is equivalent to $$d'(t)=2t$$
+
+---
+# A differential equation
+
+Last equation is known as a __diferential equation__ (an equation involving functions and derivative as variables). 
+
+> The equation $$d'(t)=2t$$ can be solved easily using the _Fundamental Theorem of Calculus_ and this process is called __antidifferentiation__. <br/><br/>
+We can think that _antidifferentiation_ is the __inverse process__ to differentiation.
+
+---
+## How it works the antidifferentiation?
+
+> Recall that the equation is $$d'(t)=2t,$$ then we look trhough our differentiations rules. The one that apply to this case is: $$\frac{d t^n}{dt}=nt^{n-1}$$ in this case $n=2$ therefore $d(t)=t^2+c.$
+
+---
+## Example:
+
+> Can you guess the antiderivative of the following derivatives? <br/><br/>
+  * $f'(t)=10t^9.$<br/><br/>
+  * $f'(t)=3t^2-2t$ <br/><br/>
+  * $f'(t)=4t$ <br/><br/>
+
+---
+# There is an easy way?
+
+> __Rules of antidifferentiation:__ If we have the equation $F'(t)=f(t)$ then we will denote by $\int f(t)dt $ the antiderivate that satisfy the equation. Therefore: <br/><br/>
+  * $\int (f+g)dt=\int fdt +\int gdt$. <br/><br/>
+  * $\int kfdt = k\int fdt$ <br/><br/>
+  * $\int t^n dt = \frac{t^{n+1}}{n+1}$ for $n\neq 1.$
+
+---
+# Exercice:
+
+> Find the antiderivatives of the functions:
+  * $F'(t)=2t^3-4t^5+4t^6.4$ <br/><br/>
+  * $F'(t)=-4t+3t^5-10t^7.$
+
+---
+# How can restrict our function solution?
+
+> The antiderivate gives a __family__ of functions that have the proposed derivate, but if what if we want to restrict this family to only one solution. <br/><br/>
+To do this, we need extra information, this is information is usually called: __initial condition.__
+
+<br/><br/>
+__Example:__ We have that the velocity of an object has the expression: $$v(t)=2t$$ and at time cero the displacement satisfy $d(0)=4.$ Then we substitute at $d(t)=t^2+c$ the value cero and we obtain an equation $$d(0)=(0)^2+c=c=4$$ therefore the function is $$d(t)=t^2+4.$$
+---
+## Exercice:
+
+> Solve the following differential equations and find the unique function that satisfy the initial contidion. <br/><br/>
+  * $f'(t)=4t-3$ and $F(0)=0.$ <br/><br/>
+  * $f'(t)=3t^2-2t-10t^4$ and $F(0)=-3.$ <br/><br/>
+  * $f'(t)=10t^9-3t^5$ and $F(0)=4.$<br/><br/>
+
+  

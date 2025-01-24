@@ -1,0 +1,137 @@
+---
+title: "Máximos y Mínimos de una función en cerrados"
+subtitle: "Sesión 22"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=3, fig.height=2.5, fig.retina=3,
+  out.width = "50%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#f6b26b",
+  secondary_color = "#fc8100",
+  inverse_header_color = "#5E4701"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Objetivos:
+
+ * Calcular los valores extremos de una función definida en un intervalo cerrado. <br/><br/>
+ * Conocer las condiciones donde puede suceder estos valores extremos. <br/><br/>
+ 
+
+---
+# Valores extremos
+
+> Un valor extremo de una función es aquel valor más grande (__máximo__) o más chico (__mínimo__) que se pueda obtener para la función en un intervalo $[a,b].$
+
+<iframe src="https://www.geogebra.org/graphing/urcnkeut?embed" width="1200" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# La graficación no siempre es la solución
+
+Calcula los valores extremos de la función $f(x)=\frac{\sin x+\cos x}{\ln x},$ aquí ya es un poco más complicado graficar para verificar cuales son los valores extremos.
+
+<br/>
+
+Supongamos queremos conocer los valores extremos de la función $f(x)=x+1$ en el intervalo $[-2,1].$ 
+
+<iframe src="https://www.geogebra.org/graphing/jzvd768s?embed" width="800" height="300" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+# ¿Dónde se pueden encontrar los valores extremos?
+
+> De los ejemplos anteriores tenemos que un valor extremo para $f$ definida en $[a,b]$ puede ocurrir en dos lugares:
+<br/><br/>
+* En las fronteras del intervalo cerrado, o sea, en $a$ y $b$. <br/><br/>
+* En los puntos donde la recta tangente sea horizontal, es decir, donde $f'(x)=0.$ A estos puntos se conoce como puntos estacionarios.
+
+---
+# ¿Cómo calculo los valores extremos de una función?
+
+Para calcular los valores extremos de una función $f(x)$ definida en un intervalo cerrado $[a,b]$ se hace lo siguiente:
+<br/><br/>
+* Primero determino mis puntos frontera y estacionarios (donde $f'(x)=0$) de $f$ sobre el intervalo $[a,b].$ <br/><br/>
+* Evaluar cada uno de los puntos encontrados en el paso 1 en la función. El valor más pequeño es donde ocurre el mínimo y el valor más grande es donde ocurre el máximo.
+
+---
+# Ejemplo 1:
+
+Encuentra los valores extremos de la función $f(x)=x^2-2x+3$ en el intervalo $[-1,4].$ <br/>
+
+> _Puntos fronterizos:_ $x=-1$ y $x=4.$ <br/>
+_Puntos estacionarios:_ $f'(x)=2x-2$ así que $f'(x)=2x-2=0$ ocurre cuando $x=1.$
+
+<br/><br/>
+
+> _Evaluación:_ $f(-1)=6,$ $f(4)=11$ y $f(1)=2.$
+
+<br/><br/>
+> Solución: El mínimo es 2 (y se alcanza en $x=1$) y el máximo es 11 (y se alcanza en $x=4$).
+
+---
+# Ejemplo 2:
+
+Encuentra los valores extremos de la función $f(x)=-2x^3+3x$ en el intervalo $[-1/2,2].$ <br/>
+
+> _Puntos fronterizos:_ $x=-1/2$ y $x=2.$ <br/>
+_Puntos estacionarios:_ $f'(x)=-6x^2+6x$ así que $f'(x)=0$ ocurre cuando $x=0,1.$
+
+<br/><br/>
+
+> _Evaluación:_ $f(-1/2)=1,$ $f(2)=-4,$ $f(0)=0$ y $f(1)=1.$
+
+<br/><br/>
+> Solución: El mínimo es -4 (y se alcanza en $x=2$) y el máximo es 1 (y se alcanza en $x=-1/2$ y $x=1$).
+
+---
+# Ejemplo 3:
+
+Encuentra los valores extremos de la función $f(x)=\frac{x^4}{4}-\frac{x^3}{3}-6x^2+3$ en el intervalo $[-2,5].$ <br/>
+
+> _Puntos fronterizos:_ $x=-2$ y $x=5.$ <br/>
+_Puntos estacionarios:_ $f'(x)=x^3-x^2-12x$ así que $f'(x)=0=x(x+3)(x-4)$ ocurre cuando $x=0,$ $x=4$ y $\color{red}{x=-3}.$ Notemos que este último no pertenece al intervalo cerrado donde estamos verificando, así que no lo tomaremos en cuenta.
+
+<br/><br/>
+
+> _Evaluación:_ $f(-2)=-\frac{43}{3},$ $f(0)=3,$ $f(5)=-\frac{389}{12}$ y $f(4)=-\frac{151}{3}.$
+
+<br/><br/>
+> Solución: El mínimo es $-\frac{151}{3}$ (y se alcanza en $x=4$) y el máximo es 3 (y se alcanza en $x=0$).
+
+---
+# Ejercicios:
+
+Calcula los valos extremos de la función indicada en el intervalo correspondiente:
+
+1. $f(x)=1+(x+1)^2$ en $[-2,5].$ <br/>
+2. $f(x)=x^3-3x+1$ en $[0,3].$ <br/>
+3. $f(x)=\frac{x^3+2}{x}$ en $\left[\frac{1}{2},2\right].$ <br/>
+4. $f(x)=\sqrt{9-x^2}$ en $[-1,2].$ 
