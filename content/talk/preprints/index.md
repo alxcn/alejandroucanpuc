@@ -1,21 +1,27 @@
 ---
 title: "Preprints"
-subtitle: "Some research in development"
-excerpt: "Ideas of research with further explotations"
+subtitle: "List of Preprints"
+excerpt: "Some math preprints related to Discrete group dynamics, geometry and topology."
 date: 2025-01-29
-date_end: 2025-01-29
+date_end: "2025-01-29"
+featured: true
+show_post_time: false
+event: ""
+event_url: 
 author: "Alejandro Ucan-Puc"
 location: ""
 draft: false
 # layout options: single, single-sidebar
 layout: single
 categories:
-- preprints
+- papers
+links:
 - icon: door-open
   icon_pack: fas
-  name: arXiv Profile
-  url: https://arxiv.org/a/ucanpuc_a_1.html
+  name: Arxiv profile
+  url: http://arxiv.org/a/ucanpuc_a_1
 
+---
 ---
 ## 2025
 
