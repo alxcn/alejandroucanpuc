@@ -114,7 +114,7 @@ enableEmoji = true
       url       = "https://www.instagram.com/i.rracionalx/"
   [[params.social]]
       icon      = "orcid" # icon name without the 'fa-'
-      icon_pack = "ai"
+      icon_pack = "fab"
       url       = "https://orcid.org/my-orcid?orcid=0000-0002-0037-9394"
   [[params.social]]
       icon      = "rss" # icon name without the 'fa-'
