@@ -1,11 +1,9 @@
 ---
-title: "Create a Collection"
-subtitle: "A collection, minus the blog."
+title: "Undergraduate Seminar of Data Science"
+subtitle: "Data Science for undergrads"
 description: |
-  Sometimes you want a souped-up series- a bundle of related pages 
-  meant to be read in sequence. This section is like a blog series, 
-  minus the blog.
-author: Alison Hill
+  The following seminar has the intention to present the novelties of Data Science in the industry for undergrad students.
+author: Alejandro Ucan-Puc
 show_post_thumbnail: true
 thumbnail_left: false # for list-sidebar only
 show_author_byline: false
@@ -17,12 +15,10 @@ layout: list-sidebar # list, list-sidebar
 cascade:
   layout: single-series 
   sidebar:
-    title: "Create a Collection"
-    author: Alison Hill
+    title: "Undergraduate Seminar of Data Science"
+    author: Alejandro Ucan-Puc
     description: |
-      Sometimes you want a souped-up series- a bundle of related pages 
-      meant to be read in sequence. This section is like a blog series, 
-      minus the blog.
+     The following seminar has the intention to present the novelties of Data Science in the industry for undergrad students.
     show_author_byline: true
     show_post_date: true
     text_link_label: ""

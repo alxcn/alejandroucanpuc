@@ -30,7 +30,7 @@ sidebar_left: no
 |09:00 - 11:00|       |        |  Research |        |         |
 |11:00 - 13:00|       | MA1029 |  Research |        |  MA1029 |
 |13:00 - 15:00| Lunch | Lunch  |   Lunch   | Lunch  |   Lunch |
-|15:00 - 17:00|       | MA1029 |  Research |        |  MA1029 |
+|15:00 - 17:00|       | MA1029 |   F1015B  |        |  MA1029 |
 |17:00 - 19:00|MA2007B|MA2007B |           |MA2007B | MA2007B |
 
 
@@ -42,7 +42,7 @@ sidebar_left: no
 |09:00 - 11:00|       |        |  Research |        |         |
 |11:00 - 13:00|       | MA1029 |  Research |        |  MA1029 |
 |13:00 - 15:00| Lunch | Lunch  |   Lunch   | Lunch  |   Lunch |
-|15:00 - 17:00|       | MA1029 |  Research |        |  MA1029 |
+|15:00 - 17:00|       | MA1029 |   F1016B  |        |  MA1029 |
 |17:00 - 19:00|MA2007B|MA2007B |           |MA2007B | MA2007B |
 
 
@@ -51,8 +51,8 @@ sidebar_left: no
 |     Horario | Lunes | Martes | Miercoles | Jueves | Viernes |
 |-------------|-------|--------|-----------|--------|---------|
 |09:00 - 11:00|MA2007B|MA2007B |  Research |MA2007B | MA2007B |
-|11:00 - 13:00|       |        |  Research |        |         |
-|13:00 - 15:00| Lunch | MA1030 |   Lunch   | Lunch  |  MA1030 |
-|15:00 - 17:00|       | Lunch  |           |        |  Lunch  |
+|11:00 - 13:00|       | MA1030 |  Research |        |  MA1030 |
+|13:00 - 15:00| Lunch |  Lunch |   Lunch   | Lunch  |  Lunch  |
+|15:00 - 17:00|       |        |           |        |         |
 |17:00 - 19:00|       |        |           |        |         |
 

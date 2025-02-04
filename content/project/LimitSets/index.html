@@ -11,9 +11,9 @@
 
 <meta name="author" content="Alejandro Ucan-Puc" />
 
-<meta name="date" content="2025-01-30" />
+<meta name="date" content="2025-01-29" />
 
-<title>Optimization of Gravitational waves Detection</title>
+<title>Limit sets of Convex Co-compact Kleinian groups</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,102 +350,36 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Optimization of Gravitational waves
-Detection</h1>
-<h3 class="subtitle">A TDA viewpoint.</h3>
+<h1 class="title toc-ignore">Limit sets of Convex Co-compact Kleinian
+groups</h1>
+<h3 class="subtitle">Complex Kleinian Groups</h3>
 <h4 class="author">Alejandro Ucan-Puc</h4>
-<h4 class="date">2025-01-30</h4>
+<h4 class="date">2025-01-29</h4>
 
 </div>
 
 
-<p>Gravitational Waves detection is a hard work due to the nature of
-signals and the noise that is present in the data. In this project, we
-are interested in research and develop optimized methods to detect,
-classify and denoise signals with the behavior of gravitational
-waves.</p>
-<p>The first direct detection of gravitational waves was made by the
-LIGO and Virgo collaborations in 2015, when they observed the merger of
-two black holes. Since then, several other detections have been made,
-including the merger of neutron stars and the collision of a black hole
-with a neutron star. The detection of gravitational waves has opened up
-a new window on the universe, allowing us to observe phenomena that are
-invisible to traditional telescopes.</p>
-<p>Although several similar observations have been made since then,
-detecting such waves poses significant challenges due to intrinsic and
-environmental noise affecting the measuring instruments. These extremely
-faint signals must be picked up by highly sensitive gravitational wave
-detectors such as LIGO and Virgo, which are designed to detect minute
-deformations in space-time. However, these instruments are subject to a
-wide range of noise sources, from seismic vibrations and nearby human
-activity to thermal and electromagnetic fluctuations. The extreme
-sensitivity required to detect gravitational waves also amplifies these
-noises, complicating the process of distinguishing between genuine
-signals and interference. Therefore, the development and refinement of
-advanced filtering and data analysis techniques to identify and extract
-the relevant signals from the prevailing noise is critical.</p>
-<p>Topological Data Analysis look a good candidate to work on this task,
-and this follows from the fact that with TDA algorithms we can
-understand the underlying properties of the signals. Bresten and Jung
-(2019) proposed a novel approach using convolutional neural networks and
-persistent homology, but it was on 2024 where its paper was
-published.</p>
-<div id="project-1" class="section level2">
-<h2>Project 1:</h2>
-<p>Inspired by the work of Bresten and Jung, we proposed to ad
-Persistent images in the Convolutional neural networks in addition with
-a Fourier Analysis of the signal data base. This modification shown a
-good performance of the Neural network with best accuracy compared with
-the one in Bresten and Jung.</p>
-<p>This work was part of the MA2007B Challenge, with the team:</p>
-<ul>
-<li>Ángel Azahel Ramírez Cabello (<a href="mailto:A01383328@tec.mx" class="email">A01383328@tec.mx</a>, MTY)</li>
-<li>Annette Pamela Ruiz Abreu (<a href="mailto:A01423595@tec.mx" class="email">A01423595@tec.mx</a>, MTY)</li>
-<li>Avril Michelle Ruiz Martínez (<a href="mailto:A00833018@tec.mx" class="email">A00833018@tec.mx</a>, MTY)</li>
-<li>Franco Mendoza Muraira (<a href="mailto:A01383399@tec.mx" class="email">A01383399@tec.mx</a>, MTY)</li>
-<li>Jorge Raúl Rocha López (<a href="mailto:A01740816@tec.mx" class="email">A01740816@tec.mx</a>, MTY)</li>
-<li>Luis Angel López Chávez (<a href="mailto:A01571000@tec.mx" class="email">A01571000@tec.mx</a>)</li>
-</ul>
-<p>We are working actively on the preprint with the results.</p>
-</div>
-<div id="project-2" class="section level2">
-<h2>Project 2</h2>
-<p>We know that the Noise Ratio Index in the data base is fundamental in
-the performance of the Neural network for a good classification. From
-that fact, and the fact that in nature, the gravitational wave signals
-comes with a high level of noise. We propose a novel approach to denoise
-that signals and reconstruct a smooth way using topological
-features.</p>
-<p>This work was part of the MA2007B Challange, with the team:</p>
-<ul>
-<li>Felipe Felix Arredondo</li>
-<li>Sofia Alvarez Sandoval</li>
-<li>Valeria María Serna Salazar</li>
-<li>Raúl Alejandro Perez Saucedo</li>
-<li>Ana Paola Almeida Pérez</li>
-<li>David Alejandro Matamoros Alvarado</li>
-</ul>
-<p>We are working actively on the preprint with the results.</p>
-</div>
-<div id="related-concepts" class="section level2">
-<h2>Related Concepts:</h2>
-<ul>
-<li>Convolutional Neural Networks</li>
-<li>Persistent Homology</li>
-<li>Persistent Image</li>
-<li>HASH map</li>
-<li>Fourier Analysis</li>
-</ul>
-<div id="references" class="section level3">
-<h3>References</h3>
-<ul>
-<li>BRESTEN, C., &amp; JUNG, J. H. (2024). DETECTION OF GRAVITATIONAL
-WAVES USING TOPOLOGICAL DATA ANALYSIS AND CONVOLUTIONAL NEURAL NETWORK.
-JOURNAL OF THE KOREAN SOCIETY FOR INDUSTRIAL AND APPLIED MATHEMATICS,
-28(4), 243-255.</li>
-</ul>
-</div>
-</div>
+<p>Complex kleinian groups took an interesting role in the last twenty
+years, principally due to its relation with complex dynamics, geometry
+and topology. As an example, here is the book Cano, Navarrete and Seade
+(2013).</p>
+<p>A <em>complex kleinian group</em> is a discrete subgroup of <span class="math inline">\(PSL(n+1,\mathbb{C})\)</span> acting on the
+n-dimensional complex projective space with a non-empty region where the
+group acts properly discontinuously.</p>
+<p>For example, if we take the diagonal matrix <span class="math inline">\(D=(2,1,1/2),\)</span> the group containing all the
+powers of <span class="math inline">\(D\)</span> is a complex kleinian
+group in <span class="math inline">\(PSL(3,\mathbb{C}).\)</span></p>
+<p>The complex kleinian subgroups in <span class="math inline">\(PSL(3,\mathbb{C})\)</span> are the most studied
+examples of complex kleinian groups. But for higher dimension there
+several characteristic that are still open questions.</p>
+<p>For example, the limit set for complex kleinian groups in <span class="math inline">\(PSL(n+1,\mathbb{C})\)</span> is an open question.
+This is mainly because there are several definitions that are valid,
+with no aparent relation. Those definitions depend on the desired
+characteristic to explore and could be: dynamical, linear or
+holomorphic.</p>
+<p>The intention of this project is to understand the relation between
+the different notions of limit sets for a family of discrete subgroups
+in <span class="math inline">\(PSL(n+1,\mathbb{C})\)</span>.</p>
 
 
 

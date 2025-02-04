@@ -58,7 +58,15 @@ This work was part of the MA2007B Challange, with the team:
 * David Alejandro Matamoros Alvarado
 
 
-We are working actively on the preprint with the results
+We are working actively on the preprint with the results.
+
+## Related Concepts:
+
+* Convolutional Neural Networks
+* Persistent Homology
+* Persistent Image
+* HASH map
+* Fourier Analysis
 
 
 ### References
