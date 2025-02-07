@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Cylindrical Coordinates</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-04-24" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x13d1a64c4b142f5a0c671f18ca5b2ab","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Cylindrical Coordinates
+]
+.subtitle[
+## Session 13
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-04-24
+]
+
+---
+
+
+
+
+
+
+
+# Goals for the session:
+
+ * Define the Cylindrical coordinate system. &lt;br/&gt;&lt;br/&gt;
+ * Introduce the volume differential in cylindrical coordinates. &lt;br/&gt;&lt;br/&gt;
+ * Compute triple integrals in cylindrical coordinates.
+
+
+---
+# Cylindrical Coordinates `\((r,\theta,z).\)`
+
+&lt;iframe src="https://www.geogebra.org/calculator/za424zgv?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
+
+---
+# How to translate between coordinates?
+
+There are expressions that allow us to convert between different types of coordinates. For example:
+
+&gt; Given a point `\((x,y,z)\)` (rectangular coordinates) and I want it in _cylindrical coordinates_, then it satisfies: &lt;br/&gt;
+- `\(r^2= x^2+y^2,\)` &lt;br/&gt;
+- `\(\tan(\theta)=\frac{y}{x}\)` &lt;br/&gt;
+- `\(z=z.\)`
+
+&lt;br/&gt;
+
+&gt; Given a point `\((r,\theta,z)\)` and I want it in _rectangular coordinates_, then it satisfies: &lt;br/&gt;
+- `\(x=r\cdot \cos(\theta)\)` &lt;br/&gt;
+- `\(y=r\cdot \sin(\theta)\)`  
+- `\(z=z.\)`
+
+---
+# How my Volume differential changes?
+
+&gt; The volume differential changes to `$$dV=r dr d\theta dz.$$`
+
+---
+## Lets express 3D regions in cylindrical coordinates.
+
+&gt; Describe the region bounded by the plane `\(z=0\)` and the paraboloid `\(z=4-x^2-y^2\)` in cylindrical coordinates, and compute its volumen.
+---
+
+## Lets express 3D regions in cylindrical coordinates.
+
+&gt; Describe the region enclosed by the sphere `\(x^2+y^2+z^2=4\)` and the cylinder `\(x^2+y^2=2.\)`
+---
+# Example
+
+&gt; Compute the forth-dimensional volume of the region whose height is given by the function `\(f(x,y,z)=x^2+y^2\)` and base the 3-dimensional region bounded by `\(x^2+y^2=2z\)` and `\(z=2.\)` &lt;br/&gt;&lt;br/&gt;
+
+--
+Recall that for the paraboloid, the level curves are given by circles `\(x^2+y^2=k^2\)` which is a circle. The shadow of the biggest circle that appears is the one at level `\(k^2=2.\)` Therefore, my radious takes values from `\([0,\sqrt{2}]\)` and `\(\theta\)` from `\([0,2\pi].\)`
+Changing my integral to cylindrical coordinates, I have: `$$\int_0^{2\pi}\int_0^{\sqrt{2}}\int_{r^2}^2 r^2 r dz dr d\theta$$`
+`$$=\int_0^{2\pi} \int_0^2 r^3\left(2-\frac{r^2}{2}\right) dr d\theta = \int_0^{2\pi}\frac{r^4}{2}-\frac{r^6}{12}\big{|}_{0}^2 d\theta$$`
+`$$=\frac{8}{3}\int_0^{2\pi}d\theta = \frac{16\pi}{3}.$$`
+
+---
+# Exercise:
+
+&gt; Compute the volume of the region enclosed by the paraboloids `\(x^2+y^2=4z\)` and `\(x^2+y^2=-2z+6\)`
+
+---
+# Solution:
+
+&gt; The described region is: `\(0\leq r\leq 2,\)` `\(0\leq \theta \leq 2\pi\)` and `\(\frac{r^2}{4}\leq r \leq \frac{6-r^2}{2}.\)` &lt;br/&gt;&lt;br/&gt; 
+Therefore my integral is given by `$$\int_0^{2\pi}\int_0^2\int_{\frac{r^2}{4}}^{\frac{6-r^2}{2}}dzdrd\theta=\int_0^{2\pi}\int_0^2 \frac{12-r^2}{4} dr d\theta$$`
+`$$\int_0^{2\pi}3r-\frac{r^3}{12}\big{|}_0^2 d\theta =2\pi \left(6-\frac{8}{12}\right)=\frac{32\pi}{3}.$$`
+
+---
+# Activity:
+
+&gt; Compute the following integrals in cylindrical coordinates: &lt;br/&gt;&lt;br/&gt;
+ * `\(f(x,y,z)=x^2+y^2\)` region bounded by the cone `\(z^2=x^2+y^2\)` and `\(z=2.\)` &lt;br/&gt;&lt;br/&gt;
+  * `\(f(x,y,z)=\sqrt{x^2+y^2}\)` in the region bounded by the cylinder `\(x^2+y^2=16\)` between `\(z=-5\)` y `\(z=4.\)` &lt;br/&gt;&lt;br/&gt;
+  * `\(f(x,y,z)=e^z\)` in the region bounded `\(z=1+x^2+y^2,\)` the cylinder `\(x^2+y^2=5\)` and the plane `\(z=0.\)`
+  
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

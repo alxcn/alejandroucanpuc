@@ -1,0 +1,21 @@
+---
+title: "S01: Álgebra y Geometría de Vectores"
+weight: 1
+subtitle: ""
+excerpt: "Básicos para el curso"
+date: '`r Sys.Date()`'
+slug: F1009-sesion-01
+draft: false
+---
+
+En esta sesión de __F1009__ tendremos por objetivo:
+
+* $\mathbb{R}^3$ como espacio vectorial. <br/><br/>
+* Subespacios particulares. <br/><br/>
+* Curvas y superficies. <br/><br/>
+
+El contenido para la **Sesión 01** se encuentra en [slides](/slides/2023-AD-F1009/F1009-sesion-01).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2023-AD-F1009/F1009-sesion-01", ratio = "4:3")
+```

@@ -1,0 +1,133 @@
+---
+title: "Multivariate Functions"
+subtitle: "Session 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Goals of the session
+  * Introduce the concept of a function of $\mathbb{R}^2\to \mathbb{R}$ and $\mathbb{R}^3\to\mathbb{R}$. <br/><br/>
+  * We will study the graph of these functions and their level curves. <br/><br/>
+  * We will present the conics and their particularities. <br/><br/>
+
+---
+# Motivation:
+
+> We want to describe the movement (over time) of a string (whose ends are fixed) when it is stretched and released. Assuming that each point of the string in motion will depend not only on its position in the plane but also on time, we have that this will be a _function_ of $x$ and $t.$ That is, a function $u(x,t)$ that takes values in $\mathbb{R}^2$ and returns a value of $\mathbb{R}.$
+
+<iframe src="https://www.wolframcloud.com/obj/alejandroucan-puc/Published/Basic_wave_ed_sol.nb?_embed=iframe" width="1000" height="300"></iframe>
+
+---
+## How is the function that models this problem?
+
+> The function that best describes this problem is the function $$u(x,t)=\cos(t)\sin(x).$$
+
+<iframe src="https://www.wolframcloud.com/obj/alejandroucan-puc/Published/WaveSol_NivelCurves.nb?_embed=iframe" width="1000" height="400"></iframe>
+
+---
+# Multivariate Functions:
+
+> A function $f:\mathbb{R}^n\to\mathbb{R}$ (with $n=2,3$) is a relation that assigns to each point $x\in\mathbb{R}^n$ a real number $y\in\mathbb{R}.$ $$f(x)=y.$$
+
+#### Example:
+  * $f(x_1,x_2)=3x_1 x_2.$ <br/>
+  * $f(x_1,x_2)=x_1^2+x_2^2$ <br/>
+  * $f(x_1,x_2)=e^{x_1}\cos(x_2)$ <br/>
+  * $f(x_1,x_2,x_3)=x_3\sqrt{e^{x_1+x_2}}$ <br/>
+  * $f(x_1,x_2,x_3)=3x_1-4x_2-3x_3^2+x_1x_2.$
+
+--
+
+Similarly as univariate functions, multivariate functions have a _domain_ of definition (subset of $\mathbb{R}^n$ where the function is well defined) and a _range_ (subset of $\mathbb{R}$ where all the values of the function are reached).
+
+---
+## Domain of multivariate functions
+
+#### Example 1: 
+
+Consider the function $f(x,y)=\sqrt{1-x^2-y^2}.$ What is the domain of $f$? <br/><br/>
+
+--
+<br/><br/>
+In order to be __well-defined__ the square root of a number must be non-negative. In such a way, we have that $$1-x^2-y^2\geq 0\Leftrightarrow x^2+y^2\leq 1.$$ This means that the domain of $f$ is the disk of radius $1$ centered at the origin.
+
+---
+
+#### Example 2:
+
+Consider the function $f(x,y)=\frac{1}{x^2+y^2-3}.$ What is the domain of $f$? <br/><br/>
+
+--
+<br/><br/>
+In order to be **well-defined** the denominator must be different from zero. In such a way, we have that $$x^2+y^2-3\neq 0\Leftrightarrow x^2+y^2\neq 3.$$ This means that the domain of $f$ is the plane without the circle of radius $\sqrt{3}$ centered at the origin.
+---
+## The graph of multivariate functions
+
+> __Definition:__ Given a function $f:\mathbb{R}^2\to \mathbb{R},$ the **graph** of $f$ is the subset of $\mathbb{R}^3$ given by the points $$(x,y,f(x,y)),$$ where $(x,y)$ belongs to the domain of $f.$
+
+--
+
+#### Example 3:
+
+Consider the function $f(x,y)=3x+2y$,$ then the graph of $f$ is the set of points of the form: $$(x,y,3x+2y).$$ Note that $(0,0,0),\,(0,1,2)$ and $(1,0,3)$ belong to the graph. We can use those points to plot the graph of $f.$
+---
+### What happens when $f:\mathbb{R}^3\to\mathbb{R}$?
+
+> __Definition:__ Given a function $f:\mathbb{R}^3\to \mathbb{R},$ the **graph** of $f$ is the subset of $\mathbb{R}^4$ given by the points $$(x,y,z,f(x,y,z)),$$ where $(x,y,z)$ belongs to the domain of $f.$
+--
+<br/><br/>
+> __Definition:__ Given a function $f:\mathbb{R}^3\to \mathbb{R},$ we define a **level surface** as the set of points of $\mathbb{R}^3$ such that $$f(x,y,z)=k\quad \mbox{with }k\in\mathbb{R}.$$
+
+---
+#### Example 4:
+
+Plot the level curves of functions: $f(x,y)=3x+2y,$ $f(x,y)=x^2+y^2$ and $f(x,y)=e^{x+y}.$
+
+
+---
+#### Example 5:
+
+Plot the level curves of the functions $f(x,y,z)=x+y+z$ and $f(x,y,z)=x^2+y^2+z^2.$
+
+---
+# Basic Surfaces:
+
+In the following link we will find a notebook with the description of the basic surfaces.
+
+[Notebook](https://www.wolframcloud.com/obj/alejandroucan-puc/Published/Basic_Surfaces.nb)

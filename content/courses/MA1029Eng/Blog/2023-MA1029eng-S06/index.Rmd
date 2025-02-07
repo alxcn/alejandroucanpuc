@@ -1,0 +1,21 @@
+---
+title: "S06: Total Derivative"
+weight: 5
+subtitle: "Total rate of change"
+excerpt: "."
+date: '`r Sys.Date()`'
+slug: MA1029eng-sesion-06
+draft: false
+---
+
+In this session we have the following goals:
+
+  * Approximate a function using a plane. <br/><br/>
+  * Introduce the equation of the plane (and the Taylor polynomial). <br/><br/>
+  * Describe the total derivative using this approximation. <br/><br/>
+
+You can find the material for **Sesión 06** in the next link [slides](/slides/2022-AD-MA1029eng/MA1029-sesion-06).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1029eng/MA1029-sesion-06", ratio = "4:3")
+```

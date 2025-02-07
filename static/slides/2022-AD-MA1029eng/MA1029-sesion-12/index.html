@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Triple Integrals</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-04-14" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x3c103f0bb3f4457ac806f53109523b5","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Triple Integrals
+]
+.subtitle[
+## Session 12
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-04-14
+]
+
+---
+
+
+
+
+
+
+
+# Goals for the session:
+
+ * Know the volume differential. &lt;br/&gt;&lt;br/&gt;
+ * Define the integral in `\(\mathbb{R}^3\)`. &lt;br/&gt;&lt;br/&gt;
+ * Calculate triple integrals in elementary regions.
+
+
+---
+# Triple Integral:
+
+&gt; The notion of triple integral is a generalization of the concept of integral to three-dimensional space. Using this, we can calculate the "volume" of a solid of four dimensions. The naive idea comes from the volume of a box, in fourth dimension, the box will have 4 different sides, and the volume will be the product of the four sides. Therefore in our case, `$$f(x,y,z)dx dy dz$$` is the volume of a box-base with sides `\(dx, dy\)` and `\(dz\)`.
+
+---
+# How to compute triple integrals?
+
+Fubini's theorem is valid for triple integrals, so to calculate it, we just need to perform an iterated integration.
+
+`$${\int\!\int\!\int}_B fdV=\int_a^b \int_c^d \int_e^f f(x,y,z)dzdydx.$$`
+
+Recall that in the case of numerical limits, the change does not affect the result.
+
+---
+# Triple integral in elementary regions:
+
+&gt; **Definition:** an *elementary* region in `\(\mathbb{R}^3\)` is a region in which one of the variables is bounded between two functions of the other two variables.
+
+&lt;br/&gt;&lt;br/&gt;
+
+**Example:** The *ball* of radius one in `\(\mathbb{R}^3\)` is an elementary region described by the following inequalities: `$$-1\leq x\leq 1,$$`
+`$$-\sqrt{1-x^2} \leq y\leq \sqrt{1-x^2},$$` 
+$$ -\sqrt{1-x^2-y^2} \leq z \leq \sqrt{1-x^2-y^2}.$$
+
+---
+# Other Examples:
+
+Other examples of elementary regions are:
+
+* Consider the following cylinder: `$$-1\leq x \leq 1$$` `$$-\sqrt{1-x^2}\leq y \leq \sqrt{1-x^2}$$` $$ -2\leq z \leq 2.$$
+
+* Consider the following prism: 
+`$$0 \leq x \leq 2$$` `$$0\leq y \leq 2$$` `$$0\leq z\leq 5-2x-2y$$`
+
+---
+# Example 1:
+
+&gt; Find the volume of the solid enclosed by the function `\(f(x,y,z)=z\)` over the region bounded by `\(x=0,\,y=0,\, z=0\)` y `\(x+y+z=1\)`
+--
+
+`$$R: 0\leq x\leq 1,\, 0\leq y \leq 1-x,\, 0\leq z\leq 1-x-y.$$`
+
+`$$\int\int\int_R z dV= \int_0^1\int_0^{1-x}\int_0^{1-x-y} z dzdydx$$`
+---
+# Example 2:
+
+&gt; Find the volume of the solid enclosed by the function `\(f(x,y,z)=z\)` over the region bounde by the paraboloid `\(y=x^2+z^2\)` and `\(y=4.\)`
+--
+
+`$$E: -2\leq x\leq 2,\, -\sqrt{4-x^2}\leq z\leq \sqrt{4-x^2},\, x^2+z^2\leq y\leq 4$$`
+
+`$$\int\int\int_E \sqrt{x^2+z^2}dV= \int_{-2}^2\int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}}\int_{x^2+z^2}^4  z dydzdx$$`
+---
+What if we try with the following limits:
+
+`$$0\leq y\leq4,\, -\sqrt{y}\leq x \leq \sqrt{y},\, -\sqrt{y-x^2}\leq z \leq \sqrt{y-x^2}$$`
+---
+#### Exercise 1:
+
+Compute the following triple integrals:
+  * `\(\int_0^1\int_0^z\int_0^{x+z}6xzdydxdz\)`
+  * `\(\int_0^1\int_0^z\int_0^y ze^{-y^2}dxdydz\)`
+  * `\(\int_0^{\sqrt{\pi}}\int_0^x\int_0^{xz}x^2\sin(y)dydzdx\)`
+
+
+---
+#### Exercise 2:
+
+Draw the region `\(E\)` and compute the integral of `\(f(x,y,z)=6.\)` The region is given under the plane `\(z=1+x+y\)` and above `\(z=0\)` bounded by the curves `\(y=\sqrt{x},\, y=0\)` y `\(x=1.\)`
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

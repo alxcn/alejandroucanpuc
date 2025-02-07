@@ -1,0 +1,22 @@
+---
+title: "S01: Multivariate Functions"
+weight: 1
+subtitle: "Functions with more than one variable."
+excerpt: "We will introduce the concept of functions with more than to model problems in higher dimensions."
+date: '`r Sys.Date()`'
+slug: MA1029eng-sesion-01
+draft: false
+---
+
+During this session we have the following goals:
+
+  * Introduce the concept of functions from $\mathbb{R}^2\to \mathbb{R}$ y $\mathbb{R}^3\to\mathbb{R}$. <br/><br/>
+  * We will introduce the concept of graphs and the level curves. <br/><br/>
+  * We will present the conics and their particularities. <br/><br/>
+
+
+The slides for **Sesión 01** are in the following link [slides](/slides/2022-AD-MA1029eng/MA1029-sesion-01).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1029eng/MA1029-sesion-01", ratio = "4:3")
+```

@@ -1,0 +1,20 @@
+---
+title: "S10: Multiple Integrals P.II"
+weight: 10
+subtitle: "Applications of Multiple integration"
+excerpt: "."
+date: '`r Sys.Date()`'
+slug: MA1029eng-sesion-10
+draft: false
+---
+
+In this session we have the following goals:
+
+* Interchange orders in double integration. <br/><br/>
+ * Understand some applications of double integrals. <br/><br/>
+ 
+You can find the material for **Sesión 10** in the next link [slides](/slides/2022-AD-MA1029eng/MA1029-sesion-10).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1029eng/MA1029-sesion-10", ratio = "4:3")
+```

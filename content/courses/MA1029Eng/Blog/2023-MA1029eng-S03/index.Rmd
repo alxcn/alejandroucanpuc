@@ -1,0 +1,23 @@
+---
+title: "S03: Higher Order Partial Derivation."
+weight: 3
+subtitle: "Second order partial derivatives."
+excerpt: "We will introduce the concept of Partial Derivative as a rate of change when we vary one variable."
+date: '`r Sys.Date()`'
+slug: MA1029eng-sesion-03
+draft: false
+---
+
+In this session we have the following goals:
+
+  * Compute higher order partial derivatives. <br/><br/>
+  * Deduce what is the gradient of a function. <br/><br/>
+  * Geometric interpretation of the gradient. <br/><br/>
+  * Modelling with the gradient.
+
+
+You can find the material for **Sesión 03** in the next link [slides](/slides/2022-AD-MA1029eng/MA1029-sesion-03).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1029eng/MA1029-sesion-03", ratio = "4:3")
+```

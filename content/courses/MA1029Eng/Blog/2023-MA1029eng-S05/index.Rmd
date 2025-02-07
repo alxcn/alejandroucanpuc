@@ -1,0 +1,21 @@
+---
+title: "S05: Directional Derivative"
+weight: 5
+subtitle: "Rate changes in any direction"
+excerpt: "."
+date: '`r Sys.Date()`'
+slug: MA1029eng-sesion-05
+draft: false
+---
+
+In this session we have the following goals:
+
+  * Determine how to calculate the rate of change in arbitrary directions (directional derivative). <br/><br/>
+  * Define the directional derivative as the product of two vectors. <br/><br/>
+  * Model using the directional derivative. <br/><br/>
+
+You can find the material for **Sesión 05** in the next link [slides](/slides/2022-AD-MA1029eng/MA1029-sesion-05).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1029eng/MA1029-sesion-05", ratio = "4:3")
+```

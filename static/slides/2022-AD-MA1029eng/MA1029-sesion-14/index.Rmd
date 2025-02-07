@@ -1,0 +1,106 @@
+---
+title: "Spherical Coordinates"
+subtitle: "Session 14"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.show =('asis'),
+  dev='png',
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	hiline = TRUE,
+	out.width = "90%"
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+# Goals of the day
+
+ * Define spherical coordinates. <br/><br/>
+ * Determine the differential of volume in spherical coordinates. <br/><br/>
+ * Calculate triple integrals in spherical coordinates.
+
+---
+# Spherical Coordinates $(r,\theta,\phi).$
+
+<iframe src="https://www.geogebra.org/classic/qxudhmhs?embed" width="1200" height="450" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+
+---
+# How to translate between coordinates?
+
+The following expressions are used to change between different types of coordinates. For example:
+
+> Given a point in rectangular coordinates $(x,y,z)$ and I want it in _spherical coordinates_, then: <br/>
+- $r^2= x^2+y^2+z^2,$ <br/>
+- $\theta=\arccos\frac{y}{\sqrt{x^2+y^2}}$ y <br/>
+- $\phi=\arcsin\frac{z}{\sqrt{x^2+y^2+z^2}}.$
+
+<br/>
+
+> Given a point in spherical coordinates $(r,\theta,\phi)$ and I want it in _rectangular coordinates_, then: <br/>
+- $x=r\cdot \cos(\theta)\sin(\phi)$ <br/>
+- $y=r\cdot \sin(\theta)\sin(\phi)$
+- $z=r\cos(\phi).$
+---
+# The volume differential in spherical coordinates
+
+> The volume differential in spherical coordinates is given by  $$dV=r^2\sin(\phi) d\theta d\phi d r.$$
+
+
+---
+## Lets work with spherical regions
+
+
+> Describe the following region using spherical coordinates and compute its volumen:
+Describa la región en la figura en coordenadas esféricas.
+
+![Región](regionesf_1.png)
+
+---
+## Veamos algunas regiones esféricas
+
+> Describe the following region inside the sphere $x^2+y^2+z^2=9$ but outside the cone $z^2=x^2+y^2$ and compute its volume.
+
+---
+# Example:
+
+> Compute the volume of the region whose height is given by $f(x,y,z)=9-x^2-y^2$ and base is the 3D region $R$ bounded by $z\geq 0$ and $x^2+y^2+z^2\leq 9.$
+
+
+---
+# Example:
+
+> Compute the volume of the region whose height is given by  $f(x,y,z)=z$ and the 3D region $R$ bounded between  $x^2+y^2+z^2=1$ and $x^2+y^2+z^2=4$ in the first octant.
+
+---
+# Activity:
+
+> ompute the volume of the region whose height is given by $f(x,y,z)=e^{\sqrt{x^2+y^2+z^2}}$ in the region bounded between $z\geq 0,$ $x\geq 0,$ $y\geq 0$ and $x^2+y^2+z^2\leq 9.$

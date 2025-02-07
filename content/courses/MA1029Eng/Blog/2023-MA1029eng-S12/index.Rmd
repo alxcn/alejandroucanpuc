@@ -1,0 +1,23 @@
+---
+title: "S12: Triple Integrals"
+weight: 12
+subtitle: "Generalized Volume"
+excerpt: "."
+date: '`r Sys.Date()`'
+slug: MA1029eng-sesion-12
+draft: false
+---
+
+In this session we have the following goals:
+
+ * Know the volume differential. <br/><br/>
+ * Define the integral in $\mathbb{R}^3$. <br/><br/>
+ * Calculate triple integrals in elementary regions.
+
+
+ 
+You can find the material for **Sesión 12** in the next link [slides](/slides/2022-AD-MA1029eng/MA1029-sesion-12).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1029eng/MA1029-sesion-12", ratio = "4:3")
+```

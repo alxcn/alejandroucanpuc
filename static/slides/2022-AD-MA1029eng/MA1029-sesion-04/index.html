@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Chain Rule</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alejandro Ucan" />
+    <meta name="date" content="2024-02-18" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a49216da2bd94cd5a76e9ada3f73750c","expires":1}</script>
+    <script src="index_files/himalaya/himalaya.js"></script>
+    <script src="index_files/js-cookie/js.cookie.js"></script>
+    <link href="index_files/editable/editable.css" rel="stylesheet" />
+    <script src="index_files/editable/editable.js"></script>
+    <script src="index_files/fabric/fabric.min.js"></script>
+    <link href="index_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Chain Rule
+]
+.subtitle[
+## Session 04
+]
+.author[
+### Alejandro Ucan
+]
+.date[
+### 2024-02-18
+]
+
+---
+
+
+
+
+
+
+
+# Goals for the Session:
+
+  * Introduce the concept of change of variables. &lt;br/&gt;&lt;br/&gt;
+  * Define the chain rule. &lt;br/&gt;&lt;br/&gt;
+  * Apply the chain rule. &lt;br/&gt;&lt;br/&gt;
+
+---
+# Motivation:
+
+&gt; Consider the function `\(W(T,v)=13.12+0.62T -11.37v^{0.16}+0.39Tv^{0.16}\)` that measures the body's thermal sensation where `\(T\)` is the temperature and `\(v\)` is the wind speed. &lt;br/&gt;&lt;br/&gt;
+But, both `\(T\)` and `\(v\)` depend on the position of the city where we are: `$$T(x,y)=17+3xy$$` `$$v(x,y)=-x^2+y^2$$`
+&lt;br/&gt;&lt;br/&gt;
+Using a substitution we can express the Thermal sensation in terms of position doing: `$$W(T(x,y),v(x,y))$$`
+
+---
+# Change of variables
+
+&gt; **Definition:** A change of variables for a function `\(f:\mathbb{R}^n\to \mathbb{R}\)` is a collection of `\(n-\)`functions `\(g_1,\cdots,g_n:\mathbb{R}^m\to\mathbb{R}\)` such that `$$f(g_1(x_1,\cdots, x_m),g_2(x_1,\cdots, x_m),\cdots,g_n(x_1,\cdots, x_m)).$$`$
+
+--
+
+#### Example 1:
+
+Consider the function `\(f(x,y)=xy\)` and the change of variable `$$x(u,v,w)=u+v+w\quad y(u,v,w)=u-v+w.$$` Compute the function `\(f\)` with its change of variable.
+
+--
+
+`$$f(x(u,v,w),y(u,v,w))=(u+v+w)(u-v+w).$$`
+
+---
+
+#### Example 2:
+
+Consider the function `\(f(x,y)=\ln(x\cos(y^2))\)` and the change of variable `$$x(u,v)=\sin(uv)\quad y(u,v)=e^{uv}.$$` Compute the function `\(f\)` with its change of variable.
+
+--
+`$$f(x(u,v),y(u,v))=\ln(\sin(uv)\cos(e^{2uv}))$$`
+---
+#### Example 3:
+
+Consider the function `\(f(x,y,z)=\sqrt{x^2+y^2+z^2}\)` and the change of variable `$$x(u,v)=\sin(u) \quad y(u,v)=\cos(u)\quad z(u,v)=uv.$$` Compute the function `\(f\)` with its change of variable.
+
+--
+$$ f(x(u,v),y(u,v),z(u,v))=\sqrt{u^2v^2}$$
+
+---
+# Chain Rule
+
+&gt; **Theorem:** Assume that `\(u:\mathbb{R}^n\to \mathbb{R}\)` is a function of `\(n-\)`variables and `\(g_1,\cdots,g_n:\mathbb{R}^m\to\mathbb{R}\)` are functions of `\(m-\)`variables. Then, the chain rule states that `$$\frac{\partial u}{\partial x_j}=\frac{\partial u}{\partial u}\frac{\partial g_2}{\partial x_j}+ \frac{\partial u}{\partial g_2}\frac{\partial g_2}{\partial x_j}+\cdots +\frac{\partial u}{\partial u}\frac{\partial g_n}{\partial x_j}$$` for `\(j=1,\cdots,m.\)`
+
+---
+ # How it looks like that chain rule?
+ 
+ ![Chain Rule](Regla_Cadena.jpg)
+
+---
+
+#### Example 1:
+
+Compute the partial derivatives of the function `\(f(x,y)=xy\)` with the change of variable `$$x(u,v,w)=u+v+w\quad y(u,v,w)=u-v+w.$$`
+
+--
+`$$f_u(u,v,w)=(u-v+w)+(u+v+w)$$` `$$f_v(u,v,w)=(u-v+w)-(u+v+w)$$`
+`$$f_w(u,v,w)=(u-v+w)+(u+v+w)$$`
+
+---
+
+#### Example 2:
+
+Compute the partial derivatives of the function `\(f(x,y)=\ln(x\cos(y^2))\)` with the change of variable `$$x(u,v)=\sin(uv)\quad y(u,v)=e^{uv}.$$`
+
+--
+
+$$ f_u(u,v)=\frac{1}{\sin(uv)}\cos(uv)v+\frac{-2e^{xy}\sin(e^{2uv})}{\sin(uv)\cos(e^{2uv})}ve^{uv}$$
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

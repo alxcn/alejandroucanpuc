@@ -1,0 +1,22 @@
+---
+title: "S11: Polar coordinates"
+weight: 11
+subtitle: "Change of variables"
+excerpt: "."
+date: '`r Sys.Date()`'
+slug: MA1029eng-sesion-11
+draft: false
+---
+
+In this session we have the following goals:
+
+ * Know the definition of polar coordinates. <br/><br/>
+ * Establish the change of coordinates identities. <br/><br/>
+ * Show how the integral is affected in this new coordinate system.
+
+ 
+You can find the material for **Sesión 11** in the next link [slides](/slides/2022-AD-MA1029eng/MA1029-sesion-11).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1029eng/MA1029-sesion-11", ratio = "4:3")
+```
