@@ -116,10 +116,10 @@ enableEmoji = true
       icon      = "orcid" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://orcid.org/my-orcid?orcid=0000-0002-0037-9394"
-  #[[params.social]]
-  #    icon      = "rss" # icon name without the 'fa-'
-  #    icon_pack = "fas"
-  #    url       = "/blog/index.xml"
+  [[params.social]]
+      icon      = "discord" # icon name without the 'fa-'
+      icon_pack = "fab"
+      url       = "https://discordapp.com/users/1090341384222933003"
 
 [taxonomies]
   category = "categories"
