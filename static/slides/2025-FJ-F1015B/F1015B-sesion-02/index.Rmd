@@ -1,0 +1,91 @@
+---
+title: "Newton's Cooling Law"
+subtitle: "Session 02"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals:
+
+ * State Newton's Cooling Law. <br/><br/>
+ * Find the Function that models this law. <br/><br/>
+ * Understand the qualitative behavior of the function. <br/><br/>
+ * Solve some modelling problems related to Newton's cooling law.
+---
+# Recall Riemann sums
+
+
+---
+# Definite Integral
+
+> __Definition:__ Let $f$ be a function defined on the interval $[a,b]$. The definite integral of $f$ from $a$ to $b$ is defined as the limit of a Riemann sum when we increase the number of subintervals in a partition. In symbols $$\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^*) \Delta x_i$$ provided that this limit exists and gives the same value for all possible choices of sample points $x_i^*$ in the subintervals $[x_{i-1}, x_i]$.
+
+---
+## Some conventions:
+
+* We will only use regular partitions but the definition is valid for any kind of partition. <br/><br/>
+* We will only consider left Riemann sums, but this computation is also valid for right and middle sums. <br/><br/>
+* We will use the notation $\Delta x = \frac{b-a}{n}$ and $x_i = a + i \Delta x$.
+
+---
+# Main Hypothesis
+
+> **Newton's Cooling Law:** <br/><br/> The *rate of change* of the Temperature of an object, at any time, is *proportional* to the *difference* of object's temperature and medium's temperature.
+
+--
+
+#### How can we represent that statement into a mathematical object?
+
+---
+## The Differential Equation
+
+\[\frac{d T(t)}{dt}= k(T(t)-T_m)\]
+
+--
+
+* $T(t)$ is the function that measure object's temperature at any time. (Type: Unknown) <br/><br/>
+
+* $k$ is the cooling ratio. (Type: Parameter usually known) <br/><br/>
+
+* $T_m$ is the medium temperature. (Type: Parameter usually known, could be a function)
+
+---
+## How to determine a function that models this phenomena?
+
