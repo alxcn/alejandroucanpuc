@@ -1,0 +1,19 @@
+---
+title: "S01: Review of Integration Techniques"
+weight: 1
+subtitle: "Do you even integrate?"
+excerpt: ""
+date: '`r Sys.Date()`'
+slug: F1015B-sesion-01
+draft: false
+---
+
+ * Recall the Integration problem. <br/><br/>
+ * Recall u-substitution method. <br/><br/>
+ * Recall by part methods.
+
+El contenido para la **Session 01** se encuentra en following [slides](/slides/2025-FJ-F1015B/F1015B-sesion-01).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2025-FJ-F1015B/F1015B-sesion-01", ratio = "4:3")
+```
