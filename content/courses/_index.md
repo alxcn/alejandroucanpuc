@@ -5,7 +5,8 @@ description: |
   
   ## English Courses
   
-  * [MA1029Eng](https://alejandro-ucan.netlify.app/courses/MA1029Eng/): Intermediate Mathematical Modeling
+  * [MA1029Eng](https://alejandro-ucan.netlify.app/courses/MA1029Eng/): Intermediate Mathematical Modeling.
+  * [F1015BEng](https://alejandro-ucan.netlify.app/course/F1015B/): Thermodynamics Modeling in Engineering.
   
   ## Spanish Courses
   * [F1009](https://alejandro-ucan.netlify.app/courses/F1009): Análisis de Métodos Matemáticos para la Física.

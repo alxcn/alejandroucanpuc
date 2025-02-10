@@ -153,11 +153,11 @@ enableEmoji = true
     title = "Courses Material"
     url = "/courses/"
     weight = 5
-  #[[menu.header]]
-  #  name = "Data Science Seminar"
-  #  title = "Seminar"
-  #  url = "/Seminar/"
-  #  weight = 6
+  [[menu.header]]
+    name = "Data Science Seminar"
+    title = "Seminar"
+    url = "/Seminar/"
+    weight = 6
     
   # Configure footer  
   [[menu.footer]]
