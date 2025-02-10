@@ -1,0 +1,63 @@
+---
+title: 'Lecture 1: Metric Spaces.'
+weight: 1
+date: "`r Sys.Date()`"
+output: pdf_document
+subtitle: What is a metric space?
+slug: "MA2007B-P1-S01"
+draft: no
+excerpt: Metric spaces are a key concept in topological data analysis due to its ability
+  to measure distances between points.
+---
+# Motivation:
+
+In this course we are interested in spaces where we can measure distances between points. For example, in the plane $\mathbb{R}^2$ we can measure the distance between two points $(x_1,y_1)$ and $(x_2,y_2)$ using the Pythagorean theorem: $$d\left((x_1,y_1),(x_2,y_2)\right)=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}.$$ This is a special case of a more general concept called a **metric space**. We are interested in this property because it allows us to define a notion of closeness between points which it will be key to provide insights from a database of points.
+
+**Metric spaces** is a concept part of the analysis and geometry area of mathematics. In order to understand this concept we need to introduce some definitions and examples.
+
+> **Definition 1.1.** A **metric space** is a non-empty set $X$ together with a function $d:X\times X\to \mathbb{R}$ such that for all $x,y,z\in X$ the following properties hold: <br/><br/>
+> 1. $d(x,y)\geq 0$ and $d(x,y)=0$ if and only if $x=y$ (non-negativity and identity of indiscernibles). <br/><br/>
+> 2. $d(x,y)=d(y,x)$ (symmetry). <br/><br/>
+> 3. $d(x,z)\leq d(x,y)+d(y,z)$ (triangle inequality). <br/><br/>
+> The function $d$ is called a **metric** or **distance function**.
+
+Previous properties seems to be very abstract, but they are very natural. For example, in the plane $\mathbb{R}^2$ the function $d$ defined above satisfies all the properties of a metric. 
+
+> **Example 1.2.** Let $X=\mathbb{R}^n$ and $d:\mathbb{R}^n\times \mathbb{R}^n\to \mathbb{R}$ be the function defined by $$d\left((x_1,x_2,\cdots,x_n),(y_1,y_2,\cdots,y_n)\right)=\sqrt{\sum_{j=1}^n (x_j-y_j)^2}.$$ Then $d$ is a metric on $\mathbb{R}^n$ called the **Euclidean metric** or $l_2$-**metric**. 
+
+
+When $n=1,$ it coincides with the usual way to measure distances in the real line $\mathbb{R},$ and with $n=2$ it coincides with the Pythagorean way to measure distances in the plane $\mathbb{R}^2.$
+
+The existence of metrics is no only restricted to $\mathbb{R}^n.$ In fact, we can define metrics on more general spaces. For example, graphs are a very important concept in topological data analysis and we can define metrics on them.
+
+> **Example 1.3.** Consider a (finite) set of points $V$ in $\mathbb{R}^n$ and $E$ a set of edges connecting points in $V.$ Let $X=\Gamma(V,E)$ be the set containing the vertices and edges, called a **graph**. We can define a metric on $V$ by $$d(x,y)=\min\left\{\sum_{i=1}^n d(x_i,x_{i+1})\mid x_1=x, x_n=y, x_i\in V\right\}$$ where the minimum is taken over all the paths that join two different points. This metric is called the **graph metric** on $X.$
+
+And there are more abstract metric spaces, for example the metric space of subsets of a given metric space. 
+
+> **Example 1.4.** Let $(X,d)$ be a metric space. We can define a metric on the set of all subsets of $X$ by $$d(A,B)=\inf\{d(x,y)\mid x\in A, y\in B\}$$ where $A$ and $B$ are subsets of $X.$ This metric is called the **Hausdorff metric** on the set of subsets of $X.$ The Hausdorff metric is a very important concept in topological data analysis because it allows us to compare subsets of a given metric space and determine its closeness.
+
+
+A non-empty set $X$ can admit more than one metric, for example the set $\mathbb{R}^n$ admits the Euclidean metric, the Manhattan metric, the Chebyshev metric, etc. In principle, if we change the metric on a given set $X,$ the metric space $(X,d)$ will change. However, there are metrics that are not so _different_ from each other and in subsequent lectures we will see this.
+
+> **Definition 1.5.** Let $X$ be a non-empty set and $d_1$ and $d_2$ two metrics on $X.$ We say that $d_1$ and $d_2$ are **equivalent** if there exist positive constants $c_1$ and $c_2$ such that for all $x,y\in X$ $$c_1d_1(x,y)\leq d_2(x,y)\leq c_2d_1(x,y).$$
+
+The previous definition is very important because it allows us to compare metrics on a given set. For example, the Euclidean metric and the Manhattan metric on $\mathbb{R}^n$ are equivalent.
+
+> **Example 1.6.** Let $X=\mathbb{R}^2,$ the following functions are metrics on $X:$ <br/><br/>
+> 1. $d_1\left((x_1,y_1),(x_2,y_2)\right)=|x_1-x_2|+|y_1-y_2|,$ called the _Manhattan metric_. <br/><br/>
+> 2. $d_\infty \left((x_1,y_1),(x_2,y_2)\right)=\max\{|x_1-x_2|,|y_1-y_2|\},$ called the _Chebyshev metric_. <br/><br/>
+> 3. $d_p\left((x_1,y_1),(x_2,y_2)\right)=\sqrt[p]{(x_1-x_2)^p+(y_1-y_2)^p},$ called the _$l_p$-metric_. <br/><br/>
+> 4. $d_{cos} \left((x_1,y_1),(x_2,y_2)\right)=1-\frac{x_1 x_2+y_1 y_2}{(x_1^2+x_2^2)(y_1^2+y_2^2)}$ called the _Cosine metric_. <br/><br/>
+> 5. $d_{ind} \left((x_1,y_1),(x_2,y_2)\right)=\begin{cases} 0 & \text{if } (x_1,y_1)=(x_2,y_2) \\ 1 & \text{if } (x_1,y_1)\neq (x_2,y_2) \end{cases},$ called the _indiscrete metric_. <br/><br/>
+
+There is a generalization of the previous example for any $n\in \mathbb{N}$ and $\mathbb{R}^n.$ In fact, there are more metrics on $\mathbb{R}^n$ than the ones listed above, but at least we can affirm that the first three metrics are equivalent. 
+
+How does affect the choice of metric in a given set? Next session, we will discuss the geometry behind metrics and how it affects the notion of closeness between points.
+
+## Reinforcement Exercises:
+
+1. Let $X=\mathbb{R}^n$ and $d:\mathbb{R}^n\times \mathbb{R}^n\to \mathbb{R}$ be the function defined by $$d\left((x_1,x_2,\cdots,x_n),(y_1,y_2,\cdots,y_n)\right)=\sqrt{\sum_{j=1}^n (x_j-y_j)^2}.$$ Show that $d$ is a metric on $\mathbb{R}^n.$
+
+2. Let $X=\mathbb{R}^n$ and $d:\mathbb{R}^n\times \mathbb{R}^n\to \mathbb{R}$ be the function defined by $$d\left((x_1,x_2,\cdots,x_n),(y_1,y_2,\cdots,y_n)\right)=\max_{1\leq j\leq n} |x_j-y_j|.$$ Show that $d$ is a metric on $\mathbb{R}^n.$
+
+3. Let $X=\mathbb{R}^2$ and $d(x,y)=\frac{d_2(x,y)}{1-d_2(x,y)}$ where $d_2$ stands for the Euclidean metric. Show that $d$ is a metric.

@@ -1,0 +1,41 @@
+---
+title: "Lecture 3: Topology"
+weight: 3
+subtitle: "Introduction to Topology"
+excerpt: "In this lecture we will introduce the concept of Topology."
+date: '`r Sys.Date()`'
+slug: MA2007B-P1-S03
+draft: false
+---
+
+# Motivation
+
+In the previous lecture we introduced the concept of a metric space. We saw that a metric space is a set $X$ together with a function $d: X \times X \to \mathbb{R}$ which satisfies certain properties. We saw that the metric function $d$ gives us a way to measure the distance between two points in $X$. We also saw that the metric function $d$ induce a shape in $X,$ but different metric functions can induce different shapes in $X.$
+
+Is there something that we can say about the shape of $X$ that does not depend on the metric function $d$? In this lecture we will introduce the concept of a topology, which is a way to describe the shape of a set $X$ without using a metric function.
+
+# Topology
+
+> **Definition 3.1:** Let $X$ be a set. A **topology** on $X$ is a collection $\mathcal{T}$ of subsets of $X$ such that: <br/><br/>
+> 1. $\emptyset, X \in \mathcal{T}$ <br/><br/> 
+> 2. If $U_1, U_2, \dots, U_n \in \mathcal{T}$ then $\bigcap_{i=1}^n U_i \in \mathcal{T}$ <br/><br/>
+> 3. If $\{U_\alpha\}_{\alpha \in I}$ is a collection of elements of $\mathcal{T}$ then $\bigcup_{\alpha \in I} U_\alpha \in \mathcal{T}$ <br/><br/>
+> The elements of $\mathcal{T}$ are called **open sets** and the pair $(X, \mathcal{T})$ is called a **topological space**.
+
+Intuitively, a topology is a collection of subsets of $X$ that model the "shape" of $X$ and this "shape" does not depend on a metric function. We will see that a topology is a very general concept and that it can be used to model many different shapes.
+
+> **Example 3.2:** Let $X$ be a set and let $\mathcal{T} = \{\emptyset, X\}.$ Then $\mathcal{T}$ is a topology on $X.$ This topology is called the **trivial topology** on $X.$
+
+> **Example 3.3:** Let $X$ be a set and let $\mathcal{T} = \mathcal{P}(X)$ be the collection of all subsets of $X$. Then $\mathcal{T}$ is a topology on $X.$ This topology is called the **discrete topology** on $X.$
+
+Previous examples are the most trivial examples of topologies. The next example is a more interesting example of a topology.
+
+> **Example 3.4:** Consider $X=\{1,2,3,4,5,6\}$ be a collection of finite elements (could be elements of other space rather than the integers). Let $\mathcal{T} = \{\emptyset, \{1,2,3\}, \{4,5,6\}, X\}.$ Then $\mathcal{T}$ is a topology on $X.$   This topology is not the trivial topology or the discrete topology.
+
+We can say that topology determines the _shape_ of the space, even though with the previous examples it is not clear what we meant for shape.
+
+> **Definition 3.5:**  Given a metric space $(X,d),$ the (induced) *metric topology* on $X,$ denoted by $T_d,$ as the collection of sets $U\subset X$ such that for any point $x\in U$ there is an open ball $B_\varepsilon(x)$ contained in $U$ for some $0\leq \varepsilon.$
+
+Intuitively, the open sets mentioned in the previous Definition are made by unions of collections of open balls. What happens in the case to have more than one metric in a particular space? 
+
+

@@ -5,10 +5,13 @@ description: |
   
   ## English Courses
   
+  * [F1015B](https://alejandro-ucan.netlify.app/courses/F1015B/): Thermodynamics modeling in Engineering.
   * [MA1029Eng](https://alejandro-ucan.netlify.app/courses/MA1029Eng/): Intermediate Mathematical Modeling
+  
   
   ## Spanish Courses
   * [F1009](https://alejandro-ucan.netlify.app/courses/F1009): Análisis de Métodos Matemáticos para la Física.
+  * [MA2007B](https://alejandro-ucan.netlify.app/courses/MA2007B): Uso de Geometría y Topología para la Ciencia de Datos.
 author: "Alejandro Ucan-Puc"
 show_post_thumbnail: true
 thumbnail_left: true # for list-sidebar only

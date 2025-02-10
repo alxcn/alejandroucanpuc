@@ -1,0 +1,51 @@
+---
+title: "Lecture 2: Geometry of Metric Spaces"
+weight: 2
+subtitle: "Balls shaped by metrics"
+excerpt: "The way that we measured distances determine the geometry of our space, different metrics imply different geometry."
+date: '2025-02-08'
+slug: MA2007B-P1-S02
+draft: false
+---
+
+
+
+<div id="motivation" class="section level1">
+<h1>Motivation</h1>
+<p>Last session, we mentionned that one space could have different metrics. We also mentionned that the metric determines the geometry of the space. In this session, we will see how the metric determines the geometry of the space. Naively, we can think of the metric as a ruler, and the geometry of the space as the shape of the space. The ruler determines the shape of the space.</p>
+</div>
+<div id="balls-and-spheres" class="section level1">
+<h1>Balls and Spheres</h1>
+<p>In <span class="math inline">\(\mathbb{R}^2,\)</span> we have that the points that are at a distance <span class="math inline">\(r\)</span> from a given point <span class="math inline">\(x\)</span> are the points that are on the circle of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x.\)</span> Using the Euclidean metric in <span class="math inline">\(\mathbb{R}^3,\)</span> the points that are at a distance <span class="math inline">\(r\)</span> from a given point <span class="math inline">\(x\)</span> are the points that are on the sphere of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x.\)</span> We can generalize this notion to <span class="math inline">\(\mathbb{R}^n\)</span> with the Euclidean metric, meaning that all points that are at a distance <span class="math inline">\(r\)</span> from a given point <span class="math inline">\(x\)</span> are the points that are on the “sphere” of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x.\)</span></p>
+<blockquote>
+<p><strong>Definition 2.1:</strong> Let <span class="math inline">\((X,d)\)</span> be a metric space, <span class="math inline">\(x\in X\)</span> and <span class="math inline">\(r&gt;0.\)</span> The <em>sphere</em> of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x\)</span> is the set <span class="math display">\[S_r(x)=\{y\in X:d(x,y)=r\}.\]</span></p>
+</blockquote>
+<p>We call this set spheres due to its definition is inspired in the Euclidean spheres in <span class="math inline">\(\mathbb{R}^n.\)</span></p>
+<p>What happens if we use a different metric? Let’s consider the following metric on <span class="math inline">\(\mathbb{R}^2\)</span> with the <em>Manhattan metric</em>, <span class="math inline">\(d_1\left((x_1,y_1),(x_2,y_2)\right)=|x_1-x_2|+|y_1-y_2|.\)</span> The <em>Taxicab geometry</em> (the one induced by this metric) dictates that the distance between two points is the sum of the distances between the coordinates of the points; meaning that in order to measure the distance between two points, we need to travel along the coordinate axes (like a taxicab or moving a tower in chess). Following the ideas of spheres, let’s picture an easy case, the points that are at a distance <span class="math inline">\(1\)</span> from the origin, the equation that describe this geometric space is <span class="math display">\[|x|+|y|=1.\]</span> This is a square with vertices at <span class="math inline">\((1,0),(0,1),(-1,0),(0,-1).\)</span> If we take the sphere of radious <span class="math inline">\(r\)</span> centered at <span class="math inline">\((0,0),\)</span> this correspond to the square with vertices at <span class="math inline">\((r,0),(0,r),(-r,0),(0,-r).\)</span> We can see that the shape of the sphere is different from the Euclidean sphere and that the way to measure distances determine the shape of the space. The shape of these sphere doesn’t change if we change the center of the sphere.</p>
+<p>In Euclidean geometry, the points that are at a distance less than <span class="math inline">\(r\)</span> from a given point <span class="math inline">\(x\)</span> are the points that are inside the circle of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x.\)</span> Using the Euclidean metric in <span class="math inline">\(\mathbb{R}^3,\)</span> the points that are at a distance less than <span class="math inline">\(r\)</span> from a given point <span class="math inline">\(x\)</span> are the points that are inside the sphere of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x.\)</span> We can generalize this notion to <span class="math inline">\(\mathbb{R}^n\)</span> with the Euclidean metric, meaning that all points that are at a distance less than <span class="math inline">\(r\)</span> from a given point <span class="math inline">\(x\)</span> are the points that are inside the “sphere” of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x.\)</span></p>
+<blockquote>
+<p><strong>Definition 2.2:</strong> Let <span class="math inline">\((X,d)\)</span> be a metric space, <span class="math inline">\(x\in X\)</span> and <span class="math inline">\(r&gt;0.\)</span> The <em>(open) ball</em> of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x\)</span> is the set <span class="math display">\[B_r(x)=\{y\in X:d(x,y)&lt;r\}.\]</span></p>
+</blockquote>
+<p>We call this set balls due to its definition is inspired in the Euclidean balls in <span class="math inline">\(\mathbb{R}^n.\)</span></p>
+<p>Following the discussion with the <em>Taxicab geometry</em>, the balls in this space are the points contained in the squeares with vertices in <span class="math inline">\((r+x,y),(x,r+y),(x-r,y),(x,y-r).\)</span> We can see that the shape of the ball is different from the Euclidean ball.</p>
+<blockquote>
+<p><strong>Definition 2.3:</strong> Let <span class="math inline">\((X,d)\)</span> be a metric space, <span class="math inline">\(x\in X\)</span> and <span class="math inline">\(r&gt;0.\)</span> The <em>closed ball</em> of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x\)</span> is the set <span class="math display">\[\overline{B}_r(x)=\{y\in X:d(x,y)\leq r\}.\]</span></p>
+</blockquote>
+<p>The closed balls is just the union of the ball and the sphere of radius <span class="math inline">\(r\)</span> centered at <span class="math inline">\(x.\)</span></p>
+</div>
+<div id="other-geometries-in-mathbbr2" class="section level1">
+<h1>Other geometries in <span class="math inline">\(\mathbb{R}^2\)</span></h1>
+<p>Previously, we briefly discuss about the <em>Taxicab geometry</em>, but in the last lecture we introduce several metrics for <span class="math inline">\(\mathbb{R}^2.\)</span> Lets explain briefly the geometry of some of these metrics.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>The Chebyshev distance:</strong> The Chebyshev distance is defined as <span class="math inline">\(d_\infty\left((x_1,y_1),(x_2,y_2)\right)=\max\{|x_1-x_2|,|y_1-y_2|\}.\)</span> This metric is also known as the <em>chessboard metric</em> since it is the distance that a king would travel on a chessboard.</p></li>
+<li><p><strong>The Cosine distance:</strong> The cosine distance is related to the angle between two points in <span class="math inline">\(\mathbb{R}^2.\)</span> The cosine distance is defined as <span class="math inline">\(d_\theta\left((x_1,y_1),(x_2,y_2)\right)=\sqrt{1-\cos(\theta)}\)</span> where <span class="math inline">\(\theta\)</span> is the angle between the two points. This metric is also known as the <em>angular metric</em>.</p></li>
+<li><p><strong>The Indiscrete metric:</strong> here every two different points are at distance 1, and every point is at distance 0 from itself. This metric is also known as the <em>trivial metric</em>. The ball of radious 1 contains all points but the balls of radious less than 1 are just the points themselves.</p></li>
+</ol>
+<div id="reinforcement-exercises" class="section level2">
+<h2>Reinforcement Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Using a graphic software, plot the spheres and balls of radius 1 centered at <span class="math inline">\((0,0)\)</span> for the metrics <span class="math inline">\(d_1,d_2,d_\infty,d_\theta.\)</span></p></li>
+<li><p>Using a graphic software, plot the spheres and balls of radius 1 centered at <span class="math inline">\((1,1)\)</span> for the metrics <span class="math inline">\(d_\theta.\)</span></p></li>
+</ol>
+</div>
+</div>

@@ -1,0 +1,62 @@
+---
+title: 'Lecture 1: Metric Spaces.'
+weight: 1
+date: "2025-02-08"
+output: pdf_document
+subtitle: What is a metric space?
+slug: "MA2007B-P1-S01"
+draft: no
+excerpt: Metric spaces are a key concept in topological data analysis due to its ability
+  to measure distances between points.
+---
+
+
+
+<div id="motivation" class="section level1">
+<h1>Motivation:</h1>
+<p>In this course we are interested in spaces where we can measure distances between points. For example, in the plane <span class="math inline">\(\mathbb{R}^2\)</span> we can measure the distance between two points <span class="math inline">\((x_1,y_1)\)</span> and <span class="math inline">\((x_2,y_2)\)</span> using the Pythagorean theorem: <span class="math display">\[d\left((x_1,y_1),(x_2,y_2)\right)=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}.\]</span> This is a special case of a more general concept called a <strong>metric space</strong>. We are interested in this property because it allows us to define a notion of closeness between points which it will be key to provide insights from a database of points.</p>
+<p><strong>Metric spaces</strong> is a concept part of the analysis and geometry area of mathematics. In order to understand this concept we need to introduce some definitions and examples.</p>
+<blockquote>
+<p><strong>Definition 1.1.</strong> A <strong>metric space</strong> is a non-empty set <span class="math inline">\(X\)</span> together with a function <span class="math inline">\(d:X\times X\to \mathbb{R}\)</span> such that for all <span class="math inline">\(x,y,z\in X\)</span> the following properties hold: <br/><br/>
+1. <span class="math inline">\(d(x,y)\geq 0\)</span> and <span class="math inline">\(d(x,y)=0\)</span> if and only if <span class="math inline">\(x=y\)</span> (non-negativity and identity of indiscernibles). <br/><br/>
+2. <span class="math inline">\(d(x,y)=d(y,x)\)</span> (symmetry). <br/><br/>
+3. <span class="math inline">\(d(x,z)\leq d(x,y)+d(y,z)\)</span> (triangle inequality). <br/><br/>
+The function <span class="math inline">\(d\)</span> is called a <strong>metric</strong> or <strong>distance function</strong>.</p>
+</blockquote>
+<p>Previous properties seems to be very abstract, but they are very natural. For example, in the plane <span class="math inline">\(\mathbb{R}^2\)</span> the function <span class="math inline">\(d\)</span> defined above satisfies all the properties of a metric.</p>
+<blockquote>
+<p><strong>Example 1.2.</strong> Let <span class="math inline">\(X=\mathbb{R}^n\)</span> and <span class="math inline">\(d:\mathbb{R}^n\times \mathbb{R}^n\to \mathbb{R}\)</span> be the function defined by <span class="math display">\[d\left((x_1,x_2,\cdots,x_n),(y_1,y_2,\cdots,y_n)\right)=\sqrt{\sum_{j=1}^n (x_j-y_j)^2}.\]</span> Then <span class="math inline">\(d\)</span> is a metric on <span class="math inline">\(\mathbb{R}^n\)</span> called the <strong>Euclidean metric</strong> or <span class="math inline">\(l_2\)</span>-<strong>metric</strong>.</p>
+</blockquote>
+<p>When <span class="math inline">\(n=1,\)</span> it coincides with the usual way to measure distances in the real line <span class="math inline">\(\mathbb{R},\)</span> and with <span class="math inline">\(n=2\)</span> it coincides with the Pythagorean way to measure distances in the plane <span class="math inline">\(\mathbb{R}^2.\)</span></p>
+<p>The existence of metrics is no only restricted to <span class="math inline">\(\mathbb{R}^n.\)</span> In fact, we can define metrics on more general spaces. For example, graphs are a very important concept in topological data analysis and we can define metrics on them.</p>
+<blockquote>
+<p><strong>Example 1.3.</strong> Consider a (finite) set of points <span class="math inline">\(V\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(E\)</span> a set of edges connecting points in <span class="math inline">\(V.\)</span> Let <span class="math inline">\(X=\Gamma(V,E)\)</span> be the set containing the vertices and edges, called a <strong>graph</strong>. We can define a metric on <span class="math inline">\(V\)</span> by <span class="math display">\[d(x,y)=\min\left\{\sum_{i=1}^n d(x_i,x_{i+1})\mid x_1=x, x_n=y, x_i\in V\right\}\]</span> where the minimum is taken over all the paths that join two different points. This metric is called the <strong>graph metric</strong> on <span class="math inline">\(X.\)</span></p>
+</blockquote>
+<p>And there are more abstract metric spaces, for example the metric space of subsets of a given metric space.</p>
+<blockquote>
+<p><strong>Example 1.4.</strong> Let <span class="math inline">\((X,d)\)</span> be a metric space. We can define a metric on the set of all subsets of <span class="math inline">\(X\)</span> by <span class="math display">\[d(A,B)=\inf\{d(x,y)\mid x\in A, y\in B\}\]</span> where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are subsets of <span class="math inline">\(X.\)</span> This metric is called the <strong>Hausdorff metric</strong> on the set of subsets of <span class="math inline">\(X.\)</span> The Hausdorff metric is a very important concept in topological data analysis because it allows us to compare subsets of a given metric space and determine its closeness.</p>
+</blockquote>
+<p>A non-empty set <span class="math inline">\(X\)</span> can admit more than one metric, for example the set <span class="math inline">\(\mathbb{R}^n\)</span> admits the Euclidean metric, the Manhattan metric, the Chebyshev metric, etc. In principle, if we change the metric on a given set <span class="math inline">\(X,\)</span> the metric space <span class="math inline">\((X,d)\)</span> will change. However, there are metrics that are not so <em>different</em> from each other and in subsequent lectures we will see this.</p>
+<blockquote>
+<p><strong>Definition 1.5.</strong> Let <span class="math inline">\(X\)</span> be a non-empty set and <span class="math inline">\(d_1\)</span> and <span class="math inline">\(d_2\)</span> two metrics on <span class="math inline">\(X.\)</span> We say that <span class="math inline">\(d_1\)</span> and <span class="math inline">\(d_2\)</span> are <strong>equivalent</strong> if there exist positive constants <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> such that for all <span class="math inline">\(x,y\in X\)</span> <span class="math display">\[c_1d_1(x,y)\leq d_2(x,y)\leq c_2d_1(x,y).\]</span></p>
+</blockquote>
+<p>The previous definition is very important because it allows us to compare metrics on a given set. For example, the Euclidean metric and the Manhattan metric on <span class="math inline">\(\mathbb{R}^n\)</span> are equivalent.</p>
+<blockquote>
+<p><strong>Example 1.6.</strong> Let <span class="math inline">\(X=\mathbb{R}^2,\)</span> the following functions are metrics on <span class="math inline">\(X:\)</span> <br/><br/>
+1. <span class="math inline">\(d_1\left((x_1,y_1),(x_2,y_2)\right)=|x_1-x_2|+|y_1-y_2|,\)</span> called the <em>Manhattan metric</em>. <br/><br/>
+2. <span class="math inline">\(d_\infty \left((x_1,y_1),(x_2,y_2)\right)=\max\{|x_1-x_2|,|y_1-y_2|\},\)</span> called the <em>Chebyshev metric</em>. <br/><br/>
+3. <span class="math inline">\(d_p\left((x_1,y_1),(x_2,y_2)\right)=\sqrt[p]{(x_1-x_2)^p+(y_1-y_2)^p},\)</span> called the <em><span class="math inline">\(l_p\)</span>-metric</em>. <br/><br/>
+4. <span class="math inline">\(d_{cos} \left((x_1,y_1),(x_2,y_2)\right)=1-\frac{x_1 x_2+y_1 y_2}{(x_1^2+x_2^2)(y_1^2+y_2^2)}\)</span> called the <em>Cosine metric</em>. <br/><br/>
+5. <span class="math inline">\(d_{ind} \left((x_1,y_1),(x_2,y_2)\right)=\begin{cases} 0 &amp; \text{if } (x_1,y_1)=(x_2,y_2) \\ 1 &amp; \text{if } (x_1,y_1)\neq (x_2,y_2) \end{cases},\)</span> called the <em>indiscrete metric</em>. <br/><br/></p>
+</blockquote>
+<p>There is a generalization of the previous example for any <span class="math inline">\(n\in \mathbb{N}\)</span> and <span class="math inline">\(\mathbb{R}^n.\)</span> In fact, there are more metrics on <span class="math inline">\(\mathbb{R}^n\)</span> than the ones listed above, but at least we can affirm that the first three metrics are equivalent.</p>
+<p>How does affect the choice of metric in a given set? Next session, we will discuss the geometry behind metrics and how it affects the notion of closeness between points.</p>
+<div id="reinforcement-exercises" class="section level2">
+<h2>Reinforcement Exercises:</h2>
+<ol style="list-style-type: decimal">
+<li><p>Let <span class="math inline">\(X=\mathbb{R}^n\)</span> and <span class="math inline">\(d:\mathbb{R}^n\times \mathbb{R}^n\to \mathbb{R}\)</span> be the function defined by <span class="math display">\[d\left((x_1,x_2,\cdots,x_n),(y_1,y_2,\cdots,y_n)\right)=\sqrt{\sum_{j=1}^n (x_j-y_j)^2}.\]</span> Show that <span class="math inline">\(d\)</span> is a metric on <span class="math inline">\(\mathbb{R}^n.\)</span></p></li>
+<li><p>Let <span class="math inline">\(X=\mathbb{R}^n\)</span> and <span class="math inline">\(d:\mathbb{R}^n\times \mathbb{R}^n\to \mathbb{R}\)</span> be the function defined by <span class="math display">\[d\left((x_1,x_2,\cdots,x_n),(y_1,y_2,\cdots,y_n)\right)=\max_{1\leq j\leq n} |x_j-y_j|.\]</span> Show that <span class="math inline">\(d\)</span> is a metric on <span class="math inline">\(\mathbb{R}^n.\)</span></p></li>
+<li><p>Let <span class="math inline">\(X=\mathbb{R}^2\)</span> and <span class="math inline">\(d(x,y)=\frac{d_2(x,y)}{1-d_2(x,y)}\)</span> where <span class="math inline">\(d_2\)</span> stands for the Euclidean metric. Show that <span class="math inline">\(d\)</span> is a metric.</p></li>
+</ol>
+</div>
+</div>

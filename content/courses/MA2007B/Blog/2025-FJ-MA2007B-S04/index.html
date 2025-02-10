@@ -1,0 +1,43 @@
+---
+title: "Lecture 3: Topology"
+weight: 3
+subtitle: "Introduction to Topology"
+excerpt: "In this lecture we will introduce the concept of Topology."
+date: '2025-02-08'
+slug: MA2007B-P1-S03
+draft: false
+---
+
+
+
+<div id="motivation" class="section level1">
+<h1>Motivation</h1>
+<p>In the previous lecture we introduced the concept of a metric space. We saw that a metric space is a set <span class="math inline">\(X\)</span> together with a function <span class="math inline">\(d: X \times X \to \mathbb{R}\)</span> which satisfies certain properties. We saw that the metric function <span class="math inline">\(d\)</span> gives us a way to measure the distance between two points in <span class="math inline">\(X\)</span>. We also saw that the metric function <span class="math inline">\(d\)</span> induce a shape in <span class="math inline">\(X,\)</span> but different metric functions can induce different shapes in <span class="math inline">\(X.\)</span></p>
+<p>Is there something that we can say about the shape of <span class="math inline">\(X\)</span> that does not depend on the metric function <span class="math inline">\(d\)</span>? In this lecture we will introduce the concept of a topology, which is a way to describe the shape of a set <span class="math inline">\(X\)</span> without using a metric function.</p>
+</div>
+<div id="topology" class="section level1">
+<h1>Topology</h1>
+<blockquote>
+<p><strong>Definition 3.1:</strong> Let <span class="math inline">\(X\)</span> be a set. A <strong>topology</strong> on <span class="math inline">\(X\)</span> is a collection <span class="math inline">\(\mathcal{T}\)</span> of subsets of <span class="math inline">\(X\)</span> such that: <br/><br/>
+1. <span class="math inline">\(\emptyset, X \in \mathcal{T}\)</span> <br/><br/>
+2. If <span class="math inline">\(U_1, U_2, \dots, U_n \in \mathcal{T}\)</span> then <span class="math inline">\(\bigcap_{i=1}^n U_i \in \mathcal{T}\)</span> <br/><br/>
+3. If <span class="math inline">\(\{U_\alpha\}_{\alpha \in I}\)</span> is a collection of elements of <span class="math inline">\(\mathcal{T}\)</span> then <span class="math inline">\(\bigcup_{\alpha \in I} U_\alpha \in \mathcal{T}\)</span> <br/><br/>
+The elements of <span class="math inline">\(\mathcal{T}\)</span> are called <strong>open sets</strong> and the pair <span class="math inline">\((X, \mathcal{T})\)</span> is called a <strong>topological space</strong>.</p>
+</blockquote>
+<p>Intuitively, a topology is a collection of subsets of <span class="math inline">\(X\)</span> that model the “shape” of <span class="math inline">\(X\)</span> and this “shape” does not depend on a metric function. We will see that a topology is a very general concept and that it can be used to model many different shapes.</p>
+<blockquote>
+<p><strong>Example 3.2:</strong> Let <span class="math inline">\(X\)</span> be a set and let <span class="math inline">\(\mathcal{T} = \{\emptyset, X\}.\)</span> Then <span class="math inline">\(\mathcal{T}\)</span> is a topology on <span class="math inline">\(X.\)</span> This topology is called the <strong>trivial topology</strong> on <span class="math inline">\(X.\)</span></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 3.3:</strong> Let <span class="math inline">\(X\)</span> be a set and let <span class="math inline">\(\mathcal{T} = \mathcal{P}(X)\)</span> be the collection of all subsets of <span class="math inline">\(X\)</span>. Then <span class="math inline">\(\mathcal{T}\)</span> is a topology on <span class="math inline">\(X.\)</span> This topology is called the <strong>discrete topology</strong> on <span class="math inline">\(X.\)</span></p>
+</blockquote>
+<p>Previous examples are the most trivial examples of topologies. The next example is a more interesting example of a topology.</p>
+<blockquote>
+<p><strong>Example 3.4:</strong> Consider <span class="math inline">\(X=\{1,2,3,4,5,6\}\)</span> be a collection of finite elements (could be elements of other space rather than the integers). Let <span class="math inline">\(\mathcal{T} = \{\emptyset, \{1,2,3\}, \{4,5,6\}, X\}.\)</span> Then <span class="math inline">\(\mathcal{T}\)</span> is a topology on <span class="math inline">\(X.\)</span> This topology is not the trivial topology or the discrete topology.</p>
+</blockquote>
+<p>We can say that topology determines the <em>shape</em> of the space, even though with the previous examples it is not clear what we meant for shape.</p>
+<blockquote>
+<p><strong>Definition 3.5:</strong> Given a metric space <span class="math inline">\((X,d),\)</span> the (induced) <em>metric topology</em> on <span class="math inline">\(X,\)</span> denoted by <span class="math inline">\(T_d,\)</span> as the collection of sets <span class="math inline">\(U\subset X\)</span> such that for any point <span class="math inline">\(x\in U\)</span> there is an open ball <span class="math inline">\(B_\varepsilon(x)\)</span> contained in <span class="math inline">\(U\)</span> for some <span class="math inline">\(0\leq \varepsilon.\)</span></p>
+</blockquote>
+<p>Intuitively, the open sets mentioned in the previous Definition are made by unions of collections of open balls. What happens in the case to have more than one metric in a particular space?</p>
+</div>

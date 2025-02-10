@@ -1,0 +1,102 @@
+---
+title: "Subespacios de $\mathbb{R}^n$"
+subtitle: "Sesión 04"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introduciremos algunos subespacios principales de $\mathbb{R}^n$. <br/><br/>
+* Estudiaremos sus propiedades topológicas. <br/><br/>
+* $\mathbb{R}^n$ como espacio métrico. <br/><br/>
+
+---
+# La bola unitaria en $\mathbb{R}^n$
+
+> __Definición:__ Sea $\mathbb{B}^n\subset\mathbb{R}^n$ el subconjunto dado por $$\{x\in\mathbb{R}^n: d(x,0)< 1\}.$$ A este espacio se le conoce como la bola unitaria de $\mathbb{R}^n.$ 
+
+--
+
+### Propiedades:
+
+* $\mathbb{B}^n$ es abierto (más aún es un _básico_ de la topología estándar). <br/><br/>
+* $\mathbb{B}^n$ es conexo y arco-conexo. <br/><br/>
+* $\mathbb{B}^n$ no es compacto. <br/><br/>
+
+---
+# La esféra unitaria en $\mathbb{R}^n$
+
+> __Definición:__ Sea $\mathbb{S}^{n-1}\subset\mathbb{R}^n$ el subconjunto dado por $$\{x\in\mathbb{R}^n: d(x,0)= 1\}.$$ A este espacio se le conoce como la esfera unitaria de $\mathbb{R}^n.$ 
+
+--
+
+### Propiedades:
+
+* $\mathbb{S}^n$ es cerrado, más aún es la frontera de $\overline{\mathbb{B}^n}$. <br/><br/>
+* $\mathbb{S}^n$ es conexo y arco-conexo. <br/><br/>
+* $\mathbb{S}^n$ es compacto (cerrado y acotado). <br/><br/>
+
+---
+# El $n-$simplejo en $\mathbb{R}^n$
+
+> __Definición:__ Sea $K\subset\mathbb{R}^n$ el subconjunto dado por $$\left\{x\in\mathbb{R}^n: \sum_{j=1}^n x_j =1\right\}.$$ A este espacio se le conoce como el $n-$simplejo de $\mathbb{R}^n.$ 
+
+--
+
+### Propiedades:
+
+* $K$ es cerrado. <br/><br/>
+* La frontera de $K$ está formado por unión de $n-1$-simplejos. 
+* $K$ es conexo y arco-conexo. <br/><br/>
+* $K$ es compacto (cerrado y acotado). <br/><br/>
+
+---
+#### Ejemplos Simplejos
+
+<iframe width='1000' height='450' src='https://www.wolframcloud.com/obj/alejandroucan-puc/Published/Simplices.nb' frameborder='0'></iframe>
+
+---

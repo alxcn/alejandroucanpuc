@@ -1,0 +1,137 @@
+---
+title: "Topología"
+subtitle: "Sesión 01"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introducir el concepto de Espacio Topológico. <br/><br/>
+* Definir la topología: trivial, discreta y complemento finito. <br/><br/>
+* Definir la topología subespacio. <br/><br/>
+
+---
+# ¿En qué se parecen una dona y una taza? ¿Y la letra b y p? ¿En que se diferencian la letra o y la l?
+
+---
+# Espacio Topológico
+
+> __Definición:__ un espacio topológico es un par $(X,\tau)$ donde $X$ es un conjunto y $\tau$ es una colección de subconjuntos de $X$ con las siguientes propiedades: <br/><br/>
+  * $\varnothing, X\in \tau.$ <br/><br/>
+  * Si $\{U_a\}_{a\in A}$ es una colección (posiblemente no finita) de elementos de $\tau,$ entonces $$\bigcup_{a\in A} U_a \in \tau.$$
+  * Si $\{U_i\}_{i=1}^m$ es una colección _finita_ de elementos de $\tau,$ entonces $$\bigcap_{i=1}^m U_i \in \tau.$$
+  A $\tau$ se le conoce como la topología de $X$ y a los elementos de $\tau$ se le conocen como abiertos de $X.$
+  
+---
+#### Ejemplo de Espacios Topológicos
+
+> Consideremos el espacio $X=\{0,1,3,5,7\}$ con el sistema $$\tau_1=\{\varnothing, \{0\},\{1\},\{5\},\{0,5\},\{0,1\},\{1,5\},\{0,1,5\},\{0,1,3,5,7\}\},$$ el par $(X,\tau_1)$ es un espacio topológico. <br/><br/>
+Si consideramos también el sistema $$\tau_2=\{\varnothing, \{0\},\{3\},\{5\},\{0,5\},\{0,3\},\{3,5\},\{0,3,5\},\{0,1,3,5,7\}\},$$ también $(X,\tau_2)$ es un espacio topológico y más aún diferente a $(X,\tau_1).$
+<br/><br/>
+Para el sistema $$\tau_3=\{\varnothing, \{0\},\{1\},\{1,5\},\{1,3,5\},\{0,1,3,5,7\}\}$$ el par $(X,\tau_3)$ ya no es un espacio topológico. __¿Qué es lo que falla?__
+
+---
+## Topología Trivial y Discreta
+
+> __Definición:__ Para cualquier espacio $X,$ podemos definir la _topología trivial o indiscreta_ que consiste en el sistema $\tau=\{\varnothing, X\}.$
+
+<br/><br/>
+
+> __Definición:__ Para cualquier espacio $X,$ podemos definir la _topología discreta_ dada por el sistema $\tau=2^X=\{\mbox{todos los subconjuntos de }X\}.$ 
+
+Por ejemplo: Si $X=\{u,v,w\},$ entonces $2^X=\{\varnothing, \{u\}, \{v\}, \{w\}, \{u,v\}, \{u,w\}, \{v,w\}, \{u,v,w\}\}.$
+
+---
+## Grafos
+
+ .pull-left[ __Definición:__ un grafo es un par de conjuntos $(V,E)$ donde: 
+  * $V$ se conocen como vértices.
+  * $E$ se conocen como aristas, y son pares $(v,w)$ con $v,w\in E.$]
+  
+.pull-right[ ![](https://upload.wikimedia.org/wikipedia/commons/2/24/Tree_graph.svg)]
+
+##### Ejemplo:
+
+Considere el grafo $\Gamma=\{u,v,w,z,(u,z),(v,z),(w,z)\}.$ Este grafo es un espacio topológico si consideramos el sistema $2^{T_1\cup T_2}$ donde:
+  * $T_1=\{\{(u,z)\},\{(v,z)\},\{(w,z)\}\}$
+  * $T_2=\{\{(u,z),u\},\{(v,z),v\},\{(w,z),w\},\{(u,z),(v,z),(w,z),z\}\}.$
+
+---
+## Topología Cofinita
+
+> __Definición:__ Sea $X$ un espacio dotado con el sistema $\tau_f$ que consiste en la colección de todos los subconjuntos de $X$ tales que $$X\setminus U=\varnothing \mbox{ ó finito}.$$ Entonces $(X,\tau_f)$ es un espacio topológico, y a $\tau_f$ se le conoce como la _topología cofinita._
+<br/><br/>
+
+#### ¿Por qué $\tau_f$ es una topología?
+
+
+---
+## Topología Subespacio
+
+> __Definición:__ Sea $(X,\tau)$ un espacio topológico. Para $Y\subset X$ el sistema $$\tau_Y=\{Y\cap U: U\in \tau\}.$$ Entonces $(Y,\tau_Y)$ es un espacio topológico y a $\tau_Y$ se le conoce como la topología subespacio.
+
+<br/><br/>
+
+##### Ejemplo:
+
+Consideremos una superficie en $\mathbb{R}^3,$ esta es un espacio topológico con la topología subespacio. 
+
+---
+#### ¿Por que $\tau_Y$ es una topología para $Y$?
+
+---
+#### Ejercicio:
+
+> Si tenemos que $X=\{0,1,3,5,7\}$ con la topología $\tau=\{\varnothing, \{0\},\{1\},\{5\},\{0,5\},\{0,1\},\{1,5\},\{0,1,5\},X\}$ ¿cuál es la topología para el subconjunto $Y=\{1,5,7\}$?
+
+<br/><br/>
+
+> Construye una topología en $X=\{0,2,4,6,8\}$ que no contenga conjuntos con 1 solo elemento.
+
+<br/><br/>
+
+> Prueba que si $X$ es finito, entonces la topología cofinita en $X$ es la misma que la topología discreta. (Para esto debes probar que todo elemento en $\tau_f$ es un elemento de $2^X$ y viceversa.)

@@ -1,0 +1,53 @@
+---
+title: "Lecture 2: Geometry of Metric Spaces"
+weight: 2
+subtitle: "Balls shaped by metrics"
+excerpt: "The way that we measured distances determine the geometry of our space, different metrics imply different geometry."
+date: '`r Sys.Date()`'
+slug: MA2007B-P1-S02
+draft: false
+---
+
+# Motivation
+
+Last session, we mentionned that one space could have different metrics. We also mentionned that the metric determines the geometry of the space. In this session, we will see how the metric determines the geometry of the space. Naively, we can think of the metric as a ruler, and the geometry of the space as the shape of the space. The ruler determines the shape of the space.
+
+# Balls and Spheres
+
+In $\mathbb{R}^2,$ we have that the points that are at a distance $r$ from a given point $x$ are the points that are on the circle of radius $r$ centered at $x.$ Using the Euclidean metric in $\mathbb{R}^3,$ the points that are at a distance $r$ from a given point $x$ are the points that are on the sphere of radius $r$ centered at $x.$ We can generalize this notion to $\mathbb{R}^n$ with the Euclidean metric, meaning that all points that are at a distance $r$ from a given point $x$ are the points that are on the "sphere" of radius $r$ centered at $x.$
+
+> **Definition 2.1:** Let $(X,d)$ be a metric space, $x\in X$ and $r>0.$ The _sphere_ of radius $r$ centered at $x$ is the set $$S_r(x)=\{y\in X:d(x,y)=r\}.$$
+
+We call this set spheres due to its definition is inspired in the Euclidean spheres in $\mathbb{R}^n.$
+
+What happens if we use a different metric? Let's consider the following metric on $\mathbb{R}^2$ with the _Manhattan metric_, $d_1\left((x_1,y_1),(x_2,y_2)\right)=|x_1-x_2|+|y_1-y_2|.$ The _Taxicab geometry_ (the one induced by this metric) dictates that the distance between two points is the sum of the distances between the coordinates of the points; meaning that in order to measure the distance between two points, we need to travel along the coordinate axes (like a taxicab or moving a tower in chess). Following the ideas of spheres, let's picture an easy case, the points that are at a distance $1$ from the origin, the equation that describe this geometric space is $$|x|+|y|=1.$$ This is a square with vertices at $(1,0),(0,1),(-1,0),(0,-1).$ If we take the sphere of radious $r$ centered at $(0,0),$ this correspond to the square with vertices at $(r,0),(0,r),(-r,0),(0,-r).$ We can see that the shape of the sphere is different from the Euclidean sphere and that the way to measure distances determine the shape of the space. The shape of these sphere doesn't change if we change the center of the sphere. 
+
+
+In Euclidean geometry, the points that are at a distance less than $r$ from a given point $x$ are the points that are inside the circle of radius $r$ centered at $x.$ Using the Euclidean metric in $\mathbb{R}^3,$ the points that are at a distance less than $r$ from a given point $x$ are the points that are inside the sphere of radius $r$ centered at $x.$ We can generalize this notion to $\mathbb{R}^n$ with the Euclidean metric, meaning that all points that are at a distance less than $r$ from a given point $x$ are the points that are inside the "sphere" of radius $r$ centered at $x.$
+
+> **Definition 2.2:** Let $(X,d)$ be a metric space, $x\in X$ and $r>0.$ The _(open) ball_ of radius $r$ centered at $x$ is the set $$B_r(x)=\{y\in X:d(x,y)<r\}.$$
+
+We call this set balls due to its definition is inspired in the Euclidean balls in $\mathbb{R}^n.$ 
+
+Following the discussion with the _Taxicab geometry_, the balls in this space are the points contained in the squeares with vertices in $(r+x,y),(x,r+y),(x-r,y),(x,y-r).$ We can see that the shape of the ball is different from the Euclidean ball.
+
+> **Definition 2.3:** Let $(X,d)$ be a metric space, $x\in X$ and $r>0.$ The _closed ball_ of radius $r$ centered at $x$ is the set $$\overline{B}_r(x)=\{y\in X:d(x,y)\leq r\}.$$
+
+The closed balls is just the union of the ball and the sphere of radius $r$ centered at $x.$
+
+# Other geometries in $\mathbb{R}^2$
+
+Previously, we briefly discuss about the _Taxicab geometry_, but in the last lecture we introduce several metrics for $\mathbb{R}^2.$ Lets explain briefly the geometry of some of these metrics.
+
+1. **The Chebyshev distance:**  The Chebyshev distance is defined as $d_\infty\left((x_1,y_1),(x_2,y_2)\right)=\max\{|x_1-x_2|,|y_1-y_2|\}.$ This metric is also known as the _chessboard metric_ since it is the distance that a king would travel on a chessboard.
+
+2. **The Cosine distance:** The cosine distance is related to the angle between two points in $\mathbb{R}^2.$ The cosine distance is defined as $d_\theta\left((x_1,y_1),(x_2,y_2)\right)=\sqrt{1-\cos(\theta)}$ where $\theta$ is the angle between the two points. This metric is also known as the _angular metric_.
+
+3. **The Indiscrete metric:** here every two different points are at distance 1, and every point is at distance 0 from itself. This metric is also known as the _trivial metric_. The ball of radious 1 contains all points but the balls of radious less than 1 are just the points themselves.
+
+## Reinforcement Exercises
+
+1. Using a graphic software, plot the spheres and balls of radius 1 centered at $(0,0)$ for the metrics $d_1,d_2,d_\infty,d_\theta.$
+
+2. Using a graphic software, plot the spheres and balls of radius 1 centered at $(1,1)$ for the metrics $d_\theta.$
+

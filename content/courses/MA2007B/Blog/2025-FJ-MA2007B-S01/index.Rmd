@@ -1,0 +1,16 @@
+---
+title: "Sesión 1: Topología y TDA."
+weight: 1
+subtitle: "Descripción del curso y objetivos"
+excerpt: "Descripción del curso y objetivos"
+date: '`r Sys.Date()`'
+slug: MA2007B-S01
+draft: false
+---
+
+
+El contenido para la **Sesión 00** se encuentra en following [slides](/static/slides/2025-FJ-MA2007B/MA2007B-sesion-01).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/static/slides/2025-FJ-MA2007B/MA2007B-sesion-01", ratio = "4:3")
+```
