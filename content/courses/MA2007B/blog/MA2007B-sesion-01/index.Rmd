@@ -1,0 +1,16 @@
+---
+title: "Sesión 01: Descripción del TDA"
+weight: 1
+subtitle: 
+excerpt: "Descripción del curso y objetivos"
+date: '`r Sys.Date()`'
+slug: MA2007B-sesion-01
+draft: true
+---
+
+
+El contenido para la **Sesión 01** se encuentra en following [slides](/slides/2025-FJ-MA2007B/MA2007B-sesion-01).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2025-FJ-MA2007B/MA2007B-sesion-01", ratio = "4:3")
+```

@@ -1,0 +1,147 @@
+---
+title: "Espacios Métricos"
+subtitle: "Sesión 02"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introducir el concepto de Métrica. <br/><br/>
+* Definir el concepto de Espacio Métrico. <br/><br/>
+* Establecer ejemplos de Espacios Métricos. <br/><br/>
+* Definir la equivalencia entre métricas. <br/><br/>
+
+---
+# Motivación:
+
+> Consideremos el conjunto de los números reales $\mathbb{R},$ dados dos números reales $x$ y $y,$ la distancia entre ellos se puede medir por la diferencia $|x-y|.$
+
+--
+
+<br/><br/>
+
+> Consideremos el conjunto de los pares de números reales $\mathbb{R}^2,$ dados dos pares de números reales $(x_1,x_2)$ y $(y_1,y_2),$ la distancia entre ellos se puede medir por la fórmula $\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}.$
+
+---
+# Métrica
+
+> **Definición:** Una **métrica** en un conjunto $X$ (no vacío) es una función $d:X\times X\to \mathbb{R}$ que satisface las siguientes propiedades para cualesquiera $x,y,z\in X:$ <br/>
+ * $d(x,y)\geq 0,$ <br/>
+ * $d(x,y)=0$ si y solo si $x=y,$ <br/>
+ * $d(x,y)=d(y,x),$ <br/>
+ * $d(x,y)\leq d(x,z)+d(z,y).$
+ 
+--
+<br/><br/>
+> **Definición:** Un conjunto $X$ se dice que es **espacio métrico** si está equipado con una métrica.
+
+---
+# Ejemplos y Contraejemplos
+
+1. La función $d(x,y)=|x-y|$ es métrica. <br/><br/>
+
+1. La función $f(x,y)=|xy|$ no es métrica. <br/><br/>
+
+1. La función $d((x_1,x_2),(y_1,y_2))=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}$ es métrica. <br/><br/>
+
+1. La función $d((x_1,x_2),(y_1,y_2))= \frac{1}{1-\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}}$ no es métrica.
+
+---
+## Espacio Euclidiano
+
+> Sea $\mathbb{R}^n$ el conjunto de los $n$-tuplas de números reales, la función $d(x,y)=\sqrt{(x_1-y_1)^2+\cdots+(x_n-y_n)^2}$ es una métrica en $\mathbb{R}^n.$
+
+
+---
+## Grafos Métricos
+
+> Sea $G=(V,E)$ un grafo no dirigido, la función $d(u,v)$ que asigna a cada par de vértices $u,v\in V$ la longitud del camino más corto entre $u$ y $v$ es una métrica en $V.$
+
+---
+# Un Espacio Múltiples Métricas:
+
+Consideremos el conjunto de pares de números reales $\mathbb{R}^2.$ <br/><br/>
+
+> La métrica euclidiana $d_2(\mathbf{x},\mathbf{y})=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}$ es una métrica en $\mathbb{R}^2.$ <br/><br/> Pero si consideramos la función $d_1(\mathbf{x},\mathbf{y})=|x_1-y_1|+|x_2-y_2|,$ esta también es una métrica en $\mathbb{R}^2.$ <br/><br/> De igual manera sucede con la función $d_\infty(\mathbf{x},\mathbf{y})=\max\{|x_1-y_1|,|x_2-y_2|\}.$
+
+---
+## ¿Qué tan similares serán estas métricas?
+
+
+Veamos un ejemplo con los puntos $\mathbf{x}=(3,6,9)$ y $\mathbf{y}=(1,0,1).$ <br/><br/>
+
+
+```{r,out.width="70%",fig.align="center",fig.cap="Comparación de algunas métricas."}
+knitr::include_graphics("metric_comparison.png")
+```
+---
+# Equivalencia de Métricas
+
+> **Definición:** Dos métricas $d_1$ y $d_2$ en un conjunto $X$ se dicen **equivalentes** si existen constantes $c_1,c_2>0$ tales que para cualesquiera $x,y\in X$ se tiene que $c_1d_1(x,y)\leq d_2(x,y)\leq c_2d_1(x,y).$
+
+--
+
+<br/><br/>
+
+>*Afirmación:* En $\mathbb{R}}^n$ todas las métricas son equivalentes.
+
+---
+## Métricas en $\mathbb{R}^n$
+
+* Métrica Euclidiana: $d_2(\mathbf{x},\mathbf{y})=\sqrt{(x_1-y_1)^2+\cdots+(x_n-y_n)^2}.$ <br/><br/>
+
+* Métrica Manhattan: $d_1(\mathbf{x},\mathbf{y})=|x_1-y_1|+\cdots+|x_n-y_n|.$ <br/><br/>
+
+* Métrica del Chebysev: $d_\infty(\mathbf{x},\mathbf{y})=\max\{|x_1-y_1|,\cdots,|x_n-y_n|\}.$
+
+* Métrica de Minkowski: $d_p(\mathbf{x},\mathbf{y})=\left(\sum_{i=1}^n|x_i-y_i|^p\right)^{1/p}.$
+
+* Métrica Discreta: $d_0(\mathbf{x},\mathbf{y})=\delta_{\mathbf{x},\mathbf{y}}.$
+
+---
+## ¿Qué métricas son usadas en la Ciencia de Datos?
+
