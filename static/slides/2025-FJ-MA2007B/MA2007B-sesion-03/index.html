@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Uso de Geometría y Topología para Ciencia de Datos</title>
+    <title>Propiedades Topológicas</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alejandro Ucan" />
-    <meta name="date" content="2025-02-11" />
+    <meta name="date" content="2023-01-18" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xf03e0c9a5b345de98aa60c4e42a4dc9","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ef725ed8917d417985182c5395b6ff63","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -22,16 +22,16 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Uso de Geometría y Topología para Ciencia de Datos
+# Propiedades Topológicas
 ]
 .subtitle[
-## MA2007B
+## Sesión 02
 ]
 .author[
 ### Alejandro Ucan
 ]
 .date[
-### 2025-02-11
+### 2023-01-18
 ]
 
 ---
@@ -48,11 +48,11 @@ class: center, middle, inverse, title-slide
 width: 110px;
 height: 128px;
 z-index: 0;
-background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-image: url(https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU);
 background-size: contain;
 background-repeat: no-repeat;
 position: absolute;
-top:1em;right:1em;
+top:2em;right:2em;
 }
 </style>
 <script>(function () {
@@ -76,131 +76,130 @@ top:1em;right:1em;
   document.addEventListener('DOMContentLoaded', addLogo)
 })()</script>
 </div>
+# Objetivos de la Sesión
 
-# Equipo de Profesores:
-
-- Dr. Alejandro Ucan Puc (alejandro.ucan-puc@tec.mx) profesor de Módulos
-- [Dr. Lilia Alanís López](https://sites.google.com/tec.mx/liliaalanislopez) (lilia.alanislpz@tec.mx) profesora de Reto.
-
-## Reto y Socio Formador:
-
-- Gisel Solis Bonilla, [SLB México](https://www.slb.com/)
-- Uso de Geometría y Topología para la Optimización de Consumo de Combustible.
+* Introducir los conceptos de Cerrado, Conexo, Arco-conexo y  Compacidad. &lt;br/&gt;&lt;br/&gt;
+* Mostrar ejemplos de los conceptos anteriores. &lt;br/&gt;&lt;br/&gt;
+* Relacionarlos con la topología. &lt;br/&gt;&lt;br/&gt;
 
 ---
-# ¿Para que sirve la Geometría y Topología en Ciencia de Datos?
+# ¿Qué información puedo recuperar del espacio conociendo solamente su topología?
 
-Sabemos que los datos, por más complejos que sean o que se encuentren en dimensiones altas, cuentan con una _forma (geometría/topología)_ intrínseca, y entender esta forma nos ayuda a determinar el proceso más adecuado para trabajar con ellos. Por ejemplo:
-
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="signal.png" alt="Señales de ruido y señal verdadera." width="70%" /&gt;
-&lt;p class="caption"&gt;Señales de ruido y señal verdadera.&lt;/p&gt;
-&lt;/div&gt;
-
-
----
-## ¿Cómo clasificarías las señales anteriores?
-
---
-- ¿Por su forma?
-- ¿Por su frecuencia?
-- ¿Por su amplitud?
-
-
----
-## Usando técnicas Topológicas:
-
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="noisy_signal.png" alt="Señal ruidosa" width="30%" /&gt;
-&lt;p class="caption"&gt;Señal ruidosa&lt;/p&gt;
-&lt;/div&gt;&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="true_signal.png" alt="Señal verdadera" width="30%" /&gt;
-&lt;p class="caption"&gt;Señal verdadera&lt;/p&gt;
-&lt;/div&gt;
----
-# ¿Qué es __Topological Data Analysis (TDA)__?
-
-&gt; Es una rama de la ciencia de datos que utiliza herramientas topológicas y geométricas para estudiar y analizar datos. &lt;br/&gt;
-
---
-
-## Un poco de historia
-
-El TDA comenzó a principios de los años 2000's con los trabajos pioneros de:
-
-  * [Edelsbrunner et. al. (2002)](https://link.springer.com/article/10.1007/s00454-002-2885-2): Topological Persistence and Simplification  &lt;br/&gt;&lt;br/&gt;
-  * [Zomorodian and Carlsson (2005)](https://link.springer.com/article/10.1007/s00454-004-1146-y): Computing Persistent Homology
+&gt; A las propiedades del espacio que dependen de la topología se le conocen como intrínsecas, debido a que la topología solo depende de subconjuntos. Y, en ciertos, cuando son invariantes bajo transformaciones nos dan información más detallada del espacio. Podemos conocer si el espacio es: &lt;br/&gt;&lt;br/&gt;
+  * Compacto o No-compacto. &lt;br/&gt;
+  * Conexo o disconexo. &lt;br/&gt;
+  * El género. &lt;br/&gt;
+  * El número de puntas. &lt;br/&gt;
+  * Si cuenta con exterior-interior o no. &lt;br/&gt;
+  * Si admite estructuras geométricas.
   
-con trabajos relacionados con __homología persistente__ (tema clave que veremos más adelante).
+---
+# Abiertos y Cerrados
 
+&gt; __Definición:__ Sea `\((X,\tau)\)` un espacio topológico. Si `\(A\subset X\)` es tal que `\(A\in \tau\)` entonces decimos que `\(A\)` es un abierto de `\(X.\)` Más aún, para todo elemento `\(x\in A\)` decimos que `\(A\)` es una vecindad de `\(x.\)` &lt;br/&gt;&lt;br/&gt;
+Decimos que `\(A\)` es un cerrado de `\(X\)` si el conjunto `\(X\setminus A\in \tau.\)`
 
-&gt; El TDA proporciona métodos matemáticos, estadísticos y algorítmicos para analizar y explotar propiedades topológicas-geométricas de un data set (nubes de puntos en el espacio euclideano o espacios más generales.)
+##### Ejemplo:
+
+Supongamos que `\(X=\{a,b,c,d\}\)` y `\(\tau=\{\varnothing,\{c\}, \{a,b\},\{c,d\},\{a,b,c\},\{a,b,c,d\}\},\)` entonces los conjuntos `\(\{d\}, \{a,b\}\)` y `\(\{a,b,c,d\}\)` son cerrados.
 
 ---
-## Actualmente
+## Propiedades de Cerrados
 
-Actualmente el TDA se ha consolidado y estandarizado, que contamos con algunos paquetes que nos ayudarán a aplicar los conceptos teóricos, como son: &lt;br/&gt;&lt;br/&gt;
-  * [Gudhi](https://www.gudhi.inria.fr/) &lt;br/&gt;
-  * [Dionysus](https://www.mrzv.org/software/dionysus/) &lt;br/&gt;
-  * [Simplicial](https://simplicial.readthedocs.io/en/latest/) &lt;br/&gt;
-  * [Persim](https://persim.scikit-tda.org/en/latest/) &lt;br/&gt;
-  * [Giotto-tda](https://giotto-ai.github.io/gtda-docs/) 
+&gt; __Lema:__ En un espacio topológico `\(X\)` (no importa cual topología tomemos) el vacío ($\varnothing$) y el total ($X$) son conjuntos cerrados y abiertos a la vez.
 
----
-## Axiomas del TDA
+##### Ejemplo:
 
-1. Asumimos que nuestro dataset es finito, y que siempre se puede asociar con una noción de distancia entre los puntos (distancia de espacio métrico o matriz de distancias). &lt;br/&gt;&lt;br/&gt;
+Consideremos nuestro grafo `\(\Gamma=(V,E)\)` donde `\(V=\{a,b,c,d\}\)` y `\(E=\{(a,d),(b,d),(c,d)\}.\)` Pruebe que `\(\{a,d,(a,d)\}\)` es cerrado de `\(\Gamma\)` si la consideremos con la topología `\(2^{\tau_1\cup \tau_2}\)` donde:
+  * `\(\tau_1=\{\{(a,d)\},\{(b,d)\},\{(c,d)\}\}\)`
+  * `\(\tau_2=\{\{(a,d),a\},\{(b,d),b\},\{(c,d),c\},\{(a,d),(b,d),(c,d),d\}\}.\)`
 
-1. Siempre podemos construir un objeto "continuo" asociado al dataset (complejo simplicial o filtración). &lt;br/&gt;&lt;br/&gt;
-
-1. La información topológica de nuestro dataset proviene del objeto continuo (triangulaciones, homología). &lt;br/&gt;&lt;br/&gt;
-
-1. Con la información topológica podemos proveer nuevas propiedades (topológicas o geométricas) del dataset (visualización).
-
+¿Qué propiedad tiene el conjunto `\(\{d,(a,d)\}\)`?
 
 ---
-# ¿Qué es _forma_?
+# Conexidad 
 
-&gt; Entendemos por _forma_ a la estructura de un objeto/espacio sin necesidad de mediciones. &lt;br/&gt;&lt;br/&gt;
-La __topología__ es la rama de las mátematicas que estudia las propiedas intrínsecas de una espacio (_espacios topológicos_) que son preservadas bajo ciertas transformaciones (_homeomorfismos_).
+&gt; __Definición:__ Un espacio topológico `\((X,\tau)\)` es __disconexo__ si _existen_ dos abiertos disjuntos no-vacios `\(U,V\in \tau\)` tal que `$$X=U\cup V.$$` De lo contrario, se dice que `\(X\)` es __conexo.__
 
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="cube_sphere.png" alt="Lo mismo" width="40%" /&gt;
-&lt;p class="caption"&gt;Lo mismo&lt;/p&gt;
-&lt;/div&gt;
+##### Ejemplos
 
----
-# ¿Topología?
-
-- Geometría: Euclides y sus elementos.
-- Topología: Johann Benedict Listing (1847) y su trabajo sobre la topología de los nudos.
-- Topología Algebraica: Poincaré y su trabajo sobre la topología de las variedades.
-
+* El espacio `\((X_1,\tau_1)\)` con `\(X_1=\{1,5,7\}\)` y `\(\tau_1=\{\varnothing,\{1\},\{5\},\{1,5,7\}\},\)` es conexo.
+&lt;br/&gt;&lt;br/&gt;
+* El espacio `\((X_2,\tau_2)\)` con `\(X_2=\{a,b,c,d\}\)` y `\(\tau_=\{\varnothing,\{c\}, \{a,b\},\{c,d\},\{a,b,c\},\{a,b,c,d\}\},\)` `\(X_2\)` es disconexo.
 
 ---
-# El problema de los Puentes de Köningsberg y Leonard Euler.
+## Conexidad de Subespacios
 
+&gt; La propiedad de conexidad se puede definir para subespacios topológicos. 
 
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="Koningsberg_brigdes.jpg" alt="Köningsberg" width="50%" /&gt;
-&lt;p class="caption"&gt;Köningsberg&lt;/p&gt;
-&lt;/div&gt;
----
-## Solución
+##### Ejemplo:
 
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="Graphs_K.png" alt="Grafo" width="50%" /&gt;
-&lt;p class="caption"&gt;Grafo&lt;/p&gt;
-&lt;/div&gt;
+* En `\((X_2,\tau_2)\)` el subespacio `\(\{a,b\}\)` es conexo en `\(X_2.\)` 
+
+&lt;br/&gt;&lt;br/&gt;
+
+* En `\((X_1,\tau_1)\)` el subespacio `\(\{1,5\}\)` es disconexo.
 
 ---
-# Contribuciones
+## Conexidad en Grafos
 
-&gt; Podemos mencionar a: &lt;br/&gt;&lt;br/&gt;
-  - August Möbius. &lt;br/&gt;&lt;br/&gt;
-  - Georg Cantor. &lt;br/&gt;&lt;br/&gt;
-  - Maurice Fréchet, Schoenflies, Felix Hausdorff.
-  - Poincaré, Perelman, Thurston, etc.
+&gt; __Definición:__ Un grafo `\(\Gamma=(E,V)\)` se dice que es __arco-conexo__ si existe un camino de aristas que conecten cualquier par de puntos. 
+
+#### Ejemplos:
+
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+&gt; __Teorema:__ un grafo con su topología de grafo, es conexo si y sólo si es arco-conexo.
+
+---
+## Componentes Conexas
+
+&gt; __Definición:__ Sea `\((X,\tau)\)` un espacio topológico, un subespacio de `\(U\)` de `\(X\)` se dice que es una componente conexa de `\(X,\)` si satisface:
+  * Es conexo en `\((X,\tau).\)`
+  * Si existe `\(V\subset X\)` conexo, entonces `\(U=V.\)`
+
+
+--
+
+#### Ejemplo:
+
+Sea `\(X=\{1,2,3,4\}\)` y `\(\tau=\{\varnothing,\{1,2\},\{3,4\},\{1,2,3,4\}\}.\)` Las componentes conexas de `\(X\)` son `\(\{1,2\}\)` y `\(\{3,4\}.\)` &lt;br/&gt;&lt;br/&gt;
+Pero si consideramos a `\(X\)` con la topología `$$\tilde{\tau}=\{\varnothing,\{1\},\{2\},\{3\},\{4\},\{1,2\},\{3,4\},\{1,2,3\},\{2,3,4\},\{1,2,3,4\}\}$$` las componentes conexas son `\(\{1\},\{2\},\{3\}\)` y `\(\{4\}.\)`
+  
+---
+# Compacidad 
+
+&gt; __Definición:__ Sea `\((X,\tau)\)` un espacio topológico decimos que `\(X\)` es __compacto__ si para cualquier cubierta de abiertos de `\(X,\)` es decir, colección de elementos de `\(\tau\)` que cumplan `$$X\subset \bigcup U_\alpha,$$` se tiene que existe una sub-colección _finita_ que sigue siendo cubierta.
+
+--
+
+#### Ejemplo:
+
+* Cualquier espacio topológico finito (una colección finita de puntos) es compacto para cualquier topología. 
+&lt;br/&gt;
+
+--
+* Consideremos el _Conjunto de Cantor_ con la topología subespacio de `\(\mathbb{R}.\)` Este es un conjunto compacto pero con una infinidad de puntos en el.
+
+
+---
+
+#### Ejercicios:
+
+* Proporcione un ejemplo de un espacio cuya topología tenga más de dos conjuntos y que sean a la vez abiertos y cerrados.
+
+&lt;br/&gt;
+
+* Con el ejercicio anterior, ¿cuál es la relación entre conexidad y espacios abierto-cerrados?
+
+&lt;br/&gt;
+
+* Realice una representación gráfica del grafo `$$(V,E)=\{a,b,c,d,e,(a,a),(a,e),(e,e) (b,c),(c,d),(d,b)\}$$` ¿qué propiedades topológicas puedes decir de este grafo?
+
+&lt;br/&gt;
+
+* Investiga la representación gráfica del grafo `\(K_6,\)` ¿Qué propiedades topológicas puedes decir de este grafo?
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

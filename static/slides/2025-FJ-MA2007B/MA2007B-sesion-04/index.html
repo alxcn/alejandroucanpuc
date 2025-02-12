@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Uso de Geometría y Topología para Ciencia de Datos</title>
+    <title>Espacios Métricos</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alejandro Ucan" />
-    <meta name="date" content="2025-02-11" />
+    <meta name="date" content="2023-01-18" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xf03e0c9a5b345de98aa60c4e42a4dc9","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x3a381ac4a2f4a61bfdc4ae5d8d64fe2","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -22,16 +22,16 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Uso de Geometría y Topología para Ciencia de Datos
+# Espacios Métricos
 ]
 .subtitle[
-## MA2007B
+## Sesión 03
 ]
 .author[
 ### Alejandro Ucan
 ]
 .date[
-### 2025-02-11
+### 2023-01-18
 ]
 
 ---
@@ -48,11 +48,11 @@ class: center, middle, inverse, title-slide
 width: 110px;
 height: 128px;
 z-index: 0;
-background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-image: url(https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU);
 background-size: contain;
 background-repeat: no-repeat;
 position: absolute;
-top:1em;right:1em;
+top:2em;right:2em;
 }
 </style>
 <script>(function () {
@@ -76,131 +76,114 @@ top:1em;right:1em;
   document.addEventListener('DOMContentLoaded', addLogo)
 })()</script>
 </div>
+# Objetivos de la Sesión
 
-# Equipo de Profesores:
-
-- Dr. Alejandro Ucan Puc (alejandro.ucan-puc@tec.mx) profesor de Módulos
-- [Dr. Lilia Alanís López](https://sites.google.com/tec.mx/liliaalanislopez) (lilia.alanislpz@tec.mx) profesora de Reto.
-
-## Reto y Socio Formador:
-
-- Gisel Solis Bonilla, [SLB México](https://www.slb.com/)
-- Uso de Geometría y Topología para la Optimización de Consumo de Combustible.
+* Introduciremos el concepto de Espacio Métrico. &lt;br/&gt;&lt;br/&gt;
+* Presentaremos ejemplos de Espacios Métricos. &lt;br/&gt;&lt;br/&gt;
+* `\(\mathbb{R}^n\)` como espacio métrico. &lt;br/&gt;&lt;br/&gt;
 
 ---
-# ¿Para que sirve la Geometría y Topología en Ciencia de Datos?
+# Espacios Métricos
 
-Sabemos que los datos, por más complejos que sean o que se encuentren en dimensiones altas, cuentan con una _forma (geometría/topología)_ intrínseca, y entender esta forma nos ayuda a determinar el proceso más adecuado para trabajar con ellos. Por ejemplo:
-
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="signal.png" alt="Señales de ruido y señal verdadera." width="70%" /&gt;
-&lt;p class="caption"&gt;Señales de ruido y señal verdadera.&lt;/p&gt;
-&lt;/div&gt;
-
-
----
-## ¿Cómo clasificarías las señales anteriores?
-
---
-- ¿Por su forma?
-- ¿Por su frecuencia?
-- ¿Por su amplitud?
-
-
----
-## Usando técnicas Topológicas:
-
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="noisy_signal.png" alt="Señal ruidosa" width="30%" /&gt;
-&lt;p class="caption"&gt;Señal ruidosa&lt;/p&gt;
-&lt;/div&gt;&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="true_signal.png" alt="Señal verdadera" width="30%" /&gt;
-&lt;p class="caption"&gt;Señal verdadera&lt;/p&gt;
-&lt;/div&gt;
----
-# ¿Qué es __Topological Data Analysis (TDA)__?
-
-&gt; Es una rama de la ciencia de datos que utiliza herramientas topológicas y geométricas para estudiar y analizar datos. &lt;br/&gt;
-
---
-
-## Un poco de historia
-
-El TDA comenzó a principios de los años 2000's con los trabajos pioneros de:
-
-  * [Edelsbrunner et. al. (2002)](https://link.springer.com/article/10.1007/s00454-002-2885-2): Topological Persistence and Simplification  &lt;br/&gt;&lt;br/&gt;
-  * [Zomorodian and Carlsson (2005)](https://link.springer.com/article/10.1007/s00454-004-1146-y): Computing Persistent Homology
+&gt; __Definición:__ Un espacio métrico es un par formado por un conjunto (no vacío) `\(X\)` y una función `\(d:X\times X\to \mathbb{R}\)` conocida como métrica que cumple las siguientes propiedades:
+  * `\(d(p,q)=0\)` si y sólo si `\(p=q.\)`
+  * `\(d(p,q)=d(q,p).\)`
+  * `\(d(p,q)\leq d(p,r)+d(r,p).\)`
   
-con trabajos relacionados con __homología persistente__ (tema clave que veremos más adelante).
+--  
 
+#### Ejemplo:
 
-&gt; El TDA proporciona métodos matemáticos, estadísticos y algorítmicos para analizar y explotar propiedades topológicas-geométricas de un data set (nubes de puntos en el espacio euclideano o espacios más generales.)
-
----
-## Actualmente
-
-Actualmente el TDA se ha consolidado y estandarizado, que contamos con algunos paquetes que nos ayudarán a aplicar los conceptos teóricos, como son: &lt;br/&gt;&lt;br/&gt;
-  * [Gudhi](https://www.gudhi.inria.fr/) &lt;br/&gt;
-  * [Dionysus](https://www.mrzv.org/software/dionysus/) &lt;br/&gt;
-  * [Simplicial](https://simplicial.readthedocs.io/en/latest/) &lt;br/&gt;
-  * [Persim](https://persim.scikit-tda.org/en/latest/) &lt;br/&gt;
-  * [Giotto-tda](https://giotto-ai.github.io/gtda-docs/) 
+* Un ejemplo bien conocido de espacio métrico es `\(\mathbb{R}\)` con la función dada por `$$d(x,y)=|x-y|.$$` Y podemos generalizarlo a `\(\mathbb{R}^n,\,\mathbb{C}^n\)` con sus respectivas distancias asociadas a la norma.
 
 ---
-## Axiomas del TDA
+#### Ejemplo:
 
-1. Asumimos que nuestro dataset es finito, y que siempre se puede asociar con una noción de distancia entre los puntos (distancia de espacio métrico o matriz de distancias). &lt;br/&gt;&lt;br/&gt;
+* Sea `\(X\)` un conjunto y `\(d:X\times X\to \mathbb\{R\}\)` dada por `$$d(x,y)=\delta_{xy}$$` entonces `\(X\)` es un espacio métrico y a `\(d\)` se le conoce como la métrica discreta.
 
-1. Siempre podemos construir un objeto "continuo" asociado al dataset (complejo simplicial o filtración). &lt;br/&gt;&lt;br/&gt;
+--
+&lt;br/&gt;&lt;br/&gt;
 
-1. La información topológica de nuestro dataset proviene del objeto continuo (triangulaciones, homología). &lt;br/&gt;&lt;br/&gt;
-
-1. Con la información topológica podemos proveer nuevas propiedades (topológicas o geométricas) del dataset (visualización).
-
+* Sea `\(\Gamma=(E,V)\)` un grafo y `\(d_\Gamma:E\times E\to \mathbb{R}\)` la función dada por el número de aristas en la trayectoria más corta entre dos puntos. Entonces `\((\Gamma,d_\Gamma)\)` es un espacio métrico.
 
 ---
-# ¿Qué es _forma_?
+## Métrica y Topología.
 
-&gt; Entendemos por _forma_ a la estructura de un objeto/espacio sin necesidad de mediciones. &lt;br/&gt;&lt;br/&gt;
-La __topología__ es la rama de las mátematicas que estudia las propiedas intrínsecas de una espacio (_espacios topológicos_) que son preservadas bajo ciertas transformaciones (_homeomorfismos_).
+&gt; __Definición:__ Dado un espacio métrico `\((X,d)\)` y la colección de todas las bolas `$$B_d(x,r)=\{y\in X: d(x,y)&lt;r\}$$` y sus uniones, forman una topología en `\(X.\)` A la métrica anterior se le conoce como __topología métrica.__
 
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="cube_sphere.png" alt="Lo mismo" width="40%" /&gt;
-&lt;p class="caption"&gt;Lo mismo&lt;/p&gt;
-&lt;/div&gt;
+&lt;br/&gt;&lt;br/&gt;
+--
+
+#### Ejemplo:
+
+Recordemos el grafo `\(\Gamma=(V,E)\)` donde `\(V=\{a,b,c,d\}\)` y `\(E=\{(a,d),(b,d),(c,d)\}.\)` Pruebe que `\(\{a,d,(a,d)\}\)` es cerrado de `\(\Gamma\)` si la consideremos con la topología `\(2^{\tau_1\cup \tau_2}\)` donde:
+  * `\(\tau_1=\{\{(a,d)\},\{(b,d)\},\{(c,d)\}\}\)`
+  * `\(\tau_2=\{\{(a,d),a\},\{(b,d),b\},\{(c,d),c\},\{(a,d),(b,d),(c,d),d\}\}.\)` Notemos que los conjuntos en `\(\tau_1\)` y `\(\tau_2\)` son bolas de la distancia de trayectorias.
+  
+---
+
+# Métricas de `\(\mathbb{R}^n\)`
+
+&gt; Recordemos que `\(\mathbb{R}^n\)` es el conjunto de `\(n-\)`adas de números reales, es decir, `$$(x_1,x_2,\cdots, x_n),\mbox{ con } x_i\in \mathbb{R}.$$` &lt;br/&gt;&lt;br/&gt;
+Sabemos que este es un espacio métrico, pero `\(\mathbb{R}^n\)` admite muchas métricas (distancias) que modifican su geometría.
+
+--
+#### Ejemplo
+
+* __Métrica Estándar:__ `\(d_2(x,y)=\sqrt{\sum_{j=1}^n (x_j-y_j)^2}.\)`
+
+--
+* __Métrica `\(\ell_\infty\)`:__ `\(d_\infty (x,y)=max_{j=1,\cdots,n}\left\{|x_j-y_j|\right\}.\)`  
+
+--
+* __Métrica `\(\ell_1\)`:__
+`\(d_1(x,y)= \sum_{j=1}^n |x_j-y_j|.\)`
 
 ---
-# ¿Topología?
+#### Bolas en `\(\mathbb{R}^n\)`
 
-- Geometría: Euclides y sus elementos.
-- Topología: Johann Benedict Listing (1847) y su trabajo sobre la topología de los nudos.
-- Topología Algebraica: Poincaré y su trabajo sobre la topología de las variedades.
-
+&lt;iframe src="https://www.desmos.com/calculator/mrhcrhvxiv?embed" width="1000" height="450" style="border: 1px solid #ccc" frameborder=0&gt;&lt;/iframe&gt;
 
 ---
-# El problema de los Puentes de Köningsberg y Leonard Euler.
+## Topología  métrica en `\(\mathbb{R}^n.\)`
 
+Supongamos que `\(\mathbb{R}^n\)` está equipado con una métrica cualquiera `\(d.\)`
 
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="Koningsberg_brigdes.jpg" alt="Köningsberg" width="50%" /&gt;
-&lt;p class="caption"&gt;Köningsberg&lt;/p&gt;
-&lt;/div&gt;
----
-## Solución
-
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="Graphs_K.png" alt="Grafo" width="50%" /&gt;
-&lt;p class="caption"&gt;Grafo&lt;/p&gt;
-&lt;/div&gt;
+&gt; __Definición:__ Sea `\(U\subset\mathbb{R}^n,\)` entonces decimos que `\(U\)` es un abierto (o elemento de la topología) si para todo punto `\(x\in U\)` existe una bola de radio `\(r\)` centrada en `\(x\)` contenida en `\(U,\)` es decir, `$$B_d(x,r)\subset U.$$`
+&lt;br/&gt;&lt;br/&gt;
+--
+__Definición:__ Sea `\(U\subset\mathbb{R}^n\)` decimos que `\(x\)` es un punto frontera de `\(U,\)` si para cualquier bola centrada en `\(x\)` contiene puntos de `\(U\)` y de `\(X\setminus U.\)` Al conjunto de todos los puntos frontera de `\(U\)` se le conoce como frontera.
+&lt;br/&gt;&lt;br/&gt;
+--
+__Definición:__ Sea `\(U\subset\mathbb{R}^n\)` decimos que es un cerrado, si `\(U\)` contiene a todos sus puntos frontera.
 
 ---
-# Contribuciones
 
-&gt; Podemos mencionar a: &lt;br/&gt;&lt;br/&gt;
-  - August Möbius. &lt;br/&gt;&lt;br/&gt;
-  - Georg Cantor. &lt;br/&gt;&lt;br/&gt;
-  - Maurice Fréchet, Schoenflies, Felix Hausdorff.
-  - Poincaré, Perelman, Thurston, etc.
+## Conexidad en `\(\mathbb{R}^n.\)`
+
+&gt; __Definición:__ Sea `\(X\subset \mathbb{R}^n,\)` decimos que `\(X\)` es __arco-conexo__ si para cualquier par de puntos en `\(X,\)` existe un arco ó trayectoria que los una, es decir, una función continua `\(f:[0,1]\to X.\)`
+
+--
+&lt;br/&gt;&lt;br/&gt;
+__Teorema:__ En `\(\mathbb{R}^n,\)` si un subespacio `\(X\)` es arco-conexo, entonces `\(X\)` es conexo.
+
+--
+&lt;br/&gt;&lt;br/&gt;
+
+__Teorema:__ Si `\(a&lt;b,\)` entonces `\([a,b]\)` es conexo en `\(\mathbb{R}\)` con la topología estándar.
+
+---
+## Compacidad en `\(\mathbb{R}^n.\)`
+
+
+&gt; __Definición:__ Sea `\(X\subset \mathbb{R}^n,\)` decimos que el __díametro__ de `\(X\)` es el número `$$\sup_{x,y\in X} d(x,y)$$` que puede puede ser finito o `\(\infty,\)` y se denota por `\(\mbox{diam}(X).\)` 
+&lt;br/&gt;&lt;br/&gt;
+Cuando `\(\mbox{diam}(X)&lt;\infty\)` entonces decimos que `\(X\)` es __acotado.__
+
+--
+ 
+__Teorema:__ En `\(\mathbb{R}^n,\)` `\(X\)` es cerrado y acotado si y sólo si `\(X\)` es compacto.
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

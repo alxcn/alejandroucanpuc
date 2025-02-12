@@ -11,9 +11,9 @@ layout: list-sidebar # list, list-sidebar, list-grid
 
 # for list-sidebar layout
 sidebar: 
-  title: "Uso de geometría y topología para Ciencia de Datos"
+  title: Uso de Geometría y Topología para la Ciencia de Datos
   description: |
-    Puedes encontrar los recursos.
+    Recursos para el bloque MA2007B puedes consultar el repositorio de Github [MA2007B](https://github.com/alxcn/MA2007B)
     
   #  Check out the _index.md file in the /blog folder 
   #  to edit this content. 
@@ -34,7 +34,7 @@ cascade:
   sidebar:
     text_link_label: View recent posts
     text_link_url: /ma2007b/
-    show_sidebar_adunit: true # show ad container
+    show_sidebar_adunit: false # show ad container
 ---
 
 ** No content below YAML for the blog _index. This file provides front matter for the listing page layout and sidebar content. It is also a branch bundle, and all settings under `cascade` provide front matter for all pages inside blog/. You may still override any of these by changing them in a page's front matter.**

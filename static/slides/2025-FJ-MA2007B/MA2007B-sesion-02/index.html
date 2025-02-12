@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Uso de Geometría y Topología para Ciencia de Datos</title>
+    <title>Espacios Métricos</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alejandro Ucan" />
-    <meta name="date" content="2025-02-11" />
+    <meta name="date" content="2025-02-10" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xf03e0c9a5b345de98aa60c4e42a4dc9","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x87d82ad9e8b4a5cb40edd0756fb3e7a","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -22,16 +22,16 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Uso de Geometría y Topología para Ciencia de Datos
+# Espacios Métricos
 ]
 .subtitle[
-## MA2007B
+## Sesión 02
 ]
 .author[
 ### Alejandro Ucan
 ]
 .date[
-### 2025-02-11
+### 2025-02-10
 ]
 
 ---
@@ -48,11 +48,11 @@ class: center, middle, inverse, title-slide
 width: 110px;
 height: 128px;
 z-index: 0;
-background-image: url(https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png);
+background-image: url(https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU);
 background-size: contain;
 background-repeat: no-repeat;
 position: absolute;
-top:1em;right:1em;
+top:2em;right:2em;
 }
 </style>
 <script>(function () {
@@ -76,131 +76,104 @@ top:1em;right:1em;
   document.addEventListener('DOMContentLoaded', addLogo)
 })()</script>
 </div>
+# Objetivos de la Sesión
 
-# Equipo de Profesores:
-
-- Dr. Alejandro Ucan Puc (alejandro.ucan-puc@tec.mx) profesor de Módulos
-- [Dr. Lilia Alanís López](https://sites.google.com/tec.mx/liliaalanislopez) (lilia.alanislpz@tec.mx) profesora de Reto.
-
-## Reto y Socio Formador:
-
-- Gisel Solis Bonilla, [SLB México](https://www.slb.com/)
-- Uso de Geometría y Topología para la Optimización de Consumo de Combustible.
+* Introducir el concepto de Métrica. &lt;br/&gt;&lt;br/&gt;
+* Definir el concepto de Espacio Métrico. &lt;br/&gt;&lt;br/&gt;
+* Establecer ejemplos de Espacios Métricos. &lt;br/&gt;&lt;br/&gt;
+* Definir la equivalencia entre métricas. &lt;br/&gt;&lt;br/&gt;
 
 ---
-# ¿Para que sirve la Geometría y Topología en Ciencia de Datos?
+# Motivación:
 
-Sabemos que los datos, por más complejos que sean o que se encuentren en dimensiones altas, cuentan con una _forma (geometría/topología)_ intrínseca, y entender esta forma nos ayuda a determinar el proceso más adecuado para trabajar con ellos. Por ejemplo:
-
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="signal.png" alt="Señales de ruido y señal verdadera." width="70%" /&gt;
-&lt;p class="caption"&gt;Señales de ruido y señal verdadera.&lt;/p&gt;
-&lt;/div&gt;
-
-
----
-## ¿Cómo clasificarías las señales anteriores?
-
---
-- ¿Por su forma?
-- ¿Por su frecuencia?
-- ¿Por su amplitud?
-
-
----
-## Usando técnicas Topológicas:
-
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="noisy_signal.png" alt="Señal ruidosa" width="30%" /&gt;
-&lt;p class="caption"&gt;Señal ruidosa&lt;/p&gt;
-&lt;/div&gt;&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="true_signal.png" alt="Señal verdadera" width="30%" /&gt;
-&lt;p class="caption"&gt;Señal verdadera&lt;/p&gt;
-&lt;/div&gt;
----
-# ¿Qué es __Topological Data Analysis (TDA)__?
-
-&gt; Es una rama de la ciencia de datos que utiliza herramientas topológicas y geométricas para estudiar y analizar datos. &lt;br/&gt;
+&gt; Consideremos el conjunto de los números reales `\(\mathbb{R},\)` dados dos números reales `\(x\)` y `\(y,\)` la distancia entre ellos se puede medir por la diferencia `\(|x-y|.\)`
 
 --
 
-## Un poco de historia
+&lt;br/&gt;&lt;br/&gt;
 
-El TDA comenzó a principios de los años 2000's con los trabajos pioneros de:
-
-  * [Edelsbrunner et. al. (2002)](https://link.springer.com/article/10.1007/s00454-002-2885-2): Topological Persistence and Simplification  &lt;br/&gt;&lt;br/&gt;
-  * [Zomorodian and Carlsson (2005)](https://link.springer.com/article/10.1007/s00454-004-1146-y): Computing Persistent Homology
-  
-con trabajos relacionados con __homología persistente__ (tema clave que veremos más adelante).
-
-
-&gt; El TDA proporciona métodos matemáticos, estadísticos y algorítmicos para analizar y explotar propiedades topológicas-geométricas de un data set (nubes de puntos en el espacio euclideano o espacios más generales.)
+&gt; Consideremos el conjunto de los pares de números reales `\(\mathbb{R}^2,\)` dados dos pares de números reales `\((x_1,x_2)\)` y `\((y_1,y_2),\)` la distancia entre ellos se puede medir por la fórmula `\(\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}.\)`
 
 ---
-## Actualmente
+# Métrica
 
-Actualmente el TDA se ha consolidado y estandarizado, que contamos con algunos paquetes que nos ayudarán a aplicar los conceptos teóricos, como son: &lt;br/&gt;&lt;br/&gt;
-  * [Gudhi](https://www.gudhi.inria.fr/) &lt;br/&gt;
-  * [Dionysus](https://www.mrzv.org/software/dionysus/) &lt;br/&gt;
-  * [Simplicial](https://simplicial.readthedocs.io/en/latest/) &lt;br/&gt;
-  * [Persim](https://persim.scikit-tda.org/en/latest/) &lt;br/&gt;
-  * [Giotto-tda](https://giotto-ai.github.io/gtda-docs/) 
-
----
-## Axiomas del TDA
-
-1. Asumimos que nuestro dataset es finito, y que siempre se puede asociar con una noción de distancia entre los puntos (distancia de espacio métrico o matriz de distancias). &lt;br/&gt;&lt;br/&gt;
-
-1. Siempre podemos construir un objeto "continuo" asociado al dataset (complejo simplicial o filtración). &lt;br/&gt;&lt;br/&gt;
-
-1. La información topológica de nuestro dataset proviene del objeto continuo (triangulaciones, homología). &lt;br/&gt;&lt;br/&gt;
-
-1. Con la información topológica podemos proveer nuevas propiedades (topológicas o geométricas) del dataset (visualización).
-
+&gt; **Definición:** Una **métrica** en un conjunto `\(X\)` (no vacío) es una función `\(d:X\times X\to \mathbb{R}\)` que satisface las siguientes propiedades para cualesquiera `\(x,y,z\in X:\)` &lt;br/&gt;
+ * `\(d(x,y)\geq 0,\)` &lt;br/&gt;
+ * `\(d(x,y)=0\)` si y solo si `\(x=y,\)` &lt;br/&gt;
+ * `\(d(x,y)=d(y,x),\)` &lt;br/&gt;
+ * `\(d(x,y)\leq d(x,z)+d(z,y).\)`
+ 
+--
+&lt;br/&gt;&lt;br/&gt;
+&gt; **Definición:** Un conjunto `\(X\)` se dice que es **espacio métrico** si está equipado con una métrica.
 
 ---
-# ¿Qué es _forma_?
+# Ejemplos y Contraejemplos
 
-&gt; Entendemos por _forma_ a la estructura de un objeto/espacio sin necesidad de mediciones. &lt;br/&gt;&lt;br/&gt;
-La __topología__ es la rama de las mátematicas que estudia las propiedas intrínsecas de una espacio (_espacios topológicos_) que son preservadas bajo ciertas transformaciones (_homeomorfismos_).
+1. La función `\(d(x,y)=|x-y|\)` es métrica. &lt;br/&gt;&lt;br/&gt;
 
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="cube_sphere.png" alt="Lo mismo" width="40%" /&gt;
-&lt;p class="caption"&gt;Lo mismo&lt;/p&gt;
-&lt;/div&gt;
+1. La función `\(f(x,y)=|xy|\)` no es métrica. &lt;br/&gt;&lt;br/&gt;
+
+1. La función `\(d((x_1,x_2),(y_1,y_2))=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}\)` es métrica. &lt;br/&gt;&lt;br/&gt;
+
+1. La función `\(d((x_1,x_2),(y_1,y_2))= \frac{1}{1-\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}}\)` no es métrica.
 
 ---
-# ¿Topología?
+## Espacio Euclidiano
 
-- Geometría: Euclides y sus elementos.
-- Topología: Johann Benedict Listing (1847) y su trabajo sobre la topología de los nudos.
-- Topología Algebraica: Poincaré y su trabajo sobre la topología de las variedades.
+&gt; Sea `\(\mathbb{R}^n\)` el conjunto de los `\(n\)`-tuplas de números reales, la función `\(d(x,y)=\sqrt{(x_1-y_1)^2+\cdots+(x_n-y_n)^2}\)` es una métrica en `\(\mathbb{R}^n.\)`
 
 
 ---
-# El problema de los Puentes de Köningsberg y Leonard Euler.
+## Grafos Métricos
+
+&gt; Sea `\(G=(V,E)\)` un grafo no dirigido, la función `\(d(u,v)\)` que asigna a cada par de vértices `\(u,v\in V\)` la longitud del camino más corto entre `\(u\)` y `\(v\)` es una métrica en `\(V.\)`
+
+---
+# Un Espacio Múltiples Métricas:
+
+Consideremos el conjunto de pares de números reales `\(\mathbb{R}^2.\)` &lt;br/&gt;&lt;br/&gt;
+
+&gt; La métrica euclidiana `\(d_2(\mathbf{x},\mathbf{y})=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}\)` es una métrica en `\(\mathbb{R}^2.\)` &lt;br/&gt;&lt;br/&gt; Pero si consideramos la función `\(d_1(\mathbf{x},\mathbf{y})=|x_1-y_1|+|x_2-y_2|,\)` esta también es una métrica en `\(\mathbb{R}^2.\)` &lt;br/&gt;&lt;br/&gt; De igual manera sucede con la función `\(d_\infty(\mathbf{x},\mathbf{y})=\max\{|x_1-y_1|,|x_2-y_2|\}.\)`
+
+---
+## ¿Qué tan similares serán estas métricas?
+
+
+Veamos un ejemplo con los puntos `\(\mathbf{x}=(3,6,9)\)` y `\(\mathbf{y}=(1,0,1).\)` &lt;br/&gt;&lt;br/&gt;
 
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="Koningsberg_brigdes.jpg" alt="Köningsberg" width="50%" /&gt;
-&lt;p class="caption"&gt;Köningsberg&lt;/p&gt;
+&lt;img src="metric_comparison.png" alt="Comparación de algunas métricas." width="70%" /&gt;
+&lt;p class="caption"&gt;Comparación de algunas métricas.&lt;/p&gt;
 &lt;/div&gt;
 ---
-## Solución
+# Equivalencia de Métricas
 
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="Graphs_K.png" alt="Grafo" width="50%" /&gt;
-&lt;p class="caption"&gt;Grafo&lt;/p&gt;
-&lt;/div&gt;
+&gt; **Definición:** Dos métricas `\(d_1\)` y `\(d_2\)` en un conjunto `\(X\)` se dicen **equivalentes** si existen constantes `\(c_1,c_2&gt;0\)` tales que para cualesquiera `\(x,y\in X\)` se tiene que `\(c_1d_1(x,y)\leq d_2(x,y)\leq c_2d_1(x,y).\)`
+
+--
+
+&lt;br/&gt;&lt;br/&gt;
+
+&gt;*Afirmación:* En `\(\mathbb{R}}^n\)` todas las métricas son equivalentes.
 
 ---
-# Contribuciones
+## Métricas en `\(\mathbb{R}^n\)`
 
-&gt; Podemos mencionar a: &lt;br/&gt;&lt;br/&gt;
-  - August Möbius. &lt;br/&gt;&lt;br/&gt;
-  - Georg Cantor. &lt;br/&gt;&lt;br/&gt;
-  - Maurice Fréchet, Schoenflies, Felix Hausdorff.
-  - Poincaré, Perelman, Thurston, etc.
+* Métrica Euclidiana: `\(d_2(\mathbf{x},\mathbf{y})=\sqrt{(x_1-y_1)^2+\cdots+(x_n-y_n)^2}.\)` &lt;br/&gt;&lt;br/&gt;
+
+* Métrica Manhattan: `\(d_1(\mathbf{x},\mathbf{y})=|x_1-y_1|+\cdots+|x_n-y_n|.\)` &lt;br/&gt;&lt;br/&gt;
+
+* Métrica del Chebysev: `\(d_\infty(\mathbf{x},\mathbf{y})=\max\{|x_1-y_1|,\cdots,|x_n-y_n|\}.\)`
+
+* Métrica de Minkowski: `\(d_p(\mathbf{x},\mathbf{y})=\left(\sum_{i=1}^n|x_i-y_i|^p\right)^{1/p}.\)`
+
+* Métrica Discreta: `\(d_0(\mathbf{x},\mathbf{y})=\delta_{\mathbf{x},\mathbf{y}}.\)`
+
+---
+## ¿Qué métricas son usadas en la Ciencia de Datos?
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
