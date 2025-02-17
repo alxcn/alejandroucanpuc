@@ -1,0 +1,72 @@
+---
+title: "Complejos Simpliciales"
+subtitle: "Sesión 08 - Lecture 4"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+
+* Introducir el concepto de complejo simplicial abstracto. <br/><br/>
+* Dar ejemplos de complejos simpliciales. <br/><br/>
+* Introducir los conceptos de estrellas y enlaces. <br/><br/>
+
+---
+# Complejo Simplicial
+
+> **Definición:** Un complejo simplicial abstracto es un conjunto $K$ de simplejos de un conjunto finito $V$ tal que si $\sigma \in K$ y $\tau \subset \sigma$, entonces $\tau \in K$. <br/><br/>
+
+--
+> **Definición:** El $s-$esqueleto de un complejo simplicial $K$ es el conjunto de todos los simplejos de $V$ de dimensión $s$. <br/><br/>
+
+---
+## Estrellas Abiertas y Cerradas
+
+> **Definición:** La estrella abierta $\sigma \in K$ es el conjunto de todos los simplejos $\tau\subset K$ tales que $\sigma\subset \tau$ y se denota por $St(\sigma)$ <br/><br/>
+
+--
+> **Definición:** La estrella cerrada de $\sigma \in K$ es el complejo simplicial formado por $St(\sigma)$ junto a $\{\sigma'\subset K:\sigma'\subset \omega\in St(\sigma)\}.

@@ -1,0 +1,104 @@
+---
+title: "Topología de Grafos y Complejos Simpliciales"
+subtitle: "Sesión 07 - Lecture 4"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Grafos
+
+> **Definición:** Un grafo es un par ordenado $G = (V, E)$, donde $V$ es un conjunto no vacío de vértices y $E$ es un conjunto de aristas. Cada arista es un par no ordenado de vértices.
+
+```{r, echo=FALSE}
+library(igraph)
+g <- graph(edges = c(1, 2, 2, 3, 3, 4, 4, 1), n = 4, directed = FALSE)
+
+# Plotear el grafo
+plot(g, vertex.label = V(g)$name, vertex.color = "skyblue", vertex.size = 30, edge.color = "gray")
+```
+---
+## Subgrafos
+
+> **Definición:** Un subgrafo de un grafo $G = (V, E)$ es un grafo $G' = (V', E')$ tal que $V' \subseteq V$ y $E' \subseteq E$.
+
+<br/><br/>
+> **Definición:** Un camino en un grafo es una secuencia de vértices $v_1, v_2, \ldots, v_n$ tal que $(v_i, v_{i+1}) \in E$ para $i = 1, 2, \ldots, n-1$.
+
+---
+# Topología de los Grafos
+
+> **Definición:** Sea $K_0$ el grafo cuyos vertices es $\varnothing$ y cuyas aristas es $\varnothing$. Lo llamaremos el grafo nulo.
+
+> **Definición:** Sea $G=(V,E)$ un grafo. La **topología** de $G$ es una colección de subgrafos $\tau=\{G_i:i\in I\}$ tales que: <br/>
+  * $G,K_0 \in \tau$.
+  * Si $\{G_j\}_{j\in J}$ entonces el grafo $\bigcup_{j\in J}G_j$ también está en $\tau$.
+  * Si $\{G_j\}_{j=1}^n$ entonces el grafo $\bigcap_j^n G_j$ también está en $\tau$.
+
+---
+# Ejemplo
+
+Sea $G=(V,E)$ el grafo con $V=\{1,2,3,4\}$ y $E=\{(1,4),(2,4),(3,4)\}.$ Consideremos la topología $\tau=\{K_0,G_1,G_2, G\}$ tales que $$G_2=\{\{1,2,4\},{(1,4),(2,4)\}$$ $$G_1=\{\{1,4\},\{(1,4)\}\}$$.
+
+---
+# Simplejos
+
+> **Definición:** Un $n-$simplejo en $\mathbb{R}^{n+1}$ es el conjunto dado por $$K=\{(x_1,x_2,\cdots,x_{n+1}\in\mathbb{R}^{n+1}:\sum_{i=0}^{n+1} x_i=1,x_j>0\}.$$
+
+--
+#### Ejemplo:
+
+El 0-simplejo es el punto $1$ en $\mathbb{R}^1$. <br/>
+El 1-simplejo es el segmento que une $(0,1)$ con $(1,0)$ en $\mathbb{R}^2$. <br/>
+El 2-simplejo es el triángulo con vértices $(0,0,1)$, $(0,1,0)$ y $(1,0,0)$ en $\mathbb{R}^3$. <br/>
+
+---
+# Complejos Simpliciales
+
+> **Definición:** Un complejo simplicial geométrico es una colección de simplejos en $\mathbb{R}^n$ tal que:
+  * Cada cara de un simplejo en el complejo es también un simplejo en el complejo.
+  * La intersección de dos simplejos en el complejo es un simplejo en el complejo.
+
+

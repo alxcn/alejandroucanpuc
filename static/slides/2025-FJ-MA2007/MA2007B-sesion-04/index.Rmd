@@ -1,0 +1,129 @@
+---
+title: "Topología"
+subtitle: "Sesión 03 - Lecture 4"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introducir el concepto de topología. <br/><br/>
+* Dar ejemplos de topologías en conjuntos. <br/><br/>
+* Introducir la topología métrico. <br/><br/>
+
+---
+# Motivación
+
+* La topología es una rama de las matemáticas que estudia las propiedades de los conjuntos que se conservan bajo transformaciones continuas. <br/><br/>
+
+* ¿Qué objeto matemático podemos construir similar a un espacio métrico pero sin la necesidad de una métrica? <br/><br/>
+
+---
+# Topología 
+
+> **Definición:** Dado un conjunto $X$ no vacío, una topología $\tau$ sobre $X$ es una colección de subconjuntos de $X$ que satisface las siguientes propiedades: <br/><br/>
+* $X$ y el conjunto vacío $\emptyset$ están en $\tau$. <br/><br/>
+* La intersección finita de elementos de $\tau$ está en $\tau$. <br/><br/>
+* La unión arbitraria de elementos de $\tau$ está en $\tau$. <br/><br/>
+
+---
+### Ejemplo Básico
+
+> **Ejemplo 1:** Sea $X = \{a, b, c\}$ y $\tau = \{\emptyset, \{a\}, \{b\}, \{a, b\}, \{a, b, c\}\}$. <br/><br/>
+
+> **Pregunta:** ¿ $\tau$ es una topología sobre $X$? <br/><br/>
+
+--
+> **Solución:** 
+
+---
+### Ejmplo Básico 2
+
+> **Ejemplo 2:** Sea $X = \{a, b, c\}$ y $\tau = \{\emptyset, \{a\},\{c\}, \{a, b,c\}\}$. <br/><br/>
+
+> **Pregunta:** ¿ $\tau$ es una topología sobre $X$? <br/><br/>
+
+--
+> **Solución:**
+
+---
+# Topologías Predilectas:
+
+Dado un conjunto $X$ no vacío, podemos construir las siguientes topologías: <br/><br/>
+
+> **Topología Trivial:** $\tau = \{\emptyset, X\}$. <br/><br/>
+
+> **Topología Discreta:** $\tau = \mathcal{P}(X)=\{\mbox{el conjunto de todos los conjuntos}\}$. <br/><br/>
+
+---
+# Topología Métrica
+
+> **Definición:** Sea $(X,d)$ un espacio métrico. La topología generada por la métrica $d$ es la colección de conjuntos abiertos de $X,$ es decir, $$\tau_d = \{U\subseteq X: \forall x\in U, \exists r>0 \mbox{ tal que } B_r(x)\subseteq U\}.$$ <br/><br/>
+
+--
+
+> **Proposición:** La topología generada por una métrica $d$ es una topología sobre $X$. <br/><br/>
+
+---
+## Conjuntos Predilectos
+
+Sea $(X,d)$ un espacio métrico y sea $\tau_d$ la topología generada por la métrica $d$. 
+
+> **Definición:** Un conjunto $U\subseteq X$ es abierto si $U\in \tau_d$. <br/><br/>
+
+> **Definición:** Un conjunto $F\subseteq X$ es cerrado si $X\setminus F$ es abierto. <br/><br/>
+
+---
+## Determinar si los siguientes conjuntos son abiertos o cerrados:
+
+> **Ejemplo 1:** Los conjuntos $(a,b)$ y $[a,b]$ en $\mathbb{R}$. <br/>
+
+> **Ejemplo 2:** El conjunto $A=\{(x,y)\in \mathbb{R}^2: x>0\}$. ($d_1$)<br/>
+
+> **Ejemplo 3:** El conjunto $B=\{(x,y)\in \mathbb{R}^2: x^2-y^2\neq 2\}$ ($d_2)$ <br/>
+
+> **Ejemplo 4:** El conjunto $C=\{(x,y)\in \mathbb{R}^2: x^2+y^2\leq 1\}$ ($d_\infty$)<br/>
+
