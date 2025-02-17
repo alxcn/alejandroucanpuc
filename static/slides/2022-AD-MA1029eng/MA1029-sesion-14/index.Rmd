@@ -85,7 +85,7 @@ Describa la región en la figura en coordenadas esféricas.
 ![Región](regionesf_1.png)
 
 ---
-## Veamos algunas regiones esféricas
+## Lets work with spherical regions
 
 > Describe the following region inside the sphere $x^2+y^2+z^2=9$ but outside the cone $z^2=x^2+y^2$ and compute its volume.
 
@@ -103,4 +103,4 @@ Describa la región en la figura en coordenadas esféricas.
 ---
 # Activity:
 
-> ompute the volume of the region whose height is given by $f(x,y,z)=e^{\sqrt{x^2+y^2+z^2}}$ in the region bounded between $z\geq 0,$ $x\geq 0,$ $y\geq 0$ and $x^2+y^2+z^2\leq 9.$
+> Compute the volume of the region whose height is given by $f(x,y,z)=e^{\sqrt{x^2+y^2+z^2}}$ in the region bounded between $z\geq 0,$ $x\geq 0,$ $y\geq 0$ and $x^2+y^2+z^2\leq 9.$

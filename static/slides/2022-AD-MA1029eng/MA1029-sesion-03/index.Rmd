@@ -95,21 +95,23 @@ $$\nabla f(x,y)=(\cos(x)+ye^{xy})\mathbf{i}+xe^{xy}\mathbf{j}.$$
 
 #### Gradient of $f(x,y)=x^2-y^2$
 
-![Gradient Hyperboloid](Gradiente_Hiperboloid.png)
+<img src="Gradiente_Hiperboloid.png" width="550">
+<!-- ![Gradient Hyperboloid](Gradiente_Hiperboloid.png)
+ -->
+
 
 ---
 #### Gradient of $f(x,y)=-x^2-y^2$
 
-![Gradient Paint](Gradiente_Pintura.png)
-
+<img src="Gradiente_Pintura.png" width="600">
+<!-- ![Gradient Paint](Gradiente_Pintura.png)
+ -->
 
 ---
 
 #### Gradient of $f(x,y)=\cos(x)+e^{xy}$
-
-![Gradient ](Gradiente_Ejemplo.png)
-
-
+![Gradient Example](Gradiente_Ejemplo.png)
+ 
 ---
 ## Gradient in three variables
 
@@ -123,4 +125,7 @@ $$\nabla f(x,y)=(\cos(x)+ye^{xy})\mathbf{i}+xe^{xy}\mathbf{j}.$$
 
 > Assume that we are in the Chair Hill and the height of the hill is given by the following graph of level curves. What direction would we take if we want to descend as fast as possible? What if we want to ascend?
 
-![Curvas de Nivel](LevelsE1A1.png)
+<img src="LevelsE1A1.png" width="550">
+<!-- ![Curvas de Nivel](LevelsE1A1.png)
+ -->
+

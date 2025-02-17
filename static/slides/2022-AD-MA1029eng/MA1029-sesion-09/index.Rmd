@@ -82,7 +82,7 @@ The _double integral_ of $f(x,y)$ over the region $R$ is denoted as $\int_{R}f\,
 > __Theorem (Fubini):__ If $f(x,y)$ is an integrable function in the region $R=[a,b]\times[c,d],$ then the integral $\int_R f\,dA$ coincides with the quantity: $$\int_c^d \left[ \int_a^b f(x,y)dx \right]dy=\int_a^b \left[ \int_c^d f(x,y)dy \right]dx.$$
 
 ---
-# Example 1
+# Example 1:
 
 Compute the double integral of the function $f(x,y)=x^2+yx$ over the rectangle $R=[0,1]\times[0,1].$
 
@@ -112,11 +112,11 @@ Compute the value of the integral of $f(x,y)=\sqrt{\frac{x}{y}}$ in the region $
 
 
 ---
-# Ejemplo 4: 
+# Example 4: 
 
 Find the volume of the prism whose base is the region in the plane $xy$ bounded by the lines $y=x$ and $y=2x,$ and whose top is the plane $z=3-x-y.$
 
 ---
 # Example 5:
 
-Find the volume of the regio bounded by the functions $f(x,y)=xy$ and the function $f(x,y)=16-x^2-y^2,$ over the region $R$ bounded by the curves $y=2\sqrt{x},$ $y=4x-2$ and the $x-$axis.
+Find the volume of the region bounded by the functions $f(x,y)=xy$ and the function $f(x,y)=16-x^2-y^2,$ over the region $R$ bounded by the curves $y=2\sqrt{x},$ $y=4x-2$ and the $x-$axis.

@@ -58,7 +58,7 @@ Using a substitution we can express the Thermal sensation in terms of position d
 ---
 # Change of variables
 
-> **Definition:** A change of variables for a function $f:\mathbb{R}^n\to \mathbb{R}$ is a collection of $n-$functions $g_1,\cdots,g_n:\mathbb{R}^m\to\mathbb{R}$ such that $$f(g_1(x_1,\cdots, x_m),g_2(x_1,\cdots, x_m),\cdots,g_n(x_1,\cdots, x_m)).$$$
+> **Definition:** A change of variables for a function $f:\mathbb{R}^n\to \mathbb{R}$ is a collection of $n-$functions $g_1,\cdots,g_n:\mathbb{R}^m\to\mathbb{R}$ such that $$f(g_1(x_1,\cdots, x_m),g_2(x_1,\cdots, x_m),\cdots,g_n(x_1,\cdots, x_m)).$$
 
 --
 
@@ -84,7 +84,7 @@ $$f(x(u,v),y(u,v))=\ln(\sin(uv)\cos(e^{2uv}))$$
 Consider the function $f(x,y,z)=\sqrt{x^2+y^2+z^2}$ and the change of variable $$x(u,v)=\sin(u) \quad y(u,v)=\cos(u)\quad z(u,v)=uv.$$ Compute the function $f$ with its change of variable.
 
 --
-$$ f(x(u,v),y(u,v),z(u,v))=\sqrt{u^2v^2}$$
+$$ f(x(u,v),y(u,v),z(u,v))=\sqrt{u^2v^2 + 1}$$
 
 ---
 # Chain Rule

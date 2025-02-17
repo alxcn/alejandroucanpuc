@@ -51,6 +51,7 @@ xaringanExtra::use_scribble()
 # Motivation
 
 > The following level curves indicate the amount of moisture with respect to position and we want to know the rate of change of moisture obtained by following the direction of the hurricane.
+
 ![Problematica](isobaras.png)
 
 ---
@@ -75,9 +76,12 @@ When we evaluate at $t=0,$ the value of $x(1)=1$ and $y(1)=1,$ so the rate at ti
 $$=-\sin(2(1)-(1)(1)+(1)^2)\cdot (4(1)-1)\cdot 3 - \sin(2(1)^2-(1)(1)+(1)^2)\cdot (-1+2(1))\cdot 4$$ $$h_t(0)=-13\sin(2)\approx -11.82$$
 
 ---
-# Directional Derivative|
+# Directional Derivative
 
-> **Definition:** If $(u,v)$ is a direction in $\mathbb{R}^2,$ $f(x,y)$ is a function and $p=(x_0,y_0)$ then the __directional derivative__ of $f$ at the point $p$ and direction $(u,v)$ is the derivative of the function $f$ with the change of variable $$x(t)=x_0+ut\,quad y(t)=y_0+vt,$$ and is denoted by $D_{(u,v)}f(p).$
+> **Definition:** If $(u,v)$ is a direction in $\mathbb{R}^2,$ $f(x,y)$ is a function and $p=(x_0,y_0)$, then the __directional derivative__ of $f$ at the point $p$ and direction $(u,v)$ is the derivative of the function $f$ with the change of variable  
+$$x(t)=x_0+ut, \quad y(t)=y_0+vt,$$  
+and is denoted by $D_{(u,v)}f(p).$
+
 --
 
 <br/><br/>
@@ -112,9 +116,9 @@ Note that $h(t)=f(x(t),y(t))$ has as derivative $$h(t)=f_x(x_0,y_0)u+f_y(x_0,y_0
 
 > In the example we can have $x(t)=1+3t$ and $y(t)=1+4t,$ we can consider:
 <br/><br/>
-  * $x(t)=1+\frac{3}{2}t$ y $y(t)=1+2t,$ we have that $h_t(0)=\frac{-13\sin(2)}{2}\approx -5.91$ <br/><br/>
-  * $x(t)=1+\frac{3}{5}t$ y $y(t)=1+\frac{4}{5}t,$ we have that $h_t(0)=-\frac{13 \sin(2)}{5}\approx -2.36$ <br/><br/>
-  * $x(t)=1+t$ y $y(t)=1+\frac{4}{3}t,$ we have that $h_t(0)=\frac{-13\sin(2)}{3}\approx -3.94$ <br/><br/>
+  * $x(t)=1+\frac{3}{2}t$ and $y(t)=1+2t,$ we have that $h_t(0)=\frac{-13\sin(2)}{2}\approx -5.91$ <br/><br/>
+  * $x(t)=1+\frac{3}{5}t$ and $y(t)=1+\frac{4}{5}t,$ we have that $h_t(0)=-\frac{13 \sin(2)}{5}\approx -2.36$ <br/><br/>
+  * $x(t)=1+t$ and $y(t)=1+\frac{4}{3}t,$ we have that $h_t(0)=\frac{-13\sin(2)}{3}\approx -3.94$ <br/><br/>
   
 ---
 
@@ -128,18 +132,16 @@ If we take a direction that is not unitary, the value of the directional derivat
 > **Note:** From now on, whenever we are asked for an address, we will take the unitary address of the vector. For this we need to take the vector $$\left(\frac{u}{\sqrt{u^2+v^2}},\frac{v}{\sqrt{u^2+v^2}}\right)$$.
 
 ---
-#### Ejemplos:
+#### Examples:
 
-> Calcule la derivada de la función $f(x,y)=x^4y-4y^2$ en el punto $(2,-1)$ y en la dirección $(2,5)$.
-
+> Calculate the derivative of the function $f(x,y)=x^4y-4y^2$ at the point $(2,-1)$, in the $(2,5)$ direction. 
 --
 
 
-1. Primero volvemos unitario mi vector: $$\left(\frac{2}{\sqrt{2^2+5^2}},\frac{5}{\sqrt{2^2+5^2}}\right)=\left(\frac{2}{\sqrt{29}},\frac{5}{\sqrt{29}}\right)$$
+1. First, we convert our vector into a unit vector:  $$\left(\frac{2}{\sqrt{2^2+5^2}},\frac{5}{\sqrt{2^2+5^2}}\right)=\left(\frac{2}{\sqrt{29}},\frac{5}{\sqrt{29}}\right)$$
 
-2. Calculamos el vector gradiente $\nabla f$ en el punto $(2,-1):$ $$\nabla f(2,-1)=(4x^3y,x^3-8y)|_{(2,-1)}=(32,16)$$
-
-3. Calculamos calculamos la derivada direccional $$D_{(u,v)}f=\nabla f(2,-1)\cdot \left(\frac{2}{\sqrt{29}},\frac{5}{\sqrt{29}}\right)=\frac{(32)(2)+(16)(5)}{\sqrt{29}}$$
+2. We calculate the gradient vector: $\nabla f$ at the point $(2,-1):$ $$\nabla f(2,-1)=(4x^3y,x^3-8y)|_{(2,-1)}=(32,16)$$
+3. We calculate the directional derivative:  $$D_{(u,v)}f=\nabla f(2,-1)\cdot \left(\frac{2}{\sqrt{29}},\frac{5}{\sqrt{29}}\right)=\frac{(32)(2)+(16)(5)}{\sqrt{29}}$$
 
 ---
 #### Example 3:
