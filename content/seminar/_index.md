@@ -1,29 +1,33 @@
 ---
-title: "Undergraduate Seminar of Data Science"
-subtitle: "Data Science for undergrads"
-description: |
-  The following seminar has the intention to present the novelties of Data Science in the industry for undergrad students.
-author: Alejandro Ucan-Puc
+title: Undergraduate Seminar in Data Science
+description: "Monthly seminar with innovative and tendeces in Data Science applied to the Industry for Undergraduate Students."
 show_post_thumbnail: true
-thumbnail_left: false # for list-sidebar only
-show_author_byline: false
+show_author_byline: true
 show_post_date: false
+show_button_links: false
 # for listing page layout
-layout: list-sidebar # list, list-sidebar
+layout: list-grid # list, list-sidebar, list-grid
 
-# set up common front matter for all individual pages in series
-cascade:
-  layout: single-series 
+# for list-sidebar layout
+sidebar: 
+  title: Undergraduate Seminar in Data Science
+  description: |
+    Monthly seminar with innovative and tendeces in Data Science applied to the Industry for Undergraduate Students.
+  author: "Alejandro Ucan-Puc"
+  text_link_label: "seminar"
+  text_link_url: "/seminar/"
+  show_sidebar_adunit: false # show ad container
+
+# set up common front matter for all individual pages inside project/
+cascade:    
+  show_author_byline: true
+  show_post_date: true
+  show_comments: false # see site config to choose Disqus or Utterances
+  # for single-sidebar layout only
   sidebar:
-    title: "Undergraduate Seminar of Data Science"
-    author: Alejandro Ucan-Puc
-    description: |
-     The following seminar has the intention to present the novelties of Data Science in the industry for undergrad students.
-    show_author_byline: true
-    show_post_date: true
-    text_link_label: ""
-    text_link_url: ""
-    show_sidebar_adunit: true # show ad container, first page only
-    text_series_label: "Outline" 
-    text_contents_label: "On this page" 
+    text_link_label: View all projects
+    text_link_url: /seminar/
+    show_sidebar_adunit: true # show ad container
 ---
+
+** No content for the project index. This file provides front matter for the blog including the layout and boolean options. **

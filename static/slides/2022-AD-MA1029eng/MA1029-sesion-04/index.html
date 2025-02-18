@@ -4,9 +4,9 @@
     <title>Chain Rule</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alejandro Ucan" />
-    <meta name="date" content="2024-02-18" />
+    <meta name="date" content="2025-02-12" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a49216da2bd94cd5a76e9ada3f73750c","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"c8268a49a3524b7fb07b09abec47e94c","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -31,7 +31,7 @@ class: center, middle, inverse, title-slide
 ### Alejandro Ucan
 ]
 .date[
-### 2024-02-18
+### 2025-02-12
 ]
 
 ---
@@ -59,7 +59,7 @@ Using a substitution we can express the Thermal sensation in terms of position d
 ---
 # Change of variables
 
-&gt; **Definition:** A change of variables for a function `\(f:\mathbb{R}^n\to \mathbb{R}\)` is a collection of `\(n-\)`functions `\(g_1,\cdots,g_n:\mathbb{R}^m\to\mathbb{R}\)` such that `$$f(g_1(x_1,\cdots, x_m),g_2(x_1,\cdots, x_m),\cdots,g_n(x_1,\cdots, x_m)).$$`$
+&gt; **Definition:** A change of variables for a function `\(f:\mathbb{R}^n\to \mathbb{R}\)` is a collection of `\(n-\)`functions `\(g_1,\cdots,g_n:\mathbb{R}^m\to\mathbb{R}\)` such that `$$f(g_1(x_1,\cdots, x_m),g_2(x_1,\cdots, x_m),\cdots,g_n(x_1,\cdots, x_m)).$$`
 
 --
 
@@ -85,7 +85,7 @@ Consider the function `\(f(x,y)=\ln(x\cos(y^2))\)` and the change of variable `$
 Consider the function `\(f(x,y,z)=\sqrt{x^2+y^2+z^2}\)` and the change of variable `$$x(u,v)=\sin(u) \quad y(u,v)=\cos(u)\quad z(u,v)=uv.$$` Compute the function `\(f\)` with its change of variable.
 
 --
-$$ f(x(u,v),y(u,v),z(u,v))=\sqrt{u^2v^2}$$
+$$ f(x(u,v),y(u,v),z(u,v))=\sqrt{u^2v^2 + 1}$$
 
 ---
 # Chain Rule

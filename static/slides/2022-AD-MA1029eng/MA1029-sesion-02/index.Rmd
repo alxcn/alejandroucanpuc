@@ -49,11 +49,13 @@ xaringanExtra::use_scribble()
 ---
 # Motivation
 
-The **heat index** ($I$) measures the combined effects of temperature and humidity. $I$ measures the sensation of air temperature when the temperature is $T$ and the relative humidity is $H.$
+The **heat index** ( $I$ ) measures the combined effects of temperature and humidity. $I$ measures the sensation of air temperature when the temperature is $T$ and the relative humidity is $H.$
 
 ![Sensación Termica](SensacionTermica.png)
 
 --
+
+
 What is the rate of change of $I$ when we change $T$ at the point $(96,70)$?
 
 ---
@@ -70,9 +72,9 @@ Compute the partial derivative with respect to $x$ of the function $f(x,y)=3xy.$
 $$f_x(x,y)=\lim_{h\to 0}\frac{3(x+h)y-3xy}{h}=\lim_{h\to 0}\frac{3(x+h-x)y}{h}=\lim_{h\to 0}\frac{3yh}{h}=3y.$$
 
 ---
-#### Ejemplo 3:
+#### Example 3:
 
-Compute the partial derivative with respect to $y$ of the function $f(x,y)=xy-zx+4y.$
+Compute the partial derivative with respect to $y$ of the function $f(x,y,z)=xy-zx+4y.$
 
 --
 <br/><br/>
@@ -83,7 +85,7 @@ respect to $z$?
 
 --
 <br/><br/>
-$$f_y(x,y,z)=\lim_{h\to 0}\frac{xy-(z+h)x+4y-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{hx}{h}=x.$$
+$$f_z(x,y,z)=\lim_{h\to 0}\frac{xy-(z+h)x+4y-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{hx}{h}=x.$$
 
 ---
 ## How to Partially Derive?
@@ -93,7 +95,7 @@ $$f_y(x,y,z)=\lim_{h\to 0}\frac{xy-(z+h)x+4y-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{h
 
 #### Example 4:
 
-Compute the partial derivatives $f_x,\,f_y$ y $f_z$ for the next functions: <br/><br/>
+Compute the partial derivatives $f_x,\,f_y$ and $f_z$ for the next functions: <br/><br/>
 
 
 * $f(x,y,z)=\frac{\sin(x)}{z}+x\cos(y)$
@@ -116,7 +118,7 @@ Hereby we present the graph of the function $f(x,y)=x^2+xy+y^3$ at the point $(1
 
 $$\frac{\partial f}{\partial x}=-e^{x + y} \frac{-4 + 3 x + 3 x^2 + 2 y^2}{\sqrt{4 - 3 x^2 - 2 y^2}}$$
 
-$$\frac{\partial f}{\partial x}=-e^{x + y} \frac{3 x^2 + 2 (-2 + y + y^2)}{\sqrt{4 - 3 x^2 - 2 y^2}}$$
+$$\frac{\partial f}{\partial y}=-e^{x + y} \frac{3 x^2 + 2 (-2 + y + y^2)}{\sqrt{4 - 3 x^2 - 2 y^2}}$$
 
 ---
 # Implicit Partial Derivation

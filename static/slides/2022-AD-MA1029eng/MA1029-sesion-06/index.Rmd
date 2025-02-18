@@ -131,7 +131,7 @@ If we move closer to $(x_0,y_0)$ my increments become infinitesimal and we can r
 
 ---
 
-#### Ejemplo
+#### Example
 
 > Find the total derivative of $f(x,y)=x^2+3xy-y^2.$ Calculate the value of the total derivative when we change from $(2,3)$ to $(2.05,2.95).$
 
@@ -147,4 +147,4 @@ If we move closer to $(x_0,y_0)$ my increments become infinitesimal and we can r
 
 #### Example 4:
 
-> The radious of the base and the height of a circular cone have measures of $10cm$ and $25cm,$ respectively. But an error of $0.1cm$ was detected in the measurement. Use the differential to estimate the maximum possible error in the volume.
+> The radius of the base and the height of a circular cone have measures of $10cm$ and $25cm,$ respectively. But an error of $0.1cm$ was detected in the measurement. Use the differential to estimate the maximum possible error in the volume.

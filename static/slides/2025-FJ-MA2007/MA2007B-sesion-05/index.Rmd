@@ -1,0 +1,97 @@
+---
+title: "Abiertos y Cerrados en Espacios Métricos"
+subtitle: "Sesión 05 - Lecture 3"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Definir los conceptos de abierto y cerrado en un espacio métrico.
+* Definir puntos interiores y puntos frontera.
+* Establecer relaciones entre los conceptos anteriores.
+
+---
+# Abiertos
+
+> **Definición:** Sea $(X,\tau)$ un espacio topológico. A los elementos de $\tau$ se les llama **abiertos**.
+
+--
+<br/><br/>
+> **Afirmación:** Para $(X,d)$ con la topología métrica. Las bolas abiertas $B_r(x)$ son abiertos de $(X,\tau_d).$
+
+---
+## ¿Cómo determinar cuando un conjunto es abierto en un espacio métrico?
+
+Por ejemplo, ¿cuál de estos conjuntos es abierto?
+
+1. $A = \{(x,y) \in \mathbb{R}^2 : x > 0\}$ <br/>
+2. $B = \{(x,y) \in \mathbb{R} : x \geq 0, y\neq 0\}$ <br/>
+3. $C = \{(x,y) \in \mathbb{R} : x^2 + y^2 = 1\}$ <br/>
+4. $D = \{(x,y) \in \mathbb{R} : x\neq 0, y\neq 0\}$ <br/>
+
+---
+## Punto interior
+
+> **Definición:** Sea $(X,d)$ un espacio métrico y $A \subseteq X.$ Un punto $x \in A$ es un **punto interior** de $A$ si existe $r > 0$ tal que $B_r(x) \subseteq A.$
+
+--
+<br/><br/>
+> **Afirmación:** Si $A$ es abierto, entonces todos sus puntos son interiores.
+
+---
+## Punto frontera
+
+> **Definición:** Sea $(X,d)$ un espacio métrico y $A \subseteq X.$ Un punto $x \in X$ es un **punto frontera** de $A$ si para toda $r > 0$ se tiene que $B_r(x) \cap A \neq \emptyset$ y $B_r(x) \cap (X \setminus A) \neq \emptyset.$
+
+--
+<br/><br/>
+> **Afirmación:** Si $A$ contiene puntos frontera, entonces $A$ no puede ser abierto.
+
+---
+#### Practica:
+
+Determina de los conjuntos anteriores cuáles son abiertos y cuales no.

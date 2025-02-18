@@ -1,0 +1,99 @@
+---
+title: "Geometría de un Espacio Métrico"
+subtitle: "Sesión 03 - Lecture 2"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/alxcn/TecLogoEIC/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png?token=AJRFKANBWGLDH7GZZ2A76UTDXWSWU",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+
+# Objetivos de la Sesión
+
+* Introducir los conjuntos predilectos en un espacio métrico.<br/><br/>
+* Definir la noción de vecindad en un espacio métrico.<br/><br/>
+* Establecer la relación entre vecindades y conjuntos abiertos en un espacio métrico.<br/><br/>
+* Caracterizar la equivalencia de métricas de manera visual.
+
+---
+# Motivación.
+
+> Supongamos que tienes un conjunto de datos de ubicaciones de tiendas y quieres agruparlas en regiones para optimizar la logística. ¿Cuál es una pieza importante en este problema? 
+
+---
+# Motivación
+
+Algoritmos como el *K-means* o *DBSCAN* requieren de una noción de cercanía entre los puntos para poder agruparlos. Y esta noción de cercanía se puede definir a través de una métrica dependiendo la naturaleza de nuestros datos.
+
+---
+## ¿Cómo se visualizan los caminos en el plano dependiendo de la métrica?
+
+
+---
+# Conjuntos predilectos
+
+## Vecindades o Bolas abiertas
+
+> **Definición.** Sea $(X,d)$ un espacio métrico y sea $p\in X$ un punto. El conjuntos $$B_r(p)=\{x\in X: d(x,p)<r\}$$ se llama una **vecindad abierta**  ó **bola abierta** de $p$ con radio $r$.
+
+--
+<br/><br/>
+
+> ¿Cómo se ven las vecindades dependiendo de la métrica que se elija, por ejemplo en $\mathbb{R}^2$?
+
+---
+## Esfera
+
+> **Definición.** Sea $(X,d)$ un espacio métrico y sea $p\in X$ un punto. El conjuntos $$S_r(p)=\{x\in X: d(x,p)=r\}$$ se llama una **esfera** de $p$ con radio $r$.
+
+---
+# ¿Cómo se visualizan estas definiciones en $\mathbb{R}^2$?
+
+<iframe src="https://www.wolframcloud.com/obj/alejandroucan-puc/Published/SpheresBalls.nb?_embed=iframe" width="600" height="800"></iframe>
+---
+## ¿Visualmente como se comparan las métricas en $\mathbb{R}^2$?
+
+---
+# ¿Análiticamente como se comparan las métricas en $\mathbb{R}^2$?
+

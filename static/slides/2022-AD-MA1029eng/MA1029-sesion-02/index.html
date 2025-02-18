@@ -4,9 +4,9 @@
     <title>Partial Derivatives</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alejandro Ucan" />
-    <meta name="date" content="2024-02-10" />
+    <meta name="date" content="2025-02-12" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"c683ac04401c42f996e8e741f9f9d209","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x0b70a7202134abab29438a0f7517c99","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -31,7 +31,7 @@ class: center, middle, inverse, title-slide
 ### Alejandro Ucan
 ]
 .date[
-### 2024-02-10
+### 2025-02-12
 ]
 
 ---
@@ -50,11 +50,13 @@ class: center, middle, inverse, title-slide
 ---
 # Motivation
 
-The **heat index** ($I$) measures the combined effects of temperature and humidity. `\(I\)` measures the sensation of air temperature when the temperature is `\(T\)` and the relative humidity is `\(H.\)`
+The **heat index** ( `\(I\)` ) measures the combined effects of temperature and humidity. `\(I\)` measures the sensation of air temperature when the temperature is `\(T\)` and the relative humidity is `\(H.\)`
 
 ![Sensación Termica](SensacionTermica.png)
 
 --
+
+
 What is the rate of change of `\(I\)` when we change `\(T\)` at the point `\((96,70)\)`?
 
 ---
@@ -71,9 +73,9 @@ Compute the partial derivative with respect to `\(x\)` of the function `\(f(x,y)
 `$$f_x(x,y)=\lim_{h\to 0}\frac{3(x+h)y-3xy}{h}=\lim_{h\to 0}\frac{3(x+h-x)y}{h}=\lim_{h\to 0}\frac{3yh}{h}=3y.$$`
 
 ---
-#### Ejemplo 3:
+#### Example 3:
 
-Compute the partial derivative with respect to `\(y\)` of the function `\(f(x,y)=xy-zx+4y.\)`
+Compute the partial derivative with respect to `\(y\)` of the function `\(f(x,y,z)=xy-zx+4y.\)`
 
 --
 &lt;br/&gt;&lt;br/&gt;
@@ -84,7 +86,7 @@ respect to `\(z\)`?
 
 --
 &lt;br/&gt;&lt;br/&gt;
-`$$f_y(x,y,z)=\lim_{h\to 0}\frac{xy-(z+h)x+4y-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{hx}{h}=x.$$`
+`$$f_z(x,y,z)=\lim_{h\to 0}\frac{xy-(z+h)x+4y-(xy-zx+4y)}{h}=\lim_{h\to 0}\frac{hx}{h}=x.$$`
 
 ---
 ## How to Partially Derive?
@@ -94,7 +96,7 @@ respect to `\(z\)`?
 
 #### Example 4:
 
-Compute the partial derivatives `\(f_x,\,f_y\)` y `\(f_z\)` for the next functions: &lt;br/&gt;&lt;br/&gt;
+Compute the partial derivatives `\(f_x,\,f_y\)` and `\(f_z\)` for the next functions: &lt;br/&gt;&lt;br/&gt;
 
 
 * `\(f(x,y,z)=\frac{\sin(x)}{z}+x\cos(y)\)`
@@ -117,7 +119,7 @@ Hereby we present the graph of the function `\(f(x,y)=x^2+xy+y^3\)` at the point
 
 `$$\frac{\partial f}{\partial x}=-e^{x + y} \frac{-4 + 3 x + 3 x^2 + 2 y^2}{\sqrt{4 - 3 x^2 - 2 y^2}}$$`
 
-`$$\frac{\partial f}{\partial x}=-e^{x + y} \frac{3 x^2 + 2 (-2 + y + y^2)}{\sqrt{4 - 3 x^2 - 2 y^2}}$$`
+`$$\frac{\partial f}{\partial y}=-e^{x + y} \frac{3 x^2 + 2 (-2 + y + y^2)}{\sqrt{4 - 3 x^2 - 2 y^2}}$$`
 
 ---
 # Implicit Partial Derivation

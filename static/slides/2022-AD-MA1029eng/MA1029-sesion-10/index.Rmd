@@ -41,16 +41,16 @@ style_duo_accent(
 xaringanExtra::use_editable(expires = 1)
 xaringanExtra::use_scribble()
 ```
-# Objetivos:
+# Objectives:
 
  * Interchange orders in double integration. <br/><br/>
  * Understand some applications of double integrals. <br/><br/>
 
 ---
-# Examle 1:
+# Example 1:
 
 
-> Find the value of the integral of $f(x,y)=4x+2$ in the bounded region by $ y=x^2$ and $y=2x,$ integrating first with respect to $x.$
+> Find the value of the integral of $f(x,y)=4x+2$ in the bounded region by $y=x^2$ and $y=2x$ integrating first with respect to $x$ .
 
 
 
@@ -74,7 +74,7 @@ xaringanExtra::use_scribble()
 
 > __Definition:__ the area of a plane region $R$ in $\mathbb{R}^2$ is given by the integral $$\int\int_{R}dA.$$
 
-__Ejemplo:__ Compute the area of the region bounded by $y=\sqrt{x}$ and $y=x^2.$
+__Example:__ Compute the area of the region bounded by $y=\sqrt{x}$ and $y=x^2$
 
 
 ---
@@ -88,7 +88,7 @@ __Ejemplo:__ Compute the area of the region bounded by $y=\sqrt{x}$ and $y=x^2.$
 
 > __Definition:__ the mean value of a function over a region $R$ is defined as the quotient of the integral $$mean(f,R)=\frac{\int\int_{R}fdA}{\int\int_{R}dA}.$$
 
-__Ejemplo:__ Find the mean value of the function $f(x,y)=x\cos(xy)$ over the rectangle $0\leq x\leq \pi $ and $0\leq y\leq 1.$
+__Example:__ Find the mean value of the function $f(x,y)=x\cos(xy)$ over the rectangle $0\leq x\leq \pi$ and $0\leq y\leq 1$
 
 
 ---
@@ -102,7 +102,11 @@ __Ejemplo:__ Find the mean value of the function $f(x,y)=x\cos(xy)$ over the rec
 > __Definition:__ Assume that an object occupies a region $R$ in the plane, and the density of the object is given by the function $\delta(x,y),$ then <br/><br/>
 1. The mass of the object is given by $$\int\int_R \delta(x,y)dA.$$ <br/><br/>
 1. The mass' moments are: $$M_x=\int\int_R y\delta(x,y)dA \mbox{ and } M_y=\int\int_R x\delta(x,y)dA.$$ <br/><br/>
-1. The mass center is given by $$\left(\frac{M_y}{M},\frac{M_x}{M}\right).$$
+---
+
+
+# Mass and Center of Mass
+3.The mass center is given by $$\left(\frac{M_y}{M},\frac{M_x}{M}\right).$$
 
 ---
 # Exercise:

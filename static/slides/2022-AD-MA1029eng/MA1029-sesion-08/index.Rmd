@@ -83,7 +83,7 @@ We want to find the $(x,y)$ such that $$f(x,y)\mbox{ has an extreme value}$$ $$g
   * Evaluate $f$ at these points, the largest of these numbers is the maximum and the smallest the minimum.
   
 ---
-# Ejemplo 1:
+# Example 1:
 
 > Find the extreme values of the function $f(x,y)=5x^2+6y^2-xy$ under the restriction $x+2y=24.$
 
@@ -93,7 +93,13 @@ We want to find the $(x,y)$ such that $$f(x,y)\mbox{ has an extreme value}$$ $$g
 1. Find the values of $x,y$ and $\lambda$ such that $\nabla f(x,y)=\lambda \nabla g(x,y).$
  $$10x-y=\lambda$$ $$12y-x=\lambda$$ $$x+2y=24$$
 1. Solve the system of equations.
-1. Explain my results $$y=-\frac{-288}{25},\quad x=\frac{576}{5}.$$
+---
+
+
+
+# Example 1: 
+
+5.Explain my results $$y=-\frac{-288}{25},\quad x=\frac{576}{5}.$$
 
 
 ---
@@ -102,11 +108,12 @@ We want to find the $(x,y)$ such that $$f(x,y)\mbox{ has an extreme value}$$ $$g
 
 > The Cobb-Douglas production function for a production is given by $f(x,y)=100x^{3/4}y^{1/4}.$ Where $x$ are the units of production (at 150mxn per unit) and $y$ are the units of capital (at 250mxn per unit). If our production and capital units are restricted to 50000mxn. Find the maximum production for this manufacturing.
 ---
-# Ejemplo 3:
+
+# Example 3:
 
 >  BioTech is a manufacturer of prothesis and has developed a model of earnings that depends on the number of prothesis ($x$) that sells per month (in thousands) and the number of hours per month that invests in advertising ($y$). $$f(x,y)=48x+96y-x^2-2xy-9y^2.$$ Our budget for production of prothesis and advertising is given by $20x+4y=216.$ Find the number of prothesis and hours of advertising that maximize my earnings.
 
 ---
-# Ejemplo 4:
+# Example 4:
 
 > Find the extreme values for the function $f(x,y,z)=2x^2+y^2+3z^2$ under the restriction $2x-3y-4z=49.$

@@ -95,7 +95,7 @@ $$\int\int\int_R z dV= \int_0^1\int_0^{1-x}\int_0^{1-x-y} z dzdydx$$
 ---
 # Example 2:
 
-> Find the volume of the solid enclosed by the function $f(x,y,z)=z$ over the region bounde by the paraboloid $y=x^2+z^2$ and $y=4.$
+> Find the volume of the solid enclosed by the function $f(x,y,z)=z$ over the region bounded by the paraboloid $y=x^2+z^2$ and $y=4.$
 --
 
 $$E: -2\leq x\leq 2,\, -\sqrt{4-x^2}\leq z\leq \sqrt{4-x^2},\, x^2+z^2\leq y\leq 4$$

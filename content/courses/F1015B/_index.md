@@ -33,7 +33,7 @@ cascade:
   # for single-sidebar layout
   sidebar:
     text_link_label: View recent posts
-    text_link_url: /f1015B/
+    text_link_url: /F1015B/
     show_sidebar_adunit: true # show ad container
 ---
 
