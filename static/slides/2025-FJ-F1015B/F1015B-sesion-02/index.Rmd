@@ -49,43 +49,51 @@ xaringanExtra::use_scribble()
  * Understand the qualitative behavior of the function. <br/><br/>
  * Solve some modelling problems related to Newton's cooling law.
 ---
-# Recall Riemann sums
+# Newton's Cooling Law
 
-
----
-# Definite Integral
-
-> __Definition:__ Let $f$ be a function defined on the interval $[a,b]$. The definite integral of $f$ from $a$ to $b$ is defined as the limit of a Riemann sum when we increase the number of subintervals in a partition. In symbols $$\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^*) \Delta x_i$$ provided that this limit exists and gives the same value for all possible choices of sample points $x_i^*$ in the subintervals $[x_{i-1}, x_i]$.
-
----
-## Some conventions:
-
-* We will only use regular partitions but the definition is valid for any kind of partition. <br/><br/>
-* We will only consider left Riemann sums, but this computation is also valid for right and middle sums. <br/><br/>
-* We will use the notation $\Delta x = \frac{b-a}{n}$ and $x_i = a + i \Delta x$.
-
----
-# Main Hypothesis
-
-> **Newton's Cooling Law:** <br/><br/> The *rate of change* of the Temperature of an object, at any time, is *proportional* to the *difference* of object's temperature and medium's temperature.
+> **Hypothesis:** The rate of change of the temperature of an object is proportional to the difference between the temperature of the object and the temperature of the surrounding medium.
 
 --
 
-#### How can we represent that statement into a mathematical object?
+> **Mathematically:** If $T(t)$ is the temperature of the object at time $t$, and $T_s$ is the temperature of the surrounding medium, then the rate of change of the temperature of the object is given by $$\frac{dT}{dt} = k(T - T_s)$$ where $k$ is the cooling constant.
 
 ---
-## The Differential Equation
+# Parts of the Mathematical Model:
 
-\[\frac{d T(t)}{dt}= k(T(t)-T_m)\]
+In the equation $$\frac{dT}{dt} = k(T - T_s) \quad T(x_0)=T_0$$
+
+ * $T(t)$ is the temperature of the object at time $t$. <br/><br/>
+ * $T_s$ is the temperature of the surrounding medium. <br/><br/>
+ * $k$ is the cooling constant. <br/><br/>
+ * $\frac{dT}{dt}$ is the rate of change of the temperature of the object at time $t$. <br/><br/>
+ * $T(x_0)=T_0$ is the initial condition.
+
+---
+# Finding the Unknown?
+
+This is a first order linear differential equation. We can solve it by separation of variables.
+
 
 --
-
-* $T(t)$ is the function that measure object's temperature at any time. (Type: Unknown) <br/><br/>
-
-* $k$ is the cooling ratio. (Type: Parameter usually known) <br/><br/>
-
-* $T_m$ is the medium temperature. (Type: Parameter usually known, could be a function)
+The general solution is given by $$T(t) = T_s + Ce^{kt}$$ where the constant $C$ depends on the initial condition. 
 
 ---
-## How to determine a function that models this phenomena?
+# What can we say about the function?
+
+ * The temperature of the object will approach the temperature of the surrounding medium as time goes to infinity. <br/><br/>
+ * The temperature of the object increase or decrease depending on the difference between the temperature of the object and the temperature of the surrounding medium. <br/><br/>
+ * The temperature of the object will decrease if the temperature of the object is greater than the temperature of the surrounding medium. <br/><br/>
+  * The temperature of the object will increase if the temperature of the object is less than the temperature of the surrounding medium. <br/><br/>
+  * The cooling constant $k$ determines how fast the temperature of the object approaches the temperature of the surrounding medium.
+---
+# Example 1:
+
+A cup of coffee has a temperature of $90^\circ C$ in a room with a temperature of $20^\circ C$. After 5 minutes, the temperature of the coffee is $70^\circ C$. Find the temperature of the coffee after 10 minutes.
+
+--
+**Solution:**
+
+ * $T_s = 20^\circ C$, $T_0 = 90^\circ C$, $T(5) = 70^\circ C$.
+ * We need to find the cooling constant $k$.
+ * We can use the general solution to find the temperature of the coffee after 10 minutes.
 
