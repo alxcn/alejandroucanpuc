@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Definite Integral</title>
+    <title>Newton’s Cooling Law</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alejandro Ucan" />
-    <meta name="date" content="2023-10-29" />
+    <meta name="date" content="2025-02-19" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x4aabb0a4a3b4e3b97255d4beee0847a","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"fe1b6e88f9e844b7bb1101a7d9b78b1a","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -22,7 +22,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Definite Integral
+# Newton’s Cooling Law
 ]
 .subtitle[
 ## Session 02
@@ -31,7 +31,7 @@ class: center, middle, inverse, title-slide
 ### Alejandro Ucan
 ]
 .date[
-### 2023-10-29
+### 2025-02-19
 ]
 
 ---
@@ -45,76 +45,59 @@ class: center, middle, inverse, title-slide
 
 # Goals:
 
- * Prove that Riemann sums approximate the area under the curve. &lt;br/&gt;&lt;br/&gt;
- * Define the definite integral. &lt;br/&gt;&lt;br/&gt;
- * Compute definite integrals using the definition. &lt;br/&gt;&lt;br/&gt;
- * State the Foundamental Theorem of Calculus. &lt;br/&gt;&lt;br/&gt;
+ * State Newton's Cooling Law. &lt;br/&gt;&lt;br/&gt;
+ * Find the Function that models this law. &lt;br/&gt;&lt;br/&gt;
+ * Understand the qualitative behavior of the function. &lt;br/&gt;&lt;br/&gt;
+ * Solve some modelling problems related to Newton's cooling law.
 ---
-# Recall Riemann sums
+# Newton's Cooling Law
 
-
----
-# Definite Integral
-
-&gt; __Definition:__ Let `\(f\)` be a function defined on the interval `\([a,b]\)`. The definite integral of `\(f\)` from `\(a\)` to `\(b\)` is defined as the limit of a Riemann sum when we increase the number of subintervals in a partition. In symbols `$$\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^*) \Delta x_i$$` provided that this limit exists and gives the same value for all possible choices of sample points `\(x_i^*\)` in the subintervals `\([x_{i-1}, x_i]\)`.
-
----
-## Some conventions:
-
-* We will only use regular partitions but the definition is valid for any kind of partition. &lt;br/&gt;&lt;br/&gt;
-* We will only consider left Riemann sums, but this computation is also valid for right and middle sums. &lt;br/&gt;&lt;br/&gt;
-* We will use the notation `\(\Delta x = \frac{b-a}{n}\)` and `\(x_i = a + i \Delta x\)`.
-
----
-#### Example 1:
-
-1. Compute the definite integral `\(\int_0^1 x dx\)` using the definition. &lt;br/&gt;&lt;br/&gt;
+&gt; **Hypothesis:** The rate of change of the temperature of an object is proportional to the difference between the temperature of the object and the temperature of the surrounding medium.
 
 --
-Let's start by computing the Riemann sum for `\(n\)` subintervals. The length of the subintervals is given by `\(\Delta x= \frac{1-0}{n}\)` and the left points are `$$x_j=0 + j \Delta x = \frac{j}{n}$$` for `\(j=0,1,2,\ldots,n\)`. The Riemann sum is given by `$$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n \frac{j}{n} \frac{1}{n} = \frac{1}{n^2} \sum_{j=1}^n j = \frac{1}{n^2} \frac{n(n+1)}{2} = \frac{n+1}{2n}$$` &lt;br/&gt;&lt;br/&gt;
 
-Let's take the limit in the number of intervals: `$$\lim_{n \to \infty} \frac{n+1}{2n} = \frac{1}{2}.$$`
+&gt; **Mathematically:** If `\(T(t)\)` is the temperature of the object at time `\(t\)`, and `\(T_s\)` is the temperature of the surrounding medium, then the rate of change of the temperature of the object is given by `$$\frac{dT}{dt} = k(T - T_s)$$` where `\(k\)` is the cooling constant.
 
 ---
-#### Example 2:
+# Parts of the Mathematical Model:
 
-1. Compute the definite integral `\(\int_1^4 4x+3 dx\)` using the definition. &lt;br/&gt;&lt;br/&gt;
+In the equation `$$\frac{dT}{dt} = k(T - T_s) \quad T(x_0)=T_0$$`
+
+ * `\(T(t)\)` is the temperature of the object at time `\(t\)`. &lt;br/&gt;&lt;br/&gt;
+ * `\(T_s\)` is the temperature of the surrounding medium. &lt;br/&gt;&lt;br/&gt;
+ * `\(k\)` is the cooling constant. &lt;br/&gt;&lt;br/&gt;
+ * `\(\frac{dT}{dt}\)` is the rate of change of the temperature of the object at time `\(t\)`. &lt;br/&gt;&lt;br/&gt;
+ * `\(T(x_0)=T_0\)` is the initial condition.
+
+---
+# Finding the Unknown?
+
+This is a first order linear differential equation. We can solve it by separation of variables.
+
 
 --
-Let's start by computing the Riemann sum for `\(n\)` subintervals. The length of the subintervals is given by `\(\Delta x= \frac{1-{-1}}{n}\)` and the left points are `$$x_j=-1 + j \Delta x = -1 + \frac{j}{n}$$` for `\(j=0,1,2,\ldots,n\)`. The Riemann sum is given by `$$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n (4(-1 + \frac{j}{n})+3) \frac{2}{n} = \frac{2}{n} \sum_{j=1}^n (4(-1 + \frac{j}{n})+3) = \frac{2}{n} \sum_{j=1}^n (4-4\frac{j}{n}+3) = \frac{2}{n} \sum_{j=1}^n (7-4\frac{j}{n}) = \frac{2}{n} (7n-4\frac{n(n+1)}{2}) = 7-2\frac{n+1}{n}$$` &lt;br/&gt;&lt;br/&gt;
-
-Let's take the limit in the number of intervals: `$$\lim_{n \to \infty} 7-2\frac{n+1}{n} = 7-2 = 5.$$`
+The general solution is given by `$$T(t) = T_s + Ce^{kt}$$` where the constant `\(C\)` depends on the initial condition. 
 
 ---
-#### Example 3:
+# What can we say about the function?
 
-1. Compute the definite integral `\(\int_0^1 x^2 dx\)` using the definition. &lt;br/&gt;&lt;br/&gt;
+ * The temperature of the object will approach the temperature of the surrounding medium as time goes to infinity. &lt;br/&gt;&lt;br/&gt;
+ * The temperature of the object increase or decrease depending on the difference between the temperature of the object and the temperature of the surrounding medium. &lt;br/&gt;&lt;br/&gt;
+ * The temperature of the object will decrease if the temperature of the object is greater than the temperature of the surrounding medium. &lt;br/&gt;&lt;br/&gt;
+  * The temperature of the object will increase if the temperature of the object is less than the temperature of the surrounding medium. &lt;br/&gt;&lt;br/&gt;
+  * The cooling constant `\(k\)` determines how fast the temperature of the object approaches the temperature of the surrounding medium.
+---
+# Example 1:
+
+A cup of coffee has a temperature of `\(90^\circ C\)` in a room with a temperature of `\(20^\circ C\)`. After 5 minutes, the temperature of the coffee is `\(70^\circ C\)`. Find the temperature of the coffee after 10 minutes.
 
 --
-Let's start by computing the Riemann sum for `\(n\)` subintervals. The length of the subintervals is given by `\(\Delta x= \frac{1-0}{n}\)` and the left points are `$$x_j=0 + j \Delta x = \frac{j}{n}$$` for `\(j=0,1,2,\ldots,n\)`. The Riemann sum is given by `$$\sum_{j=1}^n f(x_j) \Delta x = \sum_{j=1}^n \frac{j^2}{n^2} \frac{1}{n} = \frac{1}{n^3} \sum_{j=1}^n j^2 = \frac{1}{n^3} \frac{n(n+1)(2n+1)}{6} = \frac{(n+1)(2n+1)}{6n^2}$$` &lt;br/&gt;&lt;br/&gt;
+**Solution:**
 
-Let's take the limit in the number of intervals: `$$\lim_{n \to \infty} \frac{(n+1)(2n+1)}{6n^2} = \frac{2}{3}.$$`
+ * `\(T_s = 20^\circ C\)`, `\(T_0 = 90^\circ C\)`, `\(T(5) = 70^\circ C\)`.
+ * We need to find the cooling constant `\(k\)`.
+ * We can use the general solution to find the temperature of the coffee after 10 minutes.
 
----
-# The Fundamental Theorem of Calculus
-
-&gt; __Theorem:__ Let `\(f\)` be a continuous function on the interval `\([a,b]\)`. If `\(F\)` is any antiderivative of `\(f\)`, then `$$\int_a^b f(x) dx = F(b) - F(a).$$`
-
-#### Example 4:
-
-1. Compute the definite integral `\(\int_0^1 x dx\)` using the Fundamental Theorem of Calculus. &lt;br/&gt;&lt;br/&gt;
-
-The antiderivative of `\(x\)` is `\(\frac{x^2}{2}\)` and the definite integral is given by `$$\int_0^1 x dx = \frac{1^2}{2} - \frac{0^2}{2} = \frac{1}{2}.$$`
-
----
-#### Example 5:
-
-Compute the following definite integrals using the Fundamental Theorem of Calculus.
-
-1. `\(\int_-1^4 4x+3 dx\)` &lt;br/&gt;&lt;br/&gt;
-1. `\(\int_0^1 x^2 dx\)` &lt;br/&gt;&lt;br/&gt;
-1. `\(\int_0^3 x^2-3x+5 dx\)` &lt;br/&gt;&lt;br/&gt;
-1. `\(\int_1^e \frac{1}{x} dx\)` &lt;br/&gt;&lt;br/&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
