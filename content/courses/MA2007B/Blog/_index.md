@@ -1,7 +1,7 @@
 ---
-title: MA2007B
+title: Uso de Geometría y Topología para la Ciencia de Datos
 description: |
-  Recursos para _Uso de la Geometría y Topología para ciencia de Datos._
+  Recursos MA2007B.
 author: Alejandro Ucan-Puc
 show_post_thumbnail: false
 show_author_byline: true
@@ -15,10 +15,10 @@ sidebar:
   subtitle: MA2007B
   author: Alejandro Ucan-Puc
   description: |
-    Recursos para _Uso de la Geometría y Topología para ciencia de Datos._
+    Recursos para MA2007B.
   text_link_label: "MA2007B"
   text_link_url: "/MA2007B/"
-  show_sidebar_adunit: true # show ad container
+  show_sidebar_adunit: false # show ad container
 
 # set up common front matter for all individual pages in series
 cascade:
@@ -31,15 +31,17 @@ cascade:
   sidebar:
     text_link_label: "MA2007B"
     text_link_url: "/MA2007B/"
-    show_sidebar_adunit: true # show ad container
+    show_sidebar_adunit: false # show ad container
     text_series_label: "In this series" 
     text_contents_label: "On this page" 
   tags:
   - MA2007B
   - Topology
+  - Data Science
   categories:
   - MA2007B
   - Topology
+  - Data Science
 ---
 
 ** No content below YAML for the series _index. This file is a leaf bundle, and provides settings for the listing page layout and sidebar content.**
