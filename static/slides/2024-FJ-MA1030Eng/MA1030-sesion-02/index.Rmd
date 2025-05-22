@@ -1,0 +1,166 @@
+---
+title: "Systems of Linear Equations"
+subtitle: "Session 02"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width = 9, fig.height = 3.5, fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Goals of the Session
+
+
+* Modeling with SLEs. <br><br>
+* Matrix and SLEs. <br><br>
+* Solution methods. <br><br>
+
+---
+# Motivation
+
+> In a factory, three processes are performed, each process has its time but if they are performed continuously they add up to 30 minutes. If process 1 takes three times longer than process 2. And process 2 takes half the time of process 3. How long does each process take?
+
+---
+# SLEs
+
+A linear equation is an equation of the form:
+$$a_1x_1+a_2x_2+\cdots +a_nx_n=b$$
+
+where $a_i$ and $b$ are real numbers and $x_i$ are the variables. <br/><br/> The set of some linear equations is called a system of linear equations (SLE). And we assume that the variables are involved in all the equations. Usually these SLEs are used to model real problems, where the unknowns are in a linear relationship with the data.
+
+---
+# Modelling with SLEs
+
+
+Consider the following: <br/><br/>
+--
+
+> 1. Identify the variables involved and what they represent in the context of the problem. <br/<br/>
+For example: 
+  * In the previous example, the variables are the time of each process. <br/>
+  * In the case of a factory, the variables could be the number of products produced in each process. <br/>
+  * In the case of a bank, the variables could be the amount of money in each account. <br/>
+
+> 2. Establish the relationships between the variables. <br/><br/>
+For example: 
+  * In the previous example, the relationships are the time of each process. <br/>
+  * In the case of a factory, the relationships could be the number of products produced in each process. <br/>
+  * In the case of a bank, the relationships could be the amount of money in each account. <br/>
+
+
+> 3. Establish the equations that describe the relationships. <br/><br/>
+For example: 
+  * In the previous example, the continous process is the sum of the times of each process, and it says that is up to 30 minutes. Leading to an equation of the form $x_1+x_2+x_3=30$. <br/>
+
+
+
+---
+# Solutions of SLEs
+
+> **Definition:** A real number set of values $(x_1,x_2,\ldots,x_n)$ is a solution of a SLE if it satisfies all the equations of the system. <br/><br/>
+> **Definition:** A SLE is *consistent* if it has at least one solution, and *inconsistent* if it has no solution. <br/> 
+
+A SLE can have *none*, *one* or *infinitely* many solutions. <br/><br/>
+
+---
+## Matrix Representation of SLEs
+
+A SLE with $m$ equations and $n$ unknowns can be represented in matrix form as follows:
+$$A \cdot X = B$$
+
+where $A$ ($m\times n$) is the coefficient matrix, $X$ $(n\times 1)$ is the vector of unknowns, and $B$ ($n\times 1$) is the vector of constants. <br/><br/>
+
+--
+##### Example 1:
+
+$$3x_1+2x_2-3x_3=4$$
+$$-2x_1+4x_2=0$$
+$$ -3x_3+2x_1=10$$
+
+---
+# SLEs Reduction
+
+What SLE is esier to solve? <br/><br/>
+
+$$\begin{eqnarray}
+x-2y+3z=9 & \quad& x-2y+3z=9\\
+-x+3y\quad=-4 & &\qquad y+3z=5\\
+2x-5y+5z=17 & & \qquad \qquad z=2
+\end{eqnarray}$$
+
+---
+## Equivalents SLEs
+> **Definition:** Two SLEs are equivalent if they have the same solution set. <br/><br/>
+
+In the previous example, both systems are equivalent since $x=1, y=-1, z=2$ is a solution of both systems. <br/><br/>
+
+---
+### How can we find an equivalent SLE?
+1. **Adding or subtracting equations:** We can add or subtract equations to obtain a new equation that is equivalent to the original system. <br/><br/>
+2. **Multiplying or dividing equations by a non-zero constant:** We can multiply or divide an equation by a non-zero constant to obtain a new equation that is equivalent to the original system. <br/><br/>
+3. **Interchanging equations:** We can interchange the order of the equations to obtain a new system that is equivalent to the original system. <br/><br/>
+4. **Substituting variables:** We can substitute one variable for another to obtain a new equation that is equivalent to the original system. <br/><br/>
+
+
+---
+##### Example 2:
+
+Find an equivalent system and find the solution.
+
+$$x_1-3x_2+x_3=1$$
+$$2x_1-x_2-2x_3=2$$
+$$x_1+2x_2-3x_3=-1$$
+
+---
+##### Example 3:
+
+Find an equivalent system and find the solution.
+
+$$x_1-x_3=0$$
+$$x_1-3x_3=1$$
+$$-x_1+3x_2=1$$
+
+---
+#### How does the process of finding an equivalent SLE works in the matricial form?
+
+

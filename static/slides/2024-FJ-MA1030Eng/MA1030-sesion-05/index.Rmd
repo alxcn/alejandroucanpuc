@@ -1,0 +1,155 @@
+---
+title: "Optimización Lineal"
+subtitle: "Sesión 05"  
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Problemas de Optimización Lineal <br/><br/>
+* Plantear Problemas de Optimización Lineal <br/><br/>
+* Introducir Región Factible <br/><br/>
+* Introducir la función objetivo <br/><br/>
+* Definir las soluciones factibles <br/><br/>
+
+---
+# Problemáticas
+
+> Medicamente necesitamos satisfacer ciertas restricciones dietarias para mantenernos saludables. Sin embargo contamos con un presupuesto limitado. Necesitamos al menos 300cal de Energía, 36 unidades de vitamina A y 90 unidades de vitamina C. Entre los dos alimentos que podemos consumir tenemos que: Bebida $X$ provee 60cal, 12 unidades de vitamina A y 10 unidades de vitamina C. Bebida $Y$ provee 60cal, 6 unidades de vitamina A y 30 unidades de vitamina C. El costo de la Bebida $X$ es de 10 pesos y el de la Bebida $Y$ es de 5 pesos. ¿Cuántas unidades de cada bebida debemos consumir para satisfacer nuestras necesidades dietarias y minimizar el costo?
+
+---
+# Problemas de Optimización Lineal
+
+> Los problemas de optimización lineal son aquellos en los que se busca maximizar o minimizar una función lineal sujeta a restricciones lineales. 
+
+> La función objetivo es la función que se busca maximizar o minimizar.
+
+> Las restricciones son las condiciones que se deben cumplir para que la solución sea válida.
+
+---
+# Plantear Problemas de Optimización Lineal
+
+Para plantear el problema de optimización lineal se necesitan:
+
+1. Definir las variables de decisión.
+2. Definir la función objetivo.
+3. Definir las restricciones.
+
+---
+# Ejemplo
+
+1. Variables: $x$ y $y$ unidades de Bebida $X$ y Bebida $Y$ respectivamente. <br/><br/>
+
+2. Función Objetivo: Minimizar $10x + 5y$ <br/><br/>
+
+3. Restricciones: <br/><br/>
+   * $60x + 60y \geq 300$ <br/><br/>
+   * $12x + 6y \geq 36$ <br/><br/>
+   * $10x + 30y \geq 90$ <br/><br/>
+   * $x \geq 0$ <br/><br/>
+   * $y \geq 0$ <br/><br/>
+
+---
+# Región Factible:
+
+> La región factible es el conjunto de soluciones que cumplen con todas las restricciones. <br/><br/>
+
+--
+
+Notemos que las restricciones son desigualdades lineales, cuya solución es una región del plano (en el ejemplo). <br/><br/>
+
+https://www.desmos.com/geometry/slahpt6sec
+---
+# ¿Solución Factible?
+
+> Una solución factible es aquellos valores de nuestra variable que cumplen con todas las restrcciones dadas. <br/><br/>
+
+--
+Podemos pensar que nuestra función objetivo toma distintos valores y que la solución factible es aquel valor que minimiza o maximiza nuestra función objetivo. <br/><br/>
+
+https://www.desmos.com/geometry/nbtm557uys
+---
+##### Ejemplo 2:
+
+El corto para almacenar dos modelos de GPS (*Global Positioning System*) es de $ \$80 $ y $ \$100. $ El modelo $A$ deja una ganacia de $ \$25 $ y el modelo $B$ de $ \$30. $ Los estudios de mercado indican que: <br/><br/>
+1. Que la demanda de modelos no excederá de 200 unidades al mes. <br/><br/>
+2. No podemos invertir más de 18000 en el inventario. <br/><br/>
+
+¿Cuántas unidades de cada modelo debemos almacenar para maximizar la ganancia?
+
+---
+##### Solución:
+
+1. Variables: $x$ y $y$ unidades de los modelos $A$ y $B$ respectivamente. <br/><br/>
+
+2. Función Objetivo: Maximizar $25x + 30y$ <br/><br/>
+
+3. Restricciones: <br/><br/>
+   * $x + y \leq 200$ <br/><br/>
+   * $80x + 100y \leq 18000$ <br/><br/>
+   * $x \geq 0$ <br/><br/>
+   * $y \geq 0$ <br/><br/>
+
+---
+#####  Ejemplo 3:
+
+Una empresa mezcla dos tipos de aceite. El aceite $A$ cuesta $ \$30 $ por galón y la marca $B$ cuesta $ \$25. $ La marca $A$ proporciona 2 unidades de propiedad $X,$ 2 unidades de propiedad $Y$ y dos unidades de propiedad $Z.$ La marca $B$ proporciona 1 unidad de propiedad $X,$ 9 unidades de propiedad $Y$ y 3 unidad de propiedad $Z.$ La mezcla debe contener al menos 12 unidades de propiedad $X,$ 36 unidades de propiedad $Y$ y 24 unidades de propiedad $Z.$ ¿Cuántos galones de cada marca se deben mezclar para minimizar el costo?
+
+---
+##### Solución:
+
+1. Variables: $x$ y $y$ galones de los aceites $A$ y $B$ respectivamente. <br/><br/>
+
+2. Función Objetivo: Minimizar $30x + 25y$ <br/><br/>
+
+3. Restricciones: <br/><br/>
+    * $2x + y \geq 12$ <br/><br/>
+    * $2x + 9y \geq 36$ <br/><br/>
+    * $2x + 3y \geq 24$ <br/><br/>
+    * $x \geq 0$ <br/><br/>
+    * $y \geq 0$ <br/><br/>
+

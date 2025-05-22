@@ -1,0 +1,191 @@
+---
+title: "Matrix Arithmetics"
+subtitle: "Session 01"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width = 9, fig.height = 3.5, fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Introduce the concept of Matrix (Size and Type). <br/><br/>
+* Define the basic operations with matrices (Sum, Subtraction, Multiplication). <br/><br/>	
+
+---
+# Motivation
+
+Imagine that part of your job is to analyze the information of spreadsheets and you need to do some calculations with them. <br/><br/> Is there a way to do it that does not depends on the visual aid of the spreadsheet? <br/><br/>
+
+---
+# Matrix Space
+> **Definition:** A matrix is a rectangular array of numbers, symbols, or expressions, arranged in rows and columns. <br/><br/>
+
+
+--
+##### Example 1:
+
+Excel spreadsheets are a common example of matrices. <br/><br/>
+---
+##### Example 2:
+
+
+Assume that the sales of a company can be ordered by bimonthly and branch as shown in the following table:
+
+| Sucursal | Bimestre 1 | Bimestre 2 | Bimestre 3 | Bimestre 4 |
+|----------|------------|------------|------------|------------|
+| A        | 1000       | 1200       | 1300       | 1400       |
+| B        | 1500       | 1600       | 1700       | 1800       |
+| C        | 2000       | 2100       | 2200       | 2300       |
+
+
+How would the matrix associated with this information look like? <br/><br/>
+
+---
+# Matrix Notation
+
+> **Definition:** A matrix of size $m \times n$ is an array of $m$ rows and $n$ columns of numbers, usually denoted as $A=(a_{ij})$ where $a_{ij}$ denotes the element in row $i$ and column $j.$ <br/><br/>
+
+$$A= \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix}$$
+
+---
+##### Example 3:
+The associated matrix with the information of the previous example is:
+$$A= \begin{bmatrix} 1000 & 1200 & 1300 & 1400 \\ 1500 & 1600 & 1700 & 1800 \\ 2000 & 2100 & 2200 & 2300 \end{bmatrix}$$
+
+---
+# Types of Matrices
+
+These are some of the most common types of matrices. <br/><br/>
+
+1. **Row Vector:** $A_{1 \times n}.$ *Example:* $(1, -4, \sqrt{2}, \pi)$ <br/><br/>
+
+2. **Column Vector:** $A_{m \times 1}.$ *Example:* $\begin{bmatrix} -5 \\ \sqrt{5} \\ e \end{bmatrix}$ <br/><br/>
+
+3. **Square Matrix:** $A_{n \times n}.$ *Example:* $\begin{bmatrix} 1 & 2 \\ 0 & 5  \end{bmatrix}$ <br/><br/>
+
+---
+
+4. **Diagonal matrix:** $D_{n \times n}$ con $a_{ij}=0$ para $i \neq j.$ *Example:* $\begin{bmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{bmatrix}$ <br/><br/>
+
+5. **Upper triangular matrix:** $A_{n \times m}$ con $a_{ij}=0$ para $i > j.$ *Example:* $\begin{bmatrix} 1 & 2  \\ 0 & 4  \\ 0 & 0  \end{bmatrix}$ <br/><br/>
+
+6. **Lowe triangular matrix:** $A_{n \times m}$ con $a_{ij}=0$ para $i < j.$ *Example:* $\begin{bmatrix} 1 & 0  \\ 2 & 4  \\ 3 & 5  \end{bmatrix}$ <br/><br/>
+
+---
+7. **Identity Matrix:** $I_{n \times n}$ con $a_{ij}=1$ para $i=j$ y $a_{ij}=0$ para $i \neq j.$ *Example:* $\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}$ <br/><br/>
+
+8. **Null matrix:** $O_{n \times m}$ con $a_{ij}=0$ para todo $i$ y $j.$ *Example:* $\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}$ <br/><br/>
+
+9. **Symmetric matrix:** $A_{n \times n}$ con $a_{ij}=a_{ji}$ para todo $i$ y $j.$ *Example:* $\begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 5 \\ 3 & 5 & 6 \end{bmatrix}$ <br/><br/>
+---
+# Matrix Operations
+
+
+## Matrix Addition and Subtraction
+
+> **Definición:** The sum (difference) of two matrices $A$ and $B$ of the same size $m \times n$ is a matrix $C$ of the same size such that $c_{ij}=a_{ij}+b_{ij}.$ $(c_{ij}=a_{ij}-b_{ij})$ <br/><br/>
+
+-- 
+##### Example 4:
+
+Let $A=\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ and $B=\begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}.$ Find the sum $C=A+B$ and the difference $D=A-B.$ <br/><br/>
+
+---
+### Addition and Substraction Properties
+
+
+1. **Conmutative:** $A+B=B+A.$ <br/><br/>
+2. **Associative:** $(A+B)+C=A+(B+C).$ <br/><br/>
+3. **Null element:** $A+O=A.$ <br/><br/>
+4. **Additive inverse element:** $A+(-A)=O$ where $A=(a_{ij})$ then $-A=(-a_{ij}).$ <br/><br/>
+
+---
+## Scalar Product
+
+> **Definition:** the product of a matrix $A4 and a real number $k$ is a new matrix $B$ such that $b_{ij}=ka_{ij}.$ <br/><br/>
+
+--
+##### Example 5:
+
+Let $A=\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}.$ Compute the following matrices $B=kA$ where $k=2,1/2,-\pi.$ <br/><br/>
+---
+### Properties of the Scalar Product
+
+1. **Distributive in Adding Matrices:** $k(A+B)=kA+kB.$ <br/><br/>
+2. **Distributive in Adding Scalars :** $(k+l)A=kA+lA.$ <br/><br/>
+3. **Asociative:** $k(lA)=(kl)A.$ <br/><br/>
+4. **Scalar Identity:** $1A=A.$ <br/><br/>
+
+---
+## Matrix Product
+
+**Note** This operations can only be performed between matrices of specific sizes and the order of the factors *DOES* alter the product. <br/><br/>
+
+> **Definición:** Sea $A_{n\times m}$ y $B_{m\times k}$ entonces el producto $AB$ es una matriz $C_{n\times k}$ tal que $c_{ij}=\sum_{r=1}^{m} a_{ir}b_{rj}.$ <br/><br/>
+
+> **Note:** The number of columns of the first matrix must be equal to the number of rows of the second matrix. <br/><br/>
+
+--
+##### Example 6:
+
+Let $A=\begin{bmatrix} 1 & 2 & 3\\ 3 & 4 & -1 \end{bmatrix}$ and $B=\begin{bmatrix} 5 & 6 \\ 7 & 8 \\ -5 & -2 \end{bmatrix}.$ Compute the matrices $C=AB$ and $D=BA.$ <br/><br/>
+
+---
+### Properties of the Matrix Product
+
+1. **Asociative:** $(AB)C=A(BC).$ <br/><br/>
+2. **Distributive:** $A(B+C)=AB+AC.$ <br/><br/>
+3. **Non-conmutative:** In general, $AB \neq BA.$ <br/><br/>
+4. **Matrix Product Identity:** if $A$ is an $m\times n$ matrix, $I_m A=AI_n=A.$ <br/><br/>
+
+---
+## Matrix Transposition
+
+
+> **Definition:** The transpose of a matrix $A$ is a matrix $A^T$ such that $a_{ij}^T=a_{ji}.$ <br/><br/>
+
+--
+##### Example 7:
+
+Let $A=\begin{bmatrix} 1 & 2 & -2\\ 3 & 4 & 0 \end{bmatrix}.$ Compute the matrix $B=A^T.$

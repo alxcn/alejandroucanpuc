@@ -1,0 +1,19 @@
+---
+title: "Session 01: Matrix Arithmetics"
+weight: 1
+subtitle: "Higher dimensional arithmetics?"
+excerpt: ""
+date: '`r Sys.Date()`'
+slug: MA1030Eng-sesion-01
+draft: false
+---
+
+## Goals for the sessions:
+ * Introduce what is a matrix and its properties.
+ * Introduce the basic operations of matrix arithmetics.
+
+The slides for the  **Session 01** can be consulted in [slides](/slides/2024-FJ-MA1030Eng/MA1030-sesion-01).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2024-FJ-MA1030Eng/MA1030-sesion-01", ratio = "4:3")
+```

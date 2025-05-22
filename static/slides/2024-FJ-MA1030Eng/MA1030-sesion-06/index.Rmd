@@ -1,0 +1,134 @@
+---
+title: "Excel para Resolver Problemas de Optimización Lineal"
+subtitle: "Sesión 06"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "https://github.com/alxcn/TecLogoEIC/blob/9562a53875418e749a296c85808a19c85fc4be74/IngenieriaCiencias_Horizontal_RGB.png",
+  position = xaringanExtra::css_position(top = "2em", right = "2em")
+)
+```
+# Objetivos de la Sesión
+
+* Plantear problemas de Optimización Lineal. <br/><br/>
+* Instalar el complemento Solver en Excel. <br/><br/>
+* Plantear problemas de Optimización Lineal en Excel. <br/><br/>
+* Resolver problemas de Optimización Lineal en Excel. <br/><br/>
+
+---
+### Ejemplo:
+
+MG Auto tiene tres plantas en Los Ángeles, Detroit y Nueva Orleans y dos centros de distribución en Denver y Miami. Las capacidades trimestrales de las tres plantas son 1000, 1500 y 1200 autos, y las demandas en los dos centros de distribución para el mismo período son 2300 y 1400 autos. La tabla de millas entre las plantas y los centros de distribución se da en la tabla:
+
+| | Denver | Miami |
+|---|---|---|
+| Los Ángeles | 1000 | 2690 |
+| Detroit | 1250 | 1350 |
+| Nueva Orleans | 1275 | 850 |
+
+Si la compañía desea minimizar los costos de transporte sabiendo que el transportador cobra 8 centavos por milla y por carro, ¿cuántos autos deben ser enviados de cada planta a cada centro de distribución?
+
+---
+# Solver en Excel
+
+* **Solver** es un complemento de Excel que permite resolver problemas de optimización lineal y no lineal. <br/><br/> Para instalarlo, sigue los siguientes pasos:
+  1. Haz clic en **Archivo**.
+  2. Haz clic en **Opciones**.
+  3. Haz clic en **Complementos**.
+  4. Selecciona **Solver Add-in**.
+  5. Haz clic en **Ir**.
+  6. Selecciona **Solver Add-in**.
+  7. Haz clic en **Aceptar**.
+
+
+---
+# Plantear Problemas de Optimización Lineal en Excel
+
+
+---
+# Resolver con Solver
+
+1. Haz clic en **Datos**.
+2. Haz clic en **Solver**.
+3. En **Definir Objetivo**, selecciona la celda que contiene la función objetivo.
+4. En **Para**, selecciona **Min** o **Max**.
+5. En **Cambiar variable**, selecciona las celdas que contienen las variables de decisión.
+6. En **Sujeto a las restricciones**, selecciona las celdas que contienen las restricciones.
+7. Haz clic en **Resolver**.
+
+---
+### Ejemplo 2:
+
+Tres refinerías con capacidades diarias de 6, 5 y 8 millones de galones, respectivamente, suministran tres áreas de distribución con demandas diarias de 4, 8 y 7 millones de galones, respectivamente. La gasolina se transporta a las tres áreas de distribución a través de una red de oleoductos. El costo de transporte es de 10 centavos por 1000 galones por milla de oleoducto. La siguiente tabla muestra las distancias entre las refinerías y las áreas de distribución:
+
+| | Área 1 | Área 2 | Área 3 |
+|---|---|---|---|
+| Refinería 1 | 180 | 180 |  |
+| Refinería 2 | 300 | 800 | 900 |
+| Refinería 3 | 220 | 200 | 120 |
+
+¿Cuántos galones deben ser enviados de cada refinería a cada área de distribución para minimizar los costos de transporte?
+
+---
+
+### Ejemplo 3:
+
+Tres huertas suministran cajas de naranjas a cuatro minoristas. Los montos diarios de la demanda en los cuatro minoristas son 150, 150, 400 y 100 cajas, respectivamente. Los suministros en las tres huertas están dictados por la mano de obra regular disponible y se estiman en 150, 200 y 250 cajas diarias. Sin embargo, tanto las huertas 1 y 2 han indicado que podrían suministrar más cajas, si es necesario, utilizando mano de obra en horas extras. La huerta 3 no ofrece esta opción. Los costos de transporte por caja de las huertas a los minoristas se dan en la tabla:
+
+| | Minorista 1 | Minorista 2 | Minorista 3 | Minorista 4 |
+|---|---|---|---|---|
+| Huerta 1 | 1 | 2 | 3 | 2 |
+| Huerta 2 | 2 | 4 | 1 | 2 |
+| Huerta 3 | 1 | 3 | 5 | 3 |
+
+¿Cuántas cajas deben ser enviadas de cada huerta a cada minorista para minimizar los costos de transporte?
+
+---
+### Ejemplo 4:
+
+¿Cómo se modifica la solución del problema anterior si las huertas 1 y 2 cobran 1 y 2 centavos por la mitad de producción en horas extras?
+
+
+
+
+
