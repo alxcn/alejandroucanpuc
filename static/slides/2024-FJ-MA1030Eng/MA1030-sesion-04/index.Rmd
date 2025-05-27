@@ -1,6 +1,6 @@
 ---
-title: "Inversa de una Matriz"
-subtitle: "Sesión 04"  
+title: "Matrix Inverse"
+subtitle: "Session 04"  
 author: 
   - "Alejandro Ucan"
 date: '`r Sys.Date()`'
@@ -48,69 +48,80 @@ xaringanExtra::use_logo(
   position = xaringanExtra::css_position(top = "2em", right = "2em")
 )
 ```
-# Objetivos de la Sesión
+# Goals
 
-* El problema de definir la División de Matrices. <br/><br/>
-* La inversa de una matriz. <br/><br/>
-* Criterios para calcular la inversa de una Matriz. <br/><br/>
+* Zero Divisors. <br/><br/>
+* Matrix Inverse algorithm. <br/><br/>
+* Criteria for Matrix Inverse Existence. <br/><br/>
+
 
 ---
-# ¿Hay inversos multiplicativos?
+# Is there multiplicative inverses?
 
-> Recordemos que en los $\mathbb{R}$ para cada $x\neq 0$ existe un único número $y$ tal que $xy=1,$ a este número se le conoce como inverso multiplicativo. ¿Será posible definir el inverso multiplicativo para las matrices?
+
+> Recall that in $\mathbb{R}$ for each $x\neq 0$ there exists a unique number $y$ such that $xy=1,$ this number is known as the multiplicative inverse. <br/><br/>
+> Also, in $\mathbb{R}$ we have the property that $xy=0$ implies $x=0$ or $y=0$. <br/><br/>
+
+--
+> Is it possible to define the multiplicative inverse for matrices? <br/><br/>
+
+Compute the following product: $$\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} -1 & 1 \\ 1 & -1 \end{bmatrix}$$
+
+---
+# Is there multiplicative inverses?
+
+Consider the matrix $$A=\begin{bmatrix} 1 & 0 \\ 2 & 0 \end{bmatrix},$$ if there is a matrix $B$ such that $AB=I_{2\times 2}$, then we can write $$\begin{bmatrix} 1 & 0 \\ 2 & 0 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 2 & 0 \end{bmatrix}$$ where $I_{2\times 2}$ is the identity matrix of size $2\times 2$. <br/><br/> 
+
+---
+## Non-Singular Matrices
+
+> **Definition:** A square matrix $A$ of size $n\times n$ is said to be non-singular if there exists a matrix $B$ of size $n\times n$ such that $$AB=BA=I_{n\times n}$$ where $I_{n\times n}$ is the identity matrix of size $n\times n$. <br/><br/>
 
 --
 
-Veamos un ejemplo: sea $A=\begin{bmatrix} 1 & 0 \\ 2 & 0 \end{bmatrix}$ si queremos una matriz que funja como la inversa entonces se debe cumplir que $AB=I_{2\times 2}$ esto es $$\begin{bmatrix} 1 & 0 \\ 2 & 0 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a & b \\ 2a & 2b \end{bmatrix}$$ de donde obtenemos el sistema $$\begin{cases} a = 1 \\ b = 0 \\ 2a=0 \\ 2b=1 \end{cases}$$ que claramente no tiene solución. 
+##### Example 1: 
+
+Verify that the following matrices are inverses: $A=\begin{bmatrix} 1 & 0 \\ 2 & 1 \end{bmatrix}$ Addition $B=\begin{bmatrix} 1 & 0 \\ -2 & 1 \end{bmatrix}.$
 
 ---
-## Matrices Invertibles
 
-> **Definición:** Una matriz cuadrada $n\times n$ se dice que es invertible si existe $B$ (matriz de $n\times n$) tal que $$AB=BA=I_{n\times n}.$$
+##### Example 2:
+
+Verify that the following matrices are inverses: $A=\begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & -1\end{bmatrix}$ and $B=\begin{bmatrix} 1/2 & 0 & 1/2 \\ 0 & 1 & 0 \\ 1/2 & 0 & -1/2 \end{bmatrix}$
+
+---
+##### Example 3:
+
+Find the nverse matrix of $$A= \begin{bmatrix} 3 & 2 \\ -2 & 1 \end{bmatrix}$$
+
+---
+## Gauss Elimination for Finding the Inverse
+
+> As the process of finding the inverse is similar to the process of solving a system of linear equations, we can use the same method. <br/><br/>
+
 
 --
 
-##### Ejemplo 1: 
+##### Example 4:
 
-Verifique que las siguientes matrices son inversas la una de la otra: $A=\begin{bmatrix} 1 & 0 \\ 2 & 1 \end{bmatrix}$ y $B=\begin{bmatrix} 1 & 0 \\ -2 & 1 \end{bmatrix}.$
-
----
-
-##### Ejemplo 2:
-
-Verique que las siguientes matrices son inversas la una de la otra: $A=\begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & -1\end{bmatrix}$ y $B=\begin{bmatrix} 1/2 & 0 & 1/2 \\ 0 & 1 & 0 \\ 1/2 & 0 & -1/2 \end{bmatrix}$
-
---
-
-##### Ejemplo 3:
-
-Calcula la matriz inversa de la siguiente matriz: $$A= \begin{bmatrix} 3 & 2 \\ -2 & 1 \end{bmatrix}$$
-
----
-##### Gauss para Encontrar la Inversa
-
-> Podemos usar una modificación del Método de Eliminación Gaussiana para encontrar inversas:
-
---
-
-##### Ejemplo 4:
-
-Calcula la matriz inversa de $\begin{bmatrix} 5 & 1 \\ 4 & 1 \end{bmatrix}$ para ello construimos una matriz aumentada con una identidad del tamaño adecuado: $$\begin{bmatrix} 5 & 1 & 1 & 0  \\ 4 & 1 & 0 & 1 \end{bmatrix}$$
-
----
-# Pasos del Método:
-
-1. Uso Gauss para llevar la matriz aumentada a una forma escalonada (matriz triangular superior). <br/><br/>
-
---
-
-2. Continuo la reducción pero ahora haciendo cero las entradas arriba de los pivotes (hacer la matriz de la izquierda la identidad).
+Compute the inverse of the matrix $$A=\begin{bmatrix} 5 & 1 \\ 4 & 1 \end{bmatrix}$$ using Gauss elimination. <br/><br/>
 
 
 ---
-##### Practica:
+# Algorithm
 
-Calcula las matrices inversas de: 
+
+1. Use Gaussian Elimination to reduce the augmented matrix $[A|I]$ to a upper triangular form. <br/><br/>
+
+2. Continue the reduction but now making zero the entries above the pivots (make the left matrix the identity), you will obtain a matrix of the form $[I|B]$. <br/><br/>
+the form $[I|B]$, where $I$ is the identity matrix and $B$ is the inverse of $A$. <br/><br/>
+
+
+
+---
+##### Practice:
+
+Find the inverse of the following matrices using the Gauss elimination method:
 
 1. $A=\begin{bmatrix} 1 & 0 & -1 \\ 1 & 0 & 2 \\ 0 & 1 & 0 \end{bmatrix}$
 
@@ -119,14 +130,14 @@ Calcula las matrices inversas de:
 3. $A=\begin{bmatrix} 1 & 0 & -1 \\ 1 & 1 & 0 \\ 0 & 1 & 0 \end{bmatrix}$
 
 ---
-# ¿Para que podemos usar la inversa?
+# Why we can use the inverse?
 
-Supongamos que tenemos un SEL $$Ax=b$$ y que $A$ es una matriz invertible, debido a la igualdad podemos multiplicar por la inversa ambos lados (del lado derecho) y calcular la solución de manera "directa": $$x=Ix= (A^{-1} A)x= A^{-1} (Ax)=A^{-1}b.$$ Que mi matriz sea invertible restringe a que mi SEL solo tiene solución única.
+Assume we have a system of linear equations (SLE) $$Ax=b$$ and that $A$ is an invertible matrix. Due to the equality, we can multiply both sides (from the right) by the inverse and calculate the solution "directly": $$x=Ix= (A^{-1} A)x= A^{-1} (Ax)=A^{-1}b.$$ The fact that my matrix is invertible restricts my SLE to have only one solution.
 
 ---
-#### Practica:
+#### Practice:
 
-Con las matrices anteriores, calcula la solución del Sistema si:
+With the previous matrices, compute the solution of the following systems of linear equations $Ax=b$ where $b$ are:
 
 1. $b=\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}$
 
@@ -135,34 +146,39 @@ Con las matrices anteriores, calcula la solución del Sistema si:
 3. $b=\begin{bmatrix} 500 \\ 420 \\ 120 \end{bmatrix}$
 
 ---
-# ¿Cómo saber cuando una matriz es invertible?
+# How to know if a matrix is invertible?
 
-Hasta ahora no sabemos como decidir si mi matriz es invertible más que realizando el método para calcular la inversa. Sin embargo, ¿qué pasaría si tengo un sistema de $10000 \times 10000$? No puedo realizar el proceso y que al final resulte que no es invertible. 
+Until now we do not know how to decide if my matrix is invertible other than performing the method to calculate the inverse. However, what would happen if I have a $10000 \times 10000$ system? I cannot perform the process and at the end it turns out that it is not invertible.
 
 --
 
-> **Definición:** El *Determinante* es un número asociado a cada matriz cuadrada que me permite distinguir si mi matriz es invertible o no. El criterio es: si el determinante es distinto de cero entonces mi matriz es invertible, y si es cero entonces mi matriz no es invertible.
+> **Definition:** The *determinant* of a square matrix $A$ is a number associated with the matrix that allows us to determine if the matrix is invertible or not. The criterion is: if the determinant is different from zero, then my matrix is invertible (non-singular), and if it is zero, then my matrix is not invertible (singular).
+
 
 
 ---
-## Determinante de una Matriz de $2\times 2$
+## Determinant of a $2\times 2$ Matrix
 
-> **Definición:** Sea $A=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ entonces el determinante de $A$ es $$\det(A)=ad-bc.$$
+
+> **Definition:** Let $A=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ be a matrix of size $2\times 2$, then the determinant of $A$ is defined as $$\det(A)=ad-bc.$$
+
 
 --
 
-##### Ejemplo 5: 
+##### Example 5: 
 
-Calcula el determinante de la matriz: 
+Compute the determinant of the following matrices: 
 1. $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$
 2. $\begin{bmatrix} 2 & 1 \\ -4 & -2 \end{bmatrix}$
 3. $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$
 4. $\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$
 
 ---
-## Determinante de una Matriz de $3\times 3$
+## Determinant of a $3\times 3$ Matrix
 
-> **Definición:** Sea $A=\begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}$ entonces el determinante de $A$ es $$\det(A)=a(ei-fh)-b(di-fg)+c(dh-eg).$$
+
+> **Definition:** Let $A=\begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}$ be a matrix of size $3\times 3$, then the determinant of $A$ is defined as $$\det(A)=a(ei-fh)-b(di-fg)+c(dh-eg).$$
+
 
 --
 1. $\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$
