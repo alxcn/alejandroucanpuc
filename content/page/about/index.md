@@ -1,10 +1,18 @@
 ---
-menu: 
-    main:
-        name: Home
-        weight: 1
-        params: 
-            icon: home
+title: About
+description: Welcome to my website,
+date: '2025-06-19'
+aliases:
+  - about-me
+  - alejandro-ucan-puc
+  - contact
+license: CC BY-NC-ND
+lastmod: '2025-06-19'
+menu:
+    main: 
+        weight: -90
+        params:
+            icon: user
 ---
 # Hello, I'm Alejandro!
 
@@ -20,4 +28,4 @@ I'm part of the leaders of the Mathematics competition team at Tecnologico de Mo
 
 In addition to my academic pursuits, I have a variety of personal interests. I enjoy to watch anime, going to the gym, play video games and listening to pop music, especially French pop. I also have a passion for baking, and I love to experiment with new recipes in the kitchen.
 
-If you have any questions or would like to connect, feel free to reach out to me via email at [alejandro.ucan-puc@tec.mx]
+If you have any questions or would like to connect, feel free to reach out to me via email at [alejandro.ucan-puc@tec.mx](mail_to:alejandro.ucan-puc@tec.mx)
