@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on Alejandro Ucan-Puc</title><link>/page/</link><description>Recent content in Pages on Alejandro Ucan-Puc</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 19 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="/page/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>/about/</link><pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate><guid>/about/</guid><description>&lt;h1 id="hello-im-alejandro">Hello, I&amp;rsquo;m Alejandro!
+&lt;/h1>&lt;p>I&amp;rsquo;m currently a full-time professor at Tecnologico de Monterrey, Campus Monterrey since August 2022. I&amp;rsquo;m part of the Mathematics Department and I teach courses exploring courses for the Engineering programs, as well as specialized courses in the Data Science and Mathematics programs.&lt;/p>
+&lt;p>I hold a Ph.D. from the Instituto de Matemáticas de la UNAM, where I worked with Dr. José Seade and Dr. Angel Cano, with a research about Dynamics and Geometry of discrete subgroups of the projective complex linear group. My research interests include discrete groups dynamics, geometric structures, topological data analysis, and artificial intelligence.&lt;/p>
+&lt;p>Previously, I was at the Institut de Mathématiques de Jussieu Paris-Rive Gauche in a Postdoctoral fellowship with Dr. Elisha Falbel, where I worked on the uniformization of orbifolds and representation varieties.&lt;/p>
+&lt;p>I have published papers related to limit sets of projective discrete groups, uniformization of orbifolds, representation varieties, geometric structures, and computational algorithms for Hausdorff dimensions. Currently, I&amp;rsquo;m interested in the detection of LLM-generated text using topological features and Reidemaister moves using AI.&lt;/p>
+&lt;p>I&amp;rsquo;m part of the leaders of the Mathematics competition team at Tecnologico de Monterrey, where we participate in national and international competitions, like the Mexican Unversitary Mathematics Olympiad (OMUM), the Ibero-American Interuniversity Mathematics Competition (CIIM), the Putnam Competition, etc.&lt;/p>
+&lt;p>In addition to my academic pursuits, I have a variety of personal interests. I enjoy to watch anime, going to the gym, play video games and listening to pop music, especially French pop. I also have a passion for baking, and I love to experiment with new recipes in the kitchen.&lt;/p>
+&lt;p>If you have any questions or would like to connect, feel free to reach out to me via email at &lt;a class="link" href="mail_to:alejandro.ucan-puc@tec.mx" >alejandro.ucan-puc@tec.mx&lt;/a>&lt;/p></description></item><item><title>Course Materials</title><link>/courses/</link><pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate><guid>/courses/</guid><description>&lt;p>The following is a list of my course materials, including lecture notes, assignments, and other resources for students.&lt;/p>
+&lt;p>For english courses, you can find the materials on the &lt;a class="link" href="/main/courses/english" >English Courses&lt;/a> page.&lt;/p></description></item><item><title>English</title><link>/courses/english/</link><pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate><guid>/courses/english/</guid><description/></item><item><title>Research</title><link>/research/</link><pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate><guid>/research/</guid><description>&lt;p>The following is a list of my current and past research projects, publications, and other academic contributions.&lt;/p></description></item><item><title>Archives</title><link>/archives/</link><pubDate>Fri, 06 Jun 2025 00:00:00 +0000</pubDate><guid>/archives/</guid><description/></item><item><title>Teaching</title><link>/teaching/</link><pubDate>Fri, 06 Jun 2025 00:00:00 +0000</pubDate><guid>/teaching/</guid><description>&lt;h2 id="courses-i-teach-fj-2025">Courses I teach (FJ-2025)
+&lt;/h2>&lt;!-- this is a subheadline -->
+&lt;ul>
+&lt;li>MA1029 (Eng): Intermediate Mathematical Modelling. &lt;br/>&lt;br/>&lt;/li>
+&lt;li>MA1030 (Eng): Matricial Modelling. &lt;br/>&lt;br/>&lt;/li>
+&lt;li>MA2007B: Uso de Geometría y Topología para la ciencia de Datos. &lt;br/>&lt;br/>&lt;/li>
+&lt;li>F1015B (Math Module): .&lt;br/>&lt;br/>&lt;/li>
+&lt;li>F1016B (Math Module): .&lt;br/>&lt;br/>&lt;/li>
+&lt;li>Research&lt;/li>
+&lt;/ul>
+&lt;h2 id="my-office-hours">My office hours:
+&lt;/h2>&lt;h3 id="period-1">Period 1
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Horario&lt;/th>
+&lt;th>Lunes&lt;/th>
+&lt;th>Martes&lt;/th>
+&lt;th>Miercoles&lt;/th>
+&lt;th>Jueves&lt;/th>
+&lt;th>Viernes&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>09:00 - 11:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>Research&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>11:00 - 13:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA1029&lt;/td>
+&lt;td>Research&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA1029&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>13:00 - 15:00&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>15:00 - 17:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA1029&lt;/td>
+&lt;td>F1015B&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA1029&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>17:00 - 19:00&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="period-2">Period 2
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Horario&lt;/th>
+&lt;th>Lunes&lt;/th>
+&lt;th>Martes&lt;/th>
+&lt;th>Miercoles&lt;/th>
+&lt;th>Jueves&lt;/th>
+&lt;th>Viernes&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>09:00 - 11:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>Research&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>11:00 - 13:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA1029&lt;/td>
+&lt;td>Research&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA1029&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>13:00 - 15:00&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>15:00 - 17:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA1029&lt;/td>
+&lt;td>F1016B&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA1029&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>17:00 - 19:00&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="period-3">Period 3
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Horario&lt;/th>
+&lt;th>Lunes&lt;/th>
+&lt;th>Martes&lt;/th>
+&lt;th>Miercoles&lt;/th>
+&lt;th>Jueves&lt;/th>
+&lt;th>Viernes&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>07:00 - 09:00&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;td>MA2007B&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>9:00 - 11:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>Research&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>11:00 - 13:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>Research&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>MA1030&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>13:00 - 15:00&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>MA1030&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;td>MA1030&lt;/td>
+&lt;td>Lunch&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>15:00 - 17:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>17:00 - 19:00&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Links</title><link>/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/links/</guid><description>&lt;p>To use this feature, add &lt;code>links&lt;/code> section to frontmatter.&lt;/p>
+&lt;p>This page&amp;rsquo;s frontmatter:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">links&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">GitHub&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">GitHub is the world&amp;#39;s largest software development platform.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">website&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://github.com&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">TypeScript&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">website&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://www.typescriptlang.org&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ts-logo-128.jpg&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>image&lt;/code> field accepts both local and external images.&lt;/p></description></item><item><title>Search</title><link>/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/search/</guid><description/></item></channel></rss>
