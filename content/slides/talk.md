@@ -1,8 +1,4 @@
 ---
-title: "Example Slides"
-layout: "reveal"  # Uses hugo-reveal's layout
----
----
 title: "My Presentation"
 output: revealjs
 ---
@@ -14,3 +10,9 @@ Content here.
 
 # Slide 2
 More content
+
+---
+# slide 4
+```python
+print("Hello, World!")
+```
