@@ -1,0 +1,21 @@
+---
+title: "S04: Proceso de Gram-Schmidt"
+weight: 4
+subtitle: ""
+excerpt: "Con la ayuda del algoritmo de Gram-Schmidt construiremos bases ortonormales."
+date: '`r Sys.Date()`'
+slug: MA1034-session-04
+draft: false
+---
+
+En esta sesión de **MA1034** nuestros objetivos son:
+
+
+* Definir bases ortonormales. <br/><br/>
+* Construir bases ortonormales. <br/><br/>
+
+El contenido para la **Sesión 04** se encuentra en following [slides](/slides/2023-AD-MA1034/MA1034-sesion-04).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2023-AD-MA1034/MA1034-sesion-04", ratio = "4:3")
+```

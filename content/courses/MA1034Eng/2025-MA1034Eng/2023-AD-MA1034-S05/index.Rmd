@@ -1,0 +1,23 @@
+---
+title: "S05: Transformaciones Lineales"
+weight: 5
+subtitle: ""
+excerpt: "Definiremos las funciones que preservan la estructura de espacio vectorial."
+date: '`r Sys.Date()`'
+slug: MA1034-session-05
+draft: false
+---
+
+En esta sesión de **MA1034** nuestros objetivos son:
+
+
+* Introducir el concepto de Transformación lineal. <br/><br/>
+* Demostrar que una función es una transformación lineal. <br/><br/>
+* Calcular los subespacios predilectos: Núcleo e Imagen. <br/><br/>
+* Teorema de la Dimensión.
+
+El contenido para la **Sesión 05** se encuentra en following [slides](/slides/2023-AD-MA1034/MA1034-sesion-05).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2023-AD-MA1034/MA1034-sesion-05", ratio = "4:3")
+```

@@ -6,6 +6,7 @@ description: |
   ## English Courses
   
   * [MA1029Eng](https://alejandro-ucan.netlify.app/courses/MA1029Eng/): Intermediate Mathematical Modeling.
+  * [MA1034Eng](https://alejandro-ucan.netlify.app/courses/MA1034Eng/): Process Modelling using Linear Algebra.
   * [F1015BEng](https://alejandro-ucan.netlify.app/course/F1015B/): Thermodynamics Modeling in Engineering.
   
   ## Spanish Courses

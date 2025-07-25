@@ -1,0 +1,24 @@
+---
+title: "S02: Espacios Generados y Dimensión"
+weight: 2
+subtitle: ""
+excerpt: "Introduciremos el concepto de combinaciones lineales, y espacios generados; para finalizar con la descripción de la dimensión de un espacio vectorial"
+date: '`r Sys.Date()`'
+slug: MA1034-session-02
+draft: false
+---
+
+En esta sesión de **MA1034** nuestros objetivos son:
+
+
+* Introducir las combinaciones lineales. <br/><br/>
+* Diferenciar entre dependencia e independencia lineal. <br/><br/>
+* Introducir los espacios generados. <br/><br/>
+* Definir el concepto de dimensión. <br/><br/>
+
+
+El contenido para la **Sesión 02** se encuentra en following [slides](/slides/2023-AD-MA1034/MA1034-sesion-02).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2023-AD-MA1034/MA1034-sesion-02", ratio = "4:3")
+```

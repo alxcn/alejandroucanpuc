@@ -1,0 +1,22 @@
+---
+title: "S03: Ortogonalidad"
+weight: 3
+subtitle: ""
+excerpt: "Con la ayuda del producto interno definiremos lo que es el ángulo entre dos vectores e introduciremos el concepto de ortogonalidad"
+date: '`r Sys.Date()`'
+slug: MA1034-session-03
+draft: false
+---
+
+En esta sesión de **MA1034** nuestros objetivos son:
+
+
+* Introducir el concepto de producto interno. <br/><br/>
+* Definir el ángulo entre dos vectores. <br/><br/>
+* Introducir el concepto de ortogonalidad. <br/><br/>
+
+El contenido para la **Sesión 03** se encuentra en following [slides](/slides/2023-AD-MA1034/MA1034-sesion-03).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2023-AD-MA1034/MA1034-sesion-03", ratio = "4:3")
+```

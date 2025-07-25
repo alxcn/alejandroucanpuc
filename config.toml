@@ -1,4 +1,4 @@
-baseURL = "https://alejandro-ucan.netlify.app/"
+baseURL = "https://alejandroucanpuc.netlify.app/"
 theme = "hugo-apero"
 languageCode = "en"
 title = "Personal Website of Alejandro Ucan-Puc"
@@ -97,7 +97,7 @@ enableEmoji = true
 
   # Configuration of math rendering
   [params.math]
-    renderer = "mathjax" # one of "mathjax" / "katex" 
+    renderer = "katex" # one of "mathjax" / "katex" 
 
   # Social icons may appear on homepage and in site header or footer
   # Configure show/hide above - add as many as you like below

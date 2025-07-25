@@ -1,0 +1,20 @@
+---
+title: "S06: Transformaciones Lineales"
+weight: 6
+subtitle: ""
+excerpt: "Asociaremos una matriz a una transformación lineal."
+date: '`r Sys.Date()`'
+slug: MA1034-session-06
+draft: false
+---
+
+En esta sesión de **MA1034** nuestros objetivos son:
+
+
+* Construiremos una matriz asociada a una transformación lineal. <br/><br/>
+
+El contenido para la **Sesión 06** se encuentra en following [slides](/slides/2023-AD-MA1034/MA1034-sesion-06).
+
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "/slides/2023-AD-MA1034/MA1034-sesion-06", ratio = "4:3")
+```
