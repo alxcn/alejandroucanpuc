@@ -5,13 +5,13 @@ description: |
   
   ## English Courses
   
-  * [MA1029Eng](https://alejandro-ucan.netlify.app/courses/MA1029Eng/): Intermediate Mathematical Modeling.
-  * [MA1034Eng](https://alejandro-ucan.netlify.app/courses/MA1034Eng/): Process Modelling using Linear Algebra.
-  * [F1015BEng](https://alejandro-ucan.netlify.app/course/F1015B/): Thermodynamics Modeling in Engineering.
+  * [MA1029Eng](https://alejandroucanpuc.netlify.app/courses/MA1029Eng/): Intermediate Mathematical Modeling.
+  * [MA1034Eng](https://alejandroucanpuc.netlify.app/courses/MA1034Eng/): Process Modelling using Linear Algebra.
+  * [F1015BEng](https://alejandroucanpuc.netlify.app/course/F1015B/): Thermodynamics Modeling in Engineering.
   
   ## Spanish Courses
-  * [F1009](https://alejandro-ucan.netlify.app/courses/F1009): Análisis de Métodos Matemáticos para la Física.
-  * [MA2007B](https://alejandro-ucan.netlify.app/courses/MA2007B): Uso de Geometría y Topología para la Ciencia de Datos.
+  * [F1009](https://alejandroucanpuc.netlify.app/courses/F1009): Análisis de Métodos Matemáticos para la Física.
+  * [MA2007B](https://alejandroucanpuc.netlify.app/courses/MA2007B): Uso de Geometría y Topología para la Ciencia de Datos.
 author: "Alejandro Ucan-Puc"
 show_post_thumbnail: true
 thumbnail_left: true # for list-sidebar only
