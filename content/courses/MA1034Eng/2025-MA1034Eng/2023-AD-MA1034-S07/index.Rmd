@@ -1,21 +1,21 @@
 ---
-title: "S07: Vectores y Valores Propios"
+title: "S07: Orthogonality and Projections"
 weight: 7
 subtitle: ""
-excerpt: "describiremos los vectores principales asociados a una matriz."
+excerpt: "Describe projections between vectors, angles and orthogonality, and we their applications."
 date: '`r Sys.Date()`'
 slug: MA1034-session-07
 draft: false
 ---
 
-En esta sesión de **MA1034** nuestros objetivos son:
+In this session of **MA1034Eng** the objectives are:
 
 
-* Definir los conceptos de vectores y valores propios. <br/><br/>
-* Calcular vectores y valores propios. <br/><br/>
+* Define the concepts of orthogonality and projections. <br/><br/>
+* Calculate projections of vectors. <br/><br/>
 
-El contenido para la **Sesión 07** se encuentra en following [slides](/slides/2023-AD-MA1034/MA1034-sesion-07).
+The slides for **Session 07** are available in the following [slides](/slides/2024-AD-MA1034Eng/MA1034-sesion-07).
 
 ```{r embed-xaringan, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "/slides/2023-AD-MA1034/MA1034-sesion-07", ratio = "4:3")
+xaringanExtra::embed_xaringan(url = "/slides/2024-AD-MA1034Eng/MA1034-sesion-07", ratio = "4:3")
 ```

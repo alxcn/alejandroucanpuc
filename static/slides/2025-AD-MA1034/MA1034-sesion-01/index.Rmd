@@ -1,0 +1,196 @@
+---
+title: "Vector Spaces"
+subtitle: "Session 01" 
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width = 9, fig.height = 3.5, fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals of the Session
+* Define the structure of a vector space. <br/><br/>
+* Introduce examples of vector spaces. <br/><br/>
+* Define vector subspaces. <br/><br/>
+
+---
+# Motivation
+
+Three factory workstations share materials to produce different products. This setting is called a production system. Each workstation outputs depend on the materials it receives from the other workstations and it is given by 
+$$T=\left(\begin{array}{ccc} 2& -1 & 0 \\ 0 & 1 & 1 \\ 1 & 0 & -1 \end{array}\right)$$
+
+where the columns represent the materials and the rows represent the workstations, negative numbers indicate a consumption of materials. 
+
+---
+# Motivation 
+
+We want to understand the following from the system:
+
+1. How to determine when the system does not produce anything? <br/><br/>
+2. How we can describe the set of all possible outputs? <br/><br/>
+3. Is there an arrangement of the material distribution that guaranties the optimal production? <br/><br/>
+
+---
+# Motivation
+
+All these questions can be answered by the theory of vector spaces. <br/><br/>
+
+The theory of vector spaces is a branch of mathematics that studies the properties and structures of vector spaces, which are mathematical objects that generalize the concept of vectors. <br/><br/>
+
+---
+
+# Deducing the structure of a vector space.
+
+Consider the following two sets: <br/>
+* $\mathbb{R}$ the set of all real numbers. <br/>
+* $\mathbb{R}^2$ the set of all pairs of real numbers. <br/><br/>
+
+What are the operations that we can define on these sets? <br/>
+
+Is there any properties that these operations satisfy? <br/>
+
+
+
+---
+
+# What is a vector space?
+
+> **Definition:**
+> A set of objects $V$ with two operations, addition and scalar multiplication, is called a *vector space* if it satisfies certain properties. <br/><br/> The objects in $V$ are called *vectors* and the scalars are elements of a field $\mathbb{R}$<sup> 1 </sup> .footnote[In general cases, this could be any other field of numbers like complex, quaternions or rationals] <br/><br/>
+
+**Note:** The propierties that a vector space must satisfy are called *axioms* and are listed below. <br/><br/>
+
+---
+
+## Axioms of a Vector space
+
+1. **Closure under addition:** For all $u, v \in V,$ the sum $u + v \in V.$ <br/>
+2. **Closure under scalar multiplication:** For all $u \in V$ and $\lambda \in \mathbb{R},$ the product $\lambda u \in V.$ <br/>
+3. **Associativity of addition:** For all $u, v, w \in V,$ $(u + v) + w = u + (v + w).$ <br/>
+4. **Commutativity of addition:** For all $u, v \in V,$ $u + v = v + u.$ <br/>
+5. **Existence of additive identity:** There exists an element $0 \in V$ such that for all $u \in V,$ $u + 0 = u.$ <br/>
+6. **Existence of additive inverses:** For every $u \in V,$ there exists an element $-u \in V$ such that $u + (-u) = 0.$ <br/>
+7. **Distributive property of scalar multiplication with respect to vector addition:** For all $\lambda \in \mathbb{R}$ and $u, v \in V,$ $\lambda (u + v) = \lambda u + \lambda v.$ <br/>
+8. **Distributive property of scalar multiplication with respect to scalar addition:** For all $\lambda, \mu \in \mathbb{R}$ and $u \in V,$ $(\lambda + \mu) u = \lambda u + \mu u.$ <br/>
+9. **Associativity of scalar multiplication:** For all $\lambda, \mu \in \mathbb{R}$ and $u \in V,$ $(\lambda \mu) u = \lambda (\mu u).$ <br/>
+10. **Existence of multiplicative identity:** For all $u \in V,$ $1 u = u.$ <br/>
+
+---
+
+## Activity
+
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alno87qexhorh1cnxt96rmgaq7zjsvg7/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+
+---
+
+## Generic elements of a vector space.
+
+> **Convention:** Given a set $V$ a variable $x$ is used to denote a generic element of $V$ and must satisfy the constraints of belonging to $V.$ <br/><br/>
+> For example, if $V=\mathbb{R}^2,$ then a generic element of $V$ is denoted by $x=(a,b)$ where $a,b\in\mathbb{R}.$ <br/><br/> If $V=\mathbb{R}^{n \times m},$ then a generic element of $V$ is denoted by $x=(a_{ij})_{i=1,\dots,n}^{j=1,\dots,m}$ where $a_{ij}\in\mathbb{R}.$ <br/><br/> If $V=P_n(\mathbb{R}),$ then a generic element of $V$ is denoted by $x=a_0+a_1x+\cdots+a_nx^n$ where $a_i\in\mathbb{R}.$
+
+---
+
+## Examples of Vector Spaces.
+
+> Consider the space $V=\mathbb{R}^n$ of n-tuples of real numbers, with the following operations: <br/>
+* Sum: $(a_1,a_2,\dots,a_n)+(b_1,b_2,\dots,b_n)=(a_1+b_1,a_2+b_2,\dots,a_n+b_n).$ <br/>
+* Multiplication by a scalar: $\lambda(a_1,a_2,\dots,a_n)=(\lambda a_1,\lambda a_2,\dots,\lambda a_n).$ <br/>
+Let's prove that it is a vector space.
+
+---
+
+## Examples of Vector Spaces.
+
+> Consider the space $V=P_3(\mathbb{R})$ of polynomials of degree less than or equal to three in the variable $x,$ with real coefficients, with the usual operations of sum of polynomials and scalar multiplication. <br/><br/> 
+
+--
+
+> Consider the space $V=C([a,b],\mathbb{R})$ of continuous functions defined on the interval $[a,b]$ with real coefficients, with the usual operations of sum of functions and scalar multiplication. <br/><br/> Let's prove that it is a vector space.
+
+---
+
+## Counterexamples of Vector Spaces.
+
+> Consider the set $V=\mathbb{R}^2$ with the vector addition and the scalar multiplication defined as follows: <br/>
+* Sum: $(a_1,a_2)+(b_1,b_2)=(a_1+b_1,a_2+b_2).$ <br/>
+* Multiplication by a scalar: $\lambda(a_1,a_2)=(0,0).$ <br/><br/> Let's prove that this is not a vector space. <br/><br/>
+
+---
+
+## Vector Subspaces.
+
+> **Definition:** A vector subspace of a vector space $V$ is a subset $W$ of $V$ that is a vector space with the operations of $V.$ <br/><br/>
+
+> **Note:** If $W$ is a subset of a vector space $V,$ it will be sufficient to check the closure under the operations of addition and scalar multiplication to prove that $W$ is a vector subspace of $V.$ <br/><br/>
+
+---
+
+### Examples of Vector Subspaces.
+
+> For example, in the vector space $\mathbb{R}^2,$ the line that passes through the origin is a vector subspace. <br/><br/> Consider the line $W=\{(x,y)\in\mathbb{R}^2:y=mx\}$ where $m$ is a constant. <br/><br/> Let's see that $W$ is a vector subspace.
+
+---
+
+## Vector Subspaces.
+
+> For example, in the vector space $\mathbb{R}^3,$ the lines that pass through the origin are vector subspaces. <br/><br/> Consider the line $W_1=\{(x,y,z)\in\mathbb{R}^3:ax=z\}$ where $a$ is a constant. <br/><br/> Let's see that $W_1$ is a vector subspace. This is also true for the planes that pass through the origin. <br/><br/> Consider the plane $W_2=\{(x,y,z)\in\mathbb{R}^3:ax+by=c\}$ where $a,b,c$ are constants and $c=0.$ <br/><br/> Let's see that $W_2$ is a vector subspace.
+
+---
+
+## Vector Subspaces.
+> For example, in the vector space $P_3(\mathbb{R}),$ the set of polynomials of degree less than or equal to two is a vector subspace. <br/><br/> Let's see that it is a vector subspace.
+
+---
+
+## Applied Examples of Vector spaces.
+
+> 1. Consider the set of all possible production outputs of the production system described in the motivation. <br/><br/> The set of all possible outputs is a vector subspace of $\mathbb{R}^3.$ <br/><br/>
+
+> 2. Consider the set of all possible distributions of materials in the production system described in the motivation. <br/><br/> The set of all possible distributions is a vector subspace of $\mathbb{R}^3.$ <br/><br/>
+
+---
+
+## Applied Examples of Vector subspaces
+
+> 1. Consider the set all possible production outputs of the production system described in the motivation. Consider all those where the workstation does not produce anything. *Could be this subset a vector subspace? Which one does describe it better?* <br/><br/>
+
+> 2. Consider the set of all possible distributions of materials in the production system described in the motivation. Consider all those outputs where three workstations produce the same amount of output. *Could be this subset a vector subspace? Which one does describe it better?* <br/><br/>
+
+---
+
+### Activity
+
+[Practice on Applied Vector Spaces](https://play.kahoot.it/v2/lobby?quizId=2d659160-583f-4df2-9480-94a0abba953a)

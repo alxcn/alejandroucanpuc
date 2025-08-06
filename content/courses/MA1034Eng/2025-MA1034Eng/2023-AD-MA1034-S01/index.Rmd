@@ -4,7 +4,7 @@ weight: 1
 subtitle: ""
 excerpt: "We will introduce the objects that are vector spaces and their properties."
 date: '`r Sys.Date()`'
-slug: MA1034Eng-session-01
+slug: MA1034eng-session-01
 draft: false
 ---
 
@@ -16,9 +16,8 @@ In this session of **MA1034(Eng)** the objectives are:
 * Define the vector subspaces. <br/><br/>
 
 
-The content for the **Session 01** is available in the following [slides](/slides/2024-AD-MA1034Eng/MA1034-sesion-01).
-
+The content for the **Session 01** is available in the following [slides](/slides/2022-AD-MA1034eng/MA1034-sesion-01).
 
 ```{r embed-xaringan, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "/slides/2024-AD-MA1034Eng/MA1034-sesion-01", ratio = "4:3")
+xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1034eng/MA1029-sesion-01", ratio = "4:3")
 ```

@@ -97,7 +97,7 @@ enableEmoji = true
 
   # Configuration of math rendering
   [params.math]
-    renderer = "katex" # one of "mathjax" / "katex" 
+    renderer = "mathjax" # one of "mathjax" / "katex" 
 
   # Social icons may appear on homepage and in site header or footer
   # Configure show/hide above - add as many as you like below
@@ -149,15 +149,10 @@ enableEmoji = true
     url = "/talk/"
     weight = 4
   [[menu.header]]
-    name = "Courses"
-    title = "Courses Material"
-    url = "/courses/"
-    weight = 5
-  [[menu.header]]
     name = "Data Science Seminar"
     title = "Seminar"
     url = "/Seminar/"
-    weight = 6
+    weight = 5
     
   # Configure footer  
   [[menu.footer]]

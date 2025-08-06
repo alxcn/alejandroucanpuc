@@ -1,22 +1,22 @@
 ---
-title: "S08: Diagonalización"
+title: "S08: Gram-Schmidt Process and Orthonormal basis"
 weight: 8
 subtitle: ""
-excerpt: "Describiremos como conseguir una representación matricial más amable para una t.l."
+excerpt: "We will describe how to obtain a orthonormal basis for a vector space using the Gram-Schmidt process."
 date: '`r Sys.Date()`'
 slug: MA1034-session-08
 draft: false
 ---
 
-En esta sesión de **MA1034** nuestros objetivos son:
+In this session of **MA1034Eng** the objectives are:
 
+* Orthonormal basis and Correlation. <br/><br/>
+* Gram-Schmidt process. <br/><br/>
+* Applications of the Gram-Schmidt process. <br/><br/>
 
-* Matrices de cambio de base. <br/><br/>
-* Diagonalización de transformaciones lineales. <br/><br/>
+The slides for **Session 08** are available in the following [slides](/slides/2024-AD-MA1034Eng/MA1034-sesion-08).
 
-
-El contenido para la **Sesión 08** se encuentra en following [slides](/slides/2023-AD-MA1034/MA1034-sesion-08).
 
 ```{r embed-xaringan, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "/slides/2023-AD-MA1034/MA1034-sesion-08", ratio = "4:3")
+xaringanExtra::embed_xaringan(url = "/slides/2024-AD-MA1034Eng/MA1034-sesion-08", ratio = "4:3")
 ```

@@ -1,0 +1,158 @@
+---
+title: "Eigenvalues and Eigenvectors"
+subtitle: "Sesion 05"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals of the Session
+
+* Define the concepts of Eigenvectors and Eigenvalues. <br/><br/>
+* Calculate eigenvectors and eigenvalues. <br/><br/>
+
+---
+# Motivation
+
+An assembly line with three workstations (A, B, C) has its production dynamics modeled by a linear transformation given by the following matrix $$T=\left(\begin{array}{ccc} 0.6 & 0.2 & 0.1 \\
+    0.3 & 0.7 & 0.2 \\
+    0.1 & 0.1 & 0.7 \\
+\end{array}\right)$$ representing the relations between the workstations. Is there a steady production vector? <br/><br/> That is, is there a vector $v$ such that $$T(v)=v$$?
+
+ 
+---
+# Eigenvectors and Eigenvalues
+
+> **Definition:** Given a linear transformation $T:V\to W$, a vector $v\in V$ is called an *eigenvector* of $T$ if $v\neq 0$ and there exists a scalar $\lambda$ such that $T(v)=\lambda v$. The scalar $\lambda$ is called an *eigenvalue* of $T$ associated to the eigenvector $v$.
+
+---
+## Properties of Eigenvectors and Eigenvalues
+
+1. The pair of eigenvector-eigenvalue acts as a "dynamical system", i.e., the eigenvector is a direction in which the transformation acts by stretching or compressing by the factor of the eigenvalue. <br/><br/>
+2. If $v$ is an eigenvector of $T$ with eigenvalue $\lambda$, then $T(T(v))=\lambda T(v)=\lambda^2 v$. <br/><br/>
+3. If all eigenvalues are real and unique, then the eigenvectors are linearly independent, therefore a **basis** of the vector space. 
+
+---
+##### Example 1:
+
+Let $T(x,y)=(2x,-y)$, then $T(1,0)=(2,0)$ and $T(0,1)=(0,-1)$. Therefore, $T$ has eigenvectors $(1,0)$ and $(0,1)$ with eigenvalues $\lambda_1=2$ and $\lambda_2=-1$ respectively.
+
+
+---
+## How to compute eigenvectors and eigenvalues?
+
+Note that if $v$ is an eigenvector of $T$ with eigenvalue $\lambda$ and $M$ is a matrix that represents $T$ then it must satisfy that $$Mv=\lambda v$$ and therefore $$(M-\lambda I)v=0$$ where $I$ is the identity matrix and this is for every eigenvector. <br/><br/> Therefore, the system of equations must have infinite solutions and this only happens if $$\det(M-\lambda I)=0.$$
+
+---
+## The Characteristic Polynomial
+
+> **Definition:** Given a square matrix $M$, the _characteristic polynomial_ of $M$ is the polynomial in variable $\lambda$ obtained from $$\det(M-\lambda I).$$
+
+--
+<br/><br/>
+
+> **Claim:** If $\lambda_j$ is a root of the characteristic polynomial of $M$ then $\lambda_j$ is an eigenvalue.
+
+---
+##### Example 3:
+
+> Compute the characteristic polynomial and its roots of the transformation $T(x,y)=(3x-2y,x+2y)$.
+
+--
+<br/><br/>
+
+##### Solution
+
+$$\det\left(\begin{array}{cc} 3-\lambda & 2 \\ 1 & 2-\lambda \end{array}\right)=(3-\lambda)(2-\lambda)-4=\lambda^2-5\lambda+4$$
+
+and their solutions are: $$\lambda_{1,2}=\frac{5\pm\sqrt{5^2-4(4)}}{2}$$ where $$\lambda_1=\frac{5-\sqrt{9}}{2}\quad \lambda_2=\frac{5+\sqrt{9}}{2}$$
+
+---
+##### Example 4:
+
+> Compute the characteristic polynomial and its roots of the transformation $T(x,y,z)=(0,x+2y-7z,-2x-3y-2z)$.
+
+--
+<br/><br/>
+
+##### Solution:
+$$\det\left(\begin{array}{ccc} 0-\lambda & 0 & 0 \\ 1 & 2-\lambda & -7 \\ -2 & -3 & -2-\lambda \end{array}\right)$$. <br/><br/> Solving the determinant we obtain $$\lambda^3-25\lambda$$ whose roots are $$\lambda_1=0,\quad \lambda_2=5,\quad \lambda_3=-5$$
+
+---
+## Find the eigenvectors
+
+> **Claim:** If $\lambda_j$ is an eigenvalue of the transformation $T$, then any $v$ that is in the kernel of $T-\lambda_j I$ is an eigenvector of $T$ with eigenvalue $\lambda_j$. 
+
+--
+##### Example 5:
+
+> We know that $1$ is an eigenvalue of the transformation $T(x,y)=(3x-2y,x+2y)$. Find an eigenvector associated to this eigenvalue.
+
+--
+##### Solution:
+
+Matrix's kernel $T-1I$ is $$\left(\begin{array}{cc} 2 & 2 \\ 1 & 1 \end{array}\right)$$ and therefore, the vector of the form $(1,-1)$ is an eigenvector associated to $1.$
+
+---
+##### Example 6:
+
+> We know that $5$ is an eigenvalue of the transformation $T(x,y,z)=(0,x+2y-7z,-2x-3y-2z)$. Find an eigenvector associated to this eigenvalue.
+
+--
+<br/><br/>
+
+##### Solution
+
+The kernel of the matrix $T-5I$ is $$\left(\begin{array}{ccc} -5 & 0 & 0 \\ 1 & -3 & -7 \\ -2 & -3 & -7 \end{array}\right)$$ and therefore, the vector of the form $(0,7,3)$ is an eigenvector associated to $5.$
+
+---
+### Applied Eigenvalues and Eigenvectors
+
+An assembly line with three workstations (A, B, C) has its production dynamics modeled by a linear transformation given by the following matrix $$T=\left(\begin{array}{ccc} 0.6 & 0.2 & 0.1 \\
+    0.3 & 0.7 & 0.2 \\
+    0.1 & 0.1 & 0.7 \\
+\end{array}\right)$$ representing the relations between the workstations. Is there a steady production vector? <br/><br/> That is, is there a vector $v$ such that $$T(v)=v$$?
+
+---
+### Applied Eigenvalues and Eigenvectors
+
+A vibration control system for an industrial robot arm is modeled by the linear transformation given by the matrix $$A=\left(\begin{array}{ccc} 4 & 1 & 0 \\
+    0 & 3 & -1 \\
+    0 & 2 & 0 \\
+\end{array}\right)$$, where the transformation matrix A represents the system's dynamics. Find if there is directions in which the system grows or shrinks exponentially, and if so, find the eigenvalues and eigenvectors associated to those directions.

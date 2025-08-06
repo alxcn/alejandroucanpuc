@@ -1,23 +1,22 @@
 ---
-title: "S05: Transformaciones Lineales"
+title: "S05: Eigenvalues and Eigenvectors"
 weight: 5
 subtitle: ""
-excerpt: "Definiremos las funciones que preservan la estructura de espacio vectorial."
+excerpt: "We introduce the concept of eigenvalues and eigenvectors, and their applications in linear transformations."
 date: '`r Sys.Date()`'
 slug: MA1034-session-05
 draft: false
 ---
 
-En esta sesión de **MA1034** nuestros objetivos son:
+In this session of **MA1034Eng** the objectives are:
 
+* Introduce the concept of eigenvalues and eigenvectors. <br/><br/>
+* Compute eigenvalues and eigenvectors of matrices. <br/><br/>
+* Apply the concept of eigenvalues and eigenvectors in linear transformations. <br/><br/>
 
-* Introducir el concepto de Transformación lineal. <br/><br/>
-* Demostrar que una función es una transformación lineal. <br/><br/>
-* Calcular los subespacios predilectos: Núcleo e Imagen. <br/><br/>
-* Teorema de la Dimensión.
+The slides for **Session 05** are available in the following [slides](/slides/2024-AD-MA1034Eng/MA1034-sesion-05).
 
-El contenido para la **Sesión 05** se encuentra en following [slides](/slides/2023-AD-MA1034/MA1034-sesion-05).
 
 ```{r embed-xaringan, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "/slides/2023-AD-MA1034/MA1034-sesion-05", ratio = "4:3")
+xaringanExtra::embed_xaringan(url = "/slides/2024-AD-MA1034Eng/MA1034-sesion-05", ratio = "4:3")
 ```

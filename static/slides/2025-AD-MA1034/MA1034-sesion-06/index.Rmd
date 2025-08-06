@@ -1,0 +1,123 @@
+---
+title: "Diagonalization"
+subtitle: "Session 06"
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals of the Session
+
+* Basis change matrices. <br/><br/>
+* Linear transformations diagonalization. <br/><br/>
+
+---
+# Motivation
+
+An automobile assembly line has 3 workstations (Body, Paint, Assembly) whose production rates interact. The system is modeled by the matrix 
+$$A=\left(\begin{array}{ccc} 1.1 & 0.2 & 0.1 \\ 0.3 & 0.9 & 0.2 \\ 0.1 & 0.1 & 1.0 \end{array}\right)$$
+
+Defined in a basis where each vector represents the production at each station. After analysis, a more natural basis $B = {v_1, v_2, v_3}$ is found where: <br/>
+* $v_1 = (1,1,1)^t$ (balanced production) <br/>
+* $v_2 = (1,-1,0)^t$ (body-paint tradeoff) <br/>
+* $v_3 = (0,1,-1)^t$ (paint-assembly tradeoff) <br/>
+
+How does the output transformation look in this new basis? Interpret the transformation in terms of the new basis vectors. For production target $x = (200, 180, 220)^t$ (in standard basis), find the production in the new basis and describe which one contributes most to the target.
+
+---
+# Basis Change Matrices
+
+> Assume we have a vector space $V$ and two bases for $V,$ say $B_1$ and $B_2.$ The basis change matrix from $B_1$ to $B_2$ is the matrix $P$ such that $[v]_{B_2}=P[v]_{B_1}$ for all $v\in V.$
+
+--
+##### Example
+
+> Compute the basis change matrix of $\mathbb{R}^2$ with bases $\{(1,0),(0,1)\}$ and $\{(-3,2),(2,3)\}.$
+--
+
+##### Solution:
+The basis change matrix is $$P=\left(\begin{array}{cc} -3 & 2 \\ 2 & 3 \end{array} \right).$$
+
+---
+##### Example
+
+> Compute the basis change matrix of $\mathbb{R}^2$ with bases $\{(1,2),(3,4)\}$ and $\{(1,1),(1,-1)\}.$ <br/><br/>
+
+--
+<br/><br/>
+Write the basis $\{(1,2),(3,4)\}$ in linear combinations of $\{(1,1),(1,-1)\}:$
+
+$$\left(\begin{array}{cc|cc} 1 & 1 & 1 & 3 \\ 1 & -1 & 2 & 4 \end{array}\right)\sim \left(\begin{array}{cc|cc} 1 & 1 & 1 & 3 \\ 0 & 1 & \frac{-1}{2} & \frac{-1}{2} \end{array}\right)\sim \left(\begin{array}{cc|cc} 1 & 0 & \frac{3}{2} & \frac{7}{2} \\ 0 & 1 & \frac{-1}{2} & \frac{-1}{2} \end{array}\right)$$
+
+---
+# Diaganolization of Linear Transformations
+
+> **Definition:** Let $T:V\to V$ be a linear transformation. We say that $T$ is diagonalizable if there exists a basis $B$ of $V$ such that $[T]_B$ is a diagonal matrix. <br/><br/>
+
+--
+<br/><br/> 
+
+In the case of matrices, a matrix $A$ is diagonalizable if there exists an invertible matrix $P$ such that $P^{-1}AP$ is diagonal. Then, if the eigenvectors of $A$ form a basis, the basis change matrix from the canonical to the eigenvectors is the matrix that works for diagonalization.
+
+---
+##### Example
+
+Find the diagonalization of the transformation $T(x,y)=(5x-12y,-12x-5y)$ and the basis change matrix for the diagonalization.
+
+--
+<br/><br/>
+##### Solution:
+
+The characteristic polynomial of $T$ is $\lambda^2-169$ whose roots are $13$ and $-13.$ The associated eigenvectors are $(-2,3)$ and $(3,2).$ The basis change matrix from the standard basis to the eigenvectors is $$P=\left(\begin{array}{cc} -2 & 3 \\ 3 & 2 \end{array}\right).$$ So the diagonalization is $$T=\left\{\left(\begin{array}{cc} 13 & 0 \\ 0 & -13 \end{array}\right),\left(\begin{array}{cc} -2 & 3 \\ 3 & 2 \end{array}\right)\right\}.$$
+
+---
+##### Example
+
+Find the diagonalization of the transformation $T(x,y)=(7x-2y,2x+2y)$ and the basis change matrix for the diagonalization.
+--
+<br/><br/>
+##### Solution:
+
+The characteristic polynomial of $T$ is $\lambda^2+9\lambda-18$ and its roots are $3$ and $6.$ The eigenvectors of this transformation are $(1,2)$ and $(2,1).$ The basis change matrix from the standard basis to the eigenvectors is $$P=\left(\begin{array}{cc} 1 & 2 \\ 2 & 1 \end{array}\right).$$ So the diagonalization is $$T=\left\{\left(\begin{array}{cc} 3 & 0 \\ 0 & 6 \end{array}\right),\left(\begin{array}{cc} 1 & 2 \\ 2 & 1 \end{array}\right)\right\}.$$
+
+---
+
+## Applied Diagonalization
+
+> A 3-DOF robot arm has its dynamics modeled by the transformation $T(x,y,z)=(2.1x+0.9y, 0.9x+2.1y,1.5z).$ If the initial position of the arm is $v_0=(0.5,0.2,0.9),$ find the position of the arm after 10 iterations of the transformation. Use diagonalization to simplify the calculations. 

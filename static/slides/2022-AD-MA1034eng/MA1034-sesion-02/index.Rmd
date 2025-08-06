@@ -1,0 +1,206 @@
+---
+title: "Generating Sets and Dimension"
+subtitle: "Session 02" 
+author: 
+  - "Alejandro Ucan"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width = 9, fig.height = 3.5, fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#000080",
+  secondary_color = "#f2f3f4",
+  inverse_header_color = "#00147e"
+)
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_scribble()
+```
+
+# Goals of the Session:
+
+* Introduce linear combinations. <br/><br/>
+* Linear dependence and independence. <br/><br/>
+* Introduce generated spaces. <br/><br/>
+* Define the concept of dimension. <br/><br/>
+
+---
+# Motivation
+
+An industrial engineer is studying a production system with 4 workstations (A, B, C, D) whose outputs depend on shared resources (raw materials, labor hours). The system’s behavior can be modeled using vector spaces, where:
+•	Each workstation’s output is a dimension in a vector space.
+•	Resource constraints define subspaces of feasible production vectors.
+We want to understand the space of possible output combinations based on the next two constraints:
+1.	The outputs of workstation A and B are equal to the outputs C and D.
+2.	The output of workstation D needs the same labor as two times the output of workstation A.
+
+Describe the vector space of possible outputs, find a basis and describe how the workstations contribute to the overall production system.
+---
+# Linear Combinations.
+
+> **Definition:** Let $v\in V$ be a vector. If $u_1,\cdots,u_n\in V$ are vectors, we say that $v$ is a _linear combination_ of $u_1,\cdots,u_n$ if there exist scalars $a_1,\cdots,a_n$ such that $$v=a_1u_1+\cdots+a_nu_n.$$ <br/><br/>These scalars $a_1,\cdots,a_n$ are called _coefficients_ of the linear combination.
+
+
+##### Example 1
+In $\mathbb{R}^2,$ the vector $(3,4)$ has the following linear combinations:
+1. $(3,4)=1(3,0)+4(0,1)$
+1. $(3,4)=2(1,2)+1(1,0)$
+1. $(3,4)=1(1,2)+2(1,1)$
+
+--
+##### Example 2:
+
+In other vector spaces we can find linear combinations like these:
+1. In $M(2\times 2, \mathbb{R}),$ the vector $\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}$ has the linear combination $\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}=1\begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix}+1\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}.$ <br/><br/>
+1. In $P_2(\mathbb{R}),$ the polynomial $p(x)=x^2$ has the linear combination $x^2=1(x^2)+0(x)+0(1).$
+
+
+---
+## Determine a L.C.
+
+> Let $v=(1,1,1)$ and $S=\{(1,2,3),(0,1,2),(-1,0,1)\}.$ Find a l.c. of $v$ in terms of the vectors in $S.$ <br/><br/>
+
+--
+
+$$v=a_1(1,2,3)+a_2(0,1,2)+a_3(-1,0,1)$$ <br/>
+$$v=(a_1-a_3,2a_1+a_2,3a_1+2a_2+a_3)$$ <br/>
+Using Gauss-Jordan in the matrix $$\left(\begin{array}{ccc|c}1 & 0 & -1 & 1 \\ 2& 1 & 0 & 1 \\ 3 & 2 & 1 & 1\end{array}\right)$$ we get $a_1=2, \,a_2=-3,$ and $a_3=1.$ Therefore, $$v=2(1,2,3)-3(0,1,2)+(-1,0,1).$$
+
+---
+### Determine a L.C.
+
+As you can see, the process of finding a linear combination is **equivalent to solving a system of linear equations.** <br/><br/>
+
+---
+## Generating Sets
+
+> **Definition:** Let $S=\{u_1,\cdots,u_n\}$ be a set of vectors in $V.$ The _space generated_ by $S,$ denoted by $\langle S\rangle,$ is the set of all linear combinations of $u_1,\cdots,u_n.$ <br/><br/>That is, $$\langle S\rangle=\{a_1u_1+\cdots+a_nu_n\mid a_1,\cdots,a_n\in\mathbb{R}\}.$$ <br/><br/> $S$ is known as a generating set.
+--
+
+##### Example
+
+The set $S=\{(1,0,0),(0,1,0),(0,0,1)\}$ is a generating set of $\mathbb{R}^3$ and $S=\{(1,1),(1,-1)\}$ is a generating set of $\mathbb{R}^2.$ The set $S=\{1,x,x^2\}$ is a generating set of $P_2(\mathbb{R}).$
+
+---
+##### Counterexamples
+
+> The set $S=\{(1,2),(-2,-4)\}$ does not generate $\mathbb{R}^2.$ We cannot find a l.c. of $S$ for $(0,1).$<br/><br/><br/><br/>
+
+
+> The set $S=\{(1,2,3),(0,1,2),(-1,0,1)\}$ does not generate $\mathbb{R}^3.$ This is because the vector $(1,-2,2)$ is not a l.c. of $S.$
+
+---
+## Generated Vector Subspaces
+
+> **Theorem:** Let $S=\{u_1,\cdots,u_n\}$ be a set of vectors in $V.$ Then $\langle S\rangle$ is a vector subspace of $V$ and is the smallest vector subspace containing $S.$
+
+---
+### Example:
+
+> Consider the vector space $V=\mathbb{R}^4$ and the subspace $W=\{(x,x,y,y):x,y\in\mathbb{R}\}.$ Find a generating set for $W.$ <br/><br/>
+
+--
+
+> A generating set for $W$ is given by the vectors $\{(1,1,0,0),(0,0,1,1)\}.$ This is because a generic element of $W$ is of the form $(x,x,y,y)=x(1,1,0,0)+y(0,0,1,1).$ And from this, we can conclude that $\langle (1,1,0,0),(0,0,1,1)\rangle=W.$
+
+---
+### Applied Examples of Generated Vector Spaces
+
+A factory has two workstations:
+•	Workstation X produces gears.
+•	Workstation Y produces axles.
+The assembly line requires 1 gear per axle (i.e., outputs must match).
+1.	Describe all possible output combinations that satisfy the constraint.
+2. What geometric shape does this set of solutions form in 2D space?
+
+---
+# Linear Dependence and Independence
+
+> **Definition:** Let $S=\{u_1,\cdots,u_n\}$ be a set of vectors in $V.$ We say that $S$ is _linearly dependent_ if there exists a linear combination of $u_1,\cdots,u_n$ that is equal to the zero vector and at least one of the coefficients of the linear combination is different from zero. <br/><br/>If $S$ is not linearly dependent, we say that $S$ is _linearly independent_.
+
+--
+##### Example
+
+The set $S=\{(1,1),(1,-1)\}$ is l.i. but $S=\{(1,2,3),(0,1,2),(-1,0,1)\}$ is not.
+
+---
+## Linear Dependence and Independence
+
+> **Theorem:** Let $S=\{u_1,\cdots,u_n\}$ be a set of vectors in $V.$ Then $S$ is linearly dependent if and only if at least one of the vectors in $S$ is a linear combination of the other vectors in $S.$ Even more, if we can find a squeare matrix with the vectors in $S$ and the determinant is non-zero, then $S$ is linearly dependent. 
+
+
+---
+# Dimension
+
+> **Definition:**  We say that $S$ is a basis for the vector space $V,$ if $S$ is l.i. and generates $V.$
+--
+##### Example
+
+For example, $\{(0,1),(1,0)\},$ $\{(1,1),(1,0)\}$ and $\{(1,1),(-1,1)\}$ are basis of $\mathbb{R}^2.$ And $\{(1,1,0),(0,1,0),(0,1,1,)$ is a basis of $\mathbb{R}^3.$
+
+##### Counterexample:
+
+But, $\{(1,0)\}$ and $\{(1,0),(0,1),(1,1)\}$ are not bases of $\mathbb{R}^2.$ The first one does not generate $\mathbb{R}^2$ and the second one is l.d.
+
+---
+## Dimension
+
+
+> **Theorem:** If $S$ is a basis of $V$ with $n-$elements. Then any subset of vectors with $n+1$ elements is linearly dependent. <br/><br/>Moreover, if $S$ is a basis of $V$ with $n-$elements. Then any subset of vectors with $n-1$ elements does not generate $V.$
+
+--
+
+> **Definition:** If $V$ has a basis with $n-$elements, then we say that $V$ has _dimension_ $n.$
+
+---
+### Activity
+
+A factory has two workstations:
+•	Workstation X produces gears.
+•	Workstation Y produces axles.
+The assembly line requires 1 gear per axle (i.e., outputs must match). Find a basis for the vector space of all possible outputs that satisfy the constraint. <br/><br/>
+
+---
+### Activity
+
+A factory has 3 workstations (A, B, C) with:
+
+* Material Constraint: $A+B=C$
+* Labor Constraint: $C=2A$
+
+1.	Pattern Determination: Find a basis for $W$ of all possible outputs that meet the constraints. Interpret dependencies (e.g., how $C$ is forced by $A$). Compute $dim(W)$. How many workstations are truly independent?
+2.	Variable Interpretation: Check feasibility of $v=(2,2,4)$ and $(1,0,3)$. If $C$ fails ($C=0$), can $(4,−4,0)$ be produced? Why is this result unrealistic industrially?
+
+---
+### Activity
+
+A 3-DOF robotic arm's joint movements are modeled as vectors in $\mathbb{R}^3,$ where each dimension represents angular displacement $(\theta_1, \theta_2, \theta_3)$ of base, elbow and wrist jounts respectively. The arm's movement is constrained by:
+* Gear Ratio Constraint: $\theta_2 = 2\theta_1$ (elbow moves twice as fast as base).
+* Power Budget Constraint: $\theta_1 + \theta_3 = 0$ (wrist compensates for base movement to conserve energy).
+> 1. Find a basis for the vector space of all possible joint movements that satisfy these constraints. <br/><br/>
+> 2. Determine the dimension of this vector space. <br/><br/>
