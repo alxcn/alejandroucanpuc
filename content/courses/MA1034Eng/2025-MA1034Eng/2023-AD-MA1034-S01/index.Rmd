@@ -1,5 +1,5 @@
 ---
-title: "S01: Introduction to Vector Spaces"
+title: "S01: Vector Spaces"
 weight: 1
 subtitle: ""
 excerpt: "We will introduce the objects that are vector spaces and their properties."
@@ -8,16 +8,286 @@ slug: MA1034eng-session-01
 draft: false
 ---
 
-In this session of **MA1034(Eng)** the objectives are:
+**Learning Outcomes:**
+
+By the end of this session, students should be able to:
+
+- Define vector spaces and subspaces.
+- Identify and verify vector space properties.
+- Provide examples of vector spaces and subspaces.
+- Identify known vector spaces and subspaces in practical applications.
 
 
-* Define the structure of Vector Space. <br/><br/>
-* Introduce examples of vector spaces. <br/><br/>
-* Define the vector subspaces. <br/><br/>
+**Topics Covered:**
+
+- Vector Spaces and its Axioms
+- Examples of Vector Spaces
+- Vector Subspaces and its Axioms
+- Examples of Vector Subspaces
+- Applied Examples
+
+## Motivation
+
+Everyone is familiar with the concept of vector spaces in a primer level, and without knowing it. Lets develop this idea a bit more, everyone has proficiency working with arithmetics of real numbers, and this is a vector space. We can add real numbers, we can scale number (by multiply them), we have a zero element (0), and every number has an additive inverse ( $-x$ ). All these properties are part of the definition of vector spaces. In a more abstract way, in physics courses, we learn about forces and *vectors*, we can add forces, we can scale them, there is a zero force, and every force has an inverse. All this suggest that forces are also a vector space, and indeed they are (we will see this in more detail later).
+
+In this course you will abstract the idea of vector spaces, and you will learn that many objects that you are familiar with are vector spaces. This is important because vector spaces have a lot of structure, and this structure can be exploited to solve problems in a more efficient way. For example, if you know that a set of functions is a vector space, you can use linear combinations of these functions to approximate other functions. This is the basis of many numerical methods used in engineering and science.
+
+How vector spaces are used in engineering and science? Let's fix our attention in the industrial world. In the industrial world, we often have to deal with large amounts of data. This data can be in the form of images, sounds, or other types of signals. We can represent this data as vectors in a *high-dimensional* vector space. By using techniques from linear algebra, we can analyze this data and extract useful information from it. For example, we can use principal component analysis (PCA) to reduce the dimensionality of the data and identify patterns in it. A more detailed example is the following: An industrial engineer is analyzing a production system with three interdependent workstations (A, B, C). The output of each workstation depends linearly on the others, and the system can be modeled using vector spaces and linear transformations. The output of the systen can be represented as a *transformation* of input vectors by the $$T=\begin{bmatrix}
+2 & 0 & 1 \\
+-1 & 1 & 0 \\
+0 & 1 & -1
+\end{bmatrix}$$ matrix. The engineer wants to determine if there are any input combinations that will result in overproduction (i.e., the output vector being a scalar multiple of the input vector).
+
+This specific example illustrates how vector spaces and linear transformations can be applied to solve real-world problems in industrial engineering. By understanding the properties of vector spaces, engineers can model complex systems, analyze their behavior, and make informed decisions to optimize performance.
+
+Maybe know, the previous examples seems too abstract and with a lot of concepts that you are not familiar with, but don't worry, we will develop all these ideas in the next sessions. The goal of this session is to introduce the concept of vector spaces and subspaces, and to provide some examples of them. We will also discuss the properties of vector spaces and subspaces, and how they can be used in practical applications.
+
+## Vector Spaces
+
+Before introducing the definition of vector spaces, we will refresh the properties of the real numbers that we will use to define vector spaces. Recall that the real numbers with the addition and multiplication operations satisfy the following properties:
+
+- **Closure**: For any two real numbers $x$ and $y$, both $x + y$ and $xy$ are also real numbers. <br/>
+- **Associativity**: For any three real numbers $x$, $y$, and $z$, we have $(x + y) + z = x + (y + z).$ <br/>
+- **Commutativity**: For any two real numbers $x$ and $y$, we have $x + y = y + x$. <br/>
+- **Identity Element**: There exists a real number $0$ such that for any real number $x$, we have $x + 0 = x$. <br/>
+- **Inverse Element**: For any real number $x$, there exists a real number $y$ such that $x + (y) = 0$. <br/>
+- **Distributive Property**: For any three real numbers $x$, $y$, and $z$, we have $x(y + z) = xy + xz$.<br/>
+- **Multiplicative Identity**: There exists a real number $1$ such that for any real number $x$, we have $x \cdot 1 = x$. <br/>
+
+You can say that there are more properties that satisfy the real numbers as: multiplication conmutativity, multiplication associativity and multiplicative inverse, but we will not use them in this course.
+
+These properties are the foundation of the **vector space** structure on the real numbers. So we are expecting that a vector space is similar to the real numbers set with these exact properties.
+
+Let $V$ be a set of objects (we will call them vectors), and let $K$ be a set of numbers (we will call them scalars for now the real numbers will be enough), and two operations:
+
+* Vector Addition $+$: for each pair of vectors $u, v \in V$, we can add them to get another vector $u + v \in V$.
+* Scalar Multiplication $\cdot$: for each vector $v \in V$ and scalar $a \in K$, we can scale the vector by the scalar to get another vector $a \cdot v \in V$.
+
+> **Definition:** We say that $V$ with the operations $+$ and $\cdot$ is a **vector space** if the following properties hold:
+1. **Closure under Addition**: For any vectors $u, v \in V$, the sum $u + v$ is also in $V$.
+2. **Associativity of Addition**: For any vectors $u, v, w \in V$, we have $(u + v) + w = u + (v + w)$
+3. **Commutativity of Addition**: For any vectors $u, v \in V$, we have $u + v = v + u$.
+4. **Existence of Zero Vector**: There exists a vector $0 \in V$ such that for any vector $v \in V$, we have $v + 0 = v$.
+5. **Existence of Additive Inverse**: For every vector $v \in V$, there exists a vector $-v \in V$ such that $v + (-v) = 0$
+6. **Closure under Scalar Multiplication**: For any vector $v \in V$ and scalar $a \in K$, the product $a \cdot v$ is also in $V$.
+7. **Distributive Property on Vector Addition**: For any scalar $a \in K$ and vectors $u, v \in V$, we have $a \cdot (u + v) = a \cdot u + a \cdot v$.
+8. **Distributive Property on Scalar product**: For any scalars $a, b \in K$ and vector $v \in V$, we have $(a + b) \cdot v = a \cdot v + b \cdot v$.
+9. **Associativity of Scalar Multiplication**: For any scalars $a, b \in K$ and vector $v \in V$, we have $(ab) \cdot v = a \cdot (b \cdot v)$.
+10. **Multiplicative Identity**: For any vector $v \in V$, we have $1 \cdot v = v$.
+
+As you may have noticed, the properties 8 and 9 are similar to some properties of the real numbers, but they are generalized to be valid for general sets and operations. This definition is too abstract, so we will provide some examples to illustrate it.
+
+#### EXamples of Vector Spaces:
+
+1. **The space $\mathbb{R}^n$:** 
+
+Consider the set of all $n$-tuples of real numbers, denoted by $\mathbb{R}^n$. The elements of this set are vectors of the form $(x_1, x_2, \ldots, x_n)$ where $x_i \in \mathbb{R}$ for $i = 1, 2, \ldots, n$. The operations of vector addition and scalar multiplication are defined as follows:
+
+   - Vector Addition: $(x_1, x_2, \ldots, x_n) + (y_1, y_2, \ldots, y_n) = (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n)$
+   - Scalar Multiplication: $a \cdot (x_1, x_2, \ldots, x_n) = (a x_1, a x_2, \ldots, a x_n)$
+
+It can be verified that $\mathbb{R}^n$ satisfies all the properties of a vector space.
+
+2. **The space of $n \times m$ matrices:** 
+
+Consider the set of all $n \times m$ matrices with real entries, denoted by $M_{n \times m}(\mathbb{R})$. The elements of this set are matrices of the form:
+
+$$
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1m} \\
+a_{21} & a_{22} & \cdots & a_{2m} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nm}
+\end{pmatrix}
+$$
+
+where $a_{ij} \in \mathbb{R}$ for $1 \leq i \leq n$ and $1 \leq j \leq m$. The operations of matrix addition and scalar multiplication are defined as follows:
+
+   - Matrix Addition: If $A, B \in M_{n \times m}(\mathbb{R})$, then $A + B$ is the matrix obtained by adding the corresponding entries:
+
+$$
+A + B = \begin{pmatrix}
+a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1m} + b_{1m} \\
+a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2m} + b_{2m} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} + b_{n1} & a_{n2} + b_{n2} & \cdots & a_{nm} + b_{nm}
+\end{pmatrix}
+$$
+
+   - Scalar Multiplication: If $A \in M_{n \times m}(\mathbb{R})$ and $c \in \mathbb{R}$, then $c \cdot A$ is the matrix obtained by multiplying each entry of $A$ by $c$:
+
+$$
+c \cdot A = \begin{pmatrix}
+c \cdot a_{11} & c \cdot a_{12} & \cdots & c \cdot a_{1m} \\
+c \cdot a_{21} & c \cdot a_{22} & \cdots & c \cdot a_{2m} \\
+\vdots & \vdots & \ddots & \vdots \\
+c \cdot a_{n1} & c \cdot a_{n2} & \cdots & c \cdot a_{nm}
+\end{pmatrix}
+$$
+
+It can be verified that $M_{n \times m}(\mathbb{R})$ satisfies all the properties of a vector space.
+
+3. **The space of polynomials of degree at most $n$:**
+
+Consider the set of all polynomials of degree at most $n$ with real coefficients, denoted by $P_n(\mathbb{R})$. The elements of this set are polynomials of the form:
+
+$$
+p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n
+$$
+
+where $a_i \in \mathbb{R}$ for $0 \leq i \leq n$. The operations of polynomial addition and scalar multiplication are defined as follows:
+
+   - Polynomial Addition: If $p(x), q(x) \in P_n(\mathbb{R})$, then $p(x) + q(x)$ is the polynomial obtained by adding the corresponding coefficients:
+
+$$
+p(x) + q(x) = (a_0 + b_0) + (a_1 + b_1)x + (a_2 + b_2)x^2 + \cdots + (a_n + b_n)x^n
+$$
+
+   - Scalar Multiplication: If $p(x) \in P_n(\mathbb{R})$ and $c \in \mathbb{R}$, then $c \cdot p(x)$ is the polynomial obtained by multiplying each coefficient of $p(x)$ by $c$:
+
+$$
+c \cdot p(x) = (c \cdot a_0) + (c \cdot a_1)x + (c \cdot a_2)x^2 + \cdots + (c \cdot a_n)x^n
+$$
+
+It can be verified that $P_n(\mathbb{R})$ satisfies all the properties of a vector space.
+
+4. **The space of continuous functions on a closed interval:**
+
+Consider the set of all continuous functions defined on a closed interval $[a, b]$, denoted by $C([a, b])$. The elements of this set are functions $f: [a, b] \to \mathbb{R}$ that are continuous on the interval. The operations of function addition and scalar multiplication are defined as follows:
+
+   - Function Addition: If $f, g \in C([a, b])$, then $(f + g)(x) = f(x) + g(x)$ for all $x \in [a, b]$.
+   - Scalar Multiplication: If $f \in C([a, b])$ and $c \in \mathbb{R}$, then $(c \cdot f)(x) = c \cdot f(x)$ for all $x \in [a, b]$.
+It can be verified that $C([a, b])$ satisfies all the properties of a vector space.
+
+These are few examples of vector spaces, but there are many more. You can work on trying to verify that these examples satisfy the properties of a vector space. You can also try to find other examples of vector spaces, and verify that they satisfy the properties of a vector space.
+
+## Vector Subspaces
+
+Now that we have introduced the concept of vector spaces, we will introduce the concept of vector subspaces. Sometimes we can found vector spaces that are contained in other "bigger" vector spaces, and these smaller vector spaces are called subspaces. A vector subspace is a subset of a vector space that is also a vector space itself. This means that it satisfies all the properties of a vector space, but it is a smaller set.
+
+> **Definition:** Let $V$ be a vector space over a field $K$. A subset $W \subseteq V$ is called a **vector subspace** of $V$ if the following properties hold:
+1. **Non-emptiness**: The zero vector of $V$ is in $W$.
+2. **Closure under Addition**: For any vectors $u, v \in W$, the sum $u + v$ is also in $W$.
+3. **Closure under Scalar Multiplication**: For any vector $v \in W$ and scalar $a \in K$, the product $a \cdot v$ is also in $W$.
+
+The previous three properties guarantee that $W$ is a vector space itself, and this follows from the fact that $V$ is already a vector space. The last is called *heredity* of the vector space properties on vector subspaces. 
+
+#### Examples of Vector Subspaces:
+
+1. Let $W=\{(x,0,0): x \in \mathbb{R}\}$. This is a subspace of $\mathbb{R}^3$. 
+   - Non-emptiness: The zero vector $(0,0,0)$ is in $W$.
+   - Closure under Addition: If $u=(x_1,0,0)$ and $v=(x_2,0,0)$ are in $W$, then $u + v = (x_1 + x_2, 0, 0)$ is also in $W$.
+   - Closure under Scalar Multiplication: If $v=(x,0,0)$ is in $W$ and $a \in \mathbb{R}$, then $a \cdot v = (a x, 0, 0)$ is also in $W$.
+Therefore, $W$ is a vector subspace of $\mathbb{R}^3$.
+
+2. Let $W=\{(x,y,0): x,y \in \mathbb{R}\}$. This is a subspace of $\mathbb{R}^3$.
+   - Non-emptiness: The zero vector $(0,0,0)$ is in $W$.
+   - Closure under Addition: If $u=(x_1,y_1,0)$ and $v=(x_2,y_2,0)$ are in $W$, then $u + v = (x_1 + x_2, y_1 + y_2, 0)$ is also in $W$.
+   - Closure under Scalar Multiplication: If $v=(x,y,0)$ is in $W$ and $a \in \mathbb{R}$, then $a \cdot v = (a x, a y, 0)$ is also in $W$.
+Therefore, $W$ is a vector subspace of $\mathbb{R}^3
+
+3. Let $W=\{(x,y,z): x+y+z=0\}$. This is a subspace of $\mathbb{R}^3$.
+   - Non-emptiness: The zero vector $(0,0,0)$ is in $W$ since $0+0+0=0$.
+   - Closure under Addition: If $u=(x_1,y_1,z_1)$ and $v=(x_2,y_2,z_2)$ are in $W$, then $u + v = (x_1 + x_2, y_1 + y_2, z_1 + z_2)$ satisfies $(x_1 + x_2) + (y_1 + y_2) + (z_1 + z_2) = 0$.
+   - Closure under Scalar Multiplication: If $v=(x,y,z)$ is in $W$ and $a \in \mathbb{R}$, then $a \cdot v = (a x, a y, a z)$ satisfies $(a x) + (a y) + (a z) = a(x+y+z)=0$.
+Therefore, $W$ is a vector subspace of $\mathbb{R}^3
+
+4. Let $W$ the set of matrices of the form $$\begin{pmatrix}
+a & b \\
+0 & 0
+\end{pmatrix}$$ where $a,b \in \mathbb{R}$. This is a subspace of $M_{2 \times 2}(\mathbb{R})$.
+   - Non-emptiness: The zero matrix $\begin{pmatrix}
+0 & 0 \\
+0 & 0
+\end{pmatrix}$ is in $W$.
+   - Closure under Addition: If $A=\begin{pmatrix}
+a_1 & b_1 \\
+0 & 0
+\end{pmatrix}$ and $B=\begin{pmatrix}
+a_2 & b_2 \\
+0 & 0
+\end{pmatrix}$ are in $W$, then $A + B = \begin{pmatrix}
+a_1 + a_2 & b_1 + b_2 \\
+0 & 0
+\end{pmatrix}$ is also in $W$.
+   - Closure under Scalar Multiplication: If $A=\begin{pmatrix}
+a & b \\
+0 & 0
+\end{pmatrix}$ is in $W$ and $c \in \mathbb{R}$, then $c \cdot A = \begin{pmatrix}
+c a & c b \\
+0 & 0
+\end{pmatrix}$ is also in $W$.
+Therefore, $W$ is a vector subspace of $M_{2 \times 2}(\mathbb{R})$.
+
+As you can see, the properties of vector subspaces are similar to the properties of vector spaces, but they are restricted to a subset of the vectors in the vector space. This means that we can use the same techniques and methods that we use for vector spaces to work with vector subspaces.
+
+## Applied Examples
+
+In this section, we will provide some applied examples of how to use vector spaces and subspaces to model real-world phenomena. These examples will illustrate how vector spaces and subspaces can be used in practical applications, we will restrict ourselves to the examples in the industrial and mechatronics engineering fields, but the ideas can be applied to other fields as well. At the end of this section, you will find a prompt to produce your own applied example of vector spaces and subspaces.
+
+The key idea is to identify the vector space and subspace in the problem that best models the situation, and describe it.
+
+### Example 1: 
+
+An industrial engineer is studying a production system with 4 workstations (A, B, C, D) whose outputs depend on shared resources (raw materials, labor hours). The system’s behavior can be modeled using vector spaces, where workstation outputs are of interest. Based on the historial data, the workstation outputs are contrained by the following:
+
+* *Material balance* constraint: The total output from workstations A and B must equal the total output from workstations C and D.
+* *Labor constraint*: With the same amount of labor hours, workstation D produces the double output of workstation A. 
+
+The engineer wants to describe all possible output combinations that satisfy these constraints. 
+
+**Solution:**
+
+To solve this problem, we will use Toulmin's argumentation model to structure our reasoning that includes the following components: claim, grounds and warrant.
+
+*Claim:* The outputs of the workstations can be described as the vector space $V=\mathbb{R}^4$ and the constrained outputs form a vector subspace $W \subseteq V$.
 
 
-The content for the **Session 01** is available in the following [slides](/slides/2022-AD-MA1034eng/MA1034-sesion-01).
+*Grounds:* We have 4 workstations, each producing a real number output. The outputs can be represented as a vector $v=(a,b,c,d)$ where $a$, $b$, $c$, and $d$ are the outputs of workstations A, B, C, and D respectively. The constraints can be expressed as linear equations:<br/>
+1. Material balance: $a + b = c + d$ <br/>
+2. Labor constraint: $d = 2a$ <br/>
 
-```{r embed-xaringan, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "/slides/2022-AD-MA1034eng/MA1029-sesion-01", ratio = "4:3")
-```
+Implying, that $d=2a,$ and $c=a-d+b=a-2a+b=b-a.$
+
+Therefore, the constrained outputs can be represented as the vector of the form: $$(a,b,b-a,2a)$$ where $a,b \in \mathbb{R}$. Let's denote this vector as $w=(a,b,b-a,2a)$ and $W$ the set of all such vectors.
+
+Let see if $W$ satisfies the subspace test:<br/>
+1. Non-emptiness: The zero vector $(0,0,0,0)$ is in $W$ since $0=0+0=0+0.$<br/>
+2. Closure under Addition: If $w_1=(a_1,b_1,b_1-a_1,2a_1)$ and $w_2=(a_2,b_2,b_2-a_2,2a_2)$ are in $W$, then $w_1 + w_2 = (a_1 + a_2, b_1 + b_2, (b_1 - a_1) + (b_2 - a_2), 2(a_1 + a_2))$ is also in $W$. <br/>
+3. Closure under Scalar Multiplication: If $w=(a,b,b-a,2a)$ is in $W$ and $c \in \mathbb{R}$, then $c \cdot w = (c a, c b, c(b-a), 2(c a))$ is also in $W$. <br/>
+Therefore, $W$ is a vector subspace of $V$.
+
+*Warrant:* The outputs of the workstations can be described as a vector space $V=\mathbb{R}^4$ and the constrained outputs form a vector subspace $W \subseteq V$. The constraints define a linear relationship between the outputs, which can be represented as a subspace of the vector space. This allows us to describe all possible output combinations that satisfy the constraints.
+
+### Example 2:
+
+A mechatronics engineer is designing a robotic arm with three joints (A, B, C) that can move in a plane. The position of the end effector (the tip of the arm) depends on the angles of the joints. The engineer wants to descibe the set of all possible angles of the joints if we have that the the effector position is constrained by the following:
+* *Feasability constraint*: The angles of the joints must add up to $2\pi$ radians.
+
+**Solution:**
+
+*Claim:* The set of all possible angles of the joints can be described as a vector space $V=\mathbb{R}^3$ and the constrained angles form a vector subspace $W \subseteq V$.
+
+*Grounds:* The angles of the joints can be represented as a vector $v=(\theta_A, \theta_B, \theta_C)$ where $\theta_A$, $\theta_B$, and $\theta_C$ are the angles of joints A, B, and C respectively. The feasibility constraint can be expressed as a linear equation: $\theta_A + \theta_B + \theta_C = 2\pi$.
+Implying, that $\theta_C=2\pi-\theta_A-\theta_B.$
+
+Therefore, the constrained angles can be represented as the vector of the form: $$(\theta_A, \theta_B, 2\pi-\theta_A-\theta_B)$$ where $\theta_A,\theta_B \in \mathbb{R}$. Let's denote this vector as $w=(\theta_A, \theta_B, 2\pi-\theta_A-\theta_B)$ and $W$ the set of all such vectors.
+
+Let see if $W$ satisfies the subspace test:<br/>
+1. Non-emptiness: The zero vector $(0,0, 2\pi)$ is in $W$ since $0+0+2\pi=2\pi$.<br/>
+2. Closure under Addition: If $w_1=(\theta_{A1},\theta_{B1}, 2\pi-\theta_{A1}-\theta_{B1})$ and $w_2=(\theta_{A2},\theta_{B2}, 2\pi-\theta_{A2}-\theta_{B2})$ are in $W$, then $w_1 + w_2 = (\theta_{A1} + \theta_{A2}, \theta_{B1} + \theta_{B2}, (2\pi-\theta_{A1}-\theta_{B1}) + (2\pi-\theta_{A2}-\theta_{B2}))$ which simplifies to $(\theta_{A1} + \theta_{A2}, \theta_{B1} + \theta_{B2}, 4\pi - (\theta_{A1} + \theta_{A2}) - (\theta_{B1} + \theta_{B2}))$ which is not in $W$. <br/>
+
+Therefore, $W$ is not a vector subspace of $V$.
+
+*Warrant:* The set of all possible angles of the joints can be described as a vector space $V=\mathbb{R}^3,$ but even though the angles satisfy a linear relationship, the set of constrained angles does not form a vector subspace of $V$. This is because the closure under addition property does not hold, as the sum of two constrained angles does not necessarily satisfy the feasibility constraint.
+
+### Your Turn
+
+Practice is the key to mastering the concepts of vector spaces and subspaces. Now that you have seen some examples, it is your turn to practice on examples of vector spaces and subspaces. You can use the Toulmin's argumentation model to structure your reasoning, and include the following components: claim, grounds and warrant.
+
+1. A factory has two workstations: Workstation X produces gears and Workstation Y produces axles. The assembly line requires 1 gear per axle (i.e., outputs must match). The industrial engineer wants to describe the outputs of the workstations as a vector space and the constrained outputs as a vector subspace.
+
+2. A mechatronics engineer is working on two interconnected assembly lines. For optimal performance, the assembly lines must have the same velocity of the bands. The engineer wants to describe the outputs of the assembly lines as a vector space and the constrained outputs as a vector subspace.
+
+3. An industrial engineer is checking the information about the production of a three factory for two given products. The information is stored in a table with the following columns: Product A and Product B, and rows representing the two factories, and there is a table for each week. For meet the demands, the production of Product A in Factory 1 must be equal to the production of Product B in Factory 2, and Product A in Factory 2 must be the double of Product B in Factory 1. The engineer wants to describe the production data as a vector space and the constrained production data as a vector subspace.
+
