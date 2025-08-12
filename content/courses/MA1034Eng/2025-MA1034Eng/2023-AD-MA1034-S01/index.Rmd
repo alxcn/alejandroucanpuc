@@ -4,7 +4,7 @@ weight: 1
 subtitle: ""
 excerpt: "We will introduce the objects that are vector spaces and their properties."
 date: '`r Sys.Date()`'
-slug: MA1034eng-session-01
+slug: MA1034-session-01
 draft: false
 ---
 
