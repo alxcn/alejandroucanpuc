@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2025-08-10" />
+<meta name="date" content="2025-08-11" />
 
 <title>S01: Vector Spaces</title>
 
@@ -350,7 +350,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">S01: Vector Spaces</h1>
-<h4 class="date">2025-08-10</h4>
+<h4 class="date">2025-08-11</h4>
 
 </div>
 
@@ -475,28 +475,23 @@ the scalar to get another vector <span class="math inline">\(a \cdot v
 </ul>
 <blockquote>
 <p><strong>Definition:</strong> We say that <span class="math inline">\(V\)</span> with the operations <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> is a <strong>vector space</strong>
-if the following properties hold: 1. <strong>Closure under
+if the following properties hold: <br /> 1. <strong>Closure under
 Addition</strong>: For any vectors <span class="math inline">\(u, v \in
 V\)</span>, the sum <span class="math inline">\(u + v\)</span> is also
-in <span class="math inline">\(V\)</span>. 2. <strong>Associativity of
-Addition</strong>: For any vectors <span class="math inline">\(u, v, w
-\in V\)</span>, we have <span class="math inline">\((u + v) + w = u + (v
-+ w)\)</span> 3. <strong>Commutativity of Addition</strong>: For any
-vectors <span class="math inline">\(u, v \in V\)</span>, we have <span class="math inline">\(u + v = v + u\)</span>. 4. <strong>Existence of
-Zero Vector</strong>: There exists a vector <span class="math inline">\(0 \in V\)</span> such that for any vector <span class="math inline">\(v \in V\)</span>, we have <span class="math inline">\(v + 0 = v\)</span>. 5. <strong>Existence of
-Additive Inverse</strong>: For every vector <span class="math inline">\(v \in V\)</span>, there exists a vector <span class="math inline">\(-v \in V\)</span> such that <span class="math inline">\(v + (-v) = 0\)</span> 6. <strong>Closure under
-Scalar Multiplication</strong>: For any vector <span class="math inline">\(v \in V\)</span> and scalar <span class="math inline">\(a \in K\)</span>, the product <span class="math inline">\(a \cdot v\)</span> is also in <span class="math inline">\(V\)</span>. 7. <strong>Distributive Property on
-Vector Addition</strong>: For any scalar <span class="math inline">\(a
-\in K\)</span> and vectors <span class="math inline">\(u, v \in
-V\)</span>, we have <span class="math inline">\(a \cdot (u + v) = a
-\cdot u + a \cdot v\)</span>. 8. <strong>Distributive Property on Scalar
-product</strong>: For any scalars <span class="math inline">\(a, b \in
-K\)</span> and vector <span class="math inline">\(v \in V\)</span>, we
-have <span class="math inline">\((a + b) \cdot v = a \cdot v + b \cdot
-v\)</span>. 9. <strong>Associativity of Scalar Multiplication</strong>:
-For any scalars <span class="math inline">\(a, b \in K\)</span> and
-vector <span class="math inline">\(v \in V\)</span>, we have <span class="math inline">\((ab) \cdot v = a \cdot (b \cdot v)\)</span>. 10.
-<strong>Multiplicative Identity</strong>: For any vector <span class="math inline">\(v \in V\)</span>, we have <span class="math inline">\(1 \cdot v = v\)</span>.</p>
+in <span class="math inline">\(V\)</span>. <br /> 2.
+<strong>Associativity of Addition</strong>: For any vectors <span class="math inline">\(u, v, w \in V\)</span>, we have <span class="math inline">\((u + v) + w = u + (v + w)\)</span> <br /> 3.
+<strong>Commutativity of Addition</strong>: For any vectors <span class="math inline">\(u, v \in V\)</span>, we have <span class="math inline">\(u + v = v + u\)</span>. <br /> 4. <strong>Existence
+of Zero Vector</strong>: There exists a vector <span class="math inline">\(0 \in V\)</span> such that for any vector <span class="math inline">\(v \in V\)</span>, we have <span class="math inline">\(v + 0 = v\)</span>. <br /> 5. <strong>Existence of
+Additive Inverse</strong>: For every vector <span class="math inline">\(v \in V\)</span>, there exists a vector <span class="math inline">\(-v \in V\)</span> such that <span class="math inline">\(v + (-v) = 0\)</span> <br /> 6. <strong>Closure
+under Scalar Multiplication</strong>: For any vector <span class="math inline">\(v \in V\)</span> and scalar <span class="math inline">\(a \in K\)</span>, the product <span class="math inline">\(a \cdot v\)</span> is also in <span class="math inline">\(V\)</span>. <br /> 7. <strong>Distributive Property
+on Vector Addition</strong>: For any scalar <span class="math inline">\(a \in K\)</span> and vectors <span class="math inline">\(u, v \in V\)</span>, we have <span class="math inline">\(a \cdot (u + v) = a \cdot u + a \cdot v\)</span>.
+<br /> 8. <strong>Distributive Property on Scalar product</strong>: For
+any scalars <span class="math inline">\(a, b \in K\)</span> and vector
+<span class="math inline">\(v \in V\)</span>, we have <span class="math inline">\((a + b) \cdot v = a \cdot v + b \cdot v\)</span>.
+<br /> 9. <strong>Associativity of Scalar Multiplication</strong>: For
+any scalars <span class="math inline">\(a, b \in K\)</span> and vector
+<span class="math inline">\(v \in V\)</span>, we have <span class="math inline">\((ab) \cdot v = a \cdot (b \cdot v)\)</span>. <br />
+10. <strong>Multiplicative Identity</strong>: For any vector <span class="math inline">\(v \in V\)</span>, we have <span class="math inline">\(1 \cdot v = v\)</span>.</p>
 </blockquote>
 <p>As you may have noticed, the properties 8 and 9 are similar to some
 properties of the real numbers, but they are generalized to be valid for
@@ -650,11 +645,11 @@ smaller set.</p>
 <p><strong>Definition:</strong> Let <span class="math inline">\(V\)</span> be a vector space over a field <span class="math inline">\(K\)</span>. A subset <span class="math inline">\(W
 \subseteq V\)</span> is called a <strong>vector subspace</strong> of
 <span class="math inline">\(V\)</span> if the following properties hold:
-1. <strong>Non-emptiness</strong>: The zero vector of <span class="math inline">\(V\)</span> is in <span class="math inline">\(W\)</span>. 2. <strong>Closure under
+<br /> 1. <strong>Non-emptiness</strong>: The zero vector of <span class="math inline">\(V\)</span> is in <span class="math inline">\(W\)</span>. <br /> 2. <strong>Closure under
 Addition</strong>: For any vectors <span class="math inline">\(u, v \in
 W\)</span>, the sum <span class="math inline">\(u + v\)</span> is also
-in <span class="math inline">\(W\)</span>. 3. <strong>Closure under
-Scalar Multiplication</strong>: For any vector <span class="math inline">\(v \in W\)</span> and scalar <span class="math inline">\(a \in K\)</span>, the product <span class="math inline">\(a \cdot v\)</span> is also in <span class="math inline">\(W\)</span>.</p>
+in <span class="math inline">\(W\)</span>. <br /> 3. <strong>Closure
+under Scalar Multiplication</strong>: For any vector <span class="math inline">\(v \in W\)</span> and scalar <span class="math inline">\(a \in K\)</span>, the product <span class="math inline">\(a \cdot v\)</span> is also in <span class="math inline">\(W\)</span>. <br /></p>
 </blockquote>
 <p>The previous three properties guarantee that <span class="math inline">\(W\)</span> is a vector space itself, and this
 follows from the fact that <span class="math inline">\(V\)</span> is
@@ -685,7 +680,7 @@ of <span class="math inline">\(\mathbb{R}^3\)</span>.</li>
 \mathbb{R}\)</span>, then <span class="math inline">\(a \cdot v = (a x,
 a y, 0)\)</span> is also in <span class="math inline">\(W\)</span>.
 Therefore, <span class="math inline">\(W\)</span> is a vector subspace
-of $^3</li>
+of <span class="math inline">\(\mathbb{R}^3.\)</span></li>
 </ul></li>
 <li>Let <span class="math inline">\(W=\{(x,y,z): x+y+z=0\}\)</span>.
 This is a subspace of <span class="math inline">\(\mathbb{R}^3\)</span>.
@@ -756,7 +751,7 @@ problem that best models the situation, and describe it.</p>
 workstations (A, B, C, D) whose outputs depend on shared resources (raw
 materials, labor hours). The system’s behavior can be modeled using
 vector spaces, where workstation outputs are of interest. Based on the
-historial data, the workstation outputs are contrained by the
+historical data, the workstation outputs are constrained by the
 following:</p>
 <ul>
 <li><em>Material balance</em> constraint: The total output from
@@ -850,8 +845,8 @@ feasibility constraint.</p>
 <div id="your-turn" class="section level3">
 <h3>Your Turn</h3>
 <p>Practice is the key to mastering the concepts of vector spaces and
-subspaces. Now that you have seen some examples, it is your turn to
-practice on examples of vector spaces and subspaces. You can use the
+subspace. Now that you have seen some examples, it is your turn to
+practice on examples of vector spaces and subspace. You can use the
 Toulmin’s argumentation model to structure your reasoning, and include
 the following components: claim, grounds and warrant.</p>
 <ol style="list-style-type: decimal">
@@ -860,20 +855,54 @@ Workstation Y produces axles. The assembly line requires 1 gear per axle
 (i.e., outputs must match). The industrial engineer wants to describe
 the outputs of the workstations as a vector space and the constrained
 outputs as a vector subspace.</p></li>
-<li><p>A mechatronics engineer is working on two interconnected assembly
-lines. For optimal performance, the assembly lines must have the same
-velocity of the bands. The engineer wants to describe the outputs of the
-assembly lines as a vector space and the constrained outputs as a vector
-subspace.</p></li>
-<li><p>An industrial engineer is checking the information about the
-production of a three factory for two given products. The information is
-stored in a table with the following columns: Product A and Product B,
-and rows representing the two factories, and there is a table for each
-week. For meet the demands, the production of Product A in Factory 1
-must be equal to the production of Product B in Factory 2, and Product A
-in Factory 2 must be the double of Product B in Factory 1. The engineer
-wants to describe the production data as a vector space and the
-constrained production data as a vector subspace.</p></li>
+<li><p>A mechanitronics engineer is working on two interconnected
+assembly lines. For optimal performance, the assembly lines must have
+the same velocity of the bands. The engineer wants to describe the
+outputs of the assembly lines as a vector space and the constrained
+outputs as a vector subspace.</p></li>
+<li><p>A factory has 3 workstations (A, B, C) producing products with
+outputs represented as vectors. The engineer wants to describe the
+outputs of the workstations as a vector space and the constrained
+outputs as a vector subspace. The outputs are constrained by:<br /></p>
+<ul>
+<li>Material Balance: The total output of workstations A and B must
+equal the output of workstation C.</li>
+<li>Labor Constraint: with the same amount of labor hours, the output of
+workstation B must be three times the output of workstation A. Describe
+the space of all possible outputs of the workstations as a vector space
+and the constrained outputs as a vector subspace.</li>
+</ul></li>
+<li><p>Three assembly lines <span class="math inline">\((L_1, L_2,
+L_3)\)</span> must operate operates at different velocities. For an
+optimal performance, the velocity of the assembly lines must satisfy:
+<span class="math display">\[3v_1 +2v_2 = 5v_3\]</span> where <span class="math inline">\(v_i\)</span> is the velocity of assembly line
+<span class="math inline">\(L_i\)</span>. The engineer wants to describe
+the velocities of the assembly lines as a vector space and the
+constrained velocities as a vector subspace.</p></li>
+<li><p>An industrial engineer studies 4 workstations <span class="math inline">\((W, X, Y, Z)\)</span> with:</p>
+<ul>
+<li>Material Balance: The total output of workstations <span class="math inline">\(W\)</span> and <span class="math inline">\(X\)</span> must equal the output of workstation
+<span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span>.</li>
+<li>Labor Efficiency: with the same amount of labor hours, the output of
+workstation <span class="math inline">\(Z\)</span> must be twice the
+output of workstation <span class="math inline">\(W\)</span>.</li>
+<li>Synchronization: Workstations <span class="math inline">\(X\)</span>
+and <span class="math inline">\(Y\)</span> must operate at the same
+output level. The engineer wants to describe the outputs of the
+workstations as a vector space and the constrained outputs as a vector
+subspace.</li>
+</ul></li>
+<li><p>A 4-DOF (Degree-of-Freedom) robotic arm has joints (<span class="math inline">\(\theta_1, \theta_2, \theta_3, \theta_4\)</span>)
+with:</p>
+<ul>
+<li>Mechanical Coupling: <span class="math inline">\(\theta_2 =
+2\theta_1\)</span> (second joint rotates twice as much as the
+first).</li>
+<li>Redundancy: <span class="math inline">\(\theta_4 = \theta_3\)</span>
+(last two joints mirror each other). Describe the set of all possible
+joint angles as a vector space and the constrained angles as a vector
+subspace.</li>
+</ul></li>
 </ol>
 </div>
 </div>

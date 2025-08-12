@@ -63,16 +63,16 @@ Let $V$ be a set of objects (we will call them vectors), and let $K$ be a set of
 * Vector Addition $+$: for each pair of vectors $u, v \in V$, we can add them to get another vector $u + v \in V$.
 * Scalar Multiplication $\cdot$: for each vector $v \in V$ and scalar $a \in K$, we can scale the vector by the scalar to get another vector $a \cdot v \in V$.
 
-> **Definition:** We say that $V$ with the operations $+$ and $\cdot$ is a **vector space** if the following properties hold:
-1. **Closure under Addition**: For any vectors $u, v \in V$, the sum $u + v$ is also in $V$.
-2. **Associativity of Addition**: For any vectors $u, v, w \in V$, we have $(u + v) + w = u + (v + w)$
-3. **Commutativity of Addition**: For any vectors $u, v \in V$, we have $u + v = v + u$.
-4. **Existence of Zero Vector**: There exists a vector $0 \in V$ such that for any vector $v \in V$, we have $v + 0 = v$.
-5. **Existence of Additive Inverse**: For every vector $v \in V$, there exists a vector $-v \in V$ such that $v + (-v) = 0$
-6. **Closure under Scalar Multiplication**: For any vector $v \in V$ and scalar $a \in K$, the product $a \cdot v$ is also in $V$.
-7. **Distributive Property on Vector Addition**: For any scalar $a \in K$ and vectors $u, v \in V$, we have $a \cdot (u + v) = a \cdot u + a \cdot v$.
-8. **Distributive Property on Scalar product**: For any scalars $a, b \in K$ and vector $v \in V$, we have $(a + b) \cdot v = a \cdot v + b \cdot v$.
-9. **Associativity of Scalar Multiplication**: For any scalars $a, b \in K$ and vector $v \in V$, we have $(ab) \cdot v = a \cdot (b \cdot v)$.
+> **Definition:** We say that $V$ with the operations $+$ and $\cdot$ is a **vector space** if the following properties hold: <br/>
+1. **Closure under Addition**: For any vectors $u, v \in V$, the sum $u + v$ is also in $V$. <br/>
+2. **Associativity of Addition**: For any vectors $u, v, w \in V$, we have $(u + v) + w = u + (v + w)$ <br/>
+3. **Commutativity of Addition**: For any vectors $u, v \in V$, we have $u + v = v + u$. <br/>
+4. **Existence of Zero Vector**: There exists a vector $0 \in V$ such that for any vector $v \in V$, we have $v + 0 = v$. <br/>
+5. **Existence of Additive Inverse**: For every vector $v \in V$, there exists a vector $-v \in V$ such that $v + (-v) = 0$ <br/>
+6. **Closure under Scalar Multiplication**: For any vector $v \in V$ and scalar $a \in K$, the product $a \cdot v$ is also in $V$. <br/>
+7. **Distributive Property on Vector Addition**: For any scalar $a \in K$ and vectors $u, v \in V$, we have $a \cdot (u + v) = a \cdot u + a \cdot v$. <br/>
+8. **Distributive Property on Scalar product**: For any scalars $a, b \in K$ and vector $v \in V$, we have $(a + b) \cdot v = a \cdot v + b \cdot v$. <br/>
+9. **Associativity of Scalar Multiplication**: For any scalars $a, b \in K$ and vector $v \in V$, we have $(ab) \cdot v = a \cdot (b \cdot v)$. <br/>
 10. **Multiplicative Identity**: For any vector $v \in V$, we have $1 \cdot v = v$.
 
 As you may have noticed, the properties 8 and 9 are similar to some properties of the real numbers, but they are generalized to be valid for general sets and operations. This definition is too abstract, so we will provide some examples to illustrate it.
@@ -165,10 +165,10 @@ These are few examples of vector spaces, but there are many more. You can work o
 
 Now that we have introduced the concept of vector spaces, we will introduce the concept of vector subspaces. Sometimes we can found vector spaces that are contained in other "bigger" vector spaces, and these smaller vector spaces are called subspaces. A vector subspace is a subset of a vector space that is also a vector space itself. This means that it satisfies all the properties of a vector space, but it is a smaller set.
 
-> **Definition:** Let $V$ be a vector space over a field $K$. A subset $W \subseteq V$ is called a **vector subspace** of $V$ if the following properties hold:
-1. **Non-emptiness**: The zero vector of $V$ is in $W$.
-2. **Closure under Addition**: For any vectors $u, v \in W$, the sum $u + v$ is also in $W$.
-3. **Closure under Scalar Multiplication**: For any vector $v \in W$ and scalar $a \in K$, the product $a \cdot v$ is also in $W$.
+> **Definition:** Let $V$ be a vector space over a field $K$. A subset $W \subseteq V$ is called a **vector subspace** of $V$ if the following properties hold: <br/>
+1. **Non-emptiness**: The zero vector of $V$ is in $W$. <br/>
+2. **Closure under Addition**: For any vectors $u, v \in W$, the sum $u + v$ is also in $W$. <br/>
+3. **Closure under Scalar Multiplication**: For any vector $v \in W$ and scalar $a \in K$, the product $a \cdot v$ is also in $W$. <br/>
 
 The previous three properties guarantee that $W$ is a vector space itself, and this follows from the fact that $V$ is already a vector space. The last is called *heredity* of the vector space properties on vector subspaces. 
 
@@ -184,7 +184,7 @@ Therefore, $W$ is a vector subspace of $\mathbb{R}^3$.
    - Non-emptiness: The zero vector $(0,0,0)$ is in $W$.
    - Closure under Addition: If $u=(x_1,y_1,0)$ and $v=(x_2,y_2,0)$ are in $W$, then $u + v = (x_1 + x_2, y_1 + y_2, 0)$ is also in $W$.
    - Closure under Scalar Multiplication: If $v=(x,y,0)$ is in $W$ and $a \in \mathbb{R}$, then $a \cdot v = (a x, a y, 0)$ is also in $W$.
-Therefore, $W$ is a vector subspace of $\mathbb{R}^3
+Therefore, $W$ is a vector subspace of $\mathbb{R}^3.$
 
 3. Let $W=\{(x,y,z): x+y+z=0\}$. This is a subspace of $\mathbb{R}^3$.
    - Non-emptiness: The zero vector $(0,0,0)$ is in $W$ since $0+0+0=0$.
@@ -229,7 +229,7 @@ The key idea is to identify the vector space and subspace in the problem that be
 
 ### Example 1: 
 
-An industrial engineer is studying a production system with 4 workstations (A, B, C, D) whose outputs depend on shared resources (raw materials, labor hours). The system’s behavior can be modeled using vector spaces, where workstation outputs are of interest. Based on the historial data, the workstation outputs are contrained by the following:
+An industrial engineer is studying a production system with 4 workstations (A, B, C, D) whose outputs depend on shared resources (raw materials, labor hours). The system’s behavior can be modeled using vector spaces, where workstation outputs are of interest. Based on the historical data, the workstation outputs are constrained by the following:
 
 * *Material balance* constraint: The total output from workstations A and B must equal the total output from workstations C and D.
 * *Labor constraint*: With the same amount of labor hours, workstation D produces the double output of workstation A. 
@@ -283,11 +283,27 @@ Therefore, $W$ is not a vector subspace of $V$.
 
 ### Your Turn
 
-Practice is the key to mastering the concepts of vector spaces and subspaces. Now that you have seen some examples, it is your turn to practice on examples of vector spaces and subspaces. You can use the Toulmin's argumentation model to structure your reasoning, and include the following components: claim, grounds and warrant.
+Practice is the key to mastering the concepts of vector spaces and subspace. Now that you have seen some examples, it is your turn to practice on examples of vector spaces and subspace. You can use the Toulmin's argumentation model to structure your reasoning, and include the following components: claim, grounds and warrant.
 
 1. A factory has two workstations: Workstation X produces gears and Workstation Y produces axles. The assembly line requires 1 gear per axle (i.e., outputs must match). The industrial engineer wants to describe the outputs of the workstations as a vector space and the constrained outputs as a vector subspace.
 
-2. A mechatronics engineer is working on two interconnected assembly lines. For optimal performance, the assembly lines must have the same velocity of the bands. The engineer wants to describe the outputs of the assembly lines as a vector space and the constrained outputs as a vector subspace.
+2. A mechanitronics engineer is working on two interconnected assembly lines. For optimal performance, the assembly lines must have the same velocity of the bands. The engineer wants to describe the outputs of the assembly lines as a vector space and the constrained outputs as a vector subspace.
 
-3. An industrial engineer is checking the information about the production of a three factory for two given products. The information is stored in a table with the following columns: Product A and Product B, and rows representing the two factories, and there is a table for each week. For meet the demands, the production of Product A in Factory 1 must be equal to the production of Product B in Factory 2, and Product A in Factory 2 must be the double of Product B in Factory 1. The engineer wants to describe the production data as a vector space and the constrained production data as a vector subspace.
+3. A factory has 3 workstations (A, B, C) producing products with outputs represented as vectors. The engineer wants to describe the outputs of the workstations as a vector space and the constrained outputs as a vector subspace. The outputs are constrained by:<br/>
+   - Material Balance: The total output of workstations A and B must equal the output of workstation C.
+   - Labor Constraint: with the same amount of labor hours, the output of workstation B must be three times the output of workstation A.
+Describe the space of all possible outputs of the workstations as a vector space and the constrained outputs as a vector subspace.
+
+4. Three assembly lines $(L_1, L_2, L_3)$ must operate operates at different velocities. For an optimal performance, the velocity of the assembly lines must satisfy: $$3v_1 +2v_2 = 5v_3$$ where $v_i$ is the velocity of assembly line $L_i$. The engineer wants to describe the velocities of the assembly lines as a vector space and the constrained velocities as a vector subspace.
+
+5. An industrial engineer studies 4 workstations $(W, X, Y, Z)$ with:
+   - Material Balance: The total output of workstations $W$ and $X$ must equal the output of workstation $Y$ and $Z$.
+   - Labor Efficiency: with the same amount of labor hours, the output of workstation $Z$ must be twice the output of workstation $W$.
+   - Synchronization: Workstations $X$ and $Y$ must operate at the same output level.
+The engineer wants to describe the outputs of the workstations as a vector space and the constrained outputs as a vector subspace.
+
+6. A 4-DOF (Degree-of-Freedom) robotic arm has joints ($\theta_1, \theta_2, \theta_3, \theta_4$) with:
+   - Mechanical Coupling: $\theta_2 = 2\theta_1$ (second joint rotates twice as much as the first).
+   - Redundancy: $\theta_4 = \theta_3$ (last two joints mirror each other).
+Describe the set of all possible joint angles as a vector space and the constrained angles as a vector subspace.
 
