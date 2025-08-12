@@ -7,7 +7,7 @@ show_post_thumbnail: false
 show_author_byline: true
 show_post_date: true
 # for series listing page layout
-layout: list-sidebar # list, list-sidebar, list-grid
+layout: list # list, list-sidebar, list-grid
 
 # for list-sidebar layout
 sidebar: 
@@ -15,7 +15,7 @@ sidebar:
   subtitle: Process Modelling using Linear Algebra
   author: Alejandro Ucan-Puc
   description: |
-    Recursos para el Periodo 01 para la matería Modelación de procesos mediante algebra lineal, AD 2023.
+    Resources for the Course Process Modelling using Linear Algebra (MA1034).
   text_link_label: "MA1034Eng"
   text_link_url: "MA1034Eng"
   show_sidebar_adunit: false # show ad container
@@ -26,7 +26,7 @@ cascade:
   series: MA1034Eng  # name your series
   author: Alejandro Ucan-Puc
   show_author_byline: true
-  show_post_date: true
+  show_post_date: false
   show_comments: true
   sidebar:
     text_link_label: "MA1034Eng"
