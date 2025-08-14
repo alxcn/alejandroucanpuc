@@ -5,7 +5,7 @@ subtitle: ""
 excerpt: "We will describe how to obtain a orthonormal basis for a vector space using the Gram-Schmidt process."
 date: '`r Sys.Date()`'
 slug: MA1034-session-08
-draft: false
+draft: true
 ---
 
 In this session of **MA1034Eng** the objectives are:

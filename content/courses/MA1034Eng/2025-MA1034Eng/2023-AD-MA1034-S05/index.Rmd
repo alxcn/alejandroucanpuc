@@ -5,7 +5,7 @@ subtitle: ""
 excerpt: "We introduce the concept of eigenvalues and eigenvectors, and their applications in linear transformations."
 date: '`r Sys.Date()`'
 slug: MA1034-session-05
-draft: false
+draft: true
 ---
 
 In this session of **MA1034Eng** the objectives are:

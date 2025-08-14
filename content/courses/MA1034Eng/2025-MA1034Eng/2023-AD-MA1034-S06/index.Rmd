@@ -5,7 +5,7 @@ subtitle: ""
 excerpt: "We will study the process of diagonalization of matrices and its applications in linear transformations."
 date: '`r Sys.Date()`'
 slug: MA1034-session-06
-draft: false
+draft: true
 ---
 
 In this session of **MA1034Eng** the objectives are:

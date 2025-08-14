@@ -5,7 +5,7 @@ subtitle: ""
 excerpt: "Describe projections between vectors, angles and orthogonality, and we their applications."
 date: '`r Sys.Date()`'
 slug: MA1034-session-07
-draft: false
+draft: true
 ---
 
 In this session of **MA1034Eng** the objectives are:

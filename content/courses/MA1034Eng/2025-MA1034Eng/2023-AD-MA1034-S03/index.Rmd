@@ -6,7 +6,7 @@ excerpt: "We will introduce the concept of linear transformations and their prop
 
 date: '`r Sys.Date()`'
 slug: MA1034-session-03
-draft: false
+draft: true
 ---
 
 In this session of **MA1034Eng** the objectives are:

@@ -8,16 +8,258 @@ slug: MA1034-session-02
 draft: false
 ---
 
-In this session of **MA1034Eng** the objectives are:
+**Learning Outcomes:**
 
-* Introduce the concept of linear combinations. <br/><br/>
-* Differentiate between linear dependence and independence. <br/><br/>
-* Introduce the concept of generated spaces. <br/><br/>
-* Define the concept of dimension. <br/><br/>
+By the end of this session, students should be able to:
 
-The slides for **Session 02** are available in the following [slides](/slides/2024-AD-MA1034Eng/MA1034-sesion-02).
+- Apply linear combinations to generate vector spaces. <br/>
+- Differentiate between linear independence and dependence. <br/>
+- Compute the dimension of a vector space. <br/>
+- Identify bases for vector spaces. <br/>
+- Provide examples of vector spaces with specified bases. <br/>
 
 
-```{r embed-xaringan, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "/slides/2024-AD-MA1034Eng/MA1034-sesion-02", ratio = "4:3")
-```
+**Topics Covered:**
+
+- Linear combinations. <br/>
+- Linear independence and dependence. <br/>
+- Generated spaces. <br/>
+- Basis of a vector space. <br/>
+- Dimension of a vector space. <br/>
+- Examples of vector spaces with specified bases. <br/>
+- Applications of bases and dimension in various fields. <br/>
+
+## Motivation 
+
+An industrial engineer is studying a production system with 4 workstations (A, B, C, D) whose outputs depend on shared resources (raw materials, labor hours). The system’s behavior can be modeled using vector spaces, where: <br/>
+•	Each workstation’s output is a dimension in a vector space. <br/>
+•	Resource constraints define subspaces of feasible production vectors. <br/>
+We want to understand the space of possible output combinations based on the next two constraints: <br/>
+1.	The outputs of workstation A and B are equal to the outputs C and D. <br/>
+2.	The output of workstation D needs the same labor as two times the output of workstation A. <br/>
+
+Describe the vector space of possible outputs, find a basis and based on the basis describe how the workstations contribute to the overall production system.
+
+## Linear combinations
+
+From the previous session, we know that for a given vector space $V$ every addition of two or more vector is also a vector in $V$. We can extend this idea to the addition of multiple vectors scaled by some coefficients.
+
+> **Definition:** Let $V$ be a vector space. A **linear combination** of vectors $v_1, v_2, \ldots, v_n$ in $V$ is an expression of the form:
+$$
+c_1 v_1 + c_2 v_2 + \ldots + c_n v_n
+$$
+where $c_1, c_2, \ldots, c_n$ are scalars (coefficients).
+
+
+For example, in the vector space $\mathbb{R}^2$, consider the vectors $v_1 = (1, 0)$ and $v_2 = (0, 1)$. A linear combination of these vectors could be: $$3v_1 + 4v_2 = 3(1, 0) + 4(0, 1) = (3, 4).$$ In the vector space of matrices $M_{2x2}(\mathbb{R})$, consider the matrices $A = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ and $B = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$. A linear combination of these matrices could be: $$2A - B = 2\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} - \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 2 & -1 \\ -1 & 2 \end{pmatrix}.$$ 
+
+One question to arises is: given a set of vectors in a vector space and a target vector, *can we express the target vector as a linear combination of the given vectors?* The answer is **it depends**, and we will explore this question.
+
+**Example 1:** In the vector space $\mathbb{R}^3$, consider the vector $v_1=(1,2,0),$ $v_2=(0,1,1)$ and $v_3=(-2,0,3)$. Determine if the vector $u=(1,3,3)$ can be expressed as a linear combination of $v_1, v_2,$ and $v_3$. If so, find the coefficients.
+
+**Solution:** We want to find scalars $c_1, c_2,$ and $c_3$ such that $$u = c_1 v_1 + c_2 v_2 + c_3 v_3.$$ This leads to the system of linear equations $$\begin{align*} 1 &= c_1 - 2c_3 \\ 3 &= 2c_1 + c_2 \\ 3 &= c_2 + 3c_3 \end{align*}$$ Solving this system, we find that $c_1 = 1, c_2 = 1,$ and $c_3 = 0$. Therefore, $u$ can be expressed as a linear combination of $v_1, v_2,$ and $v_3$ as follows: $$u = 1v_1 + 1v_2 + 0v_3.$$
+
+**Example 2:** In the vector space $P_2(\mathbb{R})$ of all polynomials of degree at most 2, consider the polynomials $p_1(x) = x^2 + 1,$ $p_2(x) = x + 1,$ and $p_3(x) = 2x^2 - x.$ Determine if the polynomial $q(x) = 3x^2 + 2x + 1$ can be expressed as a linear combination of $p_1, p_2,$ and $p_3$. If so, find the coefficients.
+
+**Solution:** We want to find scalars $c_1, c_2,$ and $c_3$ such that $$q(x) = c_1 p_1(x) + c_2 p_2(x) + c_3 p_3(x).$$ This leads to the system of equations based on the coefficients of the polynomials: $$\begin{align*} 3 &= c_1 + 2c_3 \\ 2 &= c_2 - c_3 \\ 1 &= c_1 + c_2 \end{align*}$$ Solving this system, we find that $c_1 = 1, c_2 = 2,$ and $c_3 = 1$. Therefore, $q(x)$ can be expressed as a linear combination of $p_1, p_2,$ and $p_3$ as follows: $$q(x) = 1p_1(x) + 2p_2(x) + 1p_3(x).$$
+
+## Generated Spaces
+
+Given a list of vectors, *can we describe the minimal vector space that contains them?* The answer is yes, and this leads us to the concept of generated spaces.
+
+> **Definition:** Given a set of vectors $S$ in a vector space $V$, we can consider the set of all possible linear combinations of those vectors. This set forms a new vector space called the **span** or **generated space** of the original set of vectors and it is denoted by $\text{span}(S)$ or $\langle S \rangle$. Formally, $$\text{span}(S) = \{ c_1 v_1 + c_2 v_2 + \ldots + c_n v_n \mid v_i \in S, c_i \in \mathbb{R}\}.$$
+
+For example, in the vector space $\mathbb{R}^2$, consider the vectors $v_1 = (1, 0)$ and $v_2 = (0, 1)$. The span of these vectors is the entire vector space $\mathbb{R}^2$, since any vector $(x, y)$ in $\mathbb{R}^2$ can be expressed as a linear combination of $v_1$ and $v_2$: $$ (x, y) = x(1, 0) + y(0, 1).$$ In the vector space of polynomials $P_2(\mathbb{R})$, consider the polynomials $p_1(x) = x^2$ and $p_2(x) = x$. The span of these polynomials is the set of all polynomials of degree at most 2 that can be expressed as linear combinations of $p_1$ and $p_2$: $$ \text{span}\{p_1, p_2\} = \{ c_1 x^2 + c_2 x \mid c_1, c_2 \in \mathbb{R} \},$$ which includes all polynomials of the form $ax^2 + bx$ where $a$ and $b$ are real numbers.
+
+**Example 3:** In the vector space $\mathbb{R}^3,$ consider the vectors $v_1=(2,0,0),$ $v_2=(1,3,0)$ and $v_3=(1,1,0)$. Describe the span of these vectors.
+
+**Solution:** The span of the vectors $v_1, v_2,$ and $v_3$ is the set of all linear combinations of these vectors. Any vector in the span can be expressed as: $$c_1 v_1 + c_2 v_2 + c_3 v_3 = c_1(2,0,0) + c_2(1,3,0) + c_3(1,1,0) = (2c_1 + c_2 + c_3, 3c_2 + c_3, 0).$$ This means that the span of these vectors is the set of all vectors in $\mathbb{R}^3$ where the third component is zero. Therefore, $$\text{span}\{v_1, v_2, v_3\} = \{(x,y,0) \mid x,y \in \mathbb{R}\},$$ which is a subspace of $\mathbb{R}^3$.
+
+## Linear Independence and Dependence
+
+Sometimes a set of vectors can be redundant, meaning that some vectors can be expressed as linear combinations of others. For instance, in the previous example, we can see that $v_1$ can be expressed as a linear combination of $v_2$ and $v_3$ as follows: $$v_1 = 2v_2 - v_3.$$ This leads us to the concepts of linear independence and dependence. (Corregir)
+
+**Definition:** A set of vectors is said to be **linearly independent** if any linear combination of these vectors that equals the zero vector all its coefficients equal to zero. In other words, if the only solution to the equation $$c_1 v_1 + c_2 v_2 + \ldots + c_n v_n = 0$$ is $c_1 = c_2 = \ldots = c_n = 0$, then the set of vectors is linearly independent.
+Conversely, if there exists a non-trivial solution (at least one coefficient is non-zero) to the equation above, then the set of vectors is **linearly dependent**.
+
+**Example 4:** In the vector space $\mathbb{R}^3$, consider the vectors $v_1=(1,0,0),$ $v_2=(0,1,0),$ and $v_3=(0,0,1)$. Determine if these vectors are linearly independent or dependent. 
+
+**Solution:** To check if the vectors are linearly independent, we need to see if the only solution to the equation $$c_1 v_1 + c_2 v_2 + c_3 v_3 = 0$$ is $c_1 = c_2 = c_3 = 0$. This leads to the system of equations:
+$$\begin{align*}
+0 &= c_1 \\
+0 &= c_2 \\
+0 &= c_3
+\end{align*}$$
+The only solution is $c_1 = c_2 = c_3 = 0$.
+
+Therefore, the vectors $v_1, v_2,$ and $v_3$ are linearly independent.
+
+**Example 5:** In the vector space $\mathbb{R}^3,$ consider the vectors $v_1=(1,1,0),$ $v_2=(0,1,1),$ and $v_3=(1,2,1)$. Determine if these vectors are linearly independent or dependent.
+
+**Solution:** To check if the vectors are linearly independent, we need to see if the only solution to the equation $$c_1 v_1 + c_2 v_2 + c_3 v_3 = 0$$ is $c_1 = c_2 = c_3 = 0$. This leads to the system of equations:
+$$\begin{align*}
+0 &= c_1 + c_3 \\
+0 &= c_1 + c_2 + 2c_3 \\
+0 &= c_2 + c_3
+\end{align*}$$
+Solving this system, we find out that $c_1=t, c_2=t, c_3=-t$ for any $t \in \mathbb{R}$. This means that there are non-trivial solutions to the equation (for example $t=1$), and therefore the vectors $v_1, v_2,$ and $v_3$ are linearly dependent.
+
+## Basis of a Vector Space
+
+In the previous sections, we have seen how to generate vector spaces using sets of vectors and how to determine if those sets have redundant vectors. This leads us to the following question: *Can we find a minimal set of vectors that can generate the entire vector space without any redundancy?* The answer is yes, and this leads us to the concept of a **basis**.
+
+> **Definition:** A **basis** of a vector space $V$ is a set of vectors in $V$ that is both linearly independent and spans the entire vector space. 
+
+For example, in the vector space $\mathbb{R}^2$ the set of vectors $\{(1,1), (1,-1), (1,0)\}$ spans the entire space, but it is linearly dependent because $(1,0)$ can be expressed as a linear combination of the other two vectors. But, if we remove $(1,0)$, the set $\{(1,1), (1,-1)\}$ is linearly independent and spans $\mathbb{R}^2$, so it is a basis of $\mathbb{R}^2$. In the vector space $P_2(\mathbb{R})$ of all polynomials of degree at most 2, the set of polynomials $\{1, x, x^2\}$ is a basis because it is linearly independent and spans the entire space.
+
+How we can determine if a set of vector is a basis of a vector space? We can follow these steps:
+1. **Check for Linear Independence:** Verify that the only solution to the equation $$c_1 v_1 + c_2 v_2 + \ldots + c_n v_n = 0$$ is $c_1 = c_2 = \ldots = c_n = 0$.
+2. **Check for Spanning:** Check if the system of equations $$c_1 v_1 + c_2 v_2 + \ldots + c_n v_n = u$$ has a unique solution for every vector $u$ in the vector space $V$. Similarly, the associated matrix has a complete rank.
+
+**Example 6:** In the vector space $\mathbb{R}^4,$ consider the set $$S=\{(1,1,2,1),(1,0,1,0),(0,1,1,0),(0,0,1,1)\}.$$ Determine if $S$ is a basis of $\mathbb{R}^4$.
+
+**Solution:** The associated system of equations of spanning has the associated matrix $$A=\begin{pmatrix}
+1 & 1 & 2 & 1 \\
+1 & 0 & 1 & 0 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 1
+\end{pmatrix}.$$ We can check the rank of the matrix $A$ using Gaussian elimination or row reduction. The reduced row echelon form of $A$ is $$\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}.$$ Since the reduced row echelon form has a pivot in every row, the rank of the matrix $A$ is 4, implying that the set $S$ spans $\mathbb{R}^4$ and is linearly independent. Therefore, $S$ is a basis of $\mathbb{R}^4$.
+
+**Example 7:** In the vector space $P_2(\mathbb{R})$ of all polynomials of degree at most 2, consider the set $$S=\{1, x^2 + x\}.$$ Determine if $S$ is a basis of $P_2(\mathbb{R})$.
+
+**Solution:** The set $S$ contains two polynomials. To check if $S$ is a basis, we need to verify if it is linearly independent and spans $P_2(\mathbb{R})$. 
+
+1. **Check for Linear Independence:** We need to see if the only solution to the equation $$c_1 \cdot 1 + c_2 (x^2 + x) = 0$$ is $c_1 = c_2 = 0$. This leads to the polynomial equation $$c_1 + c_2 x^2 + c_2 x = 0.$$ For this equation to hold for all $x$, the coefficients must be zero:
+   - Constant term: $c_1 = 0$
+   - Coefficient of $x$: $c_2 = 0$
+   - Coefficient of $x^2$: $c_2 = 0$
+
+   The only solution is $c_1 = c_2 = 0$, so the set $S$ is linearly independent.
+
+2. **Check for Spanning:** The associated system of equations for linear combinations of $S$ has the associated matrix $$A=\begin{pmatrix}
+1 & 0 \\
+0 & 1 \\
+0 & 1 
+\end{pmatrix}.$$ The reduced row echelon form of $A$ is $$\begin{pmatrix}
+1 & 0 \\ 0 & 1 \\ 0 & 0 \end{pmatrix}.$$ Since the reduced row echelon form does not have a pivot in every row, the rank of the matrix $A$ is 2 and does not span $P_2(\mathbb{R})$. Therefore, $S$ is not a basis of $P_2(\mathbb{R})$.
+
+> **Definition:** Given a vector space $V,$ the **dimension** of $V$ is the number of vectors in any basis of $V$. It is denoted as $\text{dim}(V)$.
+
+**Example 8:** In the vector space $\mathbb{R}^3,$ consider the basis $B=\{(1,0,0),(0,1,0),(0,0,1)\}$. Therefore, the dimension of $\mathbb{R}^3$ is $\text{dim}(\mathbb{R}^3) = 3$.
+
+**Example 9:** In the vector space $P_2(\mathbb{R})$ of all polynomials of degree at most 2, consider the basis $B=\{1, x, x^2\}$. Therefore, the dimension of $P_2(\mathbb{R})$ is $\text{dim}(P_2(\mathbb{R})) = 3$.
+
+> **Theorem:** If $V$ is a vector space and $S$ is a set of vectors in $V,$ then the following statements are true:<br/>
+1. If the number of vectors in $S$ is less than the dimension of $V$, then $S$ cannot span $V$. <br/>
+2. If the number of vectors in $S$ is greater than the dimension of $V$, then $S$ is linearly dependent. <br/>
+
+
+## Applied Examples
+
+In this section, we will provide some applied examples of how to use linear combinations, generated spaces, bases, and dimension to model real-world phenomena. These examples will illustrate how these vectors can be used in practical applications, we will restrict ourselves to the examples in the industrial and mechatronics engineering fields, but the ideas can be applied to other fields as well.
+
+**Example 10:** An industrial engineer is studying a production system with 4 workstations (A, B, C, D) whose outputs depend on shared resources (raw materials, labor hours). The system’s behavior can be modeled using vector spaces, where:
+• Each workstation’s output is a dimension in a vector space.
+• Resource constraints define subspaces of feasible production vectors.
+We want to understand the space of possible output combinations based on the next two constraints:
+1.	The outputs of workstation A and B are equal to the outputs C and D.
+2.	The output of workstation D needs the same labor as two times the output of workstation A.
+
+Describe the vector space of possible outputs, find a basis and describe how the workstations contribute to the overall production system.
+
+**Solution:** 
+
+*Claim:* The vector space of possible outputs is a subspace of $\mathbb{R}^4$ with dimension 2.
+
+
+*Grounds:* Let $x_A, x_B, x_C,$ and $x_D$ be the outputs of workstations A, B, C, and D respectively. The constraints can be expressed as:
+1. $x_A + x_B = x_C + x_D$
+2. $x_D = 2x_A$
+We can rewrite the first constraint as $x_C = x_A + x_B - x_D$. Substituting the second constraint into this, we get $x_C = x_A + x_B - 2x_A = -x_A + x_B$. Therefore, the outputs can be expressed in terms of $x_A$ and $x_B$ as follows:
+$$(x_A, x_B, x_C, x_D) = (x_A, x_B, -x_A + x_B, 2x_A) = x_A(1, 0, -1, 2) + x_B(0, 1, 1, 0).$$
+
+We propose the set of vectors $S=\{(1,0,-1,2),(0,1,1,0)\}$ as a basis for the vector space of possible outputs.
+
+Let's verify that $S$ is a basis. To check if the vectors in $S$ are linearly independent, we need to see if the only solution to the equation $$c_1(1,0,-1,2) + c_2(0,1,1,0) = (0,0,0,0)$$ is $c_1 = c_2 = 0$. This leads to the system of equations:
+   $$\begin{align*}
+   0 &= c_1 \\
+   0 &= c_2 \\
+   0 &= -c_1 + c_2 \\
+   0 &= 2c_1
+   \end{align*}$$
+The only solution is $c_1 = c_2 = 0$, so the vectors in $S$ are linearly independent. We don't need to check that $S$ spans the space, because we have already expressed any output vector as a linear combination of the vectors in $S$, so $S$ spans the space.
+
+*Warrant:* Since $S$ is a set of two linearly independent vectors that spans the vector space of possible outputs, it is a basis for this vector space. Therefore, the dimension of the vector space of possible outputs is 2. From the basis, we can see that workstations A and B contribute independently to the overall production system, while workstations C and D's outputs are dependent on A and B's outputs. This means that by controlling the outputs of workstations A and B, we can determine the outputs of workstations C and D, allowing for efficient resource allocation and production planning in the system.
+
+**Example 11:** A 3-DOF robotic arm's joint movements are modeled as vectors in $\mathbb{R}^3,$ where each dimension represents angular displacement $(\theta_1, \theta_2, \theta_3)$ of base, elbow and wrist jounts respectively. The arm's movement is constrained by:
+* Gear Ratio Constraint: $\theta_2 = 2\theta_1$ (elbow moves twice as fast as base).
+* Power Budget Constraint: $\theta_1 + \theta_3 = 0$ (wrist compensates for base movement to conserve energy).
+> 1. Find a basis for the vector space of all possible joint movements that satisfy these constraints. <br/><br/>
+> 2. Determine the dimension of this vector space. <br/><br/>
+
+**Solution:**
+*Claim:* The vector space of possible joint movements is a subspace of $\mathbb{R}^3$ with dimension 1.
+
+*Grounds:* Let $\theta_1, \theta_2,$ and $\theta_3$ be the angular displacements of the base, elbow, and wrist joints respectively. The constraints can be expressed as:
+1. $\theta_2 = 2\theta_1$
+2. $\theta_1 + \theta_3 = 0 \implies \theta_3 = -\theta_1$
+
+Substituting the expression for $\theta_2$ into the joint movement vector, we have:
+$$(\theta_1, \theta_2, \theta_3) = (\theta_1, 2\theta_1, -\theta_1) = \theta_1(1, 2, -1).$$
+
+We propose the set of vectors $S=\{(1,2,-1)\}$ as a basis for the vector space of possible joint movements.
+
+Let's verify that $S$ is a basis. To check if the vector in $S$ is linearly independent, we need to see if the only solution to the equation $$c_1(1,2,-1) = (0,0,0)$$ is $c_1 = 0$. This leads to the system of equations:
+   $$\begin{align*}
+   0 &= c_1 \\
+   0 &= 2c_1 \\
+   0 &= -c_1
+   \end{align*}$$
+The only solution is $c_1 = 0$, so the vector in $S$ is linearly independent. We don't need to check that $S$ spans the space, because we have already expressed any joint movement vector as a linear combination of the vector in $S$, so $S$ spans the space.
+
+*Warrant:* Since $S$ is a set of one linearly independent vector that spans the vector space of possible joint movements, it is a basis for this vector space. Therefore, the dimension of the vector space of possible joint movements is 1. From the basis, we can see that the joint movements are fully determined by the base joint's movement, allowing for efficient control and planning of the robotic arm's movements.
+
+### Your turn
+
+Practice is the key to mastering the concepts of linear combinations, generating sets, dependency and dimension. Now that you have seen some examples, it is your turn to practice on examples of vector spaces and subspace. You can use the Toulmin's argumentation model to structure your reasoning, and include the following components: claim, grounds and warrant.
+
+1. A simplified production system has 2 workstations $(A,B)$ with outputs $x_A$ and $x_B$ (in units/hour). The outputs of the workstations must be equal.
+   - Represent all possible output combinations $(x_A, x_B)$ as a vector space in $\mathbb{R}^2$. <br/>
+   - Is this a subspace? If yes, find its dimension and a basis. <br/>
+   - Interpret the basis vector physically (what does it represent in the production system?).
+
+2. A simple robotic joint system has two angles $(\theta_1, \theta_2)$ with the constraint that the base joint angle $\theta_1$ must be three times the elbow joint angle $\theta_2.$
+   - Represent all valid joint configurations as a vector space. <br/>
+   - Find a basis and its dimension. <br/>
+
+3. A system has 3 workstations $(A,B,C)$ produces a combinations of units per hour, $(x_A, x_B, x_C)$ with outputs $x_A, x_B, x_C$ and constraints: <br/>
+   - Material Balance: the units per hour of workstation $C$ must equal the sum of the units per hour of workstations $A$ and $B$. <br/>
+   - Labor Constraint: in the same amount of time, workstation $C$ must produce half the units per hour of workstation $A$. <br/>
+   - Questions:
+     - Describe the set of all possible outputs $(x_A, x_B, x_C)$.
+     - Find a basis for the output space and its dimension.
+     - If workstation $B$ is shut down ($x_B=0$), describe the feasible outputs.
+
+4. A 3-DOF robotic arm has joints $(\theta_1, \theta_2, \theta_3)$ with:<br/>
+    - Motion coupling: angle of joint 3 ($\theta_3$) must equal the sum of angles of joints 1 and 2 ($\theta_1 + \theta_2$). <br/>
+    - Power constraint: due to construction, the angle of joint 2 must be three times the angle of joint 1.<br/>
+Describe the vector space of all possible joint movements $(\theta_1, \theta_2, \theta_3)$ given the constraints and determine a basis and its dimension. Describe how the angles of each joint contribute to the overall movement of the robotic arm.
+
+5. A system has 4 workstations $(A,B,C,D)$ with outputs. The system has the following constraints:
+   - Output Matching: The outputs of workstation $A$ must be equal to the outputs of workstations $C$ and $D$.
+   - Labor Efficiency: The output of workstation $D$ must be one third the output of workstation $A$ plus one half the output of workstation $B$.
+   - Questions:
+     - Show that feasible outputs form a subspace of $\mathbb{R}^4$ and find its dimension.
+     - Find a basis and interpret each basis vector industrially.
+     - If an additional constraint $x_B = x_C$ is imposed, how does the subspace change?
+
+6. A 4-DOF robotic system has joints angles velocities $(\theta_1, \theta_2, \theta_3, \theta_4),$ respectively. For the system, the following constraints are imposed: <br/>
+- Joint coupling: joint 2 moves twice as fast as joint 1.
+- Gear constraint: joint 3 must be twice the angle of joint 1.
+- Safety constaint: the velocity of joint 4 must equal the sum of the velocities of joints 2 and 3.
+Describe the space of all possible angle velocities, find a basis and its dimension. Interpret the basis vectors in terms of the robotic system's movement capabilities.
