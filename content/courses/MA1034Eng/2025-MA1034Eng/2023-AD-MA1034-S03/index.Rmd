@@ -6,16 +6,229 @@ excerpt: "We will introduce the concept of linear transformations and their prop
 
 date: '`r Sys.Date()`'
 slug: MA1034-session-03
-draft: true
+draft: false
 ---
 
-In this session of **MA1034Eng** the objectives are:
+** Learning Outcomes: **
 
-* Introduce the concept of linear transformations. <br/><br/>
-* Define the kernel and image of a linear transformation. <br/><br/>
+- Understand the definition of a linear transformation.
+- Be able to determine if a given transformation is linear.
+- Learn how to represent linear transformations using matrices.
+- Explore the properties of linear transformations, including kernel and image.
+- Apply linear transformations to solve problems in various contexts.
 
-The slides for **Session 03** are available in the following [slides](/slides/2024-AD-MA1034Eng/MA1034-sesion-03).
+**Topics Covered:**
 
-```{r embed-xaringan, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "/slides/2024-AD-MA1034Eng/MA1034-sesion-03", ratio = "4:3")
-```
+- Definition of Linear Transformations
+- Examples of Linear Transformations
+- Range and Kernel of a Linear Transformation
+- Matrix Representation of Linear Transformations
+- Applications of Linear Transformations in Different Fields
+
+## Motivation:
+
+A factory has a production process that transforms three raw materials into two finished product types, the products needs specific quantities of raw material. To produce one unit of product 1, it requires 1 unit of raw material A and 3 units of raw material B and no product C. To produce one unit of product 2, it requires 2 units of raw material A and 0 units of raw material B and 1 unit of raw material C. Determine the all possible outputs of the factory based on the raw materials available. Is there a way that the factory can produce a specific amount of products? <br/><br/>
+
+## Linear Transformations
+
+In mathematics, beside constructing objects like vectors and vector spaces, we also study those transformations that preserve the structure of these objects. In the case of vector spaces, these transformations are called linear transformations. <br/>
+
+Naively, a *linear transformation* is a function between two vector spaces that preserves vector space structure, i.e., vector addition and scalar multiplication. More formally:
+
+> **Definition:** Let $V$ and $W$ be vector spaces. A function $T:V\rightarrow W$ is called a __linear transformation__ if for all $u,v\in V$ and for all scalar $\alpha\in \mathbb{R}$ it holds that: $$T(u+v)=T(u)+T(v)$$ $$T(\alpha u)=\alpha T(u).$$
+
+As for any function, we call $V$ the *domain* and $W$ the *codomain*. If a function *does not* satisfy at least one of these properties, it is not a linear transformation.
+
+### Example 1:
+
+Consider the function $T:\mathbb{R}^2\rightarrow \mathbb{R}^2$ defined by $T(x,y)=(x+y,2x-y)$. We will show that this function is a linear transformation. <br/><br/>
+
+**Solution:** Let $(x_1,y_1),(x_2,y_2)\in \mathbb{R}^2$ and $\alpha\in \mathbb{R}$, then $$T((x_1,y_1)+(x_2,y_2))=T(x_1+x_2,y_1+y_2)=(x_1+x_2+y_1+y_2,2(x_1+x_2)-(y_1+y_2))$$ $$=(x_1+y_1,2x_1-y_1)+(x_2+y_2,2x_2-y_2)=T(x_1,y_1)+T(x_2,y_2)$$ and $$T(\alpha (x_1,y_1))=T(\alpha x_1,\alpha y_1)=(\alpha x_1+\alpha y_1,2\alpha x_1-\alpha y_1)=\alpha(x_1+y_1,2x_1-y_1)=\alpha T(x_1,y_1).$$
+
+As we can see, both properties are satisfied, so $T$ is a linear transformation.
+
+**Example 2:** Consider the function $T: \mathbb{R}^3\rightarrow \mathbb{R}$ defined by T(x,y,z)=xyz. We will show that this function is not a linear transformation. <br/><br/>
+
+**Solution:** Let $(x,y,z)\in\mathbb{R}^3$ and $\alpha\in \mathbb{R}.$ We should have that $$T(\alpha (x,y,z))=\alpha xyz$$ but we have $$T(\alpha x,\alpha y,\alpha z)=\alpha^3 xyz$$ and $$\alpha T(x,y,z)\alpha xyz.$$ Since $\alpha^3 \neq \alpha$ for all $\alpha \neq 0,1$, the function does not satisfy the second property of linear transformations, so it is not a linear transformation.
+
+**Example 3:** Let's prove that the function $T:P_3\to \mathbb{R}$ given by $T(p)=p(0)$ is a linear transformation. <br/><br/>
+
+**Solution:** Let $p,q\in P_3$ and $\alpha\in \mathbb{R}$, then $$T(\lambda p+q)=(\lambda p+q)(0)=\lambda p(0)+q(0)=\lambda T(p)+T(q).$$ Also, $$T(\alpha p)=(\alpha p)(0)=\alpha p(0)=\alpha T(p).$$
+
+This shows that $T$ satisfies both properties of linear transformations, so it is indeed a linear transformation.
+
+So, as you can see, linear transformations are functions that preserve the structure of vector spaces, and they can be represented in various ways.
+
+## Kernel and Range
+
+Beside the rule of definition of linear transformations, we can also study the properties of these transformations. Two important properties are the *kernel* and the *range* of a linear transformation.
+
+> **Definition:** Let $T:V\to W$ be a linear transformation: <br/><br/>
+  * __The kernel:__ is the subspace of $V$ defined by all vectors that are mapped to zero under $T$ $$N(T)=\{v\in V:T(v)=0\}.$$ Its dimension is called *nullity*.<br/><br/>
+  * __The range:__ is the subspace of $W$ defined by all vectors of the form $T(v)$ for $v\in V$ $$R(T)=\{T(v):v\in V\}.$$ Its dimension is called *rank*.
+
+The *kernel* of a linear transformation are all those vectors that are mapped to the zero vector in the codomain, meaning that they are "lost" in the transformation. The *range* is the set of all possible outputs of the transformation, meaning that it contains all vectors that can be obtained by applying the transformation to vectors in the domain. The dimensions of these subspaces give us important information about the transformation as we will see later.
+
+**Example 4:** Consider the linear transformation of example 1, $T: \mathbb{R}^2\to \mathbb{R}^2$ defined by $T(x,y)=(x+y,2x-y)$. We will find the kernel and range of this transformation. 
+
+**Solution:** To find the kernel, we need to solve the equation $$T(x,y)=(0,0).$$ This gives us the system of equations:
+1. $x+y=0$
+2. $2x-y=0$
+
+From the first equation, we have $y=-x$. Substituting this into the second equation gives us $2x-(-x)=0$, or $3x=0$, so $x=0$ and $y=0$. Thus, the kernel is $$N(T)=\{(0,0)\},$$ which is the trivial subspace.
+
+To find the range, we need to determine all possible outputs of the transformation. Let's take a generic vector $(u,v)$ in $\mathbb{R}^2$ and solve the system $$T(x,y)=(u,v).$$ It is better to write this as a matrix equation:
+$$\left(\begin{array}{cc|c} 1 & 1 & u\\ 2 & -1 & v\end{array}\right).$$ Proceding with complete reduction, we get: 
+$$\left(\begin{array}{cc|c} 1 & 0 & \frac{5u-v}{3}\\ 0 & 1 & \frac{2u-v}{3}\end{array}\right).$$
+From the fact, that there are no free variables, and the system is consistent, we can conclude that the range is all of $\mathbb{R}^2$, i.e., $$R(T)=\mathbb{R}^2.$$
+
+**Example 5:** Consider the linear transformation $T:\mathbb{R}^3 \to \mathbb{R}^2$ defined by $T(x,y,z)=(x+y,y+z)$. We will find the kernel and range of this transformation.
+
+**Solution:** To find the kernel, we need to solve the equation $$T(x,y,z)=(0,0).$$ This gives us the system of equations:
+1. $x+y=0$
+2. $y+z=0$
+
+From the first equation, we have $y=-x$. Substituting this into the second equation gives us $-x+z=0$, or $z=x$. Thus, the kernel is $$N(T)=\{(x,-x,x):x\in\mathbb{R}\},$$ which is a one-dimensional subspace of $\mathbb{R}^3$.
+
+To find the range, we need to determine all possible outputs of the transformation. Let's take a generic vector $(u,v)$ in $\mathbb{R}^2$ and solve the system $$T(x,y,z)=(u,v).$$ This gives us the equations:
+1. $x+y=u$
+2. $y+z=v$
+
+We can express this as a matrix equation:
+$$\left(\begin{array}{ccc|c} 1 & 1 & 0 & u\\ 0 & 1 & 1 & v\end{array}\right).$$ Proceeding with complete reduction, we get:
+$$\left(\begin{array}{ccc|c} 1 & 0 & -1 & \frac{u-v}{1}\\ 0 & 1 & 1 & v\end{array}\right).$$ The system is consistent for all $(u,v)$, so the range is all of $\mathbb{R}^2$, i.e., $$R(T)=\mathbb{R}^2.$$
+
+## Matrix Representation of Linear Transformations
+
+Matrices are a powerful tool and they are intimately connected to linear transformations. In fact, every linear transformation can be represented by a matrix, and vice versa.
+
+> **Theorem:** Let $T:\mathbb{R}^n\to \mathbb{R}^m$ be a linear transformation. Then, there exists a unique matrix $A$ of size $m\times n$ such that for all $x\in \mathbb{R}^n$, $$T(x)=Ax.$$
+
+**Example 6:** Consider the linear transformation $T:\mathbb{R}^2\to \mathbb{R}^2$ defined by $T(x,y)=(x+y,2x-y)$. We will find the matrix that represents this transformation.
+
+**Solution:** To find the matrix representation of $T$, we need to determine how $T$ acts on the standard basis vectors of $\mathbb{R}^2$, which are $e_1=(1,0)$ and $e_2=(0,1)$.
+
+Let's compute $T(e_1)$ and $T(e_2)$:
+
+1. $T(e_1) = T(1,0) = (1+0, 2\cdot1-0) = (1,2)$
+2. $T(e_2) = T(0,1) = (0+1, 2\cdot0-1) = (1,-1)$
+
+Now we can form the matrix $A$ by using the images of the basis vectors as columns:
+$$A = \left(\begin{array}{cc} 1 & 1\\ 2 & -1\end{array}\right).$$
+
+Thus, the matrix representation of the linear transformation $T$ is:
+$$A = \left(\begin{array}{cc} 1 & 1\\ 2 & -1\end{array}\right).$$
+
+**Example 7:** Consider the same linear transformation, but consider the basis of $\mathbb{R}^2$ given by $B=\{(1,1),(1,-1)\}$ and the basis of $\mathbb{R}^2$ given by $C=\{(1,0),(0,1)\}$. Find the matrix that represents this transformation with respect to these bases.
+
+**Solution:** To find the matrix representation of $T$ with respect to the bases $B$ and $C$, we need to determine how $T$ acts on the basis vectors in $B$.
+
+Let's compute $T(1,1)$ and $T(1,-1)$:
+
+1. $T(1,1) = (1+1, 2\cdot1-1) = (2,1)$
+2. $T(1,-1) = (1-1, 2\cdot1-(-1)) = (0,3)$
+
+Now we need to express these outputs in terms of the basis $C$. 
+
+The vector $(2,1)$ can be expressed as:
+$$ (2,1) = 2(1,0) + 1(0,1) $$
+
+The vector $(0,3)$ can be expressed as:
+$$ (0,3) = 0(1,0) + 3(0,1) $$
+
+Thus, the matrix representation of the linear transformation $T$ with respect to the bases $B$ and $C$ is:
+$$A_{B,C} = \left(\begin{array}{cc} 2 & 0\\ 1 & 3\end{array}\right).$$
+
+As you may notice, the matrix representation of a linear transformation can change depending on the bases chosen for the domain and codomain. In general, if there is no information about the bases, we assume the standard bases. Also, the process of finding the matrix representation of a linear transformation is the same regardless of the bases chosen, and consists of determining how the transformation acts on the basis vectors and expressing the outputs as linear combinations of the target basis.
+
+Why it is important to represent linear transformations using matrices? Because it allows us to use matrix operations to analyze and manipulate linear transformations, making it easier to compute compositions, inverses, and other properties of the transformations. Additionally, many applications in science and engineering involve linear transformations that can be efficiently represented and computed using matrices. Additionally, matrices provide a compact and efficient way to store and manipulate linear transformations, especially in high-dimensional spaces.
+
+## Dimension Theorem
+
+> **Theorem:** Let $T:V\to W$ be a linear transformation, then $$\dim V=\dim N(T)+\dim R(T).$$
+
+This theorem is known as the *Rank-Nullity Theorem* and it states that the dimension of the domain of a linear transformation is equal to the sum of the dimensions of its kernel (null space) and its range (image). This theorem is fundamental in understanding the structure of linear transformations and their properties. Also, this theorem help us to describe the range and kernel of linear transformations in terms of their dimensions, which is useful for analyzing the behavior of the transformation.
+
+
+## Applied Linear Transformations
+
+Linear transformations are not just theoretical constructs; they have practical applications in various fields such as computer graphics, data science, physics, and engineering. They can be used to model real-world phenomena, perform data transformations, and solve systems of equations.
+
+**Example 8:** A factory has a production process that transforms three raw materials into two finished product types, the products needs specific quantities of raw material. To produce one unit of product 1, it requires 1 unit of raw material A and 3 units of raw material B and no product C. To produce one unit of product 2, it requires 2 units of raw material A and 0 units of raw material B and 1 unit of raw material C. Determine the all possible outputs of the factory based on the raw materials available. Is there a way that the factory can produce a specific amount of products? 
+
+
+**Solution:** 
+
+*Claim:* The space of possible outputs of the factory is a subspace of $\mathbb{R}^2$ and corresponds to the range of a linear transformation.
+
+*Grounds:* The relation between produced products and raw materials can be represented by a linear transformation. The transformation can be represented by the matrix $$T=\begin{pmatrix} 1 & 2 & 0 \\ 3 & 0 & 1 \end{pmatrix}.$$ The first row represents the coefficients of raw material A, B and C in the production of product 1, while the second row represents the coefficients of raw material A, B and C in the production of product 2.
+
+We will compute the range and kernel of this transformation. The kernel is the set of all vectors $(x,y,z)$ such that $T(x,y,z)=(0,0)$, equivalent to the system of equations:
+$$\left(\begin{array}{ccc|c} 1 & 2 & 0 & 0\\ 3 & 0 & 1 & 0\end{array}\right).$$ The complete reduction gives us:
+$$\left(\begin{array}{ccc|c} 1 & 0 & \frac{1}{3} & 0\\ 0 & 1 & -\frac{1}{6} & 0\end{array}\right).$$ This means that the kernel is the set of all vectors $\left(\frac{-t}{3},\frac{t}{6},t\right)$ which is of dimension 1. 
+
+*Warrant:* By the rank-nullity theorem, the range of the transformation is of dimension 2, which means that it is all of $\mathbb{R}^2$. Therefore, the factory can produce any amount of products as long as there are enough raw materials available.
+
+**Example 9:** A DC motor's behavior is changes Voltage (V) and Current (I) to produce Angular moment ( $\omega$ ), Torque ($\tau$) and Heat ($H$). These three outputs are given by: <br/>
+* Angular moment ($\omega$) is given by twice the Voltage plus three times the Current.<br/>
+* Torque ($\tau$) is given by the Voltage minus the Current.<br/>
+* Heat ($H$) is given by four times the Current. <br/>
+
+Determine all possible combinations of Voltage and Current such that we have a zero output. Interpret the results in terms of the motor's behavior.
+
+**Solution:**
+
+*Claim:* The set of all possible inputs that produce a zero output is a subspace of $\mathbb{R}^2$ and corresponds to the kernel of a linear transformation.
+
+*Grounds:* The relation between Voltage, Current and the outputs can be represented by a linear transformation. The transformation can be represented by the matrix $$T=\begin{pmatrix} 2 & 3 \\ 1 & -1 \\ 0 & 4 \end{pmatrix}.$$ The first row represents the coefficients of Voltage and Current in the production of Angular moment, while the second row represents the coefficients of Voltage and Current in the production of Torque and the third row represents the coefficients of Voltage and Current in the production of Heat.
+
+We will compute the kernel of this transformation. The kernel is the set of all vectors $(V,I)$ such that $T(V,I)=(0,0,0)$, equivalent to the system of equations:
+$$\left(\begin{array}{cc|c} 2 & 3 & 0\\ 1 & -1 & 0\\ 0 & 4 & 0\end{array}\right).$$ The complete reduction gives us:
+$$\left(\begin{array}{cc|c} 1 & 0 & 0\\ 0 & 1 & 0\end{array}\right).$$ This means that the kernel is the set of all vectors $(0,0)$ which is of dimension 0.
+
+*Warrant:* The unique combination of Voltage and Current that produces a zero output is $(0,0)$, meaning that the motor does not operate without any input. This is consistent with the physical behavior of a DC motor, as it requires some amount of Voltage and Current to produce any output.
+
+### Your Turn:
+
+Practice is the key to mastering the concepts of linear transformations, kernel and range. Now that you have seen some examples, it is your turn to practice on some examples. You can use the Toulmin's argumentation model to structure your reasoning, and include the following components: claim, grounds and warrant.
+
+1. A factory uses two raw materials ($R_1$, $R_2$) to produce two products ($P_1$, $P_2$). The production process have the following specifications: <br/>
+* To produce one unit of $P_1$, it requires 1 unit of $R_1$ and 2 units of $R_2$. <br/>
+* To produce one unit of $P_2$, it requires 3 units of $R_1$ and 1 unit of $R_2$.
+
+Determine under which circunstances the factory has no production, and interpret the results in terms of the factory's behavior. Also, determine if the factory can provide any combination of products based on the raw materials available.
+
+2. A simple DC motor model transforms input Voltage ($V$) and Current ($I$) into Angular Velocity ($\omega$) and Torque ($\tau$), the specifications are: <br/>
+* Angular Velocity ($\omega$) is given by twice the Voltage plus three times the Current. <br/>
+* Torque ($\tau$) is given by the Voltage minus the Current.
+
+Determine all possible combinations of Voltage and Current such that we have a zero output. Determine if the motor can provide any combination of Angular Velocity and Torque based on the Voltage and Current available.
+
+
+3. A factory transforms three raw materials ($R_1$, $R_2$, $R_3$) into two products ($P_1$, $P_2$). The production process have the following specifications: <br/>
+* $P_1$ requires 2 units of $R_1$, 1 unit of $R_2$, and 0 units of $R_3$. <br/>
+* $P_2$ requires 1 unit of $R_1$, 0 units of $R_2$, and 2 units of $R_3$.
+
+Determine under which circunstances the factory has no production, and interpret the results in terms of the factory's behavior. Also, determine if the factory can provide any combination of products based on the raw materials available.
+
+4. A simple DC motor model transforms input Voltage ($V$) and Current ($I$) into Angular Velocity ($\omega$), Torque ($\tau$) and Heat ($H$) as an output. The motor specifications are: <br/>
+* Angular Velocity ($\omega$) is given by two times the Voltage minus two times the Current. <br/>
+* Torque ($\tau$) is given by the Voltage plus the Current. <br/>
+* Heat ($H$) is given by three times the Current minus the Voltage. <br/>
+
+Determine all possible combinations of Voltage and Current such that we have a zero output. Interpret the results in terms of the motor's behavior. Also, determine if the motor can provide any combination of Angular Velocity, Torque and Heat based on the Voltage and Current available.
+
+5. A factory uses four raw materials ($R_1$, $R_2$, $R_3$, $R_4$) to produce three products ($P_1$, $P_2$, $P_3$). The production process have the following specifications: <br/>
+* To produce one unit of $P_1$, it requires 1 unit of $R_1$, 2 units of $R_2$, 0 units of $R_3$ and 1 unit of $R_4$. <br/>
+* To produce one unit of $P_2$, it requires 0 units of $R_1$, 1 unit of $R_2$, 2 units of $R_3$ and 0 units of $R_4$. <br/>
+* To produce one unit of $P_3$, it requires 3 units of $R_1$, 0 units of $R_2$, 1 unit of $R_3$ and 2 units of $R_4$. <br/>
+
+Determine under which circunstances the factory has no production, and interpret the results in terms of the factory's behavior. Also, determine if the factory can provide any combination of products based on the raw materials available.
+
+6. Two differentially coupled DC motors (e.g., in a robotic joint) have constraints: 
+their angular velocities must be equal ($\omega_1 = \omega_2$) for synchronization. The motors transform input Voltage ($V_i$) and Current ($I_i$) into Angular Velocity ($\omega_i$) and Torque ($\tau_i$) as follows: <br/>
+* Angular Velocity ($\omega_i$) is given by twice the Voltage plus three times the Current. <br/>
+* Torque ($\tau_i$) is given by the Voltage minus twice the Current. <br
+
+Determine all possible combinations of Voltage and Current for both motors such that the angular velocities are equal. Interpret the results in terms of the motors' behavior. Also, determine if the motors can provide any combination of Angular Velocity and Torque based on the Voltage and Current available.
+
