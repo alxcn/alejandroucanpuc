@@ -62,6 +62,7 @@ sidebar_left: no
 |09:00 - 11:00| |  | CPTDA |  |  |
 ||11:00 - 13:00| TDABook - Tutoring | TDABook - Tutoring | TDABook | TDABook - Tutoring | TDABook - Tutoring|
 |13:00 - 15:00| Lunch |  Lunch |   Lunch   | Lunch  |  Lunch  |
-|15:00 - 17:00| MA3001B-501 | MA3001B-502 |   VLFel  | MA3022  | MA3001B-503 |
+|15:00 - 17:00| MA3001B-501 | MA3001B-502 |   VLFel
+  | MA3022  | MA3001B-503 |
 |17:00 - 19:00|  |        |           |    |         |
 
